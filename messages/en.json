@@ -1,0 +1,138 @@
+{
+  "common": {
+    "appName": "SmartStox",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try Again"
+  },
+  "nav": {
+    "home": "Home",
+    "pricing": "Pricing",
+    "ambassadors": "Ambassadors",
+    "faqs": "FAQ's",
+    "more": "More",
+    "login": "Login",
+    "signup": "Signup"
+  },
+  "hero": {
+    "title_part1": "AI TRADED.",
+    "title_part2": "BROKER MANAGED.",
+    "title_part3": "FREE TO LIVE",
+    "subtitle": "SmartStox's AI-Driven Trading grows your wealth automatically. No screens, no stress, no guesswork - just Smart Investments that keep Growing.",
+    "cta_primary": "Learn More",
+    "cta_secondary": "Watch Video"
+  },
+  "banner": {
+    "title": "TRY SMARTSTOX RISK-FREE FOR A 3-MONTHS TRIAL.",
+    "description": "For just $250/m, watch your demo portfolio grow following the same strategies our software uses for real accounts. At the end of the trial, either get a full refund or transfer your demo balance to a live account with your broker. Gains are Backtested at over 250% annually."
+  },
+  "features": {
+    "why_choose": {
+      "title_part1": "Why Choose",
+      "title_part2": "SmartStox?",
+      "subtitle": "Invest Smarter. Live Freer. Let AI Do the Hard Work.",
+      "description": "Choosing SmartStox means choosing a smarter way to invest. Our AI-driven system combines decades of market experience, cutting-edge technology, and proven strategies to grow your wealth automatically. No guesswork. No constant monitoring. No stress. Just consistent, disciplined growth - while you focus on life.",
+      "cta": "Explore More",
+      "badge_title": "10 Years",
+      "badge_subtitle": "Consulting Experience"
+    },
+    "ai_learning": {
+      "title_part1": "AI That Learns, Trades, and",
+      "title_part2": "Grows Like a Pro",
+      "description": "SmartStox isn't just another trading tool - it's a system built on real-world experience. Every algorithm, every trade, every reinvestment strategy has been tested in live markets and refined for maximum performance. Our AI doesn't sleep, second-guess, or let emotions interfere - it executes disciplined trades with precision, compounding your wealth over time while you live your life."
+    },
+    "manual_trading": {
+      "title_part1": "Why",
+      "title_part2": "Manual Trading",
+      "title_part3": "Systems Fail Users?",
+      "subtitle": "Most Traders Lose - Not Because the Market Fails, But Because Humans Do.",
+      "description": "Emotions. Overtading. Missed signals. Complex strategies that are impossible to follow. Most manual systems fail users because they rely on discipline, timing, and constant monitoring - things life doesn't always allow. SmartStox removes the human element, so your money grows while you live your life.",
+      "img_before": "Before SmartStox",
+      "img_after": "After SmartStox"
+    },
+    "time_vs_timing": {
+      "title_part1": "Time in",
+      "title_part2": "the Market vs",
+      "title_part3": "Timing",
+      "title_part4": "the Market",
+      "subtitle": "Stop Chasing the Market. Start Growing with It.",
+      "description": "Manual traders waste time trying to \"time the market\" and constantly second-guess decisions. SmartStox focuses on time in the market, letting compounding and proven strategies do the heavy lifting—day in, day out, automatically."
+    },
+    "set_and_forget": {
+      "title_part1": "The",
+      "title_part2": "Set-And-Forget",
+      "title_part3": "Myth",
+      "subtitle": "Set-and-Forget Trading Is a Myth. Markets Don't Stand Still.",
+      "description1": "A machine left running in the corner will eventually fall behind as markets evolve, liquidity shifts, and conditions change. Sustainable automation requires constant adaptation — and that's where the right Regulated Broker becomes essential.",
+      "description2": "Execution quality, liquidity access, pricing integrity, and capital protection all depend on the broker. Technology drives the strategy, but The Broker ensures trades are executed properly, funds are safeguarded, and the system operates in the real world, not just in theory."
+    },
+    "tested_proven": {
+      "title_part1": "Tested. Proven. Consistently",
+      "title_part2": "Winning.",
+      "description": "SmartStox isn't just theory. Our software has been backtested across years of historical market data, delivering over 250% annual returns on investment capital. Every strategy, every trade, is built to maximize growth and minimize risk."
+    }
+  },
+  "testimonials": {
+    "title_part1": "Connect with",
+    "title_part2": "Our Clients",
+    "subtitle": "We love connecting with our clients to hear about their experiences and how we can improve.",
+    "quote1": "The above testimonial is about Martha Chumo, who taught herself to code in one summer. This testimonial example works because it allows prospective customers to see themselves in Codecademy's current customer base.",
+    "name1": "Mobarok Hossein",
+    "role1": "Trade Master",
+    "quote2": "The above testimonial is about Martha Chumo, who taught herself to code in one summer. This testimonial example works because it allows prospective customers to see themselves in Codecademy's current customer base.",
+    "name2": "Guy Hawkins",
+    "role2": "Trade Master"
+  },
+  "faq": {
+    "title_part1": "Frequently Asked",
+    "title_part2": "Questions",
+    "q1": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
+    "q2": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
+    "q3": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
+    "q4": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
+    "q5": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum"
+  },
+  "cta": {
+    "eyebrow": "Experience SmartStox Risk-Free for 3 Months",
+    "title": "See. Believe. Decide.",
+    "description": "For just $250 per month, step into a 3-month SmartStox experience where our AI trades a personalized demo portfolio exactly as it would a live account.",
+    "button": "Start Today!"
+  },
+  "footer": {
+    "description": "Welcome to our trading site! We offer the best, most affordable products and services around. Shop now and start finding great deals!",
+    "quickLinks": {
+      "title": "Quick links",
+      "wealth": "Wealth Creation Strategy",
+      "fractional": "Fractional Capital Investment",
+      "pricing": "Pricing",
+      "ambassadors": "Our Brand Ambassadors"
+    },
+    "support": {
+      "title": "Support",
+      "terms": "Terms & Conditions",
+      "privacy": "Privacy Policy",
+      "faqs": "FAQs",
+      "supportCenter": "Support Center"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "updates": "Updates"
+    },
+    "copyright": "© {year} All Rights Reserved By SmartStox",
+    "appStore": "Download on the",
+    "appStoreStrong": "App Store",
+    "googlePlay": "GET IT ON",
+    "googlePlayStrong": "Google Play"
+  },
+  "language": {
+    "en": "English",
+    "fr": "Français",
+    "switchLabel": "Language"
+  },
+  "pricing": {
+    "title": "Simple, Transparent Pricing",
+    "subtitle": "Choose the plan that fits your wealth growth goals.",
+    "comingSoon": "Coming Soon"
+  }
+}

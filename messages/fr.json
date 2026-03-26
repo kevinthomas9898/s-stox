@@ -1,0 +1,138 @@
+{
+  "common": {
+    "appName": "SmartStox",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "retry": "Réessayer"
+  },
+  "nav": {
+    "home": "Accueil",
+    "pricing": "Tarifs",
+    "ambassadors": "Ambassadeurs",
+    "faqs": "FAQ",
+    "more": "Plus",
+    "login": "Connexion",
+    "signup": "S'inscrire"
+  },
+  "hero": {
+    "title_part1": "TRADÉ PAR L'IA.",
+    "title_part2": "GÉRÉ PAR LE COURTIER.",
+    "title_part3": "LIBRE DE VIVRE",
+    "subtitle": "Le trading piloté par l'IA de SmartStox fait fructifier votre patrimoine automatiquement. Pas d'écrans, pas de stress, pas de devinettes - juste des investissements intelligents qui continuent de croître.",
+    "cta_primary": "En Savoir Plus",
+    "cta_secondary": "Voir la Vidéo"
+  },
+  "banner": {
+    "title": "ESSAYEZ SMARTSTOX SANS RISQUE PENDANT 3 MOIS.",
+    "description": "Pour seulement 250 $/mois, regardez votre portefeuille démo croître en suivant les mêmes stratégies que notre logiciel utilise pour les comptes réels. À la fin de l'essai, obtenez un remboursement complet ou transférez votre solde démo vers un compte réel chez votre courtier. Les gains sont backtestés à plus de 250% par an."
+  },
+  "features": {
+    "why_choose": {
+      "title_part1": "Pourquoi Choisir",
+      "title_part2": "SmartStox?",
+      "subtitle": "Investissez Plus Intelligemment. Vivez Plus Librement. Laissez l'IA Faire le Travail Dur.",
+      "description": "Choisir SmartStox, c'est choisir une façon plus intelligente d'investir. Notre système piloté par l'IA combine des décennies d'expérience sur les marchés, une technologie de pointe et des stratégies éprouvées pour faire fructifier votre patrimoine automatiquement. Pas de devinettes. Pas de surveillance constante. Pas de stress. Juste une croissance cohérente et disciplinée - pendant que vous vous concentrez sur la vie.",
+      "cta": "Explorer Plus",
+      "badge_title": "10 Ans",
+      "badge_subtitle": "D'expérience de Conseil"
+    },
+    "ai_learning": {
+      "title_part1": "L'IA qui Apprend, Trade et",
+      "title_part2": "Grandit Comme un Pro",
+      "description": "SmartStox n'est pas juste un autre outil de trading - c'est un système basé sur une expérience concrète. Chaque algorithme, chaque trade, chaque stratégie de réinvestissement a été testé sur des marchés réels et affiné pour des performances maximales. Notre IA ne dort pas, ne doute pas, ou ne laisse pas les émotions interférer - elle exécute des trades disciplinés avec précision, composant votre richesse au fil du temps pendant que vous vivez votre vie."
+    },
+    "manual_trading": {
+      "title_part1": "Pourquoi",
+      "title_part2": "le Trading Manuel",
+      "title_part3": "Échoue-t-il ?",
+      "subtitle": "La plupart des traders perdent - Pas à cause du marché, mais parce qu'ils sont humains.",
+      "description": "Émotions. Sur-trading. Signaux manqués. Stratégies complexes impossibles à suivre. La plupart des systèmes manuels échouent car ils dépendent de la discipline, du timing et d'une surveillance constante - des choses que la vie ne permet pas toujours. SmartStox supprime l'élément humain, pour que votre argent fructifie pendant que vous profitez de la vie.",
+      "img_before": "Avant SmartStox",
+      "img_after": "Après SmartStox"
+    },
+    "time_vs_timing": {
+      "title_part1": "Le Temps sur",
+      "title_part2": "le Marché contre le",
+      "title_part3": "Timing",
+      "title_part4": "du Marché",
+      "subtitle": "Arrêtez de courir après le marché. Commencez à grandir avec lui.",
+      "description": "Les traders manuels perdent du temps à essayer de \"timer le marché\" et doutent constamment de leurs décisions. SmartStox se concentre sur le temps passé sur le marché, laissant les intérêts composés et les stratégies éprouvées faire le gros du travail - jour après jour, automatiquement."
+    },
+    "set_and_forget": {
+      "title_part1": "Le Mythe du",
+      "title_part2": "Set-And-Forget",
+      "title_part3": "",
+      "subtitle": "Le trading \"Set-and-Forget\" (Configurer et oublier) est un mythe. Les marchés n'attendent pas.",
+      "description1": "Une machine laissée dans un coin finira par prendre du retard à mesure que les marchés évoluent, que la liquidité change et que les conditions se modifient. L'automatisation durable nécessite une adaptation constante — c'est là qu'un courtier réglementé devient essentiel.",
+      "description2": "La qualité d'exécution, l'accès à la liquidité, l'intégrité des prix et la protection du capital dépendent tous du courtier. La technologie pilote la stratégie, mais le Courtier s'assure que les transactions sont exécutées correctement, que les fonds sont protégés et que le système fonctionne dans le monde réel, pas seulement en théorie."
+    },
+    "tested_proven": {
+      "title_part1": "Testé. Éprouvé. Constamment",
+      "title_part2": "Performant.",
+      "description": "SmartStox n'est pas qu'une théorie. Notre logiciel a été backtesté sur des années de données de marché historiques, offrant des rendements annuels de plus de 250% sur le capital investi. Chaque stratégie, chaque transaction, est conçue pour maximiser la croissance et minimiser les risques."
+    }
+  },
+  "testimonials": {
+    "title_part1": "Connectez-vous avec",
+    "title_part2": "Nos Clients",
+    "subtitle": "Nous aimons échanger avec nos clients pour connaître leurs expériences et savoir comment nous améliorer.",
+    "quote1": "Le témoignage ci-dessus concerne Martha Chumo, qui a appris à coder seule pendant un été. Cet exemple de témoignage fonctionne car il permet aux clients potentiels de s'identifier à la clientèle actuelle.",
+    "name1": "Mobarok Hossein",
+    "role1": "Maître Trader",
+    "quote2": "Le témoignage ci-dessus concerne Martha Chumo, qui a appris à coder seule pendant un été. Cet exemple de témoignage fonctionne car il permet aux clients potentiels de s'identifier à la clientèle actuelle.",
+    "name2": "Guy Hawkins",
+    "role2": "Maître Trader"
+  },
+  "faq": {
+    "title_part1": "Questions Fréquemment",
+    "title_part2": "Posées",
+    "q1": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
+    "q2": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
+    "q3": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
+    "q4": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
+    "q5": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum"
+  },
+  "cta": {
+    "eyebrow": "Expérimentez SmartStox Sans Risque Pendant 3 Mois",
+    "title": "Voir. Croire. Décider.",
+    "description": "Pour seulement 250 $ par mois, entrez dans une expérience SmartStox de 3 mois où notre IA trade un portefeuille démo personnalisé exactement comme un compte réel.",
+    "button": "Commencer Aujourd'hui !"
+  },
+  "footer": {
+    "description": "Bienvenue sur notre site de trading ! Nous offrons les meilleurs produits et services aux prix les plus abordables. Achetez maintenant et trouvez de bonnes affaires !",
+    "quickLinks": {
+      "title": "Liens rapides",
+      "wealth": "Stratégie de création de richesse",
+      "fractional": "Investissement en capital fractionné",
+      "pricing": "Tarifs",
+      "ambassadors": "Nos ambassadeurs de marque"
+    },
+    "support": {
+      "title": "Support",
+      "terms": "Termes et Conditions",
+      "privacy": "Politique de confidentialité",
+      "faqs": "FAQ",
+      "supportCenter": "Centre de support"
+    },
+    "company": {
+      "title": "Entreprise",
+      "about": "À propos de nous",
+      "updates": "Mises à jour"
+    },
+    "copyright": "© {year} Tous Droits Réservés Par SmartStox",
+    "appStore": "Télécharger dans l'",
+    "appStoreStrong": "App Store",
+    "googlePlay": "DISPONIBLE SUR",
+    "googlePlayStrong": "Google Play"
+  },
+  "language": {
+    "en": "English",
+    "fr": "Français",
+    "switchLabel": "Langue"
+  },
+  "pricing": {
+    "title": "Tarification Simple et Transparente",
+    "subtitle": "Choisissez le plan qui correspond à vos objectifs de croissance de patrimoine.",
+    "comingSoon": "À Venir"
+  }
+}

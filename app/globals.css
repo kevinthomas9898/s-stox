@@ -1,0 +1,47 @@
+@import 'tailwindcss';
+
+:root {
+  /* SmartStox color palette - Finance Dark Theme */
+  --background: #0b0f19;
+  --foreground: #f1f5f9;
+  --primary: #10b981; /* Emerald Green for positive/accents */
+  --primary-hover: #059669;
+  --secondary: #1e293b; /* Slate 800 for cards/panels */
+  --secondary-hover: #334155;
+  --accent: #3b82f6; /* Blue for interactions */
+  --danger: #ef4444; /* Red for negative */
+  --warning: #f59e0b; /* Amber for warnings */
+  --border: #334155;
+  --muted: #94a3b8; /* Slate 400 for secondary text */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-accent: var(--accent);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-roboto);
+  --font-mono: var(--font-roboto-mono);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base custom utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
