@@ -43,8 +43,7 @@ jobs:
     - name: Generate version (timestamp)
       id: version
       run: |
-        VERSION=$(1.0.0)
-        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "version=1.0.0" >> $GITHUB_OUTPUT
 
     - name: Build and Push Docker image
       uses: docker/build-push-action@v4
