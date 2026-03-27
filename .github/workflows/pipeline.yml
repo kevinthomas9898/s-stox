@@ -12,7 +12,6 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  GITOPS_REPO: PCI.GitOps.AlibabaCloud
 
 jobs:
   build-and-push:
@@ -54,20 +53,3 @@ jobs:
         tags: |
           ${{ env.REGISTRY }}/${{ env.REPO_LOWER }}:latest
           ${{ env.REGISTRY }}/${{ env.REPO_LOWER }}:${{ steps.version.outputs.version }}
-
-    # 🚀 CD PART (GitOps Update)
-    - name: Update GitOps repo with new image
-      run: |
-        git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository_owner }}/${{ env.GITOPS_REPO }}.git
-
-        cd ${{ env.GITOPS_REPO }}
-
-        # 🔥 Update image tag in kustomization.yaml
-        sed -i "s|\(ghcr.io/prosperian-capital/pci.smartstox.webapp:\).*|\1${{ steps.version.outputs.version }}|g" k8s/overlays/production/kustomization.yml
-
-        git config user.name "github-actions"
-        git config user.email "actions@github.com"
-
-        git add .
-        git commit -m "🚀 Update smartstox-webapp image to ${{ steps.version.outputs.version }}"
-        git push
