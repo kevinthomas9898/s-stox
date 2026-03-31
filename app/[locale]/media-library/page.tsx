@@ -1,14 +1,13 @@
-import { setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 
-export default function MediaLibraryPage({
+export default async function MediaLibraryPage({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = params;
+  const { locale } = await params;
   setRequestLocale(locale);
-  const t = useTranslations('mediaLibrary');
+  const t = await getTranslations('mediaLibrary');
 
   return (
     <div className="min-h-screen bg-[#0b0f19] pt-32 pb-20 px-4">

@@ -1,16 +1,15 @@
-import { setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 
-export default function FractionalCapitalPage({
+export default async function FractionalCapitalPage({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = params;
+  const { locale } = await params;
 
   setRequestLocale(locale);
 
-  const t = useTranslations('fractionalCapital');
+  const t = await getTranslations('fractionalCapital');
 
   return (
     <div className="min-h-screen bg-[#0b0f19] pt-32 pb-20 px-4">
