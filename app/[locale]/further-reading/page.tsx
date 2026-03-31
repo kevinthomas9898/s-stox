@@ -1,12 +1,12 @@
 import { setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 
-export default async function FurtherReadingPage({
+export default function FurtherReadingPage({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
-  const { locale } = await params;
+  const { locale } = params;
   setRequestLocale(locale);
   const t = useTranslations('furtherReading');
 

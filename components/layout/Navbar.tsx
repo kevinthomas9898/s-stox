@@ -5,17 +5,17 @@ import { useState } from 'react';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { FaBars, FaXmark } from 'react-icons/fa6';
-
-interface MoreMenuItem {
-  href: string;
-  label: string;
-}
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 export default function Navbar() {
   const t = useTranslations('nav');
   const common = useTranslations('common');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMoreOpen, setIsMoreOpen] = useState(false);
 
   const navLinks = [
     { href: '/', label: t('home') },
@@ -24,7 +24,7 @@ export default function Navbar() {
     { href: '/', label: t('faqs') },
   ];
 
-  const moreMenuItems: MoreMenuItem[] = [
+  const moreMenuItems = [
     { href: '/wealth-creation', label: t('wealthCreation') },
     { href: '/fractional-capital', label: t('fractionalCapital') },
     { href: '/media-library', label: t('mediaLibrary') },
@@ -55,36 +55,31 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <div className="relative">
-            <button
-              onClick={() => setIsMoreOpen(!isMoreOpen)}
-              className="flex items-center gap-1 text-white hover:text-primary transition-colors cursor-pointer group"
-            >
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center gap-1 text-white hover:text-primary transition-colors cursor-pointer group outline-none">
               <span>{t('more')}</span>
               <svg
-                className={`w-4 h-4 text-white group-hover:text-primary transition-colors transform ${isMoreOpen ? 'rotate-180' : ''}`}
+                className="w-4 h-4 text-white group-hover:text-primary transition-colors transform group-data-[state=open]:rotate-180"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-            </button>
-            {isMoreOpen && (
-              <div className="absolute top-full right-0 mt-2 w-56 bg-[#1a1f2e] rounded-lg shadow-xl border border-white/10 py-2 animate-in fade-in slide-in-from-top-2 duration-200">
-                {moreMenuItems.map((item, i) => (
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-56 bg-[#FFFFFF0F] backdrop-blur-md border-white/10">
+              {moreMenuItems.map((item, i) => (
+                <DropdownMenuItem key={i} className="p-0">
                   <Link
-                    key={i}
                     href={item.href}
-                    className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
-                    onClick={() => setIsMoreOpen(false)}
+                    className="block w-full px-3 py-2 text-sm text-gray-300 hover:text-primary hover:bg-white/[0.08] focus:bg-white/[0.08] focus:text-primary transition-colors"
                   >
                     {item.label}
                   </Link>
-                ))}
-              </div>
-            )}
-          </div>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </nav>
 
         <div className="flex items-center gap-4">

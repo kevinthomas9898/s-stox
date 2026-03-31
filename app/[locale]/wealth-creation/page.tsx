@@ -1,5 +1,4 @@
-import { setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 
 export default async function WealthCreationPage({
   params,
@@ -8,7 +7,7 @@ export default async function WealthCreationPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = useTranslations('wealthCreation');
+  const t = await getTranslations('wealthCreation');
 
   return (
     <div className="min-h-screen bg-[#0b0f19] pt-32 pb-20 px-4">

@@ -1,6 +1,5 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { FaCheck } from "react-icons/fa6";
 
 export default function PricingPage() {
   const t = useTranslations("pricing");
