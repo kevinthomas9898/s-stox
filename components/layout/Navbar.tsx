@@ -87,13 +87,13 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/"
-              className="text-sm font-medium px-6 py-2 rounded-full bg-white/5 text-white hover:bg-white/10 transition-colors"
+              className="text-sm font-medium px-6 py-2 rounded-full bg-[#FFFFFF1A] text-white hover:bg-[#FFFFFF2A] transition-colors"
             >
               {t('login')}
             </Link>
             <Link
               href="/"
-              className="text-sm font-medium px-6 py-2 rounded-full bg-accent text-white hover:bg-accent/90 transition-colors"
+              className="text-sm font-medium px-6 py-2 rounded-full bg-[#2A73EA] text-white hover:bg-[#1a5fc7] transition-colors"
             >
               {t('signup')}
             </Link>
@@ -136,14 +136,14 @@ export default function Navbar() {
           <div className="flex flex-col gap-4 pt-8 border-t border-white/10">
             <Link
               href="/"
-              className="w-full text-center text-lg font-medium px-6 py-3 rounded-xl bg-white/5 text-white hover:bg-white/10 transition-colors"
+              className="w-full text-center text-lg font-medium px-6 py-3 rounded-xl bg-[#FFFFFF1A] text-white hover:bg-[#FFFFFF2A] transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               {t('login')}
             </Link>
             <Link
               href="/"
-              className="w-full text-center text-lg font-medium px-6 py-3 rounded-xl bg-accent text-white hover:bg-accent/90 transition-colors"
+              className="w-full text-center text-lg font-medium px-6 py-3 rounded-xl bg-[#2A73EA] text-white hover:bg-[#1a5fc7] transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               {t('signup')}
