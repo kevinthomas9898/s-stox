@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: 'SmartStox | Intelligent Trading Platform',
   description:
     'Real-time market insights, AI-powered analytics, and portfolio management.',
+  icons: {
+    icon: '/logo-icon.png',
+  },
 };
 
 /**
