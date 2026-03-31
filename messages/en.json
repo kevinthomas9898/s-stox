@@ -12,7 +12,11 @@
     "faqs": "FAQ's",
     "more": "More",
     "login": "Login",
-    "signup": "Signup"
+    "signup": "Signup",
+    "wealthCreation": "Wealth Creation",
+    "fractionalCapital": "Fractional Capital Investment",
+    "mediaLibrary": "Media Library",
+    "furtherReading": "Further Reading"
   },
   "hero": {
     "title_part1": "AI TRADED.",
@@ -93,10 +97,17 @@
     "q5": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum"
   },
   "cta": {
-    "eyebrow": "Experience SmartStox Risk-Free for 3 Months",
+    "eyebrow": "Experience SmartStox Risk-Free for",
+    "badge": "3 Months",
     "title": "See. Believe. Decide.",
-    "description": "For just $250 per month, step into a 3-month SmartStox experience where our AI trades a personalized demo portfolio exactly as it would a live account.",
-    "button": "Start Today!"
+    "description": "For just $250 per month, step into a 3-month SmartStox experience where our AI trades a personalised demo portfolio exactly as it would a live account.",
+    "feature1": "No Simulations",
+    "feature2": "Watch Real Performance\nLogic Trade & Grow",
+    "feature3": "Experience Disciplined\nAutomation",
+    "tagline": "INVEST WITH CONFIDENCE. LIVE WITH FREEDOM. CHOOSE SMARTSTOX FOR PROVEN PERFORMANCE.",
+    "primaryButton": "Start My Risk-Free Trial Now",
+    "secondaryButton": "Referral Link",
+    "bannerText": "WALK AWAY WITH A 100% FULL REFUND AFTER 3 MONTHS OR TRANSFER YOUR DEMO BALANCE TO A LIVE ACCOUNT, LAUNCHING YOUR WEALTH-BUILDING ADVANTAGE."
   },
   "footer": {
     "description": "Welcome to our trading site! We offer the best, most affordable products and services around. Shop now and start finding great deals!",
@@ -134,5 +145,21 @@
     "title": "Simple, Transparent Pricing",
     "subtitle": "Choose the plan that fits your wealth growth goals.",
     "comingSoon": "Coming Soon"
+  },
+  "wealthCreation": {
+    "title": "Wealth Creation",
+    "description": "Discover how SmartStox helps you build lasting wealth through intelligent AI-driven investment strategies."
+  },
+  "fractionalCapital": {
+    "title": "Fractional Capital Investment",
+    "description": "Learn about our innovative approach to fractional investing that makes high-value assets accessible to everyone."
+  },
+  "mediaLibrary": {
+    "title": "Media Library",
+    "description": "Explore our collection of videos, webinars, and educational content about AI trading and wealth management."
+  },
+  "furtherReading": {
+    "title": "Further Reading",
+    "description": "Dive deeper into our research papers, case studies, and articles on automated trading and investment strategies."
   }
 }

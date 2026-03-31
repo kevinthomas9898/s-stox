@@ -1,7 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
-import { FaCirclePlay, FaArrowRight } from 'react-icons/fa6';
-import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
+import { FaArrowRight } from 'react-icons/fa6';
+import { AiOutlinePlayCircle } from "react-icons/ai";
 import FeaturesSection from '@/components/sections/FeaturesSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import FAQSection from '@/components/sections/FAQSection';
@@ -50,8 +50,8 @@ export default async function HomePage({
                 <FaArrowRight className="w-4 h-4 font-bold" />
               </button>
               
-              <button className="flex items-center gap-2 bg-transparent border border-gray-600 hover:border-gray-400 text-white px-8 py-3.5 rounded-md font-semibold transition-colors cursor-pointer">
-                <FaCirclePlay className="w-5 h-5 text-[#0066FF]" />
+              <button className="flex items-center gap-2 text-[#2A73EA] bg-transparent border border-[#2A73EA] hover:border-gray-400 px-8 py-3.5 rounded-md font-semibold transition-colors cursor-pointer">
+                <AiOutlinePlayCircle className="w-5 h-5 text-[#2A73EA]" />
                 {t.hero.cta_secondary}
               </button>
             </div>
@@ -74,9 +74,8 @@ export default async function HomePage({
           <h3 className="text-[#00D094] text-xl font-semibold uppercase tracking-wider mb-4">
             {t.banner.title}
           </h3>
-          <p className="text-gray-300 text-sm md:text-lg leading-relaxed pr-16 md:pr-24 relative">
+          <p className="text-gray-300 text-sm md:text-lg leading-relaxed pr-16 md:pr-24">
             {t.banner.description}
-            <ScrollToTopButton />
           </p>
 
         </div>

@@ -6,16 +6,29 @@ import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { FaBars, FaXmark } from 'react-icons/fa6';
 
+interface MoreMenuItem {
+  href: string;
+  label: string;
+}
+
 export default function Navbar() {
   const t = useTranslations('nav');
   const common = useTranslations('common');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
 
   const navLinks = [
     { href: '/', label: t('home') },
     { href: '/pricing', label: t('pricing') },
     { href: '/', label: t('ambassadors') },
     { href: '/', label: t('faqs') },
+  ];
+
+  const moreMenuItems: MoreMenuItem[] = [
+    { href: '/wealth-creation', label: t('wealthCreation') },
+    { href: '/fractional-capital', label: t('fractionalCapital') },
+    { href: '/media-library', label: t('mediaLibrary') },
+    { href: '/further-reading', label: t('furtherReading') },
   ];
 
   return (
@@ -42,11 +55,35 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <div className="flex items-center gap-1 text-white hover:text-primary transition-colors cursor-pointer group">
-            <span>{t('more')}</span>
-            <svg className="w-4 h-4 text-white group-hover:text-primary transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
+          <div className="relative">
+            <button
+              onClick={() => setIsMoreOpen(!isMoreOpen)}
+              className="flex items-center gap-1 text-white hover:text-primary transition-colors cursor-pointer group"
+            >
+              <span>{t('more')}</span>
+              <svg
+                className={`w-4 h-4 text-white group-hover:text-primary transition-colors transform ${isMoreOpen ? 'rotate-180' : ''}`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {isMoreOpen && (
+              <div className="absolute top-full right-0 mt-2 w-56 bg-[#1a1f2e] rounded-lg shadow-xl border border-white/10 py-2 animate-in fade-in slide-in-from-top-2 duration-200">
+                {moreMenuItems.map((item, i) => (
+                  <Link
+                    key={i}
+                    href={item.href}
+                    className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+                    onClick={() => setIsMoreOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         </nav>
 

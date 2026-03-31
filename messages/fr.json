@@ -12,7 +12,11 @@
     "faqs": "FAQ",
     "more": "Plus",
     "login": "Connexion",
-    "signup": "S'inscrire"
+    "signup": "S'inscrire",
+    "wealthCreation": "Création de Richesse",
+    "fractionalCapital": "Investissement en Capital Fractionné",
+    "mediaLibrary": "Médiathèque",
+    "furtherReading": "Lectures Complémentaires"
   },
   "hero": {
     "title_part1": "TRADÉ PAR L'IA.",
@@ -93,10 +97,17 @@
     "q5": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum"
   },
   "cta": {
-    "eyebrow": "Expérimentez SmartStox Sans Risque Pendant 3 Mois",
+    "eyebrow": "Expérimentez SmartStox Sans Risque Pendant",
+    "badge": "3 Mois",
     "title": "Voir. Croire. Décider.",
     "description": "Pour seulement 250 $ par mois, entrez dans une expérience SmartStox de 3 mois où notre IA trade un portefeuille démo personnalisé exactement comme un compte réel.",
-    "button": "Commencer Aujourd'hui !"
+    "feature1": "Pas de Simulations",
+    "feature2": "Regardez la Performance Réelle\nLogic Trade & Grow",
+    "feature3": "Expérimentez l'Automatisation\nDisciplinée",
+    "tagline": "INVESTISSEZ AVEC CONFIANCE. VIVEZ AVEC LIBERTÉ. CHOISISSEZ SMARTSTOX POUR DES PERFORMANCES PROUVÉES.",
+    "primaryButton": "Commencez Mon Essai Sans Risque",
+    "secondaryButton": "Lien de Parrainage",
+    "bannerText": "PARTEZ AVEC UN REMBOURSEMENT COMPLET À 100% APRÈS 3 MOIS OU TRANSFÉREZ VOTRE SOLDE DÉMO VERS UN COMPTE RÉEL, LANCANT VOTRE AVANTAGE DE CONSTRUCTION DE PATRIMOINE."
   },
   "footer": {
     "description": "Bienvenue sur notre site de trading ! Nous offrons les meilleurs produits et services aux prix les plus abordables. Achetez maintenant et trouvez de bonnes affaires !",
@@ -134,5 +145,21 @@
     "title": "Tarification Simple et Transparente",
     "subtitle": "Choisissez le plan qui correspond à vos objectifs de croissance de patrimoine.",
     "comingSoon": "À Venir"
+  },
+  "wealthCreation": {
+    "title": "Création de Richesse",
+    "description": "Découvrez comment SmartStox vous aide à construire une richesse durable grâce à des stratégies d'investissement intelligentes pilotées par l'IA."
+  },
+  "fractionalCapital": {
+    "title": "Investissement en Capital Fractionné",
+    "description": "Apprenez-en plus sur notre approche innovante de l'investissement fractionné qui rend les actifs de grande valeur accessibles à tous."
+  },
+  "mediaLibrary": {
+    "title": "Médiathèque",
+    "description": "Explorez notre collection de vidéos, webinaires et contenus éducatifs sur le trading par IA et la gestion de patrimoine."
+  },
+  "furtherReading": {
+    "title": "Lectures Complémentaires",
+    "description": "Approfondissez vos connaissances avec nos documents de recherche, études de cas et articles sur le trading automatisé et les stratégies d'investissement."
   }
 }

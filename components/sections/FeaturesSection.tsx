@@ -160,7 +160,7 @@ export default function FeaturesSection() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+          <div className="grid grid-cols-2 gap-8 w-full max-w-4xl">
             {/* Left Chart Image */}
             <div className="relative w-full rounded-xl overflow-hidden border border-white/10 bg-[#0d1627]">
               <Image

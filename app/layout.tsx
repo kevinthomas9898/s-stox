@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
-import { Roboto, Roboto_Mono } from 'next/font/google';
+import { Roboto, Roboto_Mono, Geist } from 'next/font/google';
 import './globals.css';
 import AppProviders from '@/providers/AppProviders';
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const roboto = Roboto({
   variable: '--font-roboto',
@@ -35,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${roboto.variable} ${robotoMono.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", roboto.variable, robotoMono.variable, "font-sans", geist.variable)}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-background text-foreground overflow-x-hidden">
