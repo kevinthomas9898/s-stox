@@ -1,12 +1,15 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa6';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 export default function FAQSection() {
   const t = useTranslations('faq');
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [1, 2, 3, 4, 5].map(i => ({
     q: t(`q${i}` as any),
@@ -20,31 +23,22 @@ export default function FAQSection() {
           {t('title_part1')} <span className="text-[#0066FF]">{t('title_part2')}</span>
         </h2>
 
-        <div className="w-full max-w-3xl space-y-4">
+        <Accordion className="w-full max-w-3xl space-y-4">
           {faqs.map((faq, index) => (
-            <div 
-              key={index} 
-              className="border border-white/10 rounded-lg bg-[#0d1627] overflow-hidden transition-all"
+            <AccordionItem
+              key={index}
+              value={`item-${index}`}
+              className="border border-white/10 rounded-lg bg-[#0d1627] overflow-hidden"
             >
-              <button 
-                className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none cursor-pointer hover:bg-white/5 transition-colors"
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              >
+              <AccordionTrigger className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none cursor-pointer hover:bg-white/5 transition-colors hover:no-underline [&>svg]:text-gray-500 [&>svg]:w-4 [&>svg]:h-4 [&>svg]:shrink-0">
                 <span className="text-gray-300 font-normal text-xl">{faq.q}</span>
-                {openIndex === index ? (
-                  <FaChevronUp className="w-4 h-4 text-gray-500 shrink-0" />
-                ) : (
-                  <FaChevronDown className="w-4 h-4 text-gray-500 shrink-0" />
-                )}
-              </button>
-              {openIndex === index && (
-                <div className="px-6 pb-5 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
-                  {faq.a}
-                </div>
-              )}
-            </div>
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-5 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                {faq.a}
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
       </div>
     </div>
   );
