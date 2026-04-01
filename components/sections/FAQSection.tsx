@@ -10,7 +10,7 @@ export default function FAQSection() {
 
   const faqs = [1, 2, 3, 4, 5].map(i => ({
     q: t(`q${i}` as any),
-    a: "TEST LOCAL Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    a: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
   }));
 
   return (
