@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function FeaturesSection() {
   const t = useTranslations("features");
@@ -50,9 +51,11 @@ export default function FeaturesSection() {
               {t("why_choose.description")}
             </p>
             <div className="flex justify-start">
-              <button className="mt-4 bg-[#00D094] hover:bg-[#00c985] text-gray-900 px-8 py-3 rounded-md font-semibold transition-colors cursor-pointer shadow-lg">
+              <Button 
+                className="mt-4 bg-[#00D094] hover:bg-[#00c985] text-gray-900 px-8 py-3 rounded-md font-semibold transition-colors cursor-pointer shadow-lg border-0"
+              >
                 {t("why_choose.cta")}
-              </button>
+              </Button>
             </div>
           </div>
         </div>

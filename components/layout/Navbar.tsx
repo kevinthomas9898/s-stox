@@ -4,18 +4,26 @@ import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
-import { FaBars, FaXmark } from 'react-icons/fa6';
+import { FaBars } from 'react-icons/fa6';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+  SheetClose,
+} from '@/components/ui/sheet';
 
 export default function Navbar() {
   const t = useTranslations('nav');
   const common = useTranslations('common');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
     { href: '/', label: t('home') },
@@ -100,57 +108,53 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
-            className="lg:hidden p-2 text-white hover:text-primary transition-colors relative z-50 cursor-pointer"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? (
-              <FaXmark className="w-7 h-7" />
-            ) : (
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger
+              className="lg:hidden p-2 text-white hover:text-primary transition-colors relative z-50 cursor-pointer"
+              aria-label="Toggle menu"
+            >
               <FaBars className="w-7 h-7" />
-            )}
-          </button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-full sm:w-96 bg-[#0b0f19] border-white/10 p-0" showCloseButton={false}>
+              <SheetHeader className="pt-24 px-6">
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              </SheetHeader>
+              <nav className="flex flex-col space-y-6 px-6">
+                {navLinks.map((link, i) => (
+                  <Link 
+                    key={i} 
+                    href={link.href} 
+                    className="text-2xl font-semibold text-white hover:text-primary transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <div className="text-2xl font-semibold text-white hover:text-primary transition-colors cursor-pointer">
+                  {t('more')}
+                </div>
+              </nav>
+              
+              <div className="flex flex-col gap-4 pt-8 mt-8 border-t border-white/10 px-6">
+                <Link
+                  href="/"
+                  className="w-full text-center text-lg font-medium px-6 py-3 rounded-xl bg-[#FFFFFF1A] text-white hover:bg-[#FFFFFF2A] transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t('login')}
+                </Link>
+                <Link
+                  href="/"
+                  className="w-full text-center text-lg font-medium px-6 py-3 rounded-xl bg-[#2A73EA] text-white hover:bg-[#1a5fc7] transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {t('signup')}
+                </Link>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
-
-      {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-[#0b0f19] flex flex-col pt-24 px-6 space-y-8 animate-in fade-in slide-in-from-top duration-300">
-          <nav className="flex flex-col space-y-6">
-            {navLinks.map((link, i) => (
-              <Link 
-                key={i} 
-                href={link.href} 
-                className="text-2xl font-semibold text-white hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <div className="text-2xl font-semibold text-white hover:text-primary transition-colors cursor-pointer">
-              {t('more')}
-            </div>
-          </nav>
-          
-          <div className="flex flex-col gap-4 pt-8 border-t border-white/10">
-            <Link
-              href="/"
-              className="w-full text-center text-lg font-medium px-6 py-3 rounded-xl bg-[#FFFFFF1A] text-white hover:bg-[#FFFFFF2A] transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t('login')}
-            </Link>
-            <Link
-              href="/"
-              className="w-full text-center text-lg font-medium px-6 py-3 rounded-xl bg-[#2A73EA] text-white hover:bg-[#1a5fc7] transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t('signup')}
-            </Link>
-          </div>
-        </div>
-      )}
     </header>
   );
 }
