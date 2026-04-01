@@ -53,3 +53,19 @@ jobs:
         tags: |
           ${{ env.REGISTRY }}/${{ env.REPO_LOWER }}:latest
           ${{ env.REGISTRY }}/${{ env.REPO_LOWER }}:${{ steps.version.outputs.version }}
+
+    - name: Update GitOps repo and deploy
+      run: |
+          # Clone GitOps repo
+          git clone https://${{ secrets.GITOPS_TOKEN }}@github.com/<YOUR_ORG>/<GITOPS_REPO>.git
+          cd <GITOPS_REPO>
+
+          # Update ONLY webapp image tag
+          sed -i '/name: ghcr.io\/prosperian-capital\/pci.smartstox.webapp/{n;s/newTag:.*/newTag: '"${{ steps.version.outputs.version }}"'/;}' overlays/production/kustomization.yml
+
+          # Commit changes
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git commit -am "Update webapp image to ${{ steps.version.outputs.version }}"
+          git push
