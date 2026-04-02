@@ -186,6 +186,13 @@
     "card2_title": "Votre Carte Virtuelle SmartStox Globale",
     "card2_description": "La richesse devrait permettre de vivre - pas seulement s'accumuler. Utilisez votre propre Carte Virtuelle SmartStox Globale pour effectuer des achats en ligne ou payer en magasin avec GooglePay ou ApplePay."
   },
+  "ourBrokers": {
+    "title_part1": "Nos",
+    "title_part2": "Courtiers",
+    "image_alt": "Illustration de nos courtiers",
+    "subtitle": "La qualité d'exécution détermine la performance",
+    "description": "SmartStox opère exclusivement via des partenaires courtiers réglementés qui offrent une conservation sécurisée des actifs, une tarification transparente, un accès fiable à la liquidité et une supervision conforme aux normes. Une stratégie sans infrastructure reste théorique. Avec le bon courtier, elle devient performante."
+  },
   "aiDrivenTrading": {
     "title_part1": "Surveillé par des courtiers,",
     "title_part2": "Trading piloté par l'IA",
