@@ -1,24 +1,42 @@
-import { setRequestLocale, getTranslations } from 'next-intl/server';
+'use client';
 
-export default async function WealthCreationPage({
+import { useEffect, useState } from 'react';
+import { setRequestLocale } from 'next-intl/server';
+import FAQSection from '@/components/sections/FAQSection';
+import WealthStrategySection from '@/components/sections/WealthStrategySection';
+import AiDrivenTrading from '@/components/sections/AiDrivenTrading';
+import SmartStoxVirtualCard from '@/components/sections/SmartStoxVirtualCard';
+
+export default function WealthCreationPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
-  setRequestLocale(locale);
-  const t = await getTranslations('wealthCreation');
+  const [scrollOpacity, setScrollOpacity] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const fadeStart = 0;
+      const fadeEnd = window.innerHeight * 4; // 400vh
+      const opacity = Math.max(0, 1 - (scrollY - fadeStart) / (fadeEnd - fadeStart));
+      setScrollOpacity(opacity);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] pt-32 pb-20 px-4">
-      <div className="container mx-auto max-w-4xl">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-          {t('title')}
-        </h1>
-        <p className="text-gray-400 text-lg leading-relaxed">
-          {t('description')}
-        </p>
-      </div>
+    <div className="min-h-screen bg-[#0b0f19] relative">
+      <div 
+        className="fixed inset-0 bg-linear-to-r from-blue-900/40 via-transparent to-transparent pointer-events-none"
+        style={{ opacity: scrollOpacity }}
+      />
+      <WealthStrategySection />
+      <AiDrivenTrading />
+      <SmartStoxVirtualCard /> 
+      <FAQSection />
     </div>
   );
 }

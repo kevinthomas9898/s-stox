@@ -4,10 +4,10 @@ import './globals.css';
 import AppProviders from '@/providers/AppProviders';
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({subsets:['latin'],variable:'--font-geist'});
 
 const roboto = Roboto({
-  variable: '--font-roboto',
+  variable: '--font-sans',
   subsets: ['latin'],
   weight: ['300', '400', '500', '700'],
 });

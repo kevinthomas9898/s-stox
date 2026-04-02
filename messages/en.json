@@ -7,6 +7,7 @@
   },
   "nav": {
     "home": "Home",
+    "ourStrategy": "Our Strategy",
     "pricing": "Pricing",
     "ambassadors": "Ambassadors",
     "faqs": "FAQ's",
@@ -109,6 +110,26 @@
     "secondaryButton": "Referral Link",
     "bannerText": "WALK AWAY WITH A 100% FULL REFUND AFTER 3 MONTHS OR TRANSFER YOUR DEMO BALANCE TO A LIVE ACCOUNT, LAUNCHING YOUR WEALTH-BUILDING ADVANTAGE."
   },
+  "trial": {
+    "subtitle": "Experience SmartStox Risk-Free for 3 Months",
+    "title": "See. Believe. Decide.",
+    "description": "For just $250 per month, step into a 3-month SmartStox experience where our AI trades a personalised demo portfolio exactly as it would a live account."
+  },
+  "registration": {
+    "title": "You're Just 4 Steps Away from Starting Your Investment Journey",
+    "step": "Step",
+    "step1_title": "Download the App",
+    "step1_desc": "Download our app and create your account securely in just a few minutes.",
+    "step2_title": "Verify Your Identity",
+    "step2_desc": "Complete your ID verification process to activate your trading account safely.",
+    "step3_title": "Fund Your Account",
+    "step3_desc": "Add funds securely and get ready to watch your wealth grow with proven market strategies.",
+    "step4_title": "Start Earning",
+    "step4_desc": "Relax and let our AI-powered system trade and grow your wealth automatically.",
+    "tagline": "INVEST WITH CONFIDENCE. LIVE WITH FREEDOM. CHOOSE SMARTSTOX FOR PROVEN PERFORMANCE.",
+    "cta_primary": "Start My Risk-Free Trial Now",
+    "cta_secondary": "Referral Link"
+  },
   "footer": {
     "description": "Welcome to our trading site! We offer the best, most affordable products and services around. Shop now and start finding great deals!",
     "quickLinks": {
@@ -145,6 +166,34 @@
     "title": "Simple, Transparent Pricing",
     "subtitle": "Choose the plan that fits your wealth growth goals.",
     "comingSoon": "Coming Soon"
+  },
+  "wealthStrategy": {
+    "title_part1": "THE SMARTSTOX",
+    "title_part2": "WEALTH CREATION STRATEGY",
+    "subtitle": "Engineered Growth. Structured Wealth. Intelligent Control.",
+    "description1": "SmartStox trades, invests, and reinvests your money through proven strategies - all via regulated brokers and stable venture projects. Wealth is not created by chance - it is engineered carefully, intelligently, and consistently.",
+    "description2": "Wealth is built through structure, discipline, and intelligent systems. SmartStox combines AI precision, broker-grade execution, and strategic capital allocation into a disciplined wealth creation framework.",
+    "image_alt": "Wealth creation illustration"
+  },
+  "aiDrivenTrading": {
+    "title_part1": "Broker-Monitored,",
+    "title_part2": "AI-Driven Trading",
+    "subtitle": "Precision Intelligence Meets Institutional Execution",
+    "description1": "At the heart of SmartStox is an advanced AI Engine executing disciplined strategies through established, regulated brokers.",
+    "description2": "Our technology operates without emotion, hesitation, or fatigue — identifying opportunities, managing exposure, and executing with precision.",
+    "description3": "The broker provides the infrastructure and oversight. The AI provides the intelligence. Together, they operate where performance meets security.",
+    "image_alt": "AI-driven trading illustration"
+  },
+  "smartStoxVirtualCard": {
+    "title_part1": "SmartStox",
+    "title_part2": "Virtual Card",
+    "image_alt": "SmartStox virtual card illustration",
+    "card1_title": "Adding More Funds, Withdrawing Profits, Enjoying Your Returns Or Cashing Out",
+    "card1_description1": "As your confidence grows and capital expands, additional funds can be added via your SmartStox Mobile APP to strategically enhance compounding potential.",
+    "card1_description2": "You could likewise use your SmartStox APP to withdraw cash from your Transactional Profit Account, as allocated by your broker. Withdraw profits to enhance lifestyle, create experiences, or support your goals.",
+    "card1_description3": "Full or partial withdrawals of Funds Under Management remain available at any time, aligned with broker liquidity cycles and structured access protocols.",
+    "card2_title": "Your Global SmartStox Virtual Card",
+    "card2_description": "Wealth should empower living - not just accumulate. Use your own Global SmartStox Virtual Card to make online purchases or pay in-store with GooglePay or ApplePay."
   },
   "wealthCreation": {
     "title": "Wealth Creation",

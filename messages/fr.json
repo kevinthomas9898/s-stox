@@ -7,6 +7,7 @@
   },
   "nav": {
     "home": "Accueil",
+    "ourStrategy": "Notre Stratégie",
     "pricing": "Tarifs",
     "ambassadors": "Ambassadeurs",
     "faqs": "FAQ",
@@ -109,6 +110,26 @@
     "secondaryButton": "Lien de Parrainage",
     "bannerText": "PARTEZ AVEC UN REMBOURSEMENT COMPLET À 100% APRÈS 3 MOIS OU TRANSFÉREZ VOTRE SOLDE DÉMO VERS UN COMPTE RÉEL, LANCANT VOTRE AVANTAGE DE CONSTRUCTION DE PATRIMOINE."
   },
+  "trial": {
+    "subtitle": "Expérimentez SmartStox Sans Risque Pendant 3 Mois",
+    "title": "Voir. Croire. Décider.",
+    "description": "Pour seulement 250 $ par mois, entrez dans une expérience SmartStox de 3 mois où notre IA trade un portefeuille démo personnalisé exactement comme un compte réel."
+  },
+  "registration": {
+    "title": "Vous êtes à 4 Étapes de Commencer Votre Parcours d'Investissement",
+    "step": "Étape",
+    "step1_title": "Télécharger l'App",
+    "step1_desc": "Téléchargez notre application et créez votre compte en toute sécurité en quelques minutes.",
+    "step2_title": "Vérifier Votre Identité",
+    "step2_desc": "Complétez votre processus de vérification d'identité pour activer votre compte de trading en toute sécurité.",
+    "step3_title": "Financer Votre Compte",
+    "step3_desc": "Ajoutez des fonds en toute sécurité et préparez-vous à regarder votre patrimoine croître avec des stratégies de marché éprouvées.",
+    "step4_title": "Commencer à Gagner",
+    "step4_desc": "Détendez-vous et laissez notre système alimenté par l'IA trader et faire croître votre patrimoine automatiquement.",
+    "tagline": "INVESTISSEZ AVEC CONFIANCE. VIVEZ AVEC LIBERTÉ. CHOISISSEZ SMARTSTOX POUR DES PERFORMANCES PROUVÉES.",
+    "cta_primary": "Commencez Mon Essai Sans Risque",
+    "cta_secondary": "Lien de Parrainage"
+  },
   "footer": {
     "description": "Bienvenue sur notre site de trading ! Nous offrons les meilleurs produits et services aux prix les plus abordables. Achetez maintenant et trouvez de bonnes affaires !",
     "quickLinks": {
@@ -145,6 +166,34 @@
     "title": "Tarification Simple et Transparente",
     "subtitle": "Choisissez le plan qui correspond à vos objectifs de croissance de patrimoine.",
     "comingSoon": "À Venir"
+  },
+  "wealthStrategy": {
+    "title_part1": "LA STRATÉGIE",
+    "title_part2": "SMARTSTOX DE CRÉATION DE RICHESSE",
+    "subtitle": "Croissance Ingénierie. Patrimoine Structuré. Contrôle Intelligent.",
+    "description1": "SmartStox trade, investit et réinvestit votre argent à travers des stratégies éprouvées - tous via des courtiers réglementés et des projets stables. La richesse n'est pas créée par hasard - elle est ingénierie avec soin, intelligemment et de manière cohérente.",
+    "description2": "La richesse est construite à travers la structure, la discipline et des systèmes intelligents. SmartStox combine la précision de l'IA, l'exécution de niveau courtier et l'allocation stratégique du capital dans un cadre discipliné de création de richesse.",
+    "image_alt": "Illustration de création de richesse"
+  },
+  "smartStoxVirtualCard": {
+    "title_part1": "SmartStox",
+    "title_part2": "Carte Virtuelle",
+    "image_alt": "Illustration de carte virtuelle SmartStox",
+    "card1_title": "Ajouter des fonds, retirer des profits, profiter de vos rendements ou encaisser",
+    "card1_description1": "À mesure que votre confiance grandit et que votre capital se développe, des fonds supplémentaires peuvent être ajoutés via votre application mobile SmartStox afin d'optimiser stratégiquement le potentiel de capitalisation.",
+    "card1_description2": "Vous pouvez également utiliser votre application SmartStox pour retirer des liquidités depuis votre compte de profits transactionnels, selon l'allocation définie par votre courtier. Retirez vos gains pour améliorer votre qualité de vie, créer des expériences ou soutenir vos objectifs.",
+    "card1_description3": "Les retraits, partiels ou totaux, des fonds sous gestion restent disponibles à tout moment, conformément aux cycles de liquidité du courtier et aux protocoles d'accès structurés.",
+    "card2_title": "Votre Carte Virtuelle SmartStox Globale",
+    "card2_description": "La richesse devrait permettre de vivre - pas seulement s'accumuler. Utilisez votre propre Carte Virtuelle SmartStox Globale pour effectuer des achats en ligne ou payer en magasin avec GooglePay ou ApplePay."
+  },
+  "aiDrivenTrading": {
+    "title_part1": "Surveillé par des courtiers,",
+    "title_part2": "Trading piloté par l'IA",
+    "subtitle": "L'intelligence de précision au service de l'exécution institutionnelle",
+    "description1": "Au cœur de SmartStox se trouve un moteur d'IA avancé exécutant des stratégies disciplinées via des courtiers établis et réglementés.",
+    "description2": "Notre technologie fonctionne sans émotion, hésitation ni fatigue — identifiant les opportunités, gérant l'exposition et exécutant avec précision.",
+    "description3": "Le courtier fournit l'infrastructure et la supervision. L'IA apporte l'intelligence. Ensemble, ils opèrent là où la performance rencontre la sécurité.",
+    "image_alt": "Illustration du trading piloté par l'IA"
   },
   "wealthCreation": {
     "title": "Création de Richesse",

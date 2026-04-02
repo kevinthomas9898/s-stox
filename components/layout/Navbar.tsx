@@ -17,7 +17,6 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-  SheetClose,
 } from '@/components/ui/sheet';
 
 export default function Navbar() {
@@ -27,6 +26,7 @@ export default function Navbar() {
 
   const navLinks = [
     { href: '/', label: t('home') },
+    { href: '/', label: t('ourStrategy') },
     { href: '/pricing', label: t('pricing') },
     { href: '/', label: t('ambassadors') },
     { href: '/', label: t('faqs') },
@@ -57,7 +57,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex gap-10 text-lg font-medium items-center">
+        <nav className="hidden xl:flex gap-10 text-lg font-medium items-center">
           {navLinks.map((link, i) => (
             <Link key={i} href={link.href} className="text-white hover:text-primary transition-colors">
               {link.label}
@@ -92,7 +92,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-4">
           {/* Desktop Auth Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-3">
             <Link
               href="/"
               className="text-sm font-medium px-6 py-2 rounded-full bg-[#FFFFFF1A] text-white hover:bg-[#FFFFFF2A] transition-colors"
@@ -110,7 +110,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger
-              className="lg:hidden p-2 text-white hover:text-primary transition-colors relative z-50 cursor-pointer"
+              className="xl:hidden p-2 text-white hover:text-primary transition-colors relative z-50 cursor-pointer"
               aria-label="Toggle menu"
             >
               <FaBars className="w-7 h-7" />

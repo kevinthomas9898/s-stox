@@ -70,7 +70,7 @@ export default function TestimonialsSection() {
   const handleNext = () => setCurrentPage((p) => Math.min(totalPages - 1, p + 1));
 
   return (
-    <div className="w-full py-24 bg-[#0b0f19]">
+    <div className="w-full py-24 bg-[#0F131C]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
 
         <div className="text-center space-y-4 mb-16 max-w-2xl">

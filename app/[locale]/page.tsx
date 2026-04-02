@@ -3,9 +3,10 @@ import Image from 'next/image';
 import { FaArrowRight } from 'react-icons/fa6';
 import { AiOutlinePlayCircle } from "react-icons/ai";
 import FeaturesSection from '@/components/sections/FeaturesSection';
+import TrialSection from '@/components/sections/TrialSection';
+import RegistrationStepsSection from '@/components/sections/RegistrationStepsSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
-import FAQSection from '@/components/sections/FAQSection';
-import BottomCTASection from '@/components/sections/BottomCTASection';
+// import BottomCTASection from '@/components/sections/BottomCTASection';
 
 export default async function HomePage({
   params,
@@ -84,9 +85,9 @@ export default async function HomePage({
 
       <FeaturesSection />
       <TestimonialsSection />
-      <FAQSection />
-      <BottomCTASection />
-
+      <TrialSection />
+      <RegistrationStepsSection />
+      {/* <BottomCTASection /> */}
     </div>
   );
 }
