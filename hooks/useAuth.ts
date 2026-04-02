@@ -3,10 +3,7 @@
 import { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { setCredentials, logout as logoutAction } from '@/store/slices/authSlice';
-import {
-  login as loginService,
-  logoutUser,
-} from '@/lib/services/auth';
+import { login as loginService, logoutUser } from '@/lib/services/auth';
 import type { LoginCredentials } from '@/types';
 
 /**
@@ -21,8 +18,8 @@ export function useAuth() {
 
   const login = useCallback(
     async (credentials: LoginCredentials) => {
-      const { accessToken, user } = await loginService(credentials);
-      dispatch(setCredentials({ accessToken, user }));
+      const { jwtToken } = await loginService(credentials);
+      dispatch(setCredentials({ jwtToken }));
     },
     [dispatch],
   );

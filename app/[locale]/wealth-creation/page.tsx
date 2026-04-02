@@ -5,6 +5,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import WealthStrategySection from '@/components/sections/WealthStrategySection';
 import AiDrivenTrading from '@/components/sections/AiDrivenTrading';
 import SmartStoxVirtualCard from '@/components/sections/SmartStoxVirtualCard';
+import OurBrokers from '@/components/sections/OurBrokers';
 
 export default function WealthCreationPage() {
   const [scrollOpacity, setScrollOpacity] = useState(1);
@@ -32,6 +33,7 @@ export default function WealthCreationPage() {
       <AiDrivenTrading />
       <SmartStoxVirtualCard /> 
       <FAQSection />
+      <OurBrokers />
     </div>
   );
 }

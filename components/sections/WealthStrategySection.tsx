@@ -13,7 +13,7 @@ export default function WealthStrategySection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-6">
-            <Typography variant="h1" className="text-white">
+            <Typography variant="h3" className="text-white text-left">
               {t('title_part1')}{' '}
               <span className="text-[#0066FF]">{t('title_part2')}</span>
             </Typography>

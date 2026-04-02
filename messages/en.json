@@ -195,6 +195,13 @@
     "card2_title": "Your Global SmartStox Virtual Card",
     "card2_description": "Wealth should empower living - not just accumulate. Use your own Global SmartStox Virtual Card to make online purchases or pay in-store with GooglePay or ApplePay."
   },
+  "ourBrokers": {
+    "title_part1": "Our",
+    "title_part2": "Brokers",
+    "image_alt": "Our brokers illustration",
+    "subtitle": "Execution quality defines performance",
+    "description": "SmartStox operates exclusively through regulated brokerage partners who provide secure custody, transparent pricing, reliable liquidity access, and compliance oversight. Strategy without infrastructure is theory. With the right broker, it becomes performance."
+  },
   "wealthCreation": {
     "title": "Wealth Creation",
     "description": "Discover how SmartStox helps you build lasting wealth through intelligent AI-driven investment strategies."
