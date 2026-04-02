@@ -1,19 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { setRequestLocale } from 'next-intl/server';
 import FAQSection from '@/components/sections/FAQSection';
 import WealthStrategySection from '@/components/sections/WealthStrategySection';
 import AiDrivenTrading from '@/components/sections/AiDrivenTrading';
 import SmartStoxVirtualCard from '@/components/sections/SmartStoxVirtualCard';
 
-export default function WealthCreationPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export default function WealthCreationPage() {
   const [scrollOpacity, setScrollOpacity] = useState(1);
-
+  
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;

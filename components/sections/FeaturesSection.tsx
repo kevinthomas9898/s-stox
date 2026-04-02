@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Typography } from "@/components/ui/typography";
 
 export default function FeaturesSection() {
   const t = useTranslations("features");
@@ -18,12 +19,12 @@ export default function FeaturesSection() {
           <div className="relative">
             {/* Glassmorphic Badge */}
             <div className="absolute -top-10 left-[-10px] sm:left-[-20px] lg:-left-12 z-20 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.5)] w-48">
-              <div className="text-white text-xl font-bold">
+              <Typography variant="h4" className="text-white">
                 {t("why_choose.badge_title")}
-              </div>
-              <div className="text-gray-300 text-xs mt-1">
+              </Typography>
+              <Typography variant="p" className="!text-xs text-gray-300 mt-1">
                 {t("why_choose.badge_subtitle")}
-              </div>
+              </Typography>
             </div>
 
             <div className="relative w-full aspect-16/10 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
@@ -38,18 +39,18 @@ export default function FeaturesSection() {
 
           {/* Right: Content */}
           <div className="space-y-6">
-            <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-semibold tracking-[0.02em] text-white leading-[1.6] text-left">
+            <Typography variant="h3" className="text-white text-left">
               {t("why_choose.title_part1")}{" "}
               <span className="text-[#0066FF]">
                 {t("why_choose.title_part2")}
               </span>
-            </h2>
-            <h3 className="text-lg sm:text-xl text-white font-medium text-left">
+            </Typography>
+            <Typography variant="h4" className="text-white text-left">
               {t("why_choose.subtitle")}
-            </h3>
-            <p className="text-gray-300 leading-relaxed text-lg text-left">
+            </Typography>
+            <Typography variant="p" className="text-gray-300 text-left">
               {t("why_choose.description")}
-            </p>
+            </Typography>
             <div className="flex justify-start">
               <Button 
                 className="mt-4 bg-[#00D094] hover:bg-[#00c985] text-gray-900 px-8 py-3 rounded-md font-semibold transition-colors cursor-pointer shadow-lg border-0"
@@ -64,15 +65,15 @@ export default function FeaturesSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left: Content */}
           <div className="space-y-6 order-2 lg:order-1">
-            <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-medium tracking-[0.02em] text-white leading-[1.6] text-left">
+            <Typography variant="h3" className="text-white text-left">
               {t("ai_learning.title_part1")} <br />{" "}
               <span className="text-[#0066FF]">
                 {t("ai_learning.title_part2")}
               </span>
-            </h2>
-            <p className="text-gray-300 leading-relaxed text-lg text-left">
+            </Typography>
+            <Typography variant="p" className="text-gray-300 text-left">
               {t("ai_learning.description")}
-            </p>
+            </Typography>
           </div>
 
           {/* Right: Image */}
@@ -125,19 +126,19 @@ export default function FeaturesSection() {
 
             {/* Right: Content */}
             <div className="space-y-6">
-              <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-medium tracking-[0.02em] text-white leading-[1.6] text-left">
+              <Typography variant="h3" className="text-white text-left">
                 {t("manual_trading.title_part1")}{" "}
                 <span className="text-[#0066FF]">
                   {t("manual_trading.title_part2")}
                 </span>{" "}
                 <br /> {t("manual_trading.title_part3")}
-              </h2>
-              <h3 className="text-gray-300 font-normal text-base sm:text-xl leading-relaxed text-left">
+              </Typography>
+              <Typography variant="h4" className="text-gray-300 text-left">
                 {t("manual_trading.subtitle")}
-              </h3>
-              <p className="text-gray-400 leading-relaxed text-lg text-left">
+              </Typography>
+              <Typography variant="p" className="text-gray-400 text-left">
                 {t("manual_trading.description")}
-              </p>
+              </Typography>
             </div>
           </div>
         </div>
@@ -148,7 +149,7 @@ export default function FeaturesSection() {
         {/* Section: Time in vs Timing */}
         <div className="flex flex-col items-center text-center space-y-12 container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-4 max-w-3xl">
-            <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-medium tracking-[0.02em] text-white leading-[1.6] text-center">
+            <Typography variant="h3" className="text-white">
               <span className="text-[#0066FF]">
                 {t("time_vs_timing.title_part1")}
               </span>{" "}
@@ -157,10 +158,10 @@ export default function FeaturesSection() {
                 {t("time_vs_timing.title_part3")}
               </span>{" "}
               {t("time_vs_timing.title_part4")}
-            </h2>
-            <h3 className="text-gray-300 font-normal text-xl">
+            </Typography>
+            <Typography variant="h4" className="text-gray-300">
               {t("time_vs_timing.subtitle")}
-            </h3>
+            </Typography>
           </div>
 
           <div className="grid grid-cols-2 gap-8 w-full max-w-4xl">
@@ -196,22 +197,22 @@ export default function FeaturesSection() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center container mx-auto px-4 sm:px-6 lg:px-8">
             {/* Left: Content */}
             <div className="space-y-6">
-              <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-medium tracking-[0.02em] text-white leading-[1.6] text-start">
+              <Typography variant="h3" className="text-white text-start">
                 {t("set_and_forget.title_part1")}{" "}
                 <span className="text-[#0066FF]">
                   {t("set_and_forget.title_part2")}
                 </span>{" "}
                 {t("set_and_forget.title_part3")}
-              </h2>
-              <h3 className="text-gray-300 font-normal text-xl">
+              </Typography>
+              <Typography variant="h4" className="text-gray-300">
                 {t("set_and_forget.subtitle")}
-              </h3>
-              <p className="text-gray-400 leading-relaxed text-lg">
+              </Typography>
+              <Typography variant="p" className="text-gray-400">
                 {t("set_and_forget.description1")}
-              </p>
-              <p className="text-gray-400 leading-relaxed text-lg">
+              </Typography>
+              <Typography variant="p" className="text-gray-400">
                 {t("set_and_forget.description2")}
-              </p>
+              </Typography>
             </div>
 
             {/* Right: Image */}
@@ -228,12 +229,12 @@ export default function FeaturesSection() {
 
         {/* Section: Tested Proven Winning */}
         <div className="flex flex-col items-center text-center space-y-12 container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-medium tracking-[0.02em] text-white leading-[1.6] text-center">
+          <Typography variant="h3" className="text-white">
             {t("tested_proven.title_part1")}{" "}
             <span className="text-[#0066FF]">
               {t("tested_proven.title_part2")}
             </span>
-          </h2>
+          </Typography>
 
           <div className="relative w-full max-w-5xl aspect-21/9 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
             <Image

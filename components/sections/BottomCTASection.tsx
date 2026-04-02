@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { Typography } from '@/components/ui/typography';
 
 export default function BottomCTASection() {
   const t = useTranslations('cta');
@@ -17,9 +18,9 @@ export default function BottomCTASection() {
           <div className="space-y-8">
             {/* Top Badge */}
             <div className="inline-flex items-center gap-2">
-              <span className="text-gray-900 font-semibold text-sm md:text-base">
+              <Typography variant="h4" className="text-gray-900">
                 {t('eyebrow')}
-              </span>
+              </Typography>
               <span className="bg-[#374151] text-white px-3 py-1 rounded-md font-bold text-sm italic">
                 {t('badge')}
               </span>
@@ -27,12 +28,12 @@ export default function BottomCTASection() {
 
             {/* Title & Description */}
             <div className="space-y-4">
-              <h2 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-white tracking-tight leading-tight">
+              <Typography variant="h1" className="text-white">
                 {t('title')}
-              </h2>
-              <p className="text-gray-800 font-medium text-base md:text-lg leading-relaxed max-w-xl">
+              </Typography>
+              <Typography variant="p" className="text-gray-800 max-w-xl">
                 {t('description')}
-              </p>
+              </Typography>
             </div>
 
             {/* Features Row */}
@@ -54,9 +55,9 @@ export default function BottomCTASection() {
 
             {/* Full-width Divider & Text */}
             <div className="pt-6 space-y-6">
-              <p className="text-white font-bold text-xs tracking-[0.15em] uppercase border-t border-white/30 pt-6">
+              <Typography variant="p" className="text-white !text-xs !font-bold !tracking-[0.15em] uppercase border-t border-white/30 pt-6">
                 {t('tagline')}
-              </p>
+              </Typography>
 
               {/* Buttons */}
               <div className="flex flex-wrap items-center gap-4">
@@ -75,9 +76,9 @@ export default function BottomCTASection() {
       {/* Blue Banner - Full Width */}
       <div className="w-full bg-[#2A73EA] py-4 mt-16 px-6 text-center">
         <div className="mx-auto">
-          <p className="text-white font-sans font-medium italic text-lg leading-[16px] tracking-[0.02em] uppercase">
+          <Typography variant="p" className="text-white italic !text-lg !tracking-[0.02em] uppercase">
             {t('bannerText')}
-          </p>
+          </Typography>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ export interface User {
 
 // ── Auth ──
 export interface AuthState {
-  accessToken: string | null;
+  jwtToken: string | null;
   user: User | null;
   isAuthenticated: boolean;
   isLoading: boolean;
@@ -20,8 +20,10 @@ export interface LoginCredentials {
 }
 
 export interface AuthResponse {
-  accessToken: string;
-  user: User;
+  jwtToken: string;
+  refreshToken: string;
+  isError: boolean;
+  errorMsg: string | null;
 }
 
 // ── API ──

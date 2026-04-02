@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { Typography } from '@/components/ui/typography';
 
 export default function TrialSection() {
   const t = useTranslations('trial');
@@ -24,15 +25,15 @@ export default function TrialSection() {
 
           {/* Content */}
           <div className="text-center lg:text-left space-y-4">
-            <h3 className="text-white text-2xl font-bold">
+            <Typography variant="h4" className="text-white">
               {t('subtitle')}
-            </h3>
-            <h2 className="text-[#00D094] text-3xl sm:text-4xl lg:text-5xl font-bold">
+            </Typography>
+            <Typography variant="h2" className="text-[#00D094] normal-case">
               {t('title')}
-            </h2>
-            <p className="text-gray-300 text-base max-w-2xl">
+            </Typography>
+            <Typography variant="p" className="text-gray-300 max-w-2xl">
               {t('description')}
-            </p>
+            </Typography>
           </div>
         </div>
       </div>

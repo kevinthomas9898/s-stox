@@ -2,6 +2,7 @@ import { setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
 import { FaArrowRight } from 'react-icons/fa6';
 import { AiOutlinePlayCircle } from "react-icons/ai";
+import { Typography } from '@/components/ui/typography';
 import FeaturesSection from '@/components/sections/FeaturesSection';
 import TrialSection from '@/components/sections/TrialSection';
 import RegistrationStepsSection from '@/components/sections/RegistrationStepsSection';
@@ -33,17 +34,17 @@ export default async function HomePage({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-8 items-center mb-16 md:mb-32">
           {/* Left Content */}
           <section className="space-y-8 max-w-2xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-bold tracking-[0.02em] text-white leading-[1.2] text-center lg:text-left">
+            <Typography variant="h1" className="text-white text-center lg:text-left">
               {t.hero.title_part1}
               <br />
               {t.hero.title_part2}
               <br />
               <span className="text-[#0066FF]">{t.hero.title_part3}</span>
-            </h1>
-            
-            <p className="text-xl md:text-xl text-gray-300 leading-relaxed max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+            </Typography>
+
+            <Typography variant="p" className="text-gray-300 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
               {t.hero.subtitle}
-            </p>
+            </Typography>
             
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-6 pt-2">
               <button className="flex items-center gap-2 bg-[#00D094] hover:bg-[#00c985] text-gray-900 px-8 py-3.5 rounded-md font-semibold transition-colors cursor-pointer shadow-[0_0_20px_rgba(0,229,153,0.3)]">
@@ -72,12 +73,12 @@ export default async function HomePage({
 
         {/* Bottom Banner Section */}
         <div className="w-full border-t border-white/5 pt-12 text-left">
-          <h3 className="text-[#00D094] text-xl font-semibold uppercase tracking-wider mb-4">
+          <Typography variant="h4" className="text-[#00D094] uppercase tracking-wider mb-4">
             {t.banner.title}
-          </h3>
-          <p className="text-gray-300 text-sm md:text-lg leading-relaxed pr-16 md:pr-24">
+          </Typography>
+          <Typography variant="p" className="text-gray-300 pr-16 md:pr-24">
             {t.banner.description}
-          </p>
+          </Typography>
 
         </div>
 

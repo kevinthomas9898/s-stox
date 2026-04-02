@@ -14,6 +14,7 @@ import {
   AvatarFallback,
 } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+import { Typography } from '@/components/ui/typography';
 
 interface Testimonial {
   id: number;
@@ -74,12 +75,12 @@ export default function TestimonialsSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
 
         <div className="text-center space-y-4 mb-16 max-w-2xl">
-          <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-medium tracking-[0.02em] text-white leading-[1.6] text-center">
+          <Typography variant="h3" className="text-white">
             {t('title_part1')} <span className="text-[#0066FF]">{t('title_part2')}</span>
-          </h2>
-          <h3 className="text-gray-400 text-sm md:text-lg leading-relaxed">
+          </Typography>
+          <Typography variant="p" className="!text-sm md:!text-lg">
             {t('subtitle')}
-          </h3>
+          </Typography>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
@@ -99,8 +100,8 @@ export default function TestimonialsSection() {
                       <AvatarFallback>{item.name.charAt(0)}</AvatarFallback>
                     </Avatar>
                     <div>
-                      <h4 className="text-gray-900 font-bold text-base">{item.name}</h4>
-                      <p className="text-gray-500 text-xs">{item.role}</p>
+                      <Typography variant="h4" className="text-gray-900 !text-base !font-bold">{item.name}</Typography>
+                      <Typography variant="p" className="!text-xs !text-gray-500">{item.role}</Typography>
                     </div>
                   </div>
                   <FaQuoteRight className="text-[#00D094] text-4xl" />

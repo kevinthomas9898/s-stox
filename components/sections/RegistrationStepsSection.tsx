@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { Typography } from '@/components/ui/typography';
 
 const steps = [
   {
@@ -33,9 +34,9 @@ export default function RegistrationStepsSection() {
     <div className="w-full py-10 bg-[#FFFFFF0A]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
-        <h2 className="text-white text-lg sm:text-xl lg:text-2xl font-normal text-center mb-16">
+        <Typography variant="h3" className="text-white mb-16">
           {t('title')}
-        </h2>
+        </Typography>
 
         {/* Steps Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-16 relative">
@@ -61,21 +62,21 @@ export default function RegistrationStepsSection() {
 
               {/* Step Number & Title */}
               <div className="space-y-2 max-w-[250px]">
-                <h3 className="text-white font-bold text-lg">
+                <Typography variant="h4" className="text-white">
                   {t('step')} {index + 1}: <span className="text-[#00D094]">{t(step.titleKey)}</span>
-                </h3>
-                <p className="text-gray-400 text-xs font-normal leading-relaxed">
+                </Typography>
+                <Typography variant="p" className="!text-xs text-gray-400">
                   {t(step.descKey)}
-                </p>
+                </Typography>
               </div>
             </div>
           ))}
         </div>
 
         {/* Bottom Tagline */}
-        <p className="text-white text-center text-sm sm:text-base font-medium tracking-wide mb-8">
+        <Typography variant="h4" className="text-white text-center tracking-wide mb-8">
           {t('tagline')}
-        </p>
+        </Typography>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

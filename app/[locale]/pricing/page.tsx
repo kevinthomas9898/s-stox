@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { Typography } from "@/components/ui/typography";
 
 export default function PricingPage() {
   const t = useTranslations("pricing");
@@ -10,12 +11,12 @@ export default function PricingPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+          <Typography variant="h1" className="text-4xl md:text-6xl font-bold tracking-tight">
             {t("title")}
-          </h1>
-          <p className="text-xl text-gray-400">
+          </Typography>
+          <Typography variant="p" className="text-xl text-gray-400">
             {t("subtitle")}
-          </p>
+          </Typography>
         </div>
 
         {/* Coming Soon Section */}
@@ -31,12 +32,12 @@ export default function PricingPage() {
                   {t("comingSoon")}
                 </span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
+              <Typography variant="h3" className="text-white">
                 Something Big is Brewing
-              </h2>
-              <p className="text-gray-400 text-lg max-w-md mx-auto">
+              </Typography>
+              <Typography variant="p" className="text-gray-400 text-lg max-w-md mx-auto">
                 We're fine-tuning our pricing plans to ensure you get the best value for your wealth growth journey.
-              </p>
+              </Typography>
               <div className="pt-8">
                 <Link
                   href="/"

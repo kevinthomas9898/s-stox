@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import { Typography } from '@/components/ui/typography';
 
 export default function SmartStoxVirtualCard() {
     const t = useTranslations('smartStoxVirtualCard');
@@ -9,10 +10,10 @@ export default function SmartStoxVirtualCard() {
     return (
         <div className="w-full py-16 relative overflow-hidden">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-12">
-                <h2 className="text-white text-3xl font-bold">
+                <Typography variant="h2" className="text-white normal-case">
                     {t('title_part1')}{' '}
                     <span className="text-[#0066FF]">{t('title_part2')}</span>
-                </h2>
+                </Typography>
                 <div className="relative w-full max-w-2xl aspect-video">
                     <Image
                         src="/SmartStox-Virtual-Card.png"
@@ -28,22 +29,24 @@ export default function SmartStoxVirtualCard() {
                     <div className="bg-white rounded-xl p-8 relative overflow-hidden">
                         <div className="relative z-10">
                             <div className="h-12 mb-6 flex items-center justify-between w-full">
-                                <Image src="/dollar.svg" alt="" width={48} height={48} className="text-[#00D094]" />
+                                <div className="relative w-12 h-12">
+                                    <Image src="/dollar.svg" alt="" fill className="object-contain" />
+                                </div>
                                 <span className="text-6xl font-bold text-gray-100">01</span>
                             </div>
-                            <h3 className="text-2xl font-semibold capitalize text-gray-900 mb-2">
+                            <Typography variant="h4" className="text-gray-900 mb-2">
                                 {t('card1_title')}
-                            </h3>
+                            </Typography>
                             <div className="w-12 h-0.5 bg-[#00D094] mb-4"></div>
-                            <p className="text-base font-normal text-gray-600 leading-relaxed">
+                            <Typography variant="p" className="text-gray-600">
                                 {t('card1_description1')}
-                            </p>
-                            <p className="text-base font-normal text-gray-600 leading-relaxed mt-2">
+                            </Typography>
+                            <Typography variant="p" className="text-gray-600 mt-2">
                                 {t('card1_description2')}
-                            </p>
-                            <p className="text-base font-normal text-gray-600 leading-relaxed mt-2">
+                            </Typography>
+                            <Typography variant="p" className="text-gray-600 mt-2">
                                 {t('card1_description3')}
-                            </p>
+                            </Typography>
                         </div>
                     </div>
 
@@ -51,16 +54,18 @@ export default function SmartStoxVirtualCard() {
                     <div className="bg-white rounded-xl p-8 relative overflow-hidden">
                         <div className="relative z-10">
                             <div className="h-12 mb-6 flex items-center justify-between w-full">
-                                <Image src="/mobile_card.svg" alt="" width={48} height={48} className="text-[#00D094]" />
+                                <div className="relative w-12 h-12">
+                                    <Image src="/mobile_card.svg" alt="" fill className="object-contain" />
+                                </div>
                                 <span className="text-6xl font-bold text-gray-100">02</span>
                             </div>
-                            <h3 className="text-2xl font-semibold capitalize text-gray-900 mb-2">
+                            <Typography variant="h4" className="text-gray-900 mb-2">
                                 {t('card2_title')}
-                            </h3>
+                            </Typography>
                             <div className="w-12 h-0.5 bg-[#00D094] mb-4"></div>
-                            <p className="text-base font-normal text-gray-600 leading-relaxed">
+                            <Typography variant="p" className="text-gray-600">
                                 {t('card2_description')}
-                            </p>
+                            </Typography>
                         </div>
                     </div>
                 </div>

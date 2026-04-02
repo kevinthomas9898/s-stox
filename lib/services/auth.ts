@@ -1,0 +1,41 @@
+import api from '@/lib/api/axiosInstance';
+import type { ApiResponse, AuthResponse, LoginCredentials } from '@/types';
+
+/**
+ * Login with email and password.
+ * Backend sets refresh token as HTTP-only cookie.
+ */
+export async function login(
+  credentials: LoginCredentials,
+): Promise<AuthResponse> {
+  const { data } = await api.post<AuthResponse>(
+    '/auth/login',
+    credentials,
+  );
+  return data;
+}
+
+/**
+ * Refresh the access token.
+ * Refresh token is sent automatically via HTTP-only cookie.
+ */
+export async function refreshToken(): Promise<AuthResponse> {
+  const { data } = await api.post<AuthResponse>('/auth/refreshToken');
+  return data;
+}
+
+/**
+ * Logout the user.
+ * Backend clears the refresh token cookie.
+ */
+export async function logoutUser(): Promise<void> {
+  await api.post('/auth/logout');
+}
+
+/**
+ * Test secure endpoint (requires authentication).
+ */
+export async function secure(): Promise<unknown> {
+  const { data } = await api.get<ApiResponse<unknown>>('/auth/secure');
+  return data.data;
+}

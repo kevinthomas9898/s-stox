@@ -3,6 +3,7 @@ import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { ComponentType } from 'react';
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaXTwitter, FaApple } from 'react-icons/fa6';
+import { Typography } from '../ui/typography';
 
 interface SocialLink {
   name: string;
@@ -73,7 +74,7 @@ export default function Footer() {
 
           {/* Quick Links Column */}
           <div className="lg:col-span-3">
-            <h3 className="text-lg font-bold mb-6">{t('quickLinks.title')}</h3>
+            <Typography variant="h3" className="text-lg font-bold mb-6">{t('quickLinks.title')}</Typography>
             <ul className="space-y-4 text-sm text-gray-400">
               <li><Link href="/" className="hover:text-primary transition-colors">{t('quickLinks.wealth')}</Link></li>
               <li><Link href="/" className="hover:text-primary transition-colors">{t('quickLinks.fractional')}</Link></li>
@@ -84,7 +85,7 @@ export default function Footer() {
 
           {/* Support Column */}
           <div className="lg:col-span-2">
-            <h3 className="text-lg font-bold mb-6">{t('support.title')}</h3>
+            <Typography variant="h3" className="text-lg font-bold mb-6">{t('support.title')}</Typography>
             <ul className="space-y-4 text-sm text-gray-400">
               <li><Link href="/" className="hover:text-primary transition-colors">{t('support.terms')}</Link></li>
               <li><Link href="/" className="hover:text-primary transition-colors">{t('support.privacy')}</Link></li>
@@ -95,7 +96,7 @@ export default function Footer() {
 
           {/* Company Column */}
           <div className="lg:col-span-2">
-            <h3 className="text-lg font-bold mb-6">{t('company.title')}</h3>
+            <Typography variant="h3" className="text-lg font-bold mb-6">{t('company.title')}</Typography>
             <ul className="space-y-4 text-sm text-gray-400">
               <li><Link href="/" className="hover:text-primary transition-colors">{t('company.about')}</Link></li>
               <li><Link href="/" className="hover:text-primary transition-colors">{t('company.updates')}</Link></li>
