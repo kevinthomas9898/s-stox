@@ -4,6 +4,12 @@ import { notFound } from 'next/navigation';
 import { locales, type Locale } from '@/i18n/config';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import { cache } from 'react';
+
+// Cache messages to prevent reloading on every HMR
+const getCachedMessages = cache(async (locale: string) => {
+  return await getMessages();
+});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -28,7 +34,7 @@ export default async function LocaleLayout({
 
   // Providing all messages to the client
   // side is the easiest way to get started
-  const messages = await getMessages();
+  const messages = await getCachedMessages(locale);
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>

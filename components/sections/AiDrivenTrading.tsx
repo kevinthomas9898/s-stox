@@ -1,5 +1,3 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Typography } from '@/components/ui/typography';
@@ -8,7 +6,7 @@ export default function AiDrivenTrading() {
   const t = useTranslations('aiDrivenTrading');
 
   return (
-    <div className="w-full py-24 bg-[#0b0f19]">
+    <div className="w-full py-16 md:py-24 bg-[#0b0f19]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
@@ -36,7 +34,7 @@ export default function AiDrivenTrading() {
           </div>
 
           {/* Right Image */}
-          <div className="relative w-full aspect-square max-w-xl ml-auto">
+          <div className="relative w-full aspect-square max-w-xl mx-auto lg:ml-auto">
             <Image
               src="/aiDrivenTrading.png"
               alt={t('image_alt')}

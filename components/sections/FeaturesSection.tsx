@@ -22,7 +22,7 @@ export default function FeaturesSection() {
               <Typography variant="h4" className="text-white">
                 {t("why_choose.badge_title")}
               </Typography>
-              <Typography variant="p" className="!text-xs text-gray-300 mt-1">
+              <Typography variant="p" className="text-xs! text-gray-300 mt-1">
                 {t("why_choose.badge_subtitle")}
               </Typography>
             </div>
@@ -92,7 +92,7 @@ export default function FeaturesSection() {
 
       {/* Manual Trading Failures Section: EDGE TO EDGE BACKGROUND */}
       <div className="w-full bg-[#191F29] py-32 relative z-10 border-y border-white/5">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-4 lg:mx-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left: Two Images */}
             <div className="grid grid-cols-2 gap-4">
@@ -147,7 +147,7 @@ export default function FeaturesSection() {
       {/* Remaining Sections Container */}
       <div className="mx-auto py-24 space-y-32 relative z-10 bg-[#0F131C]">
         {/* Section: Time in vs Timing */}
-        <div className="flex flex-col items-center text-center space-y-12 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center text-center space-y-12 mx-4 lg:mx-16">
           <div className="space-y-4 max-w-3xl">
             <Typography variant="h3" className="text-white">
               <span className="text-[#0066FF]">
@@ -164,7 +164,7 @@ export default function FeaturesSection() {
             </Typography>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 w-full max-w-4xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full max-w-4xl">
             {/* Left Chart Image */}
             <div className="relative w-full rounded-xl overflow-hidden border border-white/10 bg-[#0d1627]">
               <Image
@@ -194,7 +194,7 @@ export default function FeaturesSection() {
 
         {/* Section: Set-and-Forget Myth */}
         <div className="bg-[#FFFFFF0A] py-32">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mx-4 lg:mx-16">
             {/* Left: Content */}
             <div className="space-y-6">
               <Typography variant="h3" className="text-white text-start">
@@ -228,7 +228,7 @@ export default function FeaturesSection() {
         </div>
 
         {/* Section: Tested Proven Winning */}
-        <div className="flex flex-col items-center text-center space-y-12 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center text-center space-y-12 mx-4 lg:mx-16">
           <Typography variant="h3" className="text-white">
             {t("tested_proven.title_part1")}{" "}
             <span className="text-[#0066FF]">
@@ -236,7 +236,7 @@ export default function FeaturesSection() {
             </span>
           </Typography>
 
-          <div className="relative w-full max-w-5xl aspect-21/9 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+          <div className="relative w-full max-w-5xl aspect-video md:aspect-21/9 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
             <Image
               src="/Tested-Proven-Winning.jpg"
               alt="Tested proven winning"

@@ -6,6 +6,12 @@ import WealthStrategySection from '@/components/sections/WealthStrategySection';
 import AiDrivenTrading from '@/components/sections/AiDrivenTrading';
 import SmartStoxVirtualCard from '@/components/sections/SmartStoxVirtualCard';
 import OurBrokers from '@/components/sections/OurBrokers';
+import TransparentFeesSection from '@/components/sections/TransparentFeesSection';
+import MonitoringSection from '@/components/sections/MonitoringSection';
+import RegistrationStepsSection from '@/components/sections/RegistrationStepsSection';
+import TreasuryManagementSection from '@/components/sections/TreasuryManagementSection';
+import TrialSection from '@/components/sections/TrialSection';
+import WealthFrameworkSection from '@/components/sections/WealthFrameworkSection';
 
 export default function WealthCreationPage() {
   const [scrollOpacity, setScrollOpacity] = useState(1);
@@ -30,10 +36,16 @@ export default function WealthCreationPage() {
         style={{ opacity: scrollOpacity }}
       />
       <WealthStrategySection />
+      <WealthFrameworkSection />
       <AiDrivenTrading />
+      <TreasuryManagementSection />
       <SmartStoxVirtualCard /> 
-      <FAQSection />
       <OurBrokers />
+      <TransparentFeesSection />
+      <MonitoringSection />
+      <FAQSection />
+      <TrialSection />
+      <RegistrationStepsSection />
     </div>
   );
 }

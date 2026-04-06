@@ -65,7 +65,7 @@ export default function RegistrationStepsSection() {
                 <Typography variant="h4" className="text-white">
                   {t('step')} {index + 1}: <span className="text-[#00D094]">{t(step.titleKey)}</span>
                 </Typography>
-                <Typography variant="p" className="!text-xs text-gray-400">
+                <Typography variant="p" className="text-xs! text-gray-400">
                   {t(step.descKey)}
                 </Typography>
               </div>
@@ -80,10 +80,10 @@ export default function RegistrationStepsSection() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-full font-semibold transition-all cursor-pointer text-sm whitespace-nowrap">
+          <button className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-full font-semibold transition-all cursor-pointer text-sm whitespace-nowrap w-full sm:w-auto">
             {t('cta_primary')}
           </button>
-          <button className="border border-white text-white px-6 py-3 rounded-full font-semibold transition-all cursor-pointer hover:bg-white/10 text-sm whitespace-nowrap">
+          <button className="border border-white text-white px-6 py-3 rounded-full font-semibold transition-all cursor-pointer hover:bg-white/10 text-sm whitespace-nowrap w-full sm:w-auto">
             {t('cta_secondary')}
           </button>
         </div>

@@ -175,6 +175,20 @@
     "description2": "Wealth is built through structure, discipline, and intelligent systems. SmartStox combines AI precision, broker-grade execution, and strategic capital allocation into a disciplined wealth creation framework.",
     "image_alt": "Wealth creation illustration"
   },
+  "wealthFramework": {
+    "title_part1": "Wealth Creation",
+    "title_part2": "Framework",
+    "trading_title": "Trading",
+    "trading_description": "SmartStox AI trades automatically using proven strategies through regulated brokers.",
+    "reinvestment_title": "Reinvestment",
+    "reinvestment_description": "Gains are funneled into stable venture capital projects for compounding growth.",
+    "cash_balance_title": "Cash Balance",
+    "cash_balance_description": "Trackable always via your SmartStox Mobile APP",
+    "profit_allocation_title": "Profit Allocation",
+    "profit_allocation_description": "Profits are allocated monthly -some cash withdrawn, some reinvested.",
+    "fees_title": "Fees",
+    "fees_description": "Transparent, pre-agreed SaaS fees only. No hidden costs."
+  },
   "aiDrivenTrading": {
     "title_part1": "Broker-Monitored,",
     "title_part2": "AI-Driven Trading",
@@ -201,6 +215,33 @@
     "image_alt": "Our brokers illustration",
     "subtitle": "Execution quality defines performance",
     "description": "SmartStox operates exclusively through regulated brokerage partners who provide secure custody, transparent pricing, reliable liquidity access, and compliance oversight. Strategy without infrastructure is theory. With the right broker, it becomes performance."
+  },
+  "transparentFees": {
+    "title_part1": "Transparent, Performance",
+    "title_part2": "Based Fees",
+    "subtitle": "Aligned Incentives. Shared Success.",
+    "image_alt": "Performance based fees illustration",
+    "description1": "Our incentives are aligned with yours. SmartStox is structured around transparent, performance-oriented fees — designed to reward growth, not simply activity.",
+    "description2": "When your portfolio advances, so does ours. Partnership. Not extraction."
+  },
+  "monitoring": {
+    "title_part1": "Monitoring Through",
+    "title_part2": "Web & Mobile App",
+    "subtitle": "Full Transparency. Total Control. Anywhere You Go.",
+    "image_alt": "Web and mobile app monitoring illustration",
+    "description": "Track your portfolio in real time from the SmartStox web portal or mobile app. See trades, profits, cash balances, and reinvestment activity at a glance. You're never out of the loop, but you're never chained to the screen either."
+  },
+  "treasuryManagement": {
+    "title_part1": "Treasury",
+    "title_part2": "Management",
+    "subtitle": "We don't Simply Trade Capital. We Steward it.",
+    "description": "Trading is only one part of wealth creation. SmartStox actively manages capital positioning, ensuring strategic balance, controlled exposure, and long-term sustainability. Because protecting capital is as important as growing it.",
+    "card1_title": "Primary Trading - & Trading Reserve Account",
+    "card1_description": "Capital lives in these two USD accounts are continuously monitored to maintain optimum operational balance in your Primary Trading Account through a buffer of Trading Reserve Account. This ensures the system can operate effectively and sustainably in the trading environment to enable both rapid response trading and sustained growth accumulation. As part of our end-of-day procedures, we ensure the system positions effectively and counter changing market conditions by maintaining a balance between your Primary Trading Reserve Account balances through automated reconciliation.",
+    "card2_title": "Fractional Digitized Investment Accounts",
+    "card2_description": "Every month, returns are directed with precision toward compound growth via asset diversification or liquidity. A portion can be channeled into carefully chosen equities and venture capital opportunities, while another section is allocated toward Real World Assets – adding depth, security, and long-term resilience to your portfolio. SmartStox automatically allocates up to 50% of your capital to your Primary Trading & Reserve Investment Accounts, under the direction of your designated Broker.",
+    "card3_title": "Transactional Profit Account",
+    "card3_description": "Maintaining a cash position provides flexibility, allowing you to deploy returns or access capital when needed. You could use your SmartStox APP to withdraw cash from your Transactional Profit Account, as allocated by your broker. Withdraw profits to enhance lifestyle, create experiences, or support your goals."
   },
   "wealthCreation": {
     "title": "Wealth Creation",

@@ -1,5 +1,3 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Typography } from '@/components/ui/typography';
@@ -14,7 +12,7 @@ export default function WealthStrategySection() {
           {/* Left Content */}
           <div className="space-y-6">
             <Typography variant="h3" className="text-white text-left">
-              {t('title_part1')}{' '}
+              {t('title_part1')}{' '} <br />
               <span className="text-[#0066FF]">{t('title_part2')}</span>
             </Typography>
 
