@@ -3,8 +3,6 @@
 import { useEffect, useState } from 'react';
 import { VentureCapitalProjectsSection } from '@/components/sections/VentureCapitalProjectsSection';
 import { EcosystemGridSection } from '@/components/sections/EcosystemGridSection';
-import TrialSection from '@/components/sections/TrialSection';
-import RegistrationStepsSection from '@/components/sections/RegistrationStepsSection';
 
 export default function FractionalCapitalClient() {
   const [scrollOpacity, setScrollOpacity] = useState(1);
@@ -36,8 +34,6 @@ export default function FractionalCapitalClient() {
       />
       <VentureCapitalProjectsSection />
       <EcosystemGridSection />
-      <TrialSection />
-      <RegistrationStepsSection />
     </div>
   );
 }

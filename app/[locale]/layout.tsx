@@ -5,6 +5,8 @@ import { locales, type Locale } from '@/i18n/config';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { cache } from 'react';
+import TrialSection from '@/components/sections/TrialSection';
+import RegistrationStepsSection from '@/components/sections/RegistrationStepsSection';
 
 // Cache messages to prevent reloading on every HMR
 const getCachedMessages = cache(async (locale: string) => {
@@ -41,6 +43,8 @@ export default async function LocaleLayout({
       <div lang={locale} className="flex flex-col min-h-screen">
         <Navbar />
         <main className="grow">{children}</main>
+        <TrialSection />
+        <RegistrationStepsSection />
         <Footer />
       </div>
     </NextIntlClientProvider>

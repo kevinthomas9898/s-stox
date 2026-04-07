@@ -1,31 +1,32 @@
-'use client';
+"use client";
 
-import { useTranslations } from 'next-intl';
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from '@/i18n/navigation';
-import Image from 'next/image';
-import { FaBars } from 'react-icons/fa6';
+import { useTranslations } from "next-intl";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "@/i18n/navigation";
+import Image from "next/image";
+import { FaBars } from "react-icons/fa6";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from "@/components/ui/dropdown-menu";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet';
-import { IoIosArrowDown } from 'react-icons/io';
-import { logout } from '@/store/slices/authSlice';
-import type { RootState } from '@/store';
+} from "@/components/ui/sheet";
+import { IoIosArrowDown } from "react-icons/io";
+import { logout } from "@/store/slices/authSlice";
+import type { RootState } from "@/store";
+import { SectionWrapper } from "@/components/ui/SectionWrapper";
 
 export default function Navbar() {
-  const t = useTranslations('nav');
-  const common = useTranslations('common');
+  const t = useTranslations("nav");
+  const common = useTranslations("common");
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
@@ -37,24 +38,23 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { href: '/', label: t('home') },
-    { href: '/', label: t('ourStrategy') },
-    { href: '/pricing', label: t('pricing') },
-    { href: '/', label: t('ambassadors') },
-    { href: '/', label: t('faqs') },
+    { href: "/", label: t("home") },
+    { href: "/", label: t("ourStrategy") },
+    { href: "/pricing", label: t("pricing") },
+    { href: "/", label: t("ambassadors") },
+    { href: "/", label: t("faqs") },
   ];
 
   const moreMenuItems = [
-    { href: '/wealth-creation', label: t('wealthCreation') },
-    { href: '/fractional-capital', label: t('fractionalCapital') },
-    { href: '/media-library', label: t('mediaLibrary') },
-    { href: '/further-reading', label: t('furtherReading') },
+    { href: "/wealth-creation", label: t("wealthCreation") },
+    { href: "/fractional-capital", label: t("fractionalCapital") },
+    { href: "/media-library", label: t("mediaLibrary") },
+    { href: "/further-reading", label: t("furtherReading") },
   ];
 
   return (
     <header className="absolute top-0 w-full z-50 bg-transparent">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        
+      <SectionWrapper containerClassName="h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 relative z-50">
           <Image
@@ -66,7 +66,7 @@ export default function Navbar() {
             priority
           />
           <span className="text-xl font-semibold text-white">
-            {common('appName')}
+            {common("appName")}
           </span>
         </Link>
 
@@ -85,7 +85,7 @@ export default function Navbar() {
           {/* Desktop More Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1 text-white hover:text-primary transition-colors cursor-pointer group outline-none">
-              <span>{t('more')}</span>
+              <span>{t("more")}</span>
               <IoIosArrowDown className="w-4 h-4 text-white group-hover:text-primary transition-colors" />
             </DropdownMenuTrigger>
 
@@ -97,7 +97,7 @@ export default function Navbar() {
                 <DropdownMenuItem key={i} className="p-0">
                   <Link
                     href={item.href}
-                    className="block w-full px-3 py-2 text-sm text-gray-300 hover:text-primary hover:bg-white/[0.08] transition-colors"
+                    className="block w-full px-3 py-2 text-sm text-gray-300 hover:text-primary hover:bg-white/8 transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -108,7 +108,6 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-4">
-          
           {/* Desktop Auth */}
           <div className="hidden xl:flex items-center gap-3">
             {isAuthenticated ? (
@@ -124,13 +123,13 @@ export default function Navbar() {
                   href="/login"
                   className="text-sm font-medium px-6 py-2 rounded-full bg-[#FFFFFF1A] text-white hover:bg-[#FFFFFF2A] transition-colors"
                 >
-                  {t('login')}
+                  {t("login")}
                 </Link>
                 <Link
                   href="/register"
                   className="text-sm font-medium px-6 py-2 rounded-full bg-[#2A73EA] text-white hover:bg-[#1a5fc7] transition-colors"
                 >
-                  {t('signup')}
+                  {t("signup")}
                 </Link>
               </>
             )}
@@ -155,7 +154,6 @@ export default function Navbar() {
               </SheetHeader>
 
               <nav className="flex flex-col space-y-6 px-6">
-                
                 {/* Main Links */}
                 {navLinks.map((link, i) => (
                   <Link
@@ -171,11 +169,13 @@ export default function Navbar() {
                 {/* Mobile More Section */}
                 <div>
                   <div
-                    onClick={() => setShowMore(prev => !prev)}
+                    onClick={() => setShowMore((prev) => !prev)}
                     className="text-2xl font-semibold text-white hover:text-primary transition-colors cursor-pointer flex items-center justify-between"
                   >
-                    {t('more')}
-                    <IoIosArrowDown className={`w-5 h-5 transition-transform ${showMore ? 'rotate-180' : ''}`} />
+                    {t("more")}
+                    <IoIosArrowDown
+                      className={`w-5 h-5 transition-transform ${showMore ? "rotate-180" : ""}`}
+                    />
                   </div>
 
                   {showMore && (
@@ -217,14 +217,14 @@ export default function Navbar() {
                       className="w-full text-center text-lg font-medium px-6 py-3 rounded-xl bg-[#FFFFFF1A] text-white hover:bg-[#FFFFFF2A] transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
-                      {t('login')}
+                      {t("login")}
                     </Link>
                     <Link
                       href="/register"
                       className="w-full text-center text-lg font-medium px-6 py-3 rounded-xl bg-[#2A73EA] text-white hover:bg-[#1a5fc7] transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
-                      {t('signup')}
+                      {t("signup")}
                     </Link>
                   </>
                 )}
@@ -232,7 +232,7 @@ export default function Navbar() {
             </SheetContent>
           </Sheet>
         </div>
-      </div>
+      </SectionWrapper>
     </header>
   );
 }

@@ -38,6 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
+      lang="en"
       className={cn("h-full", "antialiased", roboto.variable, robotoMono.variable, "font-sans", geist.variable)}
       suppressHydrationWarning
     >

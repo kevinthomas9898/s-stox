@@ -31,7 +31,7 @@ export default function RegistrationStepsSection() {
   const t = useTranslations('registration');
 
   return (
-    <div className="w-full py-10 bg-[#FFFFFF0A]">
+    <div className="w-full py-10 bg-[#0F131C]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <Typography variant="p" className="text-white mb-16 text-center">

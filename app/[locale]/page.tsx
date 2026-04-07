@@ -2,8 +2,6 @@
 
 import HeroSection from '@/components/sections/HeroSection';
 import FeaturesSection from '@/components/sections/FeaturesSection';
-import TrialSection from '@/components/sections/TrialSection';
-import RegistrationStepsSection from '@/components/sections/RegistrationStepsSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 
 export default function HomePage() {
@@ -17,8 +15,6 @@ export default function HomePage() {
 
       <FeaturesSection />
       <TestimonialsSection />
-      <TrialSection />
-      <RegistrationStepsSection />
       {/* <BottomCTASection /> */}
     </div>
   );
