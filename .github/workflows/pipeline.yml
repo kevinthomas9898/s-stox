@@ -61,7 +61,7 @@ jobs:
           cd PCI.GitOps.AlibabaCloud
 
           # Update ONLY webapp image tag
-          sed -i '/name: ghcr.io\/prosperian-capital\/pci.smartstox.webapp/{n;s/newTag:.*/newTag: '"${{ steps.version.outputs.version }}"'/;}' k8s/overlays/production/kustomization.yml
+          sed -i '/name: ghcr.io\/prosperian-capital\/pci.smartstox.webapp/{n;s/newTag:.*/newTag: "'"${{ steps.version.outputs.version }}"'"/;}' k8s/overlays/production/kustomization.yml
 
           # Commit changes
           git config user.name "github-actions"
