@@ -17,7 +17,7 @@ export default function MonitoringSection() {
               <span className="text-[#0066FF]">{t('title_part2')}</span>
             </Typography>
 
-            <Typography variant="h4" className="text-gray-300 font-light">
+            <Typography variant="h5" className="text-gray-300 font-light">
               {t('subtitle')}
             </Typography>
 

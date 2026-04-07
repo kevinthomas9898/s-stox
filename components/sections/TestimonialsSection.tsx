@@ -100,7 +100,7 @@ export default function TestimonialsSection() {
                       <AvatarFallback>{item.name.charAt(0)}</AvatarFallback>
                     </Avatar>
                     <div>
-                      <Typography variant="h4" className="text-gray-900 !text-base !font-bold">{item.name}</Typography>
+                      <Typography variant="h5" className="text-gray-900 !text-base !font-bold">{item.name}</Typography>
                       <Typography variant="p" className="!text-xs !text-gray-500">{item.role}</Typography>
                     </div>
                   </div>

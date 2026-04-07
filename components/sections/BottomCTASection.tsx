@@ -18,7 +18,7 @@ export default function BottomCTASection() {
           <div className="space-y-8">
             {/* Top Badge */}
             <div className="inline-flex items-center gap-2">
-              <Typography variant="h4" className="text-gray-900">
+              <Typography variant="h5" className="text-gray-900">
                 {t('eyebrow')}
               </Typography>
               <span className="bg-[#374151] text-white px-3 py-1 rounded-md font-bold text-sm italic">

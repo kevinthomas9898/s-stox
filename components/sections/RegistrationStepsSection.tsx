@@ -34,7 +34,7 @@ export default function RegistrationStepsSection() {
     <div className="w-full py-10 bg-[#FFFFFF0A]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
-        <Typography variant="h3" className="text-white mb-16">
+        <Typography variant="p" className="text-white mb-16 text-center">
           {t('title')}
         </Typography>
 
@@ -62,7 +62,7 @@ export default function RegistrationStepsSection() {
 
               {/* Step Number & Title */}
               <div className="space-y-2 max-w-[250px]">
-                <Typography variant="h4" className="text-white">
+                <Typography variant="h5" className="text-white">
                   {t('step')} {index + 1}: <span className="text-[#00D094]">{t(step.titleKey)}</span>
                 </Typography>
                 <Typography variant="p" className="text-xs! text-gray-400">
@@ -74,7 +74,7 @@ export default function RegistrationStepsSection() {
         </div>
 
         {/* Bottom Tagline */}
-        <Typography variant="h4" className="text-white text-center tracking-wide mb-8">
+        <Typography variant="h5" className="text-white text-center tracking-wide mb-8">
           {t('tagline')}
         </Typography>
 

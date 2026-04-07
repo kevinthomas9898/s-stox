@@ -55,7 +55,7 @@ export default function HeroSection() {
 
         {/* Bottom Banner Section */}
         <div className="w-full border-t border-white/5 pt-12 text-left">
-          <Typography variant="h4" className="text-[#00D094] uppercase tracking-wider mb-4">
+          <Typography variant="h5" className="text-[#00D094] uppercase tracking-wider mb-4">
             {t('banner.title')}
           </Typography>
           <Typography variant="p" className="text-gray-300 pr-0 md:pr-24">

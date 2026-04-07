@@ -16,7 +16,7 @@ export default function AiDrivenTrading() {
               <span className="text-[#0066FF]">{t('title_part2')}</span>
             </Typography>
 
-            <Typography variant="h4" className="text-gray-300">
+            <Typography variant="h5" className="text-gray-300">
               {t('subtitle')}
             </Typography>
 

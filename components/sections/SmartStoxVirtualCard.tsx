@@ -32,7 +32,7 @@ export default function SmartStoxVirtualCard() {
                                 </div>
                                 <span className="text-6xl md:text-8xl font-extrabold text-gray-100">01</span>
                             </div>
-                            <Typography variant="h4" className="text-gray-900 mb-2 text-xl sm:text-2xl">
+                            <Typography variant="h5" className="text-gray-900 mb-2 text-xl sm:text-2xl">
                                 {t('card1_title')}
                             </Typography>
                             <div className="w-12 h-0.5 bg-[#00D094] mb-4"></div>
@@ -57,7 +57,7 @@ export default function SmartStoxVirtualCard() {
                                 </div>
                                 <span className="text-6xl md:text-8xl font-bold text-gray-100">02</span>
                             </div>
-                            <Typography variant="h4" className="text-gray-900 mb-2 text-xl sm:text-2xl">
+                            <Typography variant="h5" className="text-gray-900 mb-2 text-xl sm:text-2xl">
                                 {t('card2_title')}
                             </Typography>
                             <div className="w-12 h-0.5 bg-[#00D094] mb-4"></div>

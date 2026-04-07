@@ -19,7 +19,7 @@ export default function FeaturesSection() {
           <div className="relative">
             {/* Glassmorphic Badge */}
             <div className="absolute -top-10 left-[-10px] sm:left-[-20px] lg:-left-12 z-20 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.5)] w-48">
-              <Typography variant="h4" className="text-white">
+              <Typography variant="h5" className="text-white">
                 {t("why_choose.badge_title")}
               </Typography>
               <Typography variant="p" className="text-xs! text-gray-300 mt-1">
@@ -45,7 +45,7 @@ export default function FeaturesSection() {
                 {t("why_choose.title_part2")}
               </span>
             </Typography>
-            <Typography variant="h4" className="text-white text-left">
+            <Typography variant="h5" className="text-white text-left">
               {t("why_choose.subtitle")}
             </Typography>
             <Typography variant="p" className="text-gray-300 text-left">
@@ -133,7 +133,7 @@ export default function FeaturesSection() {
                 </span>{" "}
                 <br /> {t("manual_trading.title_part3")}
               </Typography>
-              <Typography variant="h4" className="text-gray-300 text-left">
+              <Typography variant="h5" className="text-gray-300 text-left">
                 {t("manual_trading.subtitle")}
               </Typography>
               <Typography variant="p" className="text-gray-400 text-left">
@@ -159,7 +159,7 @@ export default function FeaturesSection() {
               </span>{" "}
               {t("time_vs_timing.title_part4")}
             </Typography>
-            <Typography variant="h4" className="text-gray-300">
+            <Typography variant="h5" className="text-gray-300">
               {t("time_vs_timing.subtitle")}
             </Typography>
           </div>
@@ -204,7 +204,7 @@ export default function FeaturesSection() {
                 </span>{" "}
                 {t("set_and_forget.title_part3")}
               </Typography>
-              <Typography variant="h4" className="text-gray-300">
+              <Typography variant="h5" className="text-gray-300">
                 {t("set_and_forget.subtitle")}
               </Typography>
               <Typography variant="p" className="text-gray-400">

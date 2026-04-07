@@ -39,7 +39,7 @@ export default function TreasuryManagementSection() {
             <span className="text-[#0066FF]">{t('title_part2')}</span>
           </Typography>
 
-          <Typography variant="h4" className="text-white mb-4 md:mb-6 text-lg md:text-xl">
+          <Typography variant="h5" className="text-white mb-4 md:mb-6 text-lg md:text-xl">
             {t('subtitle')}
           </Typography>
 
@@ -76,7 +76,7 @@ export default function TreasuryManagementSection() {
                 {/* Title */}
                 <div className="mb-3 md:mb-4">
                   <Typography
-                    variant="h4"
+                    variant="h5"
                     className="text-gray-900 text-sm md:text-base font-semibold mb-2"
                   >
                     {t(card.titleKey)}

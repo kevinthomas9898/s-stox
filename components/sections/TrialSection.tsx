@@ -23,7 +23,7 @@ export default function TrialSection() {
 
           {/* Content */}
           <div className="text-center lg:text-left space-y-4">
-            <Typography variant="h4" className="text-white">
+            <Typography variant="h5" className="text-white">
               {t('subtitle')}
             </Typography>
             <Typography variant="h2" className="text-[#00D094] normal-case">

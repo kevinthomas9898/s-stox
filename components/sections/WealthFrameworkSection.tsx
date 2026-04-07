@@ -64,7 +64,7 @@ export default function WealthFrameworkSection() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32 relative z-10">
             {/* Trading */}
             <div className="flex flex-col items-center text-center">
-              <Typography variant="h4" className="text-[#00D094] mb-2">
+              <Typography variant="h5" className="text-[#00D094] mb-2">
                 {t('trading_title')}
               </Typography>
               <Typography variant="p" className="text-gray-400 text-sm mb-6 max-w-[280px]">
@@ -84,7 +84,7 @@ export default function WealthFrameworkSection() {
 
             {/* Reinvestment */}
             <div className="flex flex-col items-center text-center">
-              <Typography variant="h4" className="text-[#00D094] mb-2">
+              <Typography variant="h5" className="text-[#00D094] mb-2">
                 {t('reinvestment_title')}
               </Typography>
               <Typography variant="p" className="text-gray-400 text-sm mb-6 max-w-[280px]">
@@ -104,7 +104,7 @@ export default function WealthFrameworkSection() {
 
             {/* Cash Balance */}
             <div className="flex flex-col items-center text-center">
-              <Typography variant="h4" className="text-[#00D094] mb-2">
+              <Typography variant="h5" className="text-[#00D094] mb-2">
                 {t('cash_balance_title')}
               </Typography>
               <Typography variant="p" className="text-gray-400 text-sm mb-6 max-w-[280px]">
@@ -137,7 +137,7 @@ export default function WealthFrameworkSection() {
                   />
                 </div>
               </div>
-              <Typography variant="h4" className="text-[#00D094] mb-2">
+              <Typography variant="h5" className="text-[#00D094] mb-2">
                 {t('profit_allocation_title')}
               </Typography>
               <Typography variant="p" className="text-gray-400 text-sm max-w-[280px]">
@@ -157,7 +157,7 @@ export default function WealthFrameworkSection() {
                   />
                 </div>
               </div>
-              <Typography variant="h4" className="text-[#00D094] mb-2">
+              <Typography variant="h5" className="text-[#00D094] mb-2">
                 {t('fees_title')}
               </Typography>
               <Typography variant="p" className="text-gray-400 text-sm max-w-[280px]">

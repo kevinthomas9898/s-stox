@@ -1,27 +1,43 @@
-import { Typography } from '@/components/ui/typography';
-import { setRequestLocale, getTranslations } from 'next-intl/server';
+'use client';
 
-export default async function FractionalCapitalPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
+import { useEffect, useState } from 'react';
+import { VentureCapitalProjectsSection } from '@/components/sections/VentureCapitalProjectsSection';
+import { EcosystemGridSection } from '@/components/sections/EcosystemGridSection';
+import TrialSection from '@/components/sections/TrialSection';
+import RegistrationStepsSection from '@/components/sections/RegistrationStepsSection';
 
-  setRequestLocale(locale);
+export default function FractionalCapitalClient() {
+  const [scrollOpacity, setScrollOpacity] = useState(1);
 
-  const t = await getTranslations('fractionalCapital');
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const fadeStart = 0;
+      const fadeEnd = window.innerHeight * 4;
+
+      const opacity = Math.max(
+        0,
+        1 - (scrollY - fadeStart) / (fadeEnd - fadeStart)
+      );
+
+      setScrollOpacity(opacity);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] pt-32 pb-20 px-4">
-      <div className="container mx-auto max-w-4xl">
-        <Typography variant="h1" className="text-white mb-6">
-          {t('title')}
-        </Typography>
-        <Typography variant="p" className="text-gray-400 text-lg leading-relaxed">
-          {t('description')}
-        </Typography>
-      </div>
+    <div className="min-h-screen bg-[#0b0f19]">
+      <div
+        className="fixed inset-0 bg-linear-to-r from-blue-900/40 via-transparent to-transparent pointer-events-none"
+        style={{ opacity: scrollOpacity }}
+      />
+      <VentureCapitalProjectsSection />
+      <EcosystemGridSection />
+      <TrialSection />
+      <RegistrationStepsSection />
     </div>
   );
 }

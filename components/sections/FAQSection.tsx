@@ -32,7 +32,7 @@ export default function FAQSection() {
               className="border border-white/10 rounded-lg bg-[#0d1627] overflow-hidden"
             >
               <AccordionTrigger className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none cursor-pointer hover:bg-white/5 transition-colors hover:no-underline [&>svg]:text-gray-500 [&>svg]:w-4 [&>svg]:h-4 [&>svg]:shrink-0">
-                <Typography variant="h4" className="text-gray-300 !text-xl !font-normal">{faq.q}</Typography>
+                <Typography variant="h5" className="text-gray-300 !text-xl !font-normal">{faq.q}</Typography>
               </AccordionTrigger>
               <AccordionContent className="px-6 pb-5 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
                 <Typography variant="p" className="!text-sm">{faq.a}</Typography>
