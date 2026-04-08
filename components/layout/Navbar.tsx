@@ -36,10 +36,13 @@ export default function Navbar() {
   const [showMore, setShowMore] = useState(false);
 
   const isActive = (href: string) => {
+    const pathWithoutLocale = pathname.replace(/^\/(en|fr)/, "");
+    const normalizedPath = pathWithoutLocale || "/";
+
     if (href === "/") {
-      return pathname === "/" || pathname === "/en" || pathname === "/fr";
+      return normalizedPath === "/";
     }
-    return pathname === href || pathname.startsWith(`${href}/`);
+    return normalizedPath === href || normalizedPath.startsWith(`${href}/`);
   };
 
   const handleLogout = () => {
