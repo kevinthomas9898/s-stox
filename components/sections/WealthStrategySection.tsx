@@ -31,7 +31,7 @@ export default function WealthStrategySection() {
         </div>
 
         {/* Right Image */}
-        <div className="relative w-full aspect-square max-w-md mx-auto lg:max-w-xl lg:ml-auto mr-0">
+        <div className="relative w-full aspect-square max-w-md mx-auto lg:max-w-xl lg:ml-auto lg:mr-0">
           <Image
             src="/hand-adding-coins-stack-covered-dirt-plants.png"
             alt={t('image_alt')}

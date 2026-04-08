@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { ComponentType } from 'react';
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaXTwitter, FaApple } from 'react-icons/fa6';
 import { Typography } from '../ui/typography';
+import { SectionWrapper } from '@/components/ui/SectionWrapper';
 
 interface SocialLink {
   name: string;
@@ -24,7 +25,7 @@ export default function Footer() {
 
   return (
     <footer className="w-full bg-[#0d1117] pt-20 pb-8 text-white">
-      <div className="px-4 sm:px-6 lg:px-16">
+      <SectionWrapper>
 
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
@@ -131,7 +132,7 @@ export default function Footer() {
           </div>
         </div>
 
-      </div>
+      </SectionWrapper>
     </footer>
   );
 }
