@@ -12,7 +12,7 @@ export default function FeaturesSection() {
       <div className="absolute top-0 left-0 w-[30%] lg:w-[40%] h-full bg-linear-to-r from-blue-900/30 to-transparent pointer-events-none" />
 
       {/* Feature 1 & 2 Section */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-32 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 2xl:px-0 py-24 space-y-32 relative z-10">
         {/* Feature 1 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left: Image with Badge */}

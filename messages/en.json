@@ -3,7 +3,8 @@
     "appName": "SmartStox",
     "loading": "Loading...",
     "error": "Something went wrong",
-    "retry": "Try Again"
+    "retry": "Try Again",
+    "comingSoon": "Coming Soon"
   },
   "nav": {
     "home": "Home",
@@ -258,5 +259,10 @@
   "furtherReading": {
     "title": "Further Reading",
     "description": "Dive deeper into our research papers, case studies, and articles on automated trading and investment strategies."
+  },
+  "comingSoonPage": {
+    "heading": "Something Big is Brewing",
+    "defaultDescription": "We're working hard to bring you something amazing. Stay tuned for updates!",
+    "pricingDescription": "We're fine-tuning our pricing plans to ensure you get the best value for your wealth growth journey."
   }
 }

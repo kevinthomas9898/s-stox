@@ -3,7 +3,8 @@
     "appName": "SmartStox",
     "loading": "Chargement...",
     "error": "Une erreur est survenue",
-    "retry": "Réessayer"
+    "retry": "Réessayer",
+    "comingSoon": "Prochainement"
   },
   "nav": {
     "home": "Accueil",
@@ -258,5 +259,10 @@
   "furtherReading": {
     "title": "Lectures Complémentaires",
     "description": "Approfondissez vos connaissances avec nos documents de recherche, études de cas et articles sur le trading automatisé et les stratégies d'investissement."
+  },
+  "comingSoonPage": {
+    "heading": "Quelque Chose de Grand se Prépare",
+    "defaultDescription": "Nous travaillons dur pour vous apporter quelque chose d'incroyable. Restez à l'écoute pour les mises à jour !",
+    "pricingDescription": "Nous peaufinons nos forfaits tarifaires pour vous garantir la meilleure valeur dans votre parcours de croissance de patrimoine."
   }
 }

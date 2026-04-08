@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "@/i18n/navigation";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { FaBars } from "react-icons/fa6";
 import {
@@ -29,9 +30,17 @@ export default function Navbar() {
   const common = useTranslations("common");
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const pathname = usePathname();
 
   const [isOpen, setIsOpen] = useState(false);
   const [showMore, setShowMore] = useState(false);
+
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/" || pathname === "/en" || pathname === "/fr";
+    }
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   const handleLogout = () => {
     dispatch(logout());
@@ -39,10 +48,10 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "/", label: t("home") },
-    { href: "/", label: t("ourStrategy") },
+    { href: "/our-strategy", label: t("ourStrategy") },
     { href: "/pricing", label: t("pricing") },
-    { href: "/", label: t("ambassadors") },
-    { href: "/", label: t("faqs") },
+    { href: "/ambassadors", label: t("ambassadors") },
+    { href: "/faqs", label: t("faqs") },
   ];
 
   const moreMenuItems = [
@@ -76,7 +85,11 @@ export default function Navbar() {
             <Link
               key={i}
               href={link.href}
-              className="text-white hover:text-primary transition-colors"
+              className={`transition-colors ${
+                isActive(link.href)
+                  ? "text-[#00D094] font-semibold"
+                  : "text-white hover:text-primary"
+              }`}
             >
               {link.label}
             </Link>
@@ -97,7 +110,11 @@ export default function Navbar() {
                 <DropdownMenuItem key={i} className="p-0">
                   <Link
                     href={item.href}
-                    className="block w-full px-3 py-2 text-sm text-gray-300 hover:text-primary hover:bg-white/8 transition-colors"
+                    className={`block w-full px-3 py-2 text-sm transition-colors ${
+                      isActive(item.href)
+                        ? "text-[#00D094] font-semibold bg-white/10"
+                        : "text-gray-300 hover:text-primary hover:bg-white/8"
+                    }`}
                   >
                     {item.label}
                   </Link>
@@ -159,7 +176,11 @@ export default function Navbar() {
                   <Link
                     key={i}
                     href={link.href}
-                    className="text-2xl font-semibold text-white hover:text-primary transition-colors"
+                    className={`text-2xl font-semibold transition-colors ${
+                      isActive(link.href)
+                        ? "text-[#00D094]"
+                        : "text-white hover:text-primary"
+                    }`}
                     onClick={() => setIsOpen(false)}
                   >
                     {link.label}
@@ -184,7 +205,11 @@ export default function Navbar() {
                         <Link
                           key={i}
                           href={item.href}
-                          className="text-lg text-gray-300 hover:text-primary transition-colors"
+                          className={`text-lg transition-colors ${
+                            isActive(item.href)
+                              ? "text-[#00D094] font-semibold"
+                              : "text-gray-300 hover:text-primary"
+                          }`}
                           onClick={() => {
                             setIsOpen(false);
                             setShowMore(false);
