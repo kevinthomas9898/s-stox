@@ -27,10 +27,10 @@ export default function LoginPage() {
 
     try {
       const response = await login(formData);
-      if (response.isError) {
-        throw new Error(response.errorMsg || "Login failed");
+      if (response.status !== 'success') {
+        throw new Error(response.message || "Login failed");
       }
-      dispatch(setCredentials({ jwtToken: response.jwtToken }));
+      dispatch(setCredentials({ jwtToken: response.data.jwtToken }));
       router.push("/");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");

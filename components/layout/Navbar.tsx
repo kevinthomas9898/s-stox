@@ -29,7 +29,8 @@ export default function Navbar() {
   const t = useTranslations("nav");
   const common = useTranslations("common");
   const dispatch = useDispatch();
-  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const auth = useSelector((state: RootState) => state.auth);
+  const isAuthenticated = auth.jwtToken !== null;
   const pathname = usePathname();
 
   const [isOpen, setIsOpen] = useState(false);

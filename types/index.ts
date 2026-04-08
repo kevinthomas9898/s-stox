@@ -19,11 +19,15 @@ export interface LoginCredentials {
   password: string;
 }
 
-export interface AuthResponse {
+export interface AuthResponseData {
   jwtToken: string;
   refreshToken: string;
-  isError: boolean;
-  errorMsg: string | null;
+}
+
+export interface AuthResponse {
+  status: string;
+  data: AuthResponseData;
+  message: string;
 }
 
 // ── API ──

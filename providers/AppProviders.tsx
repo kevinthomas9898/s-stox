@@ -18,8 +18,8 @@ function AuthInitializer({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const initAuth = async () => {
       try {
-        const { jwtToken } = await refreshToken();
-        dispatch(setCredentials({ jwtToken }));
+        const { data } = await refreshToken();
+        dispatch(setCredentials({ jwtToken: data.jwtToken }));
       } catch {
         // No valid session — user is not authenticated
         dispatch(logout());

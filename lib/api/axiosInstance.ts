@@ -75,13 +75,13 @@ api.interceptors.response.use(
         { withCredentials: true },
       );
 
-      const newToken: string = data.jwtToken;
+      const newToken: string = data.data.jwtToken;
 
       // Update Redux store with the new token
       store.dispatch(setJwtToken(newToken));
 
       // Process all queued requests with the new token
-      processQueue(null, data.jwtToken);
+      processQueue(null, newToken);
 
       // Retry the original request
       if (originalRequest.headers) {

@@ -18,8 +18,14 @@ export function useAuth() {
 
   const login = useCallback(
     async (credentials: LoginCredentials) => {
-      const { jwtToken } = await loginService(credentials);
-      dispatch(setCredentials({ jwtToken }));
+      try {
+        const response = await loginService(credentials);
+        const { data } = response;
+        dispatch(setCredentials({ jwtToken: data.jwtToken }));
+      } catch (error) {
+        console.error('Login error:', error);
+        throw error;
+      }
     },
     [dispatch],
   );
