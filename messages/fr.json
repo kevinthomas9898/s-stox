@@ -92,11 +92,22 @@
   "faq": {
     "title_part1": "Questions Fréquemment",
     "title_part2": "Posées",
-    "q1": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
-    "q2": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
-    "q3": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
-    "q4": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
-    "q5": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum"
+    "q1": "À propos de mon abonnement SmartStox",
+    "a1": "Votre abonnement SmartStox vous donne accès à notre plateforme de trading pilotée par l'IA, qui fait fructifier votre patrimoine automatiquement via des courtiers réglementés. Vous bénéficiez d'un essai sans risque de 3 mois avec possibilité de remboursement complet.",
+    "q2": "Comment puis-je m'inscrire à ce service ?",
+    "a2": "Vous pouvez vous inscrire en cliquant sur le bouton S'INSCRIRE et en suivant les instructions. Le processus est simple : téléchargez l'application, vérifiez votre identité, financez votre compte et commencez à gagner.",
+    "q3": "Comment puis-je savoir que mon inscription a réussi ?",
+    "a3": "Nous vous enverrons une confirmation d'inscription à votre adresse e-mail indiquée. Vous recevrez également un e-mail de bienvenue avec les prochaines étapes pour accéder à votre compte.",
+    "q4": "Comment puis-je utiliser ce service ?",
+    "a4": "Votre service et vos avantages sont disponibles en ligne via le site web de ce produit ou l'application mobile SmartStox. Une fois connecté, vous pouvez suivre votre portefeuille en temps réel, visualiser les trades et gérer vos paramètres.",
+    "q5": "Que dois-je faire si je ne peux pas me connecter ?",
+    "a5": "Les échecs de connexion peuvent être le résultat de divers problèmes, comme un délai de disponibilité de vos données d'inscription sur notre site de connexion. N'hésitez pas à contacter notre service client via le chat en ligne ou par e-mail en attendant.",
+    "q6": "Quelles sont mes options de paiement ?",
+    "a6": "Vous pouvez payer vos frais d'abonnement logiciel via votre carte de débit ou de crédit MasterCard, VISA ou CUP, ou via USDT.",
+    "q7": "Comment puis-je augmenter la valeur de mes avantages ?",
+    "a7": "Vos avantages d'investissement peuvent être augmentés en fonction de votre revenu disponible et de votre tolérance au risque. Des fonds supplémentaires peuvent être ajoutés via votre application pour optimiser le potentiel de capitalisation.",
+    "q8": "Comment puis-je demander un remboursement ?",
+    "a8": "Une demande de remboursement doit être faite par écrit à l'adresse e-mail du service client comme indiqué dans la section Contactez-nous de ce site web, ou via les fonctions libre-service sous Connexion. Vous pouvez également annuler votre essai pendant les 30 premiers jours après l'expiration de votre essai de 3 mois pour un remboursement complet."
   },
   "cta": {
     "eyebrow": "Expérimentez SmartStox Sans Risque Pendant",

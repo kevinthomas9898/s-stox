@@ -12,9 +12,9 @@ import { Typography } from '@/components/ui/typography';
 export default function FAQSection() {
   const t = useTranslations('faq');
 
-  const faqs = [1, 2, 3, 4, 5].map(i => ({
+  const faqs = [1, 2, 3, 4, 5, 6, 7, 8].map(i => ({
     q: t(`q${i}` as any),
-    a: "TEST Lorem ipsum dolor sit amet, TEST consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    a: t(`a${i}` as any)
   }));
 
   return (

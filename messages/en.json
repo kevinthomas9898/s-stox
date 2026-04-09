@@ -92,11 +92,22 @@
   "faq": {
     "title_part1": "Frequently Asked",
     "title_part2": "Questions",
-    "q1": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
-    "q2": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
-    "q3": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
-    "q4": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum",
-    "q5": "Lorem Ipsum Dollar SitAmet Moller Lorem Ipsum"
+    "q1": "About My SmartStox Subscription",
+    "a1": "Your SmartStox subscription gives you access to our AI-driven trading platform that grows your wealth automatically through regulated brokers. You get a 3-month risk-free trial with the option for a full refund.",
+    "q2": "How Do I Sign Up for this Service?",
+    "a2": "You can sign up for this service by clicking on the REGISTER button and following the prompts. The process is simple: download the app, verify your identity, fund your account, and start earning.",
+    "q3": "How Do I Know that my Registration was Successful?",
+    "a3": "We shall send you a registration confirmation to your specified email address. You will also receive a welcome email with next steps to access your account.",
+    "q4": "How Do I Use this Service?",
+    "a4": "Your service and benefits are available online via this product website or the SmartStox Mobile Application. Once logged in, you can track your portfolio in real-time, view trades, and manage your settings.",
+    "q5": "What Do I Do if I Can't Login?",
+    "a5": "Login failures could be the result of various problems, such as a delay of your registration data to be available on our Login site. You are welcome to contact our CRM department via online chat or email in the meantime.",
+    "q6": "What are my Payment Options?",
+    "a6": "You may pay your software subscription fees via your MasterCard, VISA or CUP debit or credit card, or via USDT.",
+    "q7": "How Can I Increase the Value of my Benefits?",
+    "a7": "Your investment benefits may be increased subject to your disposable income and risk appetite. Additional funds can be added via your SmartStox Mobile APP to strategically enhance compounding potential.",
+    "q8": "How Do I Request a Refund?",
+    "a8": "A refund request should be done in writing to the client care email address as listed in the Contact Us section of this website, or via the self-service functions under Login. You may also cancel your trial during the first 30 days after the expiration of your 3-month trial for a full refund of any amounts paid."
   },
   "cta": {
     "eyebrow": "Experience SmartStox Risk-Free for",
