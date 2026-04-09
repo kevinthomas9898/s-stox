@@ -12,11 +12,10 @@ const api = axios.create({
 });
 
 // ── Request Interceptor ──
-// Attach access token from Redux store to every outgoing request
 api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     const { jwtToken } = store.getState().auth;
-    if (jwtToken && config.headers) {
+    if (jwtToken) {
       config.headers.Authorization = `Bearer ${jwtToken}`;
     }
     return config;
@@ -27,16 +26,16 @@ api.interceptors.request.use(
 // ── Response Interceptor (401 Handling + Refresh Queue) ──
 let isRefreshing = false;
 let failedQueue: Array<{
-  resolve: (token: string) => void;
+  resolve: () => void;
   reject: (error: unknown) => void;
 }> = [];
 
-const processQueue = (error: unknown, token: string | null = null) => {
+const processQueue = (error: unknown) => {
   failedQueue.forEach(({ resolve, reject }) => {
     if (error) {
       reject(error);
-    } else if (token) {
-      resolve(token);
+    } else {
+      resolve();
     }
   });
   failedQueue = [];
@@ -47,19 +46,14 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    // Only handle 401 errors and avoid infinite loops
     if (error.response?.status !== 401 || originalRequest._retry) {
       return Promise.reject(error);
     }
 
-    // If a refresh is already in progress, queue this request
     if (isRefreshing) {
-      return new Promise<string>((resolve, reject) => {
+      return new Promise<void>((resolve, reject) => {
         failedQueue.push({ resolve, reject });
-      }).then((token) => {
-        if (originalRequest.headers) {
-          originalRequest.headers.Authorization = `Bearer ${token}`;
-        }
+      }).then(() => {
         return api(originalRequest);
       });
     }
@@ -69,30 +63,29 @@ api.interceptors.response.use(
 
     try {
       const { refreshToken } = store.getState().auth;
-      // Call the refresh endpoint — send refreshToken in body
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/auth/refreshToken`,
-        { refreshToken },
-        { withCredentials: true },
+        { refreshToken: refreshToken }, // Pass token in body to avoid 415 error
+        { 
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true 
+        },
       );
 
-      const newToken: string = data.data.jwtToken || data.data.JwtToken;
-      const newRefreshToken: string = data.data.refreshToken || data.data.RefreshToken;
+      const responseData = data.data || data;
+      const newJwt = responseData.jwtToken || responseData.JwtToken;
+      const newRefresh = responseData.refreshToken || responseData.RefreshToken;
 
-      // Update Redux store with the new tokens
-      store.dispatch(setCredentials({ jwtToken: newToken, refreshToken: newRefreshToken }));
+      store.dispatch(setCredentials({ 
+        user: store.getState().auth.user,
+        jwtToken: newJwt, 
+        refreshToken: newRefresh 
+      }));
 
-      // Process all queued requests with the new token
-      processQueue(null, newToken);
-
-      // Retry the original request
-      if (originalRequest.headers) {
-        originalRequest.headers.Authorization = `Bearer ${newToken}`;
-      }
+      processQueue(null);
       return api(originalRequest);
     } catch (refreshError) {
-      // Refresh failed — logout and reject all queued requests
-      processQueue(refreshError, null);
+      processQueue(refreshError);
       store.dispatch(logout());
       return Promise.reject(refreshError);
     } finally {

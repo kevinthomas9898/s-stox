@@ -11,7 +11,7 @@ import * as z from "zod";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { login } from "@/lib/services/auth";
+import { login, secure } from "@/lib/services/auth";
 import { setCredentials } from "@/store/slices/authSlice";
 
 const loginSchema = z.object({
@@ -44,18 +44,23 @@ export default function LoginPage() {
     setServerError("");
 
     try {
-      const response = await login({
-        email: data.email,
-        password: data.password,
-      });
-
+      const response = await login(data);
+      
       if (response.status !== 'success') {
         throw new Error(response.message || "Login failed");
       }
 
+      const responseData = response.data || (response as any).Data;
+      const jwtToken = responseData.jwtToken || responseData.JwtToken;
+      const refreshToken = responseData.refreshToken || responseData.RefreshToken;
+      const user = responseData.user || responseData.User;
+
+      // Store tokens in Redux/LocalStorage
       dispatch(setCredentials({ 
-        jwtToken: response.data.jwtToken || (response.data as any).JwtToken,
-        refreshToken: response.data.refreshToken || (response.data as any).RefreshToken
+        user,
+        jwtToken,
+        refreshToken,
+        isAuthenticated: true 
       }));
 
       router.push("/");

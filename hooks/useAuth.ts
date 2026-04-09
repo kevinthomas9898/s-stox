@@ -8,7 +8,7 @@ import type { LoginCredentials } from '@/types';
 
 /**
  * Custom hook exposing auth state and actions.
- * Access token lives in Redux (memory only) — never in localStorage.
+ * Tokens are handled securely via HTTP-only cookies.
  */
 export function useAuth() {
   const dispatch = useAppDispatch();
@@ -20,10 +20,8 @@ export function useAuth() {
     async (credentials: LoginCredentials) => {
       try {
         const response = await loginService(credentials);
-        const { data } = response;
         dispatch(setCredentials({ 
-          jwtToken: data.jwtToken || (data as any).JwtToken, 
-          refreshToken: data.refreshToken || (data as any).RefreshToken
+          user: response.data.user
         }));
       } catch (error) {
         console.error('Login error:', error);

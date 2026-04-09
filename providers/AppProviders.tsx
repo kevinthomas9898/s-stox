@@ -1,51 +1,65 @@
 'use client';
 
 import { useEffect } from 'react';
+import { PersistGate } from 'redux-persist/integration/react';
 import ReduxProvider from './ReduxProvider';
 import QueryProvider from './QueryProvider';
-import { useAppDispatch } from '@/store';
-import { setCredentials, setLoading, logout } from '@/store/slices/authSlice';
-import { refreshToken } from '@/lib/services/auth';
+import { useAppDispatch, useAppSelector, persistor } from '@/store';
+import { setCredentials, setLoading, logout as logoutAction } from '@/store/slices/authSlice';
+import { refreshToken as refreshTokenService, secure as fetchUserProfile } from '@/lib/services/auth';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
 import axios from 'axios';
 
 /**
  * Re-validates the session on every app load by calling /auth/refreshToken.
- * - If the refresh token cookie is valid → stores fresh jwtToken in Redux.
- * - If the server returns 401 → session is expired, call logout() to clear state.
- * - If the request fails for any other reason (network error, server down) →
- *   do NOT logout; keep persisted isAuthenticated/user so the UI stays intact.
- *   The token will be re-fetched on the next API call via the 401 interceptor.
+ * - If the refresh token cookie is valid → backend returns 200 → mark as authenticated.
+ * - If the server returns 401 → session is expired or missing, clear auth state.
  */
 function AuthInitializer({ children }: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();
+  const { refreshToken, user, isAuthenticated } = useAppSelector((state) => state.auth);
+  const isLoadingPersist = useAppSelector((state) => state.auth.isLoading);
 
   useEffect(() => {
+    // Skip API hit for obviously unauthenticated users (guests)
+    // We only try to restore the session if we have previous evidence of a login
+    if (!isAuthenticated && !refreshToken) {
+      if (isLoadingPersist) {
+        dispatch(setLoading(false));
+      }
+      return;
+    }
+
     const initAuth = async () => {
       try {
-        const response = await refreshToken();
-        const responseData = response.data || response;
-        const newJwt = responseData.jwtToken || (responseData as any).JwtToken;
-        const newRefresh = responseData.refreshToken || (responseData as any).RefreshToken;
-
-        dispatch(setCredentials({ 
-          jwtToken: newJwt, 
-          refreshToken: newRefresh 
-        }));
+        await refreshTokenService(refreshToken || undefined);
+        
+        // If session is restored, fetch the latest user profile if not already present
+        if (!user) {
+          try {
+            const userData = await fetchUserProfile();
+            dispatch(setCredentials({ user: userData, isAuthenticated: true }));
+          } catch {
+            // Fallback: mark authenticated even if profile fetch fails
+            dispatch(setCredentials({ user: null, isAuthenticated: true }));
+          }
+        } else {
+          // Keep existing user info
+          dispatch(setCredentials({ user, isAuthenticated: true }));
+        }
       } catch (error) {
         if (axios.isAxiosError(error) && error.response?.status === 401) {
-          // Refresh token is expired/invalid — clear auth state
-          dispatch(logout());
+          // Cookies are missing or expired
+          dispatch(logoutAction());
         } else {
-          // Network error or server issue — don't clear auth
-          // Just mark loading as done and keep persisted state
+          // Network error or server issue — keep persisted state if it exists
           dispatch(setLoading(false));
         }
       }
     };
 
     initAuth();
-  }, [dispatch]);
+  }, [dispatch]); // Only run on mount to initialize session
 
   return <>{children}</>;
 }
@@ -61,12 +75,14 @@ export default function AppProviders({
 }) {
   return (
     <ReduxProvider>
-      <QueryProvider>
-        <AuthInitializer>
-          {children}
-          <ScrollToTopButton />
-        </AuthInitializer>
-      </QueryProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <QueryProvider>
+          <AuthInitializer>
+            {children}
+            <ScrollToTopButton />
+          </AuthInitializer>
+        </QueryProvider>
+      </PersistGate>
     </ReduxProvider>
   );
 }

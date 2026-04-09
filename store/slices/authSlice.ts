@@ -1,10 +1,11 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { AuthState, User } from '@/types';
+import { normalizeToken, normalizeBoolean } from '@/lib/utils/authUtils';
 
 const initialState: AuthState = {
+  user: null,
   jwtToken: null,
   refreshToken: null,
-  user: null,
   isAuthenticated: false,
   isLoading: true,
 };
@@ -15,27 +16,24 @@ const authSlice = createSlice({
   reducers: {
     setCredentials: (
       state,
-      action: PayloadAction<{ jwtToken: string; refreshToken?: string; user?: User | null }>,
+      action: PayloadAction<{ 
+        user: User | null; 
+        jwtToken?: string | null; 
+        refreshToken?: string | null;
+        isAuthenticated?: boolean | string;
+      }>,
     ) => {
-      state.jwtToken = action.payload.jwtToken;
-      if (action.payload.refreshToken) {
-        state.refreshToken = action.payload.refreshToken;
-      }
-      // Only update user if explicitly provided in payload.
-      // Token refresh calls do not include user, so preserve existing user.
-      if (action.payload.user !== undefined) {
-        state.user = action.payload.user;
-      }
-      state.isAuthenticated = true;
+      state.user = action.payload.user;
+      state.jwtToken = normalizeToken(action.payload.jwtToken ?? state.jwtToken);
+      state.refreshToken = normalizeToken(action.payload.refreshToken ?? state.refreshToken);
+      const isAuth = action.payload.isAuthenticated ?? !!(action.payload.jwtToken || state.jwtToken);
+      state.isAuthenticated = normalizeBoolean(isAuth);
       state.isLoading = false;
     },
-    setJwtToken: (state, action: PayloadAction<string>) => {
-      state.jwtToken = action.payload;
-    },
     logout: (state) => {
+      state.user = null;
       state.jwtToken = null;
       state.refreshToken = null;
-      state.user = null;
       state.isAuthenticated = false;
       state.isLoading = false;
     },
@@ -45,6 +43,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { setCredentials, setJwtToken, logout, setLoading } =
+export const { setCredentials, logout, setLoading } =
   authSlice.actions;
 export default authSlice.reducer;

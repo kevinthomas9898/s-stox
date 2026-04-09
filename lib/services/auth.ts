@@ -1,10 +1,9 @@
-import { store } from '@/store';
 import api from '@/lib/api/axiosInstance';
-import type { ApiResponse, AuthResponse, LoginCredentials } from '@/types';
+import type { ApiResponse, AuthResponse, LoginCredentials, User } from '@/types';
 
 /**
  * Login with email and password.
- * Backend returns jwtToken and refreshToken.
+ * Backend sets jwtToken and refreshToken cookies automatically.
  */
 export async function login(
   credentials: LoginCredentials,
@@ -18,26 +17,30 @@ export async function login(
 
 /**
  * Refresh the access token.
- * Refresh token is sent in the request body.
+ * Sends the refreshToken in the body as required by the backend.
  */
-export async function refreshToken(): Promise<AuthResponse> {
-  const { refreshToken } = store.getState().auth;
-  const { data } = await api.post<AuthResponse>('/auth/refreshToken', { refreshToken });
+export async function refreshToken(token?: string): Promise<AuthResponse> {
+  const { data } = await api.post<AuthResponse>('/auth/refreshToken', { 
+    refreshToken: token 
+  });
   return data;
 }
 
 /**
  * Logout the user.
- * Backend clears the refresh token cookie.
+ * Backend clears cookies.
  */
 export async function logoutUser(): Promise<void> {
   await api.post('/auth/logout');
 }
 
 /**
- * Test secure endpoint (requires authentication).
+ * Session restoration endpoint.
+ * Backend reads cookies and returns current user info.
  */
-export async function secure(): Promise<unknown> {
-  const { data } = await api.get<ApiResponse<unknown>>('/auth/secure');
-  return data.data;
+export async function secure(): Promise<User> {
+  const { data } = await api.get<ApiResponse<User>>('/auth/secure');
+  // Handle both { data: { ... } } and { Data: { ... } } if backend varies
+  const responseData = (data as any).data || (data as any).Data || data;
+  return responseData;
 }

@@ -32,12 +32,12 @@ const storage =
 
 // ── Persist config ──
 // version: 1 — bumped from default (-1) to auto-purge any old/corrupted data in localStorage.
-// whitelist — only 'isAuthenticated', 'user', and 'refreshToken' are persisted ('jwtToken' is never stored for security).
+// whitelist — persisted across page reloads via localStorage.
 const authPersistConfig = {
   key: 'auth',
   version: 1,
   storage,
-  whitelist: ['isAuthenticated', 'user', 'refreshToken'],
+  whitelist: ['isAuthenticated', 'user', 'jwtToken', 'refreshToken'],
 };
 
 const rootReducer = combineReducers({
