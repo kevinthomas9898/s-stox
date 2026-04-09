@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 interface RegisterFormData {
   name: string;
@@ -30,7 +31,9 @@ export default function RegisterPage() {
     setError("");
 
     if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match");
+      const message = "Passwords do not match";
+      setError(message);
+      toast.error(message);
       setIsLoading(false);
       return;
     }
@@ -51,9 +54,12 @@ export default function RegisterPage() {
         throw new Error(data.message || "Registration failed");
       }
 
+      toast.success("Registration successful! Please log in.");
       router.push("/login");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Registration failed");
+      const message = err instanceof Error ? err.message : "Registration failed";
+      setError(message);
+      toast.error(message);
     } finally {
       setIsLoading(false);
     }

@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector, persistor } from '@/store';
 import { setCredentials, setLoading, logout as logoutAction } from '@/store/slices/authSlice';
 import { refreshToken as refreshTokenService, secure as fetchUserProfile } from '@/lib/services/auth';
 import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
+import { Toaster } from 'sonner';
 import axios from 'axios';
 
 /**
@@ -80,6 +81,7 @@ export default function AppProviders({
           <AuthInitializer>
             {children}
             <ScrollToTopButton />
+            <Toaster position="top-right" richColors />
           </AuthInitializer>
         </QueryProvider>
       </PersistGate>

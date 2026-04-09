@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { login, secure } from "@/lib/services/auth";
 import { setCredentials } from "@/store/slices/authSlice";
+import { toast } from "sonner";
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -63,9 +64,12 @@ export default function LoginPage() {
         isAuthenticated: true 
       }));
 
+      toast.success("Login successful!");
       router.push("/");
     } catch (err) {
-      setServerError(err instanceof Error ? err.message : "Login failed");
+      const message = err instanceof Error ? err.message : "Login failed";
+      setServerError(message);
+      toast.error(message);
     } finally {
       setIsLoading(false);
     }
