@@ -21,7 +21,10 @@ export function useAuth() {
       try {
         const response = await loginService(credentials);
         const { data } = response;
-        dispatch(setCredentials({ jwtToken: data.jwtToken }));
+        dispatch(setCredentials({ 
+          jwtToken: data.jwtToken || (data as any).JwtToken, 
+          refreshToken: data.refreshToken || (data as any).RefreshToken
+        }));
       } catch (error) {
         console.error('Login error:', error);
         throw error;

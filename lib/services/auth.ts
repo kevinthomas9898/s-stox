@@ -1,9 +1,10 @@
+import { store } from '@/store';
 import api from '@/lib/api/axiosInstance';
 import type { ApiResponse, AuthResponse, LoginCredentials } from '@/types';
 
 /**
  * Login with email and password.
- * Backend sets refresh token as HTTP-only cookie.
+ * Backend returns jwtToken and refreshToken.
  */
 export async function login(
   credentials: LoginCredentials,
@@ -17,10 +18,11 @@ export async function login(
 
 /**
  * Refresh the access token.
- * Refresh token is sent automatically via HTTP-only cookie.
+ * Refresh token is sent in the request body.
  */
 export async function refreshToken(): Promise<AuthResponse> {
-  const { data } = await api.post<AuthResponse>('/auth/refreshToken');
+  const { refreshToken } = store.getState().auth;
+  const { data } = await api.post<AuthResponse>('/auth/refreshToken', { refreshToken });
   return data;
 }
 

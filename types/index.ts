@@ -9,6 +9,7 @@ export interface User {
 // ── Auth ──
 export interface AuthState {
   jwtToken: string | null;
+  refreshToken: string | null;
   user: User | null;
   isAuthenticated: boolean;
   isLoading: boolean;

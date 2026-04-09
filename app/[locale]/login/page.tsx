@@ -4,43 +4,66 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { login } from "@/lib/services/auth";
 import { setCredentials } from "@/store/slices/authSlice";
-import type { LoginCredentials } from "@/types";
+
+const loginSchema = z.object({
+  email: z.string().email("Please enter a valid email address"),
+  password: z.string().min(4, "Password must be at least 4 characters"),
+});
+
+type LoginFormValues = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
   const router = useRouter();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [formData, setFormData] = useState<LoginCredentials>({
-    email: "",
-    password: "",
+  const [serverError, setServerError] = useState("");
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: LoginFormValues) => {
     setIsLoading(true);
-    setError("");
+    setServerError("");
 
     try {
-      const response = await login(formData);
+      const response = await login({
+        email: data.email,
+        password: data.password,
+      });
+
       if (response.status !== 'success') {
         throw new Error(response.message || "Login failed");
       }
-      dispatch(setCredentials({ jwtToken: response.data.jwtToken }));
+
+      dispatch(setCredentials({ 
+        jwtToken: response.data.jwtToken || (response.data as any).JwtToken,
+        refreshToken: response.data.refreshToken || (response.data as any).RefreshToken
+      }));
+
       router.push("/");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Login failed");
+      setServerError(err instanceof Error ? err.message : "Login failed");
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
@@ -50,36 +73,33 @@ export default function LoginPage() {
           <CardTitle className="text-white text-center">Login</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm text-gray-300 mb-1">Email</label>
-              <input
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <div className="space-y-2">
+              <label className="block text-sm text-gray-300">Email</label>
+              <Input
                 type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white focus:outline-none focus:border-[#00D094]"
+                {...register("email")}
+                error={errors.email?.message}
+                placeholder="Enter your email"
               />
             </div>
-            <div>
-              <label className="block text-sm text-gray-300 mb-1">Password</label>
-              <input
+            <div className="space-y-2">
+              <label className="block text-sm text-gray-300">Password</label>
+              <Input
                 type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white focus:outline-none focus:border-[#00D094]"
+                {...register("password")}
+                error={errors.password?.message}
+                placeholder="Enter your password"
               />
             </div>
-            {error && (
-              <p className="text-red-400 text-sm">{error}</p>
+            {serverError && (
+              <p className="text-red-400 text-sm">{serverError}</p>
             )}
             <Button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-[#00D094] text-gray-900 hover:bg-[#00c985]"
+              variant="auth"
+              className="w-full"
             >
               {isLoading ? "Logging in..." : "Login"}
             </Button>

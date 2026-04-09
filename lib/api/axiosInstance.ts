@@ -1,6 +1,6 @@
 import axios, { type InternalAxiosRequestConfig } from 'axios';
 import { store } from '@/store';
-import { setJwtToken, logout } from '@/store/slices/authSlice';
+import { setCredentials, logout } from '@/store/slices/authSlice';
 
 // ── Axios Instance ──
 const api = axios.create({
@@ -68,17 +68,19 @@ api.interceptors.response.use(
     isRefreshing = true;
 
     try {
-      // Call the refresh endpoint — cookies are sent automatically
+      const { refreshToken } = store.getState().auth;
+      // Call the refresh endpoint — send refreshToken in body
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/auth/refreshToken`,
-        {},
+        { refreshToken },
         { withCredentials: true },
       );
 
-      const newToken: string = data.data.jwtToken;
+      const newToken: string = data.data.jwtToken || data.data.JwtToken;
+      const newRefreshToken: string = data.data.refreshToken || data.data.RefreshToken;
 
-      // Update Redux store with the new token
-      store.dispatch(setJwtToken(newToken));
+      // Update Redux store with the new tokens
+      store.dispatch(setCredentials({ jwtToken: newToken, refreshToken: newRefreshToken }));
 
       // Process all queued requests with the new token
       processQueue(null, newToken);

@@ -30,7 +30,7 @@ export default function Navbar() {
   const common = useTranslations("common");
   const dispatch = useDispatch();
   const auth = useSelector((state: RootState) => state.auth);
-  const isAuthenticated = auth.jwtToken !== null;
+  const { isAuthenticated, isLoading } = auth;
   const pathname = usePathname();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -131,7 +131,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           {/* Desktop Auth */}
           <div className="hidden xl:flex items-center gap-3">
-            {isAuthenticated ? (
+            {isLoading ? null : isAuthenticated ? (
               <button
                 onClick={handleLogout}
                 className="text-sm font-medium px-6 py-2 rounded-full bg-[#2A73EA] text-white hover:bg-[#1a5fc7] transition-colors"
@@ -229,7 +229,7 @@ export default function Navbar() {
 
               {/* Auth Buttons */}
               <div className="flex flex-col gap-4 pt-8 mt-8 border-t border-white/10 px-6">
-                {isAuthenticated ? (
+                {isLoading ? null : isAuthenticated ? (
                   <button
                     onClick={() => {
                       handleLogout();
@@ -265,3 +265,4 @@ export default function Navbar() {
     </header>
   );
 }
+

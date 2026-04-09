@@ -3,6 +3,7 @@ import type { AuthState, User } from '@/types';
 
 const initialState: AuthState = {
   jwtToken: null,
+  refreshToken: null,
   user: null,
   isAuthenticated: false,
   isLoading: true,
@@ -14,10 +15,17 @@ const authSlice = createSlice({
   reducers: {
     setCredentials: (
       state,
-      action: PayloadAction<{ jwtToken: string; user?: User | null }>,
+      action: PayloadAction<{ jwtToken: string; refreshToken?: string; user?: User | null }>,
     ) => {
       state.jwtToken = action.payload.jwtToken;
-      state.user = action.payload.user || null;
+      if (action.payload.refreshToken) {
+        state.refreshToken = action.payload.refreshToken;
+      }
+      // Only update user if explicitly provided in payload.
+      // Token refresh calls do not include user, so preserve existing user.
+      if (action.payload.user !== undefined) {
+        state.user = action.payload.user;
+      }
       state.isAuthenticated = true;
       state.isLoading = false;
     },
@@ -26,6 +34,7 @@ const authSlice = createSlice({
     },
     logout: (state) => {
       state.jwtToken = null;
+      state.refreshToken = null;
       state.user = null;
       state.isAuthenticated = false;
       state.isLoading = false;
