@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -9,10 +9,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { TextInput } from "@/components/ui/TextInput";
+import { PrimaryBTN } from "@/components/ui/PrimaryBTN";
 import { setCredentials } from "@/store/slices/authSlice";
-import { setAuthCookies, getJwtToken, decodeJwt } from "@/lib/utils/cookies";
+import { setAuthCookies, decodeJwt } from "@/lib/utils/cookies";
 import { login } from "@/lib/services/auth";
 import { toast } from "sonner";
 
@@ -26,21 +26,12 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 export default function LoginPage() {
   const router = useRouter();
   const dispatch = useDispatch();
-
-  // Redirect if already logged in (has valid token cookie)
-  useEffect(() => {
-    const token = getJwtToken();
-    if (token) {
-      router.push('/');
-    }
-  }, [router]);
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState("");
 
   const {
-    register,
+    control,
     handleSubmit,
-    formState: { errors },
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -99,35 +90,29 @@ export default function LoginPage() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div className="space-y-2">
-              <label className="block text-sm text-gray-300">Email</label>
-              <Input
-                type="email"
-                {...register("email")}
-                error={errors.email?.message}
-                placeholder="Enter your email"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="block text-sm text-gray-300">Password</label>
-              <Input
-                type="password"
-                {...register("password")}
-                error={errors.password?.message}
-                placeholder="Enter your password"
-              />
-            </div>
+            <TextInput
+              name="email"
+              control={control}
+              label="Email"
+              type="email"
+              placeholder="Enter your email"
+            />
+            <TextInput
+              name="password"
+              control={control}
+              label="Password"
+              type="password"
+              placeholder="Enter your password"
+            />
             {serverError && (
               <p className="text-red-400 text-sm">{serverError}</p>
             )}
-            <Button
+            <PrimaryBTN
               type="submit"
-              disabled={isLoading}
-              variant="auth"
-              className="w-full"
+              loading={isLoading}
             >
-              {isLoading ? "Logging in..." : "Login"}
-            </Button>
+              Login
+            </PrimaryBTN>
           </form>
           <p className="text-center text-gray-400 text-sm mt-4">
             Don&apos;t have an account?{" "}
