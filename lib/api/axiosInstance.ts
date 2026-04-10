@@ -4,7 +4,7 @@ import { logout } from '@/store/slices/authSlice';
 import { getJwtToken, getAuthCookies, setAuthCookies, clearAuthCookies } from '@/lib/utils/cookies';
 
 // const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://8.211.43.168/api';
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.smartstoxglobal.com/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://api.smartstoxglobal.com/api';
 
 // ── Axios Instance ──
 const api = axios.create({
