@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { Link } from "@/i18n/navigation";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -21,16 +20,13 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { IoIosArrowDown } from "react-icons/io";
-import { logout } from "@/store/slices/authSlice";
-import type { RootState } from "@/store";
+import { useAuth } from "@/hooks/useAuth";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 
 export default function Navbar() {
   const t = useTranslations("nav");
   const common = useTranslations("common");
-  const dispatch = useDispatch();
-  const auth = useSelector((state: RootState) => state.auth);
-  const { isAuthenticated, isLoading } = auth;
+  const { logout: handleLogout, isAuthenticated, isLoading } = useAuth();
   const pathname = usePathname();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -44,10 +40,6 @@ export default function Navbar() {
       return normalizedPath === "/";
     }
     return normalizedPath === href || normalizedPath.startsWith(`${href}/`);
-  };
-
-  const handleLogout = () => {
-    dispatch(logout());
   };
 
   const navLinks = [
@@ -133,7 +125,7 @@ export default function Navbar() {
           <div className="hidden xl:flex items-center gap-3">
             {isLoading ? null : isAuthenticated ? (
               <button
-                onClick={handleLogout}
+                onClick={() => handleLogout()}
                 className="text-sm font-medium px-6 py-2 rounded-full bg-[#2A73EA] text-white hover:bg-[#1a5fc7] transition-colors"
               >
                 Logout
@@ -231,8 +223,8 @@ export default function Navbar() {
               <div className="flex flex-col gap-4 pt-8 mt-8 border-t border-white/10 px-6">
                 {isLoading ? null : isAuthenticated ? (
                   <button
-                    onClick={() => {
-                      handleLogout();
+                    onClick={async () => {
+                      await handleLogout();
                       setIsOpen(false);
                     }}
                     className="w-full text-center text-lg font-medium px-6 py-3 rounded-xl bg-[#2A73EA] text-white hover:bg-[#1a5fc7] transition-colors"

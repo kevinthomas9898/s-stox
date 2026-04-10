@@ -3,7 +3,7 @@ import type { ApiResponse, AuthResponse, LoginCredentials, User } from '@/types'
 
 /**
  * Login with email and password.
- * Backend sets jwtToken and refreshToken cookies automatically.
+ * Returns jwtToken and refreshToken in response (frontend sets cookies).
  */
 export async function login(
   credentials: LoginCredentials,
@@ -17,12 +17,10 @@ export async function login(
 
 /**
  * Refresh the access token.
- * Sends the refreshToken in the body as required by the backend.
+ * Refresh token is sent via HTTP-only cookie.
  */
-export async function refreshToken(token?: string): Promise<AuthResponse> {
-  const { data } = await api.post<AuthResponse>('/auth/refreshToken', { 
-    refreshToken: token 
-  });
+export async function refreshToken(): Promise<AuthResponse> {
+  const { data } = await api.post<AuthResponse>('/auth/refreshToken');
   return data;
 }
 
@@ -31,7 +29,7 @@ export async function refreshToken(token?: string): Promise<AuthResponse> {
  * Backend clears cookies.
  */
 export async function logoutUser(): Promise<void> {
-  await api.post('/auth/logout');
+  await api.post('/auth/logout', {}); // Backend requires non-empty body
 }
 
 /**

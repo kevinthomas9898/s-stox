@@ -1,6 +1,7 @@
 import axios, { type InternalAxiosRequestConfig } from 'axios';
 import { store } from '@/store';
-import { setCredentials, logout } from '@/store/slices/authSlice';
+import { logout } from '@/store/slices/authSlice';
+import { getJwtToken, getAuthCookies, setAuthCookies, clearAuthCookies } from '@/lib/utils/cookies';
 
 // ── Axios Instance ──
 const api = axios.create({
@@ -8,34 +9,34 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true, // Send cookies (refresh token) with every request
 });
 
 // ── Request Interceptor ──
+// Add JWT token from cookie to Authorization header
 api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    const { jwtToken } = store.getState().auth;
-    if (jwtToken) {
-      config.headers.Authorization = `Bearer ${jwtToken}`;
+    const token = getJwtToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
   (error) => Promise.reject(error),
 );
 
-// ── Response Interceptor (401 Handling + Refresh Queue) ──
+// ── Response Interceptor (401 Handling + Token Refresh) ──
 let isRefreshing = false;
 let failedQueue: Array<{
-  resolve: () => void;
+  resolve: (token: string) => void;
   reject: (error: unknown) => void;
 }> = [];
 
-const processQueue = (error: unknown) => {
+const processQueue = (error: unknown, token: string | null = null) => {
   failedQueue.forEach(({ resolve, reject }) => {
     if (error) {
       reject(error);
-    } else {
-      resolve();
+    } else if (token) {
+      resolve(token);
     }
   });
   failedQueue = [];
@@ -51,9 +52,10 @@ api.interceptors.response.use(
     }
 
     if (isRefreshing) {
-      return new Promise<void>((resolve, reject) => {
+      return new Promise<string>((resolve, reject) => {
         failedQueue.push({ resolve, reject });
-      }).then(() => {
+      }).then((token) => {
+        originalRequest.headers.Authorization = `Bearer ${token}`;
         return api(originalRequest);
       });
     }
@@ -62,30 +64,36 @@ api.interceptors.response.use(
     isRefreshing = true;
 
     try {
-      const { refreshToken } = store.getState().auth;
+      const { refreshToken } = getAuthCookies();
+      
+      if (!refreshToken) {
+        throw new Error('No refresh token available');
+      }
+
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/auth/refreshToken`,
-        { refreshToken: refreshToken }, // Pass token in body to avoid 415 error
-        { 
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true 
-        },
+        { refreshToken },
+        { headers: { 'Content-Type': 'application/json' } },
       );
 
       const responseData = data.data || data;
       const newJwt = responseData.jwtToken || responseData.JwtToken;
       const newRefresh = responseData.refreshToken || responseData.RefreshToken;
 
-      store.dispatch(setCredentials({ 
-        user: store.getState().auth.user,
-        jwtToken: newJwt, 
-        refreshToken: newRefresh 
-      }));
+      // Update cookies with new tokens
+      if (newJwt && newRefresh) {
+        setAuthCookies(newJwt, newRefresh);
+      }
 
-      processQueue(null);
+      processQueue(null, newJwt);
+      
+      if (originalRequest.headers) {
+        originalRequest.headers.Authorization = `Bearer ${newJwt}`;
+      }
       return api(originalRequest);
     } catch (refreshError) {
-      processQueue(refreshError);
+      processQueue(refreshError, null);
+      clearAuthCookies();
       store.dispatch(logout());
       return Promise.reject(refreshError);
     } finally {

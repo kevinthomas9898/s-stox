@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import api from "@/lib/api/axiosInstance";
 
 interface RegisterFormData {
   name: string;
@@ -39,25 +40,22 @@ export default function RegisterPage() {
     }
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          password: formData.password,
-        }),
+      const response = await api.post('/auth/register', {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
       });
 
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.message || "Registration failed");
+      const result = response.data;
+
+      if (result.status !== "success") {
+        throw new Error(result.message || "Registration failed");
       }
 
-      toast.success("Registration successful! Please log in.");
+      toast.success("Registration successful! Please login.");
       router.push("/login");
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "Registration failed";
+    } catch (err: any) {
+      const message = err?.response?.data?.message || err?.message || "Registration failed";
       setError(message);
       toast.error(message);
     } finally {

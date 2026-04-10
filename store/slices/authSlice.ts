@@ -1,11 +1,8 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { AuthState, User } from '@/types';
-import { normalizeToken, normalizeBoolean } from '@/lib/utils/authUtils';
 
 const initialState: AuthState = {
   user: null,
-  jwtToken: null,
-  refreshToken: null,
   isAuthenticated: false,
   isLoading: true,
 };
@@ -18,22 +15,15 @@ const authSlice = createSlice({
       state,
       action: PayloadAction<{ 
         user: User | null; 
-        jwtToken?: string | null; 
-        refreshToken?: string | null;
-        isAuthenticated?: boolean | string;
+        isAuthenticated?: boolean;
       }>,
     ) => {
       state.user = action.payload.user;
-      state.jwtToken = normalizeToken(action.payload.jwtToken ?? state.jwtToken);
-      state.refreshToken = normalizeToken(action.payload.refreshToken ?? state.refreshToken);
-      const isAuth = action.payload.isAuthenticated ?? !!(action.payload.jwtToken || state.jwtToken);
-      state.isAuthenticated = normalizeBoolean(isAuth);
+      state.isAuthenticated = action.payload.isAuthenticated ?? false;
       state.isLoading = false;
     },
     logout: (state) => {
       state.user = null;
-      state.jwtToken = null;
-      state.refreshToken = null;
       state.isAuthenticated = false;
       state.isLoading = false;
     },

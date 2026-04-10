@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -11,8 +11,9 @@ import * as z from "zod";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { login, secure } from "@/lib/services/auth";
 import { setCredentials } from "@/store/slices/authSlice";
+import { setAuthCookies, getJwtToken, decodeJwt } from "@/lib/utils/cookies";
+import { login } from "@/lib/services/auth";
 import { toast } from "sonner";
 
 const loginSchema = z.object({
@@ -25,6 +26,14 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 export default function LoginPage() {
   const router = useRouter();
   const dispatch = useDispatch();
+
+  // Redirect if already logged in (has valid token cookie)
+  useEffect(() => {
+    const token = getJwtToken();
+    if (token) {
+      router.push('/');
+    }
+  }, [router]);
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState("");
 
@@ -45,23 +54,30 @@ export default function LoginPage() {
     setServerError("");
 
     try {
-      const response = await login(data);
-      
-      if (response.status !== 'success') {
-        throw new Error(response.message || "Login failed");
+      const result = await login({ email: data.email, password: data.password });
+
+      // Extract tokens from response
+      const { jwtToken, refreshToken } = result.data || {};
+
+      if (!jwtToken || !refreshToken) {
+        throw new Error("Invalid response from server");
       }
 
-      const responseData = response.data || (response as any).Data;
-      const jwtToken = responseData.jwtToken || responseData.JwtToken;
-      const refreshToken = responseData.refreshToken || responseData.RefreshToken;
-      const user = responseData.user || responseData.User;
+      // Decode JWT to get user info
+      const tokenPayload = decodeJwt(jwtToken);
+      if (!tokenPayload) {
+        throw new Error("Invalid JWT token");
+      }
+      const userId = tokenPayload.UserId || '';
+      const userEmail = data.email;
 
-      // Store tokens in Redux/LocalStorage
-      dispatch(setCredentials({ 
-        user,
-        jwtToken,
-        refreshToken,
-        isAuthenticated: true 
+      // Store tokens in cookies (with email for persistence)
+      setAuthCookies(jwtToken, refreshToken, userEmail);
+
+      // Store user info in Redux
+      dispatch(setCredentials({
+        user: { id: userId, email: userEmail, name: userEmail },
+        isAuthenticated: true,
       }));
 
       toast.success("Login successful!");
