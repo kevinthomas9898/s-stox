@@ -20,7 +20,7 @@ export default function AppProviders({
       <QueryProvider>
         {children}
         <ScrollToTopButton />
-        <Toaster position="top-right" richColors />
+        <Toaster position="top-right" richColors closeButton />
       </QueryProvider>
     </ReduxProvider>
   );
