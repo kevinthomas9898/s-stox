@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/store';
 import { logout as logoutAction, setCredentials, setLoading } from '@/store/slices/authSlice';
 import { getJwtToken, clearAuthCookies, decodeJwt, getUserEmail } from '@/lib/utils/cookies';
 import { logoutUser } from '@/lib/services/auth';
+import { toast } from 'sonner';
 import type { LoginCredentials } from '@/types';
 
 /**
@@ -52,6 +53,8 @@ export function useAuth() {
     clearAuthCookies();
     // Clear Redux state
     dispatch(logoutAction());
+    // Show toast
+    toast.success('Logged out successfully');
     // Call backend logout
     try {
       await logoutUser();
