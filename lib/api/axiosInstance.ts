@@ -3,9 +3,11 @@ import { store } from '@/store';
 import { logout } from '@/store/slices/authSlice';
 import { getJwtToken, getAuthCookies, setAuthCookies, clearAuthCookies } from '@/lib/utils/cookies';
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://8.211.43.168/api';
+
 // ── Axios Instance ──
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -71,7 +73,7 @@ api.interceptors.response.use(
       }
 
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/auth/refreshToken`,
+        `${API_BASE_URL}/auth/refreshToken`,
         { refreshToken },
         { headers: { 'Content-Type': 'application/json' } },
       );
