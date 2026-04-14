@@ -123,3 +123,32 @@ body {
     @apply font-sans;
   }
 }
+
+/* ========= Fade out animation for gradient overlay ========= */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Scroll-linked animation */
+.gradient-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  width: 30%;
+
+  background: linear-gradient(
+    to right,
+    rgba(1, 41, 153, 0.4),
+    transparent
+  );
+
+  animation: fadeOut linear forwards;
+  animation-timeline: scroll(root);
+  animation-range: 0vh 400vh;
+}
+/* ============================================================ */

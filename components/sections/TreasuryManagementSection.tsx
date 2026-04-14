@@ -1,12 +1,10 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Typography } from '@/components/ui/typography';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
+import { getTranslations } from "next-intl/server";
 
-export default function TreasuryManagementSection() {
-  const t = useTranslations('treasuryManagement');
+export default async function TreasuryManagementSection() {
+  const t = await getTranslations('treasuryManagement');
 
   const cards = [
     {
@@ -59,7 +57,7 @@ export default function TreasuryManagementSection() {
               {card.number}
             </span>
 
-            <div className="relative z-10 flex flex-col flex-grow">
+            <div className="relative z-10 flex flex-col grow">
 
               {/* Icon */}
               <div className="w-12 h-12 md:w-14 md:h-14 mb-4">

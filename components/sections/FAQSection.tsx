@@ -1,6 +1,3 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
 import {
   Accordion,
   AccordionContent,
@@ -8,9 +5,10 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Typography } from '@/components/ui/typography';
+import { getTranslations } from "next-intl/server";
 
-export default function FAQSection() {
-  const t = useTranslations('faq');
+export default async function FAQSection() {
+  const t = await getTranslations('faq');
 
   const faqs = [1, 2, 3, 4, 5, 6, 7, 8].map(i => ({
     q: t(`q${i}` as any),

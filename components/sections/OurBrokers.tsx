@@ -1,10 +1,10 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from "next-intl/server";
 import Image from 'next/image';
 import { Typography } from '@/components/ui/typography';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
 
-export default function OurBrokers() {
-  const t = useTranslations('ourBrokers');
+export default async function OurBrokers() {
+  const t = await getTranslations('ourBrokers');
 
   return (
     <SectionWrapper className="bg-[#0b0f19] py-16 md:py-24">

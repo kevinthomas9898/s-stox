@@ -1,9 +1,9 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from "next-intl/server";
 import Image from 'next/image';
 import { Typography } from '@/components/ui/typography';
 
-export default function TransparentFeesSection() {
-  const t = useTranslations('transparentFees');
+export default async function TransparentFeesSection() {
+  const t = await getTranslations('transparentFees');
 
   return (
     <div className="w-full py-24 bg-[#0b0f19]">

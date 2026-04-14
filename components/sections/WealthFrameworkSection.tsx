@@ -1,9 +1,9 @@
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Typography } from '@/components/ui/typography';
+import { getTranslations } from "next-intl/server";
 
-export default function WealthFrameworkSection() {
-  const t = useTranslations('wealthFramework');
+export default async function WealthFrameworkSection() {
+  const t = await getTranslations('wealthFramework');
 
   const items = [
     {

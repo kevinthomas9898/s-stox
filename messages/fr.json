@@ -16,7 +16,7 @@
     "login": "Connexion",
     "signup": "S'inscrire",
     "wealthCreation": "Création de Richesse",
-    "fractionalCapital": "Investissement en Capital Fractionné",
+    "ventureCapital": "Projets de Capital de Risque",
     "mediaLibrary": "Médiathèque",
     "furtherReading": "Lectures Complémentaires"
   },
@@ -259,9 +259,9 @@
     "title": "Création de Richesse",
     "description": "Découvrez comment SmartStox vous aide à construire une richesse durable grâce à des stratégies d'investissement intelligentes pilotées par l'IA."
   },
-  "fractionalCapital": {
-    "title": "Investissement en Capital Fractionné",
-    "description": "Apprenez-en plus sur notre approche innovante de l'investissement fractionné qui rend les actifs de grande valeur accessibles à tous."
+  "ventureCapital": {
+    "title": "Investissement en Capital de Risque",
+    "description": "Apprenez-en plus sur notre approche innovante de l'investissement en capital de risque qui rend les opportunités de grande valeur accessibles à tous."
   },
   "mediaLibrary": {
     "title": "Médiathèque",
@@ -275,5 +275,141 @@
     "heading": "Quelque Chose de Grand se Prépare",
     "defaultDescription": "Nous travaillons dur pour vous apporter quelque chose d'incroyable. Restez à l'écoute pour les mises à jour !",
     "pricingDescription": "Nous peaufinons nos forfaits tarifaires pour vous garantir la meilleure valeur dans votre parcours de croissance de patrimoine."
+  },
+  "brandAmbassador": {
+    "title": "NOTRE PROGRAMME AMBASSADEUR",
+    "subtitle": "Devenez un Ambassadeur SmartStox & Partagez notre Succès",
+    "heading": "Transformez Votre Réseau en Revenus Récurrents.",
+    "description": "Gagnez des commissions massives à l'avance et des revenus récurrents à long terme en partenariat avec SmartStox.",
+    "benefits": [
+      "Si vous comprenez le trading",
+      "Si vous croyez en l'autonomisation financière",
+      "Si vous voulez des revenus qui augmentent chaque mois"
+    ],
+    "ctaButton": "Postulez Pour Devenir Partenaire SmartStox"
+  },
+  "commissionProgram": {
+    "title": "Ce n'est pas un Programme de Commission Unique.",
+    "subtitle": "Ici Votre Passion Devient Réalité et les Récompenses Suivent"
+  },
+  "ventureCapital": {
+    "titleBefore": "PROJETS DE ",
+    "titleHighlight": "CAPITAL DE RISQUE",
+    "titleAfter": "",
+    "subtitle": "Réinvestissements en Capital de Risque Digitalisé - L'Avenir de la Richesse Intelligente",
+    "cta": "Construisez l'Innovation de Demain. Protégez le Capital d'Aujourd'hui.",
+    "paragraph1": "SmartStox amène l'investissement en capital de risque à l'ère de l'intelligence. Le capital de risque digitalisé permet au capital de participer à l'innovation à forte croissance tout en maintenant des modèles de rendement structurés et rassurants.",
+    "paragraph2": "Au lieu de compter sur la spéculation, les investissements sont sélectionnés et surveillés par une automatisation basée sur les données, filtrant les risques tout en soutenant le progrès économique réel.",
+    "paragraph3": "C'est ici que l'entrepreneuriat audacieux rencontre la sérénité financière - où la technologie travaille tranquillement pour protéger votre richesse pendant qu'elle croît."
+  },
+  "ecosystemGrid": {
+    "items": [
+      {
+        "title": "BrightByte",
+        "paragraphs": [
+          "BrightByte CyberFarming transforme l'énergie renouvelable en production numérique haute performance. En exploitant une infrastructure informatique avancée alimentée par une énergie durable, BrightByte génère des actifs numériques tout en optimisant la rentabilité grâce à des stratégies sophistiquées de gestion de trésorerie.",
+          "Ce modèle de « cyber-agriculture » traite la puissance de calcul comme une culture numérique productive - cultivée à l'aide de systèmes énergétiques efficaces et gérée avec une discipline financière de niveau institutionnel. Le résultat est une plateforme résiliente et évolutive qui convertit l'énergie renouvelable en valeur numérique à long terme."
+        ]
+      },
+      {
+        "title": "DigiProp Participation Immobilière Digitalisée",
+        "paragraphs": [
+          "DigiProp est une plateforme d'investissement alimentée par la blockchain qui permet un accès abordable à l'immobilier mondial grâce à la digitalisation des actifs immobiliers. Spécialisé dans les investissements en unités de stockage dans plusieurs juridictions, DigiProp permet aux investisseurs d'entrer sur le marché avec un faible capital tout en bénéficiant de portefeuilles géographiquement diversifiés qui réduisent le risque régional.",
+          "Grâce à une technologie blockchain sécurisée et transparente, DigiProp simplifie l'investissement immobilier - le rendant accessible, efficace et globalement connecté."
+        ]
+      },
+      {
+        "title": "eServe Global Subscriptions",
+        "paragraphs": [
+          "eServe est un fournisseur mondial de services électroniques améliorant le style de vie sur abonnement.",
+          "Notre réseau de concessionnaires de produits connecte les consommateurs avec des solutions innovantes en CoverTech, FinEd et HealthTech qui autonomisent les individus grâce à l'accès, la commodité et la valeur pour une meilleure qualité de vie."
+        ]
+      },
+      {
+        "title": "OryXFund Actions Digitalisées",
+        "paragraphs": [
+          "OryXFund est une plateforme d'investissement de nouvelle génération qui ouvre la porte à la propriété d'actions de premier ordre grâce à la tokenisation sécurisée sur blockchain. En convertissant les actions de certaines des entreprises les plus établies du monde en jetons numériques, OryXFund permet aux investisseurs d'obtenir une exposition transparente et on-chain aux actions premium - entièrement garantie 1:1 par les titres sous-jacents.",
+          "Cette approche innovante combine la stabilité des marchés traditionnels avec l'accessibilité, la transparence et l'efficacité de la technologie blockchain, rendant la création de richesse mondiale plus inclusive que jamais."
+        ]
+      },
+      {
+        "title": "PayPayYa Plateforme de Paiements Numériques",
+        "paragraphs": [
+          "PayPayYa est une plateforme de paiements numériques de nouvelle génération conçue pour une économie véritablement mondiale. Elle propose des portefeuilles électroniques sécurisés et conviviaux qui permettent aux particuliers et aux entreprises d'envoyer, de recevoir et de stocker des fonds de manière transparente au-delà des frontières. Avec l'intégration de la conversion crypto, les utilisateurs peuvent passer sans effort entre les devises traditionnelles et les actifs numériques.",
+          "Associés à des transferts de fonds mondiaux instantanés, PayPayYa offre un accès financier rapide, flexible et sans frontières - permettant aux utilisateurs d'effectuer des transactions où qu'ils soient, à tout moment."
+        ]
+      },
+      {
+        "title": "Carte Ambassadeur Prosperian",
+        "paragraphs": [
+          "La Carte Ambassadeur Prosperian vous permet de gagner, de dépenser et d'accéder au crédit en toute simplicité. Les ambassadeurs peuvent générer des revenus en présentant les services du Groupe Prosperian Capital à de nouveaux clients, dépenser des cryptomonnaies sans friction chez les commerçants participants, et bénéficier d'une facilité de crédit renouvelable flexible disponible dans la plupart des juridictions.",
+          "C'est votre passerelle pour gagner, dépenser et croître avec Prosperian."
+        ]
+      },
+      {
+        "title": "SmartStox Logiciel de Trading",
+        "paragraphs": [
+          "SmartStox n'est pas qu'un autre outil de trading - c'est un système construit sur l'expérience du monde réel. Chaque algorithme, chaque trade, chaque stratégie de réinvestissement a été testé sur les marchés en direct et affiné pour des performances maximales.",
+          "Notre IA ne dort pas, ne se pose pas de questions et ne laisse pas les émotions interférer - elle exécute des trades disciplinés avec précision, faisant croître votre richesse au fil du temps pendant que vous vivez votre vie."
+        ]
+      },
+      {
+        "title": "Solidi Pièces d'Or Digitalisées",
+        "paragraphs": [
+          "Les Pièces d'Or Digitalisées Solidi offrent un moyen sécurisé et entièrement vérifiable de posséder de l'or à l'ère numérique. Chaque pièce est un jeton de sécurité soutenu par la blockchain, garanti à 100% par de l'or physique détenu en réserve par un dépositaire numérique régulé. Les investisseurs bénéficient de la transparence, de la liquidité et de la commodité de la propriété numérique, tout en maintenant la sécurité et la confiance des détentions d'or traditionnelles."
+        ]
+      }
+    ]
+  },
+  "whoThisIsFor": {
+    "banner": "VOS REVENUS AUGMENTENT À MESURE QUE VOTRE BASE D'INVESTISSEURS CROÎT. - UNE VENTE PAIE UNE FOIS. UN PORTEFEUILLE PAIE TOUJOURS.",
+    "title": "À Qui Ceci Est Destiné",
+    "subtitle": "Nous Recherchons...",
+    "profiles": [
+      { "label": "Professionnels de la Vente" },
+      { "label": "Éducateurs en Trading" },
+      { "label": "Influenceurs en Finance" },
+      { "label": "Leaders Communautaires" },
+      { "label": "Marketeurs Haute Performance" }
+    ],
+    "bottomText1": "Si vous cherchez de \"l'argent facile\", ce n'est pas pour vous.",
+    "bottomText2": "Si vous voulez des récompenses basées sur la performance et des revenus à long terme - continuez à lire"
+  },
+  "howItWorks": {
+    "title": "Comment Ça Marche",
+    "subtitle": "Rejoignez en tant qu'Ambassadeur Gagnant des Commissions",
+    "steps": [
+      {
+        "bold": "Postulez en Ligne Ici et Planifiez Votre Entretien",
+        "normal": "après évaluation électronique réussie de votre candidature."
+      },
+      {
+        "bold": "Participez à la Formation en Ligne",
+        "normal": "et Recevez votre Lien de Suivi & Kit Marketing."
+      },
+      {
+        "bold": "Payez vos Frais Logiciel de $50",
+        "normal": "& Gagnez des Commissions Immédiates + Récurrentes + La Valeur de votre Portefeuille Démo après 3 mois."
+      },
+      {
+        "bold": "Complétez une Semaine",
+        "normal": "d'Induction Réussie en signant 5 Nouveaux Clients SmartStox."
+      },
+      {
+        "bold": "Commencez à Gagner un Salaire de Base",
+        "normal": "de $1,000 par mois plus Commission Immédiate + Commission Récurrente."
+      }
+    ],
+    "qualifyText": "Pour Qualifier pour un Salaire de Base de $1,000 par mois en tant qu'Ambassadeur",
+    "brackets": [
+      {
+        "title": "Ambassadeur Indépendant"
+      },
+      {
+        "title": "Salariés",
+        "subtitle": "Optionnellement"
+      }
+    ],
+    "bottomText": "Critères de Qualification Continus: Ambassadeurs Indépendants: AUM de $ 25,000 - Ambassadeurs Employés: 20 Nouvelles Ventes Consommateurs Par Mois"
   }
 }

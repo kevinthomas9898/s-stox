@@ -51,8 +51,7 @@ export default function Navbar() {
   ];
 
   const moreMenuItems = [
-    { href: "/wealth-creation", label: t("wealthCreation") },
-    { href: "/fractional-capital", label: t("fractionalCapital") },
+    { href: "/venture-capital", label: t("ventureCapital") },
     { href: "/media-library", label: t("mediaLibrary") },
     { href: "/further-reading", label: t("furtherReading") },
   ];

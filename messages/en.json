@@ -16,7 +16,7 @@
     "login": "Login",
     "signup": "Signup",
     "wealthCreation": "Wealth Creation",
-    "fractionalCapital": "Fractional Capital Investment",
+    "ventureCapital": "Venture Capital Projects",
     "mediaLibrary": "Media Library",
     "furtherReading": "Further Reading"
   },
@@ -259,9 +259,9 @@
     "title": "Wealth Creation",
     "description": "Discover how SmartStox helps you build lasting wealth through intelligent AI-driven investment strategies."
   },
-  "fractionalCapital": {
-    "title": "Fractional Capital Investment",
-    "description": "Learn about our innovative approach to fractional investing that makes high-value assets accessible to everyone."
+  "ventureCapital": {
+    "title": "Venture Capital Projects",
+    "description": "Learn about our innovative approach to venture capital projects that make high-value opportunities accessible to everyone."
   },
   "mediaLibrary": {
     "title": "Media Library",
@@ -275,5 +275,141 @@
     "heading": "Something Big is Brewing",
     "defaultDescription": "We're working hard to bring you something amazing. Stay tuned for updates!",
     "pricingDescription": "We're fine-tuning our pricing plans to ensure you get the best value for your wealth growth journey."
+  },
+  "brandAmbassador": {
+    "title": "OUR BRAND AMBASSADOR PROGRAM",
+    "subtitle": "Become a SmartStox Ambassador & Share in our Success",
+    "heading": "Turn Your Network into Recurring Income.",
+    "description": "Earn massive upfront commissions and long-term recurring revenue by partnering with SmartStox.",
+    "benefits": [
+      "If you understand trading",
+      "If you believe in financial empowerment",
+      "If you want income that grows every month"
+    ],
+    "ctaButton": "Apply To Become A SmartStox Partner"
+  },
+  "commissionProgram": {
+    "title": "This Is Not a One-Time Commission Program.",
+    "subtitle": "Here Your Passion Becomes Reality and Rewards Follow"
+  },
+  "ventureCapital": {
+    "titleBefore": "",
+    "titleHighlight": "VENTURE CAPITAL",
+    "titleAfter": " PROJECTS",
+    "subtitle": "Re-Investments in Digitised Venture Capital - The Future of Smart Wealth",
+    "cta": "Build Tomorrow's Innovation. Protect Today's Capital.",
+    "paragraph1": "SmartStox brings venture investing into the age of intelligence. Digitised venture capital allows capital to participate in high-growth innovation while maintaining structured, emotionally reassuring return models.",
+    "paragraph2": "Instead of relying on speculation, investments are selected and monitored through data-driven automation, filtering risk while supporting real economic progress.",
+    "paragraph3": "This is where bold entrepreneurship meets financial serenity - where technology works quietly to protect your wealth while it grows."
+  },
+  "ecosystemGrid": {
+    "items": [
+      {
+        "title": "BrightByte",
+        "paragraphs": [
+          "BrightByte CyberFarming transforms renewable energy into high-performance digital production. By operating advanced computing infrastructure powered by sustainable energy, BrightByte generates digital assets while optimising profitability through sophisticated treasury management strategies.",
+          "This \"cyber-agriculture\" model treats computing power as a productive digital crop — cultivated using efficient energy systems and managed with institutional-grade financial discipline. The result is a resilient, scalable platform that converts renewable power into long-term digital value."
+        ]
+      },
+      {
+        "title": "DigiProp Digitised Property Participation",
+        "paragraphs": [
+          "DigiProp is a blockchain-powered investment platform that enables affordable access to global real estate through the digitization of property assets. Specializing in storage unit investments across multiple jurisdictions, DigiProp allows investors to enter the market with low capital while benefiting from geographically diversified portfolios that reduce regional risk.",
+          "Through secure, transparent, and seamless blockchain technology, DigiProp simplifies property investment - making it accessible, efficient, and globally connected."
+        ]
+      },
+      {
+        "title": "eServe Global Subscriptions",
+        "paragraphs": [
+          "eServe is a Global Provider of LifeStyle-Enhancing eServices on Subscription.",
+          "Our Product Licensee Network connects consumers with Innovative Solutions in CoverTech, FinEd & HealthTech that Empowers Individuals through Access, Convenience & Value for a Better Quality of Life."
+        ]
+      },
+      {
+        "title": "OryXFund Digitised Equities",
+        "paragraphs": [
+          "OryXFund is a next-generation investment platform that opens the door to blue-chip equity ownership through secure blockchain tokenisation. By converting shares in some of the world's most established companies into digital tokens, OryXFund enables investors to gain seamless, on-chain exposure to premium equities - fully backed 1:1 by the underlying securities.",
+          "This innovative approach combines the stability of traditional markets with the accessibility, transparency, and efficiency of blockchain technology, making global wealth creation more inclusive than ever."
+        ]
+      },
+      {
+        "title": "PayPayYa Digital Payments Platform",
+        "paragraphs": [
+          "PayPayYa is a next-generation digital payments platform designed for a truly global economy. It offers secure, user-friendly eWallets that enable individuals and businesses to send, receive, and store funds seamlessly across borders. With integrated crypto on-ramping and off-ramping, users can effortlessly move between traditional currencies and digital assets.",
+          "Combined with instant global fund transfers, PayPayYa delivers fast, flexible, and borderless financial access - empowering users to transact anywhere, anytime."
+        ]
+      },
+      {
+        "title": "Prosperian Ambassador Card",
+        "paragraphs": [
+          "The Prosperian Ambassador Card empowers you to earn, spend, and access credit with ease. Ambassadors can generate income by introducing the services of the Prosperian Capital Group to new clients, spend crypto seamlessly at participating merchants, and enjoy a flexible revolving credit facility available in most jurisdictions.",
+          "It's your gateway to earning, spending, and growing with Prosperian."
+        ]
+      },
+      {
+        "title": "SmartStox Trading Software",
+        "paragraphs": [
+          "SmartStox isn't just another trading tool - it's a system built on real-world experience. Every algorithm, every trade, every reinvestment strategy has been tested in live markets and refined for maximum performance.",
+          "Our AI doesn't sleep, second-guess, or let emotions interfere - it executes disciplined trades with precision, compounding your wealth over time while you live your life."
+        ]
+      },
+      {
+        "title": "Solidi Digitised Gold Coins",
+        "paragraphs": [
+          "Solidi Digitised Gold Coins offer a secure, fully auditable way to own gold in the digital era. Each coin is a blockchain-backed security token, 100% backed by physical gold held in reserve by a regulated digital custodian. Investors enjoy the transparency, liquidity, and convenience of digital ownership, while maintaining the safety and trust of traditional gold holdings."
+        ]
+      }
+    ]
+  },
+  "whoThisIsFor": {
+    "banner": "YOUR INCOME GROWS AS YOUR INVESTOR BASE GROWS. - ONE SALE PAYS ONCE. A PORTFOLIO PAYS FOREVER.",
+    "title": "Who This Is For",
+    "subtitle": "We Are Looking For...",
+    "profiles": [
+      { "label": "Sales Professionals" },
+      { "label": "Trading Educators" },
+      { "label": "Finance Influencers" },
+      { "label": "Community Leaders" },
+      { "label": "High-Performance Marketers" }
+    ],
+    "bottomText1": "If you're looking for \"easy money,\" this is not for you.",
+    "bottomText2": "If you want performance-based rewards and long-term income - keep reading"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Join as a Commission Earning Ambassador",
+    "steps": [
+      {
+        "bold": "Apply Online Here and Schedule Your Interview",
+        "normal": "upon successful electronic evaluation of your application."
+      },
+      {
+        "bold": "Attend Online Training",
+        "normal": "and Receive your Tracking Link & Marketing Kit."
+      },
+      {
+        "bold": "Pay your $50 Software Fee",
+        "normal": "& Earn Upfront + Recurring Commissions + The Value of your Demo Portfolio after 3 months."
+      },
+      {
+        "bold": "Complete a Successful",
+        "normal": "Induction Week by signing 5 New SmartStox Customers."
+      },
+      {
+        "bold": "Start Earning a Basic Salary",
+        "normal": "of $1,000 per month plus Upfront Commission + Recurring Commission."
+      }
+    ],
+    "qualifyText": "To Qualify for a Basic Salary of $1,000 per month as an Ambassador",
+    "brackets": [
+      {
+        "title": "Independent Ambassador"
+      },
+      {
+        "title": "Salary Earners",
+        "subtitle": "Optionally"
+      }
+    ],
+    "bottomText": "Continuous Qualifying Criteria: Independent Ambassadors: AUM of $ 25,000 - Employed Ambassadors: 20 New Consumer Sales Per Month"
   }
 }

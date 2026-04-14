@@ -1,13 +1,13 @@
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Typography } from '@/components/ui/typography';
+import { getTranslations } from "next-intl/server";
 
-export default function SmartStoxVirtualCard() {
-    const t = useTranslations('smartStoxVirtualCard');
+export default async function SmartStoxVirtualCard() {
+    const t = await getTranslations('smartStoxVirtualCard');
 
     return (
         <div className="w-full py-16 relative overflow-hidden">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-12">
+            <div className="container mx-auto flex flex-col items-center gap-12">
                 <Typography variant="h2" className="text-white normal-case text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
                     {t('title_part1')}{' '}
                     <span className="text-[#0066FF]">{t('title_part2')}</span>

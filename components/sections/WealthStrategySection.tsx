@@ -1,13 +1,13 @@
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Typography } from '@/components/ui/typography';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
+import { getTranslations } from "next-intl/server";
 
-export default function WealthStrategySection() {
-  const t = useTranslations('wealthStrategy');
+export default async function WealthStrategySection() {
+  const t = await getTranslations('wealthStrategy');
 
   return (
-    <SectionWrapper className="bg-[#0b0f19] py-16">
+    <SectionWrapper className="bg-[#0b0f19] py-24">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full mx-auto">
         {/* Left Content */}
         <div className="space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
