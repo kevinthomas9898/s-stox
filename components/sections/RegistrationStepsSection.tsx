@@ -41,15 +41,15 @@ export default function RegistrationStepsSection() {
         {/* Steps Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-16 relative">
           {steps.map((step, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="flex flex-col items-center text-center px-6 py-4 relative"
             >
               {/* Vertical Line - from top of image to step title */}
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute right-0 top-4 h-[305px] w-px bg-white" />
               )}
-              
+
               {/* Step Image */}
               <div className="relative w-full aspect-square max-w-[250px] mb-6">
                 <Image
@@ -62,10 +62,21 @@ export default function RegistrationStepsSection() {
 
               {/* Step Number & Title */}
               <div className="space-y-2 max-w-[250px]">
-                <Typography variant="h5" className="text-white">
-                  {t('step')} {index + 1}: <span className="text-[#00D094]">{t(step.titleKey)}</span>
+                <Typography variant="h5" className="text-white text-start">
+                  {(() => {
+                    const title = t(step.titleKey);
+                    const words = title.split(' ');
+                    const firstWord = words[0];
+                    const restWords = words.slice(1).join(' ');
+                    const stepNumber = index < 3 ? `${t('step')} ${index + 1}: ` : '';
+                    return (
+                      <>
+                        {stepNumber}<span className="text-[#00D094]">{firstWord}</span> {restWords}
+                      </>
+                    );
+                  })()}
                 </Typography>
-                <Typography variant="p" className="text-xs! text-gray-400">
+                <Typography variant="p" className="text-xs! text-gray-400 text-start">
                   {t(step.descKey)}
                 </Typography>
               </div>
@@ -82,9 +93,6 @@ export default function RegistrationStepsSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-full font-semibold transition-all cursor-pointer text-sm whitespace-nowrap w-full sm:w-auto">
             {t('cta_primary')}
-          </button>
-          <button className="border border-white text-white px-6 py-3 rounded-full font-semibold transition-all cursor-pointer hover:bg-white/10 text-sm whitespace-nowrap w-full sm:w-auto">
-            {t('cta_secondary')}
           </button>
         </div>
       </div>

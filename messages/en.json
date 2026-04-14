@@ -124,11 +124,11 @@
   },
   "trial": {
     "subtitle": "Experience SmartStox Risk-Free for 3 Months",
-    "title": "See. Believe. Decide.",
+    "title": "See. Believe. Achieve.",
     "description": "For just $250 per month, step into a 3-month SmartStox experience where our AI trades a personalised demo portfolio exactly as it would a live account."
   },
   "registration": {
-    "title": "You're Just 4 Steps Away from Starting Your Investment Journey",
+    "title": "You're Just 3 Steps Away from Starting Your Investment Journey",
     "step": "Step",
     "step1_title": "Download the App",
     "step1_desc": "Download our app and create your account securely in just a few minutes.",
@@ -136,11 +136,10 @@
     "step2_desc": "Complete your ID verification process to activate your trading account safely.",
     "step3_title": "Fund Your Account",
     "step3_desc": "Add funds securely and get ready to watch your wealth grow with proven market strategies.",
-    "step4_title": "Start Earning",
+    "step4_title": "Start Enjoying Your Earning",
     "step4_desc": "Relax and let our AI-powered system trade and grow your wealth automatically.",
     "tagline": "INVEST WITH CONFIDENCE. LIVE WITH FREEDOM. CHOOSE SMARTSTOX FOR PROVEN PERFORMANCE.",
-    "cta_primary": "Start My Risk-Free Trial Now",
-    "cta_secondary": "Referral Link"
+    "cta_primary": "Start My Risk-Free Trial Now"
   },
   "footer": {
     "description": "Welcome to our trading site! We offer the best, most affordable products and services around. Shop now and start finding great deals!",

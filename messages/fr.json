@@ -124,11 +124,11 @@
   },
   "trial": {
     "subtitle": "Expérimentez SmartStox Sans Risque Pendant 3 Mois",
-    "title": "Voir. Croire. Décider.",
+    "title": "Voir. Croire. Réussir.",
     "description": "Pour seulement 250 $ par mois, entrez dans une expérience SmartStox de 3 mois où notre IA trade un portefeuille démo personnalisé exactement comme un compte réel."
   },
   "registration": {
-    "title": "Vous êtes à 4 Étapes de Commencer Votre Parcours d'Investissement",
+    "title": "Vous êtes à 3 Étapes de Commencer Votre Parcours d'Investissement",
     "step": "Étape",
     "step1_title": "Télécharger l'App",
     "step1_desc": "Téléchargez notre application et créez votre compte en toute sécurité en quelques minutes.",
@@ -136,11 +136,10 @@
     "step2_desc": "Complétez votre processus de vérification d'identité pour activer votre compte de trading en toute sécurité.",
     "step3_title": "Financer Votre Compte",
     "step3_desc": "Ajoutez des fonds en toute sécurité et préparez-vous à regarder votre patrimoine croître avec des stratégies de marché éprouvées.",
-    "step4_title": "Commencer à Gagner",
+    "step4_title": "Profitez de vos gains",
     "step4_desc": "Détendez-vous et laissez notre système alimenté par l'IA trader et faire croître votre patrimoine automatiquement.",
     "tagline": "INVESTISSEZ AVEC CONFIANCE. VIVEZ AVEC LIBERTÉ. CHOISISSEZ SMARTSTOX POUR DES PERFORMANCES PROUVÉES.",
-    "cta_primary": "Commencez Mon Essai Sans Risque",
-    "cta_secondary": "Lien de Parrainage"
+    "cta_primary": "Commencez Mon Essai Sans Risque"
   },
   "footer": {
     "description": "Bienvenue sur notre site de trading ! Nous offrons les meilleurs produits et services aux prix les plus abordables. Achetez maintenant et trouvez de bonnes affaires !",
