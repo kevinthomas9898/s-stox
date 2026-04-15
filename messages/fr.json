@@ -410,5 +410,25 @@
       }
     ],
     "bottomText": "Critères de Qualification Continus: Ambassadeurs Indépendants: AUM de $ 25,000 - Ambassadeurs Employés: 20 Nouvelles Ventes Consommateurs Par Mois"
+  },
+  "whyPay": {
+    "title": "Pourquoi Payer 50 $ pour Travailler avec Nous ?",
+    "paragraph1": "Lorsque vous représentez SmartStox, vous ne faites pas seulement la promotion d'un produit. Vous partagez quelque chose qui peut changer la façon dont les gens pensent au trading. Pour cette raison, nous invitons chaque Ambassadeur à expérimenter SmartStox personnellement avant de le présenter aux autres.",
+    "paragraph2": "La contribution de participation de 50 $ n'est pas une barrière marketing. C'est un symbole d'engagement. Cela aide à s'assurer que nos Ambassadeurs sont sérieux à propos de la construction d'une réputation professionnelle, et cela vous donne l'opportunité d'explorer la plateforme, de comprendre ses outils et de ressentir le parcours que les futurs utilisateurs peuvent expérimenter.",
+    "paragraph3": "Après trois mois de participation active, ce montant peut être remboursé à partir de vos profits d'activité de trading, sous réserve des conditions du programme. Et parce que nous croyons au partenariat, nous sommes ravis d'offrir un bonus de bienvenue de 50 $ de notre côté lorsque vous rejoignez.",
+    "paragraph4": "Cela signifie que vous commencez avec une confiance partagée - vous investissez dans la compréhension de la plateforme, et nous investissons dans votre accueil !",
+    "paragraph5": "Nous avons appris que les Ambassadeurs les plus forts ne sont pas ceux qui font simplement de la publicité. Ce sont les personnes qui croient vraiment en ce qu'elles partagent. Lorsque vous expérimentez SmartStox vous-même :",
+    "benefits": [
+      "Vous parlez avec confiance",
+      "Vous répondez aux questions naturellement",
+      "Vous construisez la confiance au sein de votre communauté",
+      "Vous grandissez en tant que partenaire professionnel"
+    ],
+    "paragraph6": "Il ne s'agit pas de forcer la participation. Il s'agit de trouver des partenaires qui veulent se tenir fièrement derrière ce qu'ils recommandent.",
+    "paragraph7": "Si vous vous sentez appelé à construire quelque chose de significatif pas seulement des commissions rapides, mais un potentiel de revenus durables alors vous pourriez être exactement le genre d'Ambassadeur que nous recherchons.",
+    "greenNote": "SmartStox Approuve un Nombre Limité d'Ambassadeurs par Région.",
+    "bottomText": "Ne gagnez pas seulement des commissions uniques - Construisez des revenus récurrents qui se composent mensuellement.",
+    "cta": "Postulez pour Devenir un Ambassadeur SmartStox",
+    "imageAlt": "Programme Ambassadeur SmartStox"
   }
 }

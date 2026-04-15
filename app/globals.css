@@ -134,7 +134,7 @@ body {
   }
 }
 
-/* Scroll-linked animation */
+/* scroll-linked animation */
 .gradient-overlay {
   position: fixed;
   inset: 0;
@@ -152,3 +152,29 @@ body {
   animation-range: 0vh 400vh;
 }
 /* ============================================================ */
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1b1e;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00D094;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #059669; /* var(--primary-hover) */
+}
+
+/* Firefox scrollbar support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #00D094 #1a1b1e;
+}
