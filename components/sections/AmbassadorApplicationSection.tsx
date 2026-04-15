@@ -44,21 +44,20 @@ export function AmbassadorApplicationSection() {
   const CALENDLY_EVENT_URL = "https://calendly.com/kevin-avdevs/30min";
 
   const onSubmit = async (data: FormData) => {
-    // Build Calendly pre-fill parameters
-    // See: https://help.calendly.com/hc/en-us/articles/226828767-Pre-populate-invitee-information
+    const message = `
+Marketing Base: ${data.marketingBase}
+Experience: ${data.yearsOfExperience}
+Availability: ${data.availabilityToStart}
+Employment: ${data.employmentStatus}
+Phone: +${data.countryCode} ${data.mobileNumber}
+  `.trim();
+
     const params = new URLSearchParams({
-      first_name: data.firstName,
-      last_name: data.surname,
+      name: `${data.firstName} ${data.surname}`,
       email: data.emailAddress,
-      // Custom questions (a1-a10) for additional form data
-      a1: `Marketing Base: ${data.marketingBase}`,
-      a2: `Experience: ${data.yearsOfExperience}`,
-      a3: `Availability: ${data.availabilityToStart}`,
-      a4: `Employment: ${data.employmentStatus}`,
-      a5: `Phone: +${data.countryCode} ${data.mobileNumber}`,
+      a1: message, // single combined field
     });
 
-    // Open Calendly in new tab with pre-filled data
     const calendlyUrl = `${CALENDLY_EVENT_URL}?${params.toString()}`;
     window.open(calendlyUrl, "_blank");
   };
@@ -145,21 +144,21 @@ export function AmbassadorApplicationSection() {
                 <TextInput name="firstName" control={control} label="First Name" placeholder="John" />
                 <TextInput name="surname" control={control} label="Surname" placeholder="Doe" />
                 <TextInput name="emailAddress" control={control} label="Email Address" type="email" placeholder="johndoe@example.com" />
-                
-                <PhoneInput 
+
+                <PhoneInput
                   name="mobileNumber"
                   control={control}
                   countryCodeName="countryCode"
-                  label="Mobile Number" 
+                  label="Mobile Number"
                   placeholder="00000 00000"
                 />
               </div>
             </div>
             <div className="col-span-1 md:col-span-2 mt-8 flex justify-center pb-2">
-                <PrimaryBTN type="submit" loading={isSubmitting} className="w-auto px-8 h-[44px]">
-                  Schedule An Appointment Interview
-                </PrimaryBTN>
-              </div>
+              <PrimaryBTN type="submit" loading={isSubmitting} className="w-auto px-8 h-[44px]">
+                Schedule An Appointment Interview
+              </PrimaryBTN>
+            </div>
           </form>
         </div>
       </SectionWrapper>
