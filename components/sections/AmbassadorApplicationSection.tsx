@@ -39,9 +39,28 @@ export function AmbassadorApplicationSection() {
     }
   });
 
+  // TODO: Replace with your actual Calendly event link
+  // Example: "https://calendly.com/yourcompany/30min-interview"
+  const CALENDLY_EVENT_URL = "https://calendly.com/kevin-avdevs/30min";
+
   const onSubmit = async (data: FormData) => {
-    console.log(data);
-    // Submit logic here
+    // Build Calendly pre-fill parameters
+    // See: https://help.calendly.com/hc/en-us/articles/226828767-Pre-populate-invitee-information
+    const params = new URLSearchParams({
+      first_name: data.firstName,
+      last_name: data.surname,
+      email: data.emailAddress,
+      // Custom questions (a1-a10) for additional form data
+      a1: `Marketing Base: ${data.marketingBase}`,
+      a2: `Experience: ${data.yearsOfExperience}`,
+      a3: `Availability: ${data.availabilityToStart}`,
+      a4: `Employment: ${data.employmentStatus}`,
+      a5: `Phone: +${data.countryCode} ${data.mobileNumber}`,
+    });
+
+    // Open Calendly in new tab with pre-filled data
+    const calendlyUrl = `${CALENDLY_EVENT_URL}?${params.toString()}`;
+    window.open(calendlyUrl, "_blank");
   };
 
   return (
