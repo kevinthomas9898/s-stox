@@ -3,6 +3,7 @@ import { CommissionProgramSection } from "@/components/sections/CommissionProgra
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { WhoThisIsForSection } from "@/components/sections/WhoThisIsForSection";
 import { AmbassadorApplicationSection } from "@/components/sections/AmbassadorApplicationSection";
+import { AmbassadorEarningsSection } from "@/components/sections/AmbassadorEarningsSection";
 import { WhyPaySection } from "@/components/sections/WhyPaySection";
 
 export default function AmbassadorsPage() {
@@ -14,6 +15,7 @@ export default function AmbassadorsPage() {
       <WhoThisIsForSection />
       <HowItWorksSection />
       <AmbassadorApplicationSection />
+      <AmbassadorEarningsSection />
       <WhyPaySection />
     </main>
   );
