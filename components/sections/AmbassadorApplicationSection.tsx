@@ -71,7 +71,7 @@ Phone: +${data.countryCode} ${data.mobileNumber}
             Ambassador <span className="text-[#2A73EA]">Application</span>
           </Typography>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+          <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-x-12 md:gap-x-24 gap-y-5">
             {/* Left Column */}
             <div className="space-y-8">
               <Typography variant="h4" className="text-[#00D094]">
