@@ -43,7 +43,7 @@ const TextInputBase = React.forwardRef<HTMLInputElement, TextInputProps>(
             <input
               type={inputType}
               className={cn(
-                "flex h-12 w-full rounded-md border border-[#2C2E33] bg-[#1a1b1e] px-3 py-2 text-sm text-white placeholder:text-gray-500 disabled:cursor-not-allowed disabled:opacity-50 outline-none focus:ring-1 focus:ring-[#00D094]",
+                "flex h-12 w-full rounded-md border border-white/60 bg-transparent px-3 py-2 text-sm text-white placeholder:text-gray-500 disabled:cursor-not-allowed disabled:opacity-50 outline-none",
                 error &&
                   "border-red-500 ring-1 ring-red-500 focus:ring-red-500",
                 (isPassword || rightIcon) && "pr-10",

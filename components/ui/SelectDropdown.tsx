@@ -80,7 +80,7 @@ export function SelectDropdownBase({
           <DropdownMenuTrigger 
             disabled={disabled}
             className={cn(
-              "flex h-12 w-full items-center justify-between rounded-md border border-[#2C2E33] bg-[#1a1b1e] px-3 py-2 text-sm text-white placeholder:text-gray-500 disabled:cursor-not-allowed disabled:opacity-50 outline-none focus:ring-1 focus:ring-[#00D094]",
+              "flex h-12 w-full items-center justify-between rounded-md border border-white/60 bg-transparent px-3 py-2 text-sm text-white placeholder:text-gray-500 disabled:cursor-not-allowed disabled:opacity-50 outline-none",
               error && "border-red-500 ring-1 ring-red-500 focus:ring-red-500",
               triggerClassName
             )}
@@ -110,7 +110,7 @@ export function SelectDropdownBase({
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search..."
-                    className="w-full h-8 pl-8 pr-2 rounded bg-[#2C2E33] text-sm text-white placeholder:text-gray-500 outline-none focus:ring-1 focus:ring-[#00D094]"
+                    className="w-full h-8 pl-8 pr-2 rounded bg-[#2C2E33] text-sm text-white placeholder:text-gray-500 outline-none"
                     onClick={(e) => e.stopPropagation()}
                     onKeyDown={(e) => e.stopPropagation()}
                   />
@@ -129,12 +129,12 @@ export function SelectDropdownBase({
                       setSearchQuery("");
                       setOpen(false);
                     }}
-                    className="cursor-pointer hover:bg-[#2C2E33] focus:bg-[#2C2E33] flex items-center gap-2"
+                    className="cursor-pointer hover:bg-[#2C2E33] focus:bg-[#2C2E33] !text-white hover:!text-white focus:!text-white flex items-center gap-2 outline-none"
                   >
                     {option.flagUrl && (
                       <img src={option.flagUrl} alt="" className="w-5 h-3.5 object-cover shrink-0" />
                     )}
-                    <span className="truncate">{option.label}</span>
+                    <span className="truncate !text-white hover:!text-white">{option.label}</span>
                   </DropdownMenuItem>
                 ))
               )}

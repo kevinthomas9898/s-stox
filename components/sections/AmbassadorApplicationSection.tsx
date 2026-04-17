@@ -65,7 +65,7 @@ Phone: +${data.countryCode} ${data.mobileNumber}
   return (
     <section className="py-16 relative w-full">
       <SectionWrapper>
-        <div className="max-w-5xl mx-auto">
+        <div className="mx-auto">
           {/* Header */}
           <Typography variant="h3" className="text-center text-white mb-12">
             Ambassador <span className="text-[#2A73EA]">Application</span>
