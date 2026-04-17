@@ -10,10 +10,10 @@ import { useTranslations } from 'next-intl';
 export default function HeroSection() {
   const t = useTranslations();
   return (
-    <SectionWrapper className="relative z-10 px-4 md:px-12 lg:px-24">
+    <SectionWrapper className="relative z-10">
       <div className="relative z-10 pt-20 md:pt-32 pb-16 md:pb-24">
         {/* Main Hero Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-8 items-center mb-16 md:mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-8 items-center mb-16">
           {/* Left Content */}
           <section className="space-y-8 max-w-2xl">
             <Typography variant="h1" className="text-white text-center lg:text-left">
@@ -24,12 +24,12 @@ export default function HeroSection() {
               <span className="text-[#0066FF]">{t('hero.title_part3')}</span>
             </Typography>
 
-            <Typography variant="p" className="text-gray-300 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+            <Typography variant="p" className="max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
               {t('hero.subtitle')}
             </Typography>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 md:gap-6 pt-2 w-full">
-              <button className="flex items-center justify-center gap-2 bg-[#00D094] hover:bg-[#00c985] text-gray-900 px-6 sm:px-8 py-3.5 rounded-md font-semibold transition-colors cursor-pointer shadow-[0_0_20px_rgba(0,229,153,0.3)] w-full sm:w-auto">
+              <button className="flex items-center justify-center gap-2 bg-[#00D094] hover:bg-[#00c985] text-gray-900 px-6 sm:px-8 py-3.5 rounded-md font-semibold transition-colors cursor-pointer w-full sm:w-auto">
                 {t('hero.cta_primary')}
                 <FaArrowRight className="w-4 h-4 font-bold" />
               </button>
@@ -54,7 +54,7 @@ export default function HeroSection() {
         </div>
 
         {/* Bottom Banner Section */}
-        <div className="w-full border-t border-white/5 pt-12 text-left">
+        <div className="w-full pt-12 text-left">
           <Typography variant="h5" className="text-[#00D094] uppercase tracking-wider mb-4">
             {t('banner.title')}
           </Typography>

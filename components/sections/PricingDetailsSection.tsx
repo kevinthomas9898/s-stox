@@ -84,9 +84,11 @@ export function PricingDetailsSection() {
           />
 
           {/* Initiation Fee */}
-          <DetailBlock
-            title="Initiation Fee"
-            description="In addition to your Profit Share Fee, a 20% initiation fee is billed on all new deposits."
+          <TwoColumnBlock
+            leftTitle="Initiation Fee"
+            leftDescription="In addition to your Profit Share Fee, a 20% initiation fee is billed on all new deposits."
+            rightTitle=""
+            rightDescription=""
           />
 
           {/* Trade-Automation */}

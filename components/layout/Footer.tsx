@@ -1,8 +1,8 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { ComponentType } from 'react';
-import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaXTwitter, FaApple } from 'react-icons/fa6';
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaApple } from 'react-icons/fa6';
 import { Typography } from '../ui/typography';
 import { SectionWrapper } from '@/components/ui/SectionWrapper';
 
@@ -12,21 +12,26 @@ interface SocialLink {
   href: string;
 }
 
-export default function Footer() {
-  const t = useTranslations('footer');
+export default async function Footer() {
+  const t = await getTranslations('footer');
 
   const socialLinks: SocialLink[] = [
     { name: 'Facebook', icon: FaFacebook, href: 'https://facebook.com' },
     { name: 'Instagram', icon: FaInstagram, href: 'https://instagram.com' },
     { name: 'LinkedIn', icon: FaLinkedin, href: 'https://linkedin.com' },
     { name: 'YouTube', icon: FaYoutube, href: 'https://youtube.com' },
-    { name: 'Twitter', icon: FaXTwitter, href: 'https://twitter.com' },
   ];
 
   return (
-    <footer className="w-full bg-[#0d1117] pt-20 pb-8 text-white">
+    <footer className="w-full bg-[#0d1117] pt-20 pb-8 text-white relative overflow-hidden">
       <SectionWrapper>
-
+        <Image
+          src="/span.footer__shape-item.svg"
+          alt="Footer shape"
+          width={1250}
+          height={1250}
+          className="absolute -top-30 -left-130 pointer-events-none select-none"
+        />
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
 
@@ -45,17 +50,20 @@ export default function Footer() {
                 SmartStox
               </span>
             </Link>
-            <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-              {t('description')}
-            </p>
+            <Typography variant="h5" className="!text-[13px] uppercase tracking-wider text-white font-bold">
+              AI TRADED. BROKER MANAGED. <span className="text-[#2A73EA]">FREE TO LIVE</span>
+            </Typography>
+            <Typography variant="p" className="text-[#FFFFFF] !text-[16px] text-sm leading-relaxed max-w-sm">
+              SmartStox is your next-generation global wealth platform where AI-driven trading and intelligent capital management enable anyone to grow and preserve wealth—efficiently, transparently, and at scale.
+            </Typography>
 
             {/* App Buttons */}
             <div className="flex items-center gap-4 pt-4">
               <a href="#" className="flex items-center gap-2 bg-[#00D094] hover:bg-[#00c985] text-gray-900 px-4 py-2 rounded-md transition-colors">
                 <FaApple />
                 <div className="flex flex-col items-start leading-none">
-                  <span className="text-[10px] uppercase font-medium">{t('appStore')}</span>
-                  <span className="text-sm font-bold">{t('appStoreStrong')}</span>
+                  <span className="text-[10px] uppercase font-medium">Download on the</span>
+                  <span className="text-sm font-bold">App Store</span>
                 </div>
               </a>
               <a href="#" className="flex items-center gap-2 bg-[#1a365d] hover:bg-[#1e40af] text-white px-4 py-2 rounded-md transition-colors border border-[#2d4a77]">
@@ -66,8 +74,8 @@ export default function Footer() {
                   height={24}
                 />
                 <div className="flex flex-col items-start leading-none">
-                  <span className="text-[10px] uppercase font-medium">{t('googlePlay')}</span>
-                  <span className="text-sm font-bold">{t('googlePlayStrong')}</span>
+                  <span className="text-[10px] uppercase font-medium">GET IT ON</span>
+                  <span className="text-sm font-bold">Google Play</span>
                 </div>
               </a>
             </div>
@@ -75,32 +83,34 @@ export default function Footer() {
 
           {/* Quick Links Column */}
           <div className="lg:col-span-3">
-            <Typography variant="h3" className="text-lg font-bold mb-6">{t('quickLinks.title')}</Typography>
-            <ul className="space-y-4 text-sm text-gray-400">
-              <li><Link href="/" className="hover:text-primary transition-colors">{t('quickLinks.wealth')}</Link></li>
-              <li><Link href="/" className="hover:text-primary transition-colors">{t('quickLinks.fractional')}</Link></li>
-              <li><Link href="/" className="hover:text-primary transition-colors">{t('quickLinks.pricing')}</Link></li>
-              <li><Link href="/" className="hover:text-primary transition-colors">{t('quickLinks.ambassadors')}</Link></li>
+            <Typography variant="h5" className="text-white font-semibold mb-6">Quick Links</Typography>
+            <ul className="space-y-4">
+              <li><Link href="/our-strategy" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Our Strategy</Typography></Link></li>
+              <li><Link href="/venture-capital" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Venture Capital Investment</Typography></Link></li>
+              <li><Link href="/pricing" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Pricing</Typography></Link></li>
+              <li><Link href="/ambassadors" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Brand Ambassadors Program</Typography></Link></li>
             </ul>
           </div>
 
           {/* Support Column */}
           <div className="lg:col-span-2">
-            <Typography variant="h3" className="text-lg font-bold mb-6">{t('support.title')}</Typography>
-            <ul className="space-y-4 text-sm text-gray-400">
-              <li><Link href="/" className="hover:text-primary transition-colors">{t('support.terms')}</Link></li>
-              <li><Link href="/" className="hover:text-primary transition-colors">{t('support.privacy')}</Link></li>
-              <li><Link href="/" className="hover:text-primary transition-colors">{t('support.faqs')}</Link></li>
-              <li><Link href="/" className="hover:text-primary transition-colors">{t('support.supportCenter')}</Link></li>
+            <Typography variant="h5" className="text-white font-semibold mb-6">Support</Typography>
+            <ul className="space-y-4">
+              <li><Link href="/terms" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Terms of Services</Typography></Link></li>
+              <li><Link href="/privacy" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Privacy Policy</Typography></Link></li>
+              <li><Link href="/faqs" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">FAQs</Typography></Link></li>
+              <li><Link href="/media-library" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Media Library</Typography></Link></li>
             </ul>
           </div>
 
           {/* Company Column */}
           <div className="lg:col-span-2">
-            <Typography variant="h3" className="text-lg font-bold mb-6">{t('company.title')}</Typography>
-            <ul className="space-y-4 text-sm text-gray-400">
-              <li><Link href="/" className="hover:text-primary transition-colors">{t('company.about')}</Link></li>
-              <li><Link href="/" className="hover:text-primary transition-colors">{t('company.updates')}</Link></li>
+            <Typography variant="h5" className="text-white font-semibold mb-6">Company</Typography>
+            <ul className="space-y-4">
+              <li><Link href="/about" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">About Us</Typography></Link></li>
+              <li><Link href="/reading" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Further Reading</Typography></Link></li>
+              <li><Link href="/knowledge" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Knowledge Base</Typography></Link></li>
+              <li><Link href="/news" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">SmartStox in the News</Typography></Link></li>
             </ul>
           </div>
 
@@ -108,9 +118,9 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-400 text-center md:text-left">
-            {t('copyright', { year: new Date().getFullYear() })}
-          </p>
+          <Typography variant="p" className="text-gray-400 text-sm text-center md:text-left">
+            © {new Date().getFullYear()} All Rights Reserved By SmartStox
+          </Typography>
 
           {/* Social Icons */}
           <div className="flex items-center gap-4">

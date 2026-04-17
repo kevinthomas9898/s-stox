@@ -38,7 +38,7 @@
       "title_part2": "SmartStox?",
       "subtitle": "Investissez Plus Intelligemment. Vivez Plus Librement. Laissez l'IA Faire le Travail Dur.",
       "description": "Choisir SmartStox, c'est choisir une façon plus intelligente d'investir. Notre système piloté par l'IA combine des décennies d'expérience sur les marchés, une technologie de pointe et des stratégies éprouvées pour faire fructifier votre patrimoine automatiquement. Pas de devinettes. Pas de surveillance constante. Pas de stress. Juste une croissance cohérente et disciplinée - pendant que vous vous concentrez sur la vie.",
-      "cta": "Explorer Plus",
+      "cta": "Commencer à gagner",
       "badge_title": "10 Ans",
       "badge_subtitle": "D'expérience de Conseil"
     },
@@ -188,17 +188,7 @@
   },
   "wealthFramework": {
     "title_part1": "Cadre de Création",
-    "title_part2": "de Richesse",
-    "trading_title": "Trading",
-    "trading_description": "SmartStox AI trade automatiquement en utilisant des stratégies éprouvées via des courtiers réglementés.",
-    "reinvestment_title": "Réinvestissement",
-    "reinvestment_description": "Les gains sont dirigés vers des projets de capital-risque stables pour une croissance par capitalisation.",
-    "cash_balance_title": "Solde de Trésorerie",
-    "cash_balance_description": "Toujours traçable via votre application mobile SmartStox",
-    "profit_allocation_title": "Allocation des Profits",
-    "profit_allocation_description": "Les profits sont alloués mensuellement - une partie en espèces retirée, une partie réinvestie.",
-    "fees_title": "Frais",
-    "fees_description": "Frais SaaS transparents et convenus à l'avance uniquement. Aucun coût caché."
+    "title_part2": "de Richesse"
   },
   "smartStoxVirtualCard": {
     "title_part1": "SmartStox",

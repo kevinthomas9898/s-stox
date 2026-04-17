@@ -19,7 +19,7 @@ const styles: Record<Variant, string> = {
 
   h5: "font-roboto font-medium text-[18px] lg:text-[20px] leading-[1.6] tracking-normal",
 
-  p: "font-roboto font-normal text-[16px] lg:text-[18px] leading-[1.6] tracking-normal",
+  p: "font-roboto font-normal text-[16px] lg:text-[18px] leading-[1.6] tracking-normal font-normal",
 };
 
 export function Typography({
@@ -32,7 +32,7 @@ export function Typography({
 
   return (
     <Component
-      className={cn(styles[variant], className)}
+      className={cn("text-[#FFFFFF] z-0", styles[variant], className)}
       {...props}
     />
   );

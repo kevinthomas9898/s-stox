@@ -14,7 +14,7 @@ export default async function SmartStoxVirtualCard() {
                 </Typography>
                 <div className="relative w-full max-w-2xl aspect-video">
                     <Image
-                        src="/SmartStox-Virtual-Card.png"
+                        src="/SmartStox-Virtual-Card-1.png"
                         alt={t('image_alt')}
                         fill
                         className="object-contain"

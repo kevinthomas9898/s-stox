@@ -33,7 +33,7 @@ export async function EcosystemGridSection() {
                 alt={item.title}
                 width={320}
                 height={120}
-                className="w-auto h-full object-contain rounded-2xl"
+                className="w-auto z-0 h-full object-contain rounded-2xl"
               />
             </div>
             

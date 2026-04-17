@@ -139,14 +139,12 @@ body {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  width: 30%;
-
+  width: 35%;
   background: linear-gradient(
     to right,
-    rgba(1, 41, 153, 0.4),
+    rgba(42, 115, 234, 0.45),
     transparent
   );
-
   animation: fadeOut linear forwards;
   animation-timeline: scroll(root);
   animation-range: 0vh 400vh;

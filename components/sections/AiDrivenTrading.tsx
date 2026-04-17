@@ -11,23 +11,23 @@ export default async function AiDrivenTrading() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full mx-auto">
         {/* Left Content */}
         <div className="space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
-          <Typography variant="h2" className="text-white normal-case">
+          <Typography variant="h2" className="text-white font-medium normal-case">
             {t('title_part1')}{' '}
             <span className="text-[#0066FF]">{t('title_part2')}</span>
           </Typography>
 
-          <Typography variant="h5" className="text-gray-300 max-w-xl">
+          <Typography variant="h5" className="text-white font-normal max-w-xl">
             {t('subtitle')}
           </Typography>
 
           <div className="space-y-4 pt-4">
-            <Typography variant="p" className="text-gray-400">
+            <Typography variant="p" className="text-white/80">
               {t('description1')}
             </Typography>
-            <Typography variant="p" className="text-gray-400">
+            <Typography variant="p" className="text-white/80">
               {t('description2')}
             </Typography>
-            <Typography variant="p" className="text-gray-400">
+            <Typography variant="p" className="text-white/80">
               {t('description3')}
             </Typography>
           </div>

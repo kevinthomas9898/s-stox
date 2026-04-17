@@ -12,9 +12,9 @@ export default function FeaturesSection() {
       <div className="absolute top-0 left-0 w-[30%] lg:w-[40%] h-full bg-linear-to-r from-blue-900/30 to-transparent pointer-events-none" />
 
       {/* Feature 1 & 2 Section */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 2xl:px-0 py-24 space-y-32 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 2xl:px-0 relative z-10">
         {/* Feature 1 */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-screen">
           {/* Left: Image with Badge */}
           <div className="relative">
             {/* Glassmorphic Badge */}
@@ -48,11 +48,11 @@ export default function FeaturesSection() {
             <Typography variant="h4" className="text-white text-left">
               {t("why_choose.subtitle")}
             </Typography>
-            <Typography variant="p" className="text-gray-300 text-left">
+            <Typography variant="p" className="text-gray-300 text-left max-w-xl">
               {t("why_choose.description")}
             </Typography>
             <div className="flex justify-start">
-              <Button 
+              <Button
                 className="mt-4 bg-[#00D094] hover:bg-[#00c985] text-gray-900 px-8 py-3 rounded-md font-semibold transition-colors cursor-pointer shadow-lg border-0"
               >
                 {t("why_choose.cta")}
@@ -62,7 +62,7 @@ export default function FeaturesSection() {
         </div>
 
         {/* Feature 2 */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-36">
           {/* Left: Content */}
           <div className="space-y-6 order-2 lg:order-1">
             <Typography variant="h3" className="text-white text-left">
@@ -71,7 +71,7 @@ export default function FeaturesSection() {
                 {t("ai_learning.title_part2")}
               </span>
             </Typography>
-            <Typography variant="p" className="text-gray-300 text-left">
+            <Typography variant="p" className="text-gray-300 text-left max-w-xl">
               {t("ai_learning.description")}
             </Typography>
           </div>
@@ -133,10 +133,10 @@ export default function FeaturesSection() {
                 </span>{" "}
                 <br /> {t("manual_trading.title_part3")}
               </Typography>
-              <Typography variant="h4" className="text-gray-300 text-left">
+              <Typography variant="h5" className="text-gray-300 text-left font-normal">
                 {t("manual_trading.subtitle")}
               </Typography>
-              <Typography variant="p" className="text-gray-400 text-left">
+              <Typography variant="p" className="text-gray-200 text-left">
                 {t("manual_trading.description")}
               </Typography>
             </div>
@@ -148,7 +148,7 @@ export default function FeaturesSection() {
       <div className="mx-auto py-24 space-y-32 relative z-10 bg-[#0F131C]">
         {/* Section: Time in vs Timing */}
         <div className="flex flex-col items-center text-center space-y-12 mx-4 lg:mx-16">
-          <div className="space-y-4 max-w-3xl">
+          <div className="space-y-2 max-w-3xl">
             <Typography variant="h3" className="text-white">
               <span className="text-[#0066FF]">
                 {t("time_vs_timing.title_part1")}
@@ -159,7 +159,7 @@ export default function FeaturesSection() {
               </span>{" "}
               {t("time_vs_timing.title_part4")}
             </Typography>
-            <Typography variant="h4" className="text-gray-300">
+            <Typography variant="h5" className="text-gray-300 font-normal">
               {t("time_vs_timing.subtitle")}
             </Typography>
           </div>
@@ -187,30 +187,32 @@ export default function FeaturesSection() {
             </div>
           </div>
 
-          <p className="text-gray-400 leading-relaxed text-lg max-w-4xl">
+          <Typography variant="p" className="leading-relaxed text-lg max-w-5xl">
             {t("time_vs_timing.description")}
-          </p>
+          </Typography>
         </div>
 
         {/* Section: Set-and-Forget Myth */}
         <div className="bg-[#FFFFFF0A] py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mx-4 lg:mx-16">
             {/* Left: Content */}
-            <div className="space-y-6">
-              <Typography variant="h3" className="text-white text-start">
-                {t("set_and_forget.title_part1")}{" "}
-                <span className="text-[#0066FF]">
-                  {t("set_and_forget.title_part2")}
-                </span>{" "}
-                {t("set_and_forget.title_part3")}
-              </Typography>
-              <Typography variant="h4" className="text-gray-300">
-                {t("set_and_forget.subtitle")}
-              </Typography>
-              <Typography variant="p" className="text-gray-400">
+            <div className="space-y-20">
+              <div className="flex flex-col gap-5">
+                <Typography variant="h3" className="text-white text-start">
+                  {t("set_and_forget.title_part1")}{" "}
+                  <span className="text-[#0066FF]">
+                    {t("set_and_forget.title_part2")}
+                  </span>{" "}
+                  {t("set_and_forget.title_part3")}
+                </Typography>
+                <Typography variant="h5" className="text-gray-300">
+                  {t("set_and_forget.subtitle")}
+                </Typography>
+              </div>
+              <Typography variant="p" className="text-gray-300">
                 {t("set_and_forget.description1")}
               </Typography>
-              <Typography variant="p" className="text-gray-400">
+              <Typography variant="p" className="text-gray-300">
                 {t("set_and_forget.description2")}
               </Typography>
             </div>
@@ -238,14 +240,14 @@ export default function FeaturesSection() {
 
           <div className="relative w-full max-w-5xl aspect-video md:aspect-21/9 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
             <Image
-              src="/Tested-Proven-Winning.jpg"
+              src="/Tested-Proven-Winning.png"
               alt="Tested proven winning"
               fill
               className="object-cover"
             />
           </div>
 
-          <p className="text-gray-400 leading-relaxed text-lg max-w-4xl">
+          <p className="text-gray-300 leading-relaxed text-lg max-w-5xl">
             {t("tested_proven.description")}
           </p>
         </div>

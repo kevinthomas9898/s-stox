@@ -13,10 +13,10 @@ export default async function MediaLibraryPage({
   return (
     <div className="min-h-screen bg-[#0b0f19] pt-32 pb-20 px-4">
       <div className="container mx-auto max-w-4xl">
-        <Typography variant="h1" className="text-white mb-6">
+        <Typography variant="h1" className="mb-6">
           {t('title')}
         </Typography>
-        <Typography variant="p" className="text-gray-400 text-lg leading-relaxed">
+        <Typography variant="p" className="text-lg leading-relaxed">
           {t('description')}
         </Typography>
       </div>
