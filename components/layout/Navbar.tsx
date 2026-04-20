@@ -57,7 +57,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="absolute top-0 w-full z-50 bg-transparent">
+    <header className="fixed top-0 w-full z-50 bg-[#0b0f19]/15 backdrop-blur-3xl border-b border-white/10">
       <SectionWrapper containerClassName="h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 relative z-50">

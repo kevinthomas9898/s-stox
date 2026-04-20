@@ -7,10 +7,7 @@ export default function FeaturesSection() {
   const t = useTranslations("features");
 
   return (
-    <div className="w-full relative bg-[#0b0f19]">
-      {/* Background gradient edge on the left */}
-      <div className="absolute top-0 left-0 w-[30%] lg:w-[40%] h-full bg-linear-to-r from-blue-900/30 to-transparent pointer-events-none" />
-
+    <div className="w-full relative">
       {/* Feature 1 & 2 Section */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 2xl:px-0 relative z-10">
         {/* Feature 1 */}

@@ -50,7 +50,7 @@ function SectionHeader({ title }: SectionHeaderProps) {
 
 export function PricingDetailsSection() {
   return (
-    <section className="py-16 relative w-full bg-[#0b0f19]">
+    <section className="py-16 relative w-full">
       <SectionWrapper containerClassName="max-w-full">
         <div className="mx-auto space-y-2">
           {/* Software-as-a-Service */}

@@ -54,7 +54,7 @@ export function PricingTermsSection() {
   const rowCount = pricingData.length;
 
   return (
-    <section className="pt-36 relative w-full bg-[#0b0f19]">
+    <section className="pt-36 relative w-full">
       <SectionWrapper containerClassName="max-w-full">
         <div className="mx-auto space-y-8">
           {/* Header */}

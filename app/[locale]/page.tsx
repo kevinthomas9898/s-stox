@@ -8,11 +8,9 @@ export default function HomePage() {
   return (
     <div className="relative w-full min-h-screen bg-[#0b0f19] overflow-hidden">
       {/* Background Gradient Orbs */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[20%] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute top-[20%] right-[-5%] w-[30%] h-[20%] bg-teal-500/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className='gradient-overlay' />
 
       <HeroSection />
-
       <FeaturesSection />
       <TestimonialsSection />
     </div>
