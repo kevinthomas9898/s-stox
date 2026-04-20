@@ -16,7 +16,7 @@ export default function FeaturesSection() {
           <div className="relative">
             {/* Glassmorphic Badge */}
             <div className="absolute -top-10 left-[-10px] sm:left-[-20px] lg:-left-12 z-20 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.5)] w-48">
-              <Typography variant="h4" className="text-white">
+              <Typography variant="h4">
                 {t("why_choose.badge_title")}
               </Typography>
               <Typography variant="p" className="text-xs! text-gray-300 mt-1">
@@ -146,7 +146,7 @@ export default function FeaturesSection() {
         {/* Section: Time in vs Timing */}
         <div className="flex flex-col items-center text-center space-y-12 mx-4 lg:mx-16">
           <div className="space-y-2 max-w-3xl">
-            <Typography variant="h3" className="text-white">
+            <Typography variant="h3">
               <span className="text-[#0066FF]">
                 {t("time_vs_timing.title_part1")}
               </span>{" "}
@@ -228,7 +228,7 @@ export default function FeaturesSection() {
 
         {/* Section: Tested Proven Winning */}
         <div className="flex flex-col items-center text-center space-y-12 mx-4 lg:mx-16">
-          <Typography variant="h3" className="text-white">
+          <Typography variant="h3">
             {t("tested_proven.title_part1")}{" "}
             <span className="text-[#0066FF]">
               {t("tested_proven.title_part2")}

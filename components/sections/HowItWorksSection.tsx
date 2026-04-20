@@ -12,11 +12,11 @@ export async function HowItWorksSection() {
   }));
 
   return (
-    <SectionWrapper className="py-20 bg-[#181C25]">
+    <SectionWrapper className="py-20 bg-[#181C25] z-10 relative">
       <div className="mx-auto max-w-5xl">
         {/* Header */}
         <div className="text-center mb-16">
-          <Typography variant="h3" className="text-white">
+          <Typography variant="h3">
             {t('title').split('Works')[0]}
             <span className="text-[#2A73EA]">Works</span>
           </Typography>

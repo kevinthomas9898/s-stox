@@ -95,7 +95,7 @@ export default function TestimonialsSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
 
         <div className="text-center space-y-4 mb-16 max-w-2xl">
-          <Typography variant="h3" className="text-white">
+          <Typography variant="h3">
             {t('title_part1')} <span className="text-[#0066FF]">{t('title_part2')}</span>
           </Typography>
           <Typography variant="p" className="!text-sm md:!text-lg text-gray-400">

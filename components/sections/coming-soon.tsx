@@ -39,7 +39,7 @@ export function ComingSoon({
                   {t("comingSoon")}
                 </span>
               </div>
-              <Typography variant="h3" className="text-white">
+              <Typography variant="h3">
                 {csp("heading")}
               </Typography>
               <Typography variant="p" className="text-gray-400 text-lg max-w-md mx-auto">

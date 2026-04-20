@@ -59,7 +59,7 @@ export function PricingTermsSection() {
         <div className="mx-auto space-y-8">
           {/* Header */}
           <div className="text-center space-y-2">
-            <Typography variant="h2" className="text-white">
+            <Typography variant="h2">
               THE FINE <span className="text-[#2A73EA]">PRINT</span>
             </Typography>
             <Typography variant="h3" className="text-white text-[20px] md:text-[24px] lg:text-[28px]">

@@ -125,13 +125,13 @@ export function AmbassadorEarningsSection() {
   return (
     <section className="py-16 relative w-full">
       <SectionWrapper>
-        <div className="mx-auto space-y-8">
+        <div className="mx-auto space-y-4">
           {/* Header */}
-          <div className="text-center space-y-2">
-            <Typography variant="h3" className="text-white">
+          <div className="text-center">
+            <Typography variant="h3">
               Expected <span className="text-[#2A73EA]">Ambassador Earnings</span>
             </Typography>
-            <Typography variant="p" className="text-gray-400 text-sm">
+            <Typography variant="p">
               Your Income Potential
             </Typography>
           </div>
@@ -147,7 +147,7 @@ export function AmbassadorEarningsSection() {
             <Typography variant="p" className="text-white text-sm font-medium">
               Continuous Qualifying Criteria For Recurring Commission (Profit Share)
             </Typography>
-            <Typography variant="p" className="text-gray-400 text-sm">
+            <Typography variant="p" className="text-xl">
               Tier 1: $50,000 AUM - Tier 2: $100,000 AUM - Tier 3: $250,000 AUM
             </Typography>
           </div>

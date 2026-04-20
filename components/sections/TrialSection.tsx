@@ -11,25 +11,25 @@ export default function TrialSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 justify-center">
           {/* Logo */}
-          <div className="shrink-0">
+          <div className="shrink-0 relative">
             <Image
-              src="/logo-icon.png"
+              src="/logo-icon-with-name.svg"
               alt="SmartStox"
-              width={120}
-              height={120}
+              width={228}
+              height={167}
               className="object-contain"
             />
           </div>
 
           {/* Content */}
           <div className="text-center lg:text-left space-y-4">
-            <Typography variant="h5" className="text-white">
+            <Typography variant="h5">
               {t('subtitle')}
             </Typography>
             <Typography variant="h2" className="text-[#00D094] normal-case">
               {t('title')}
             </Typography>
-            <Typography variant="p" className="text-gray-300 max-w-2xl">
+            <Typography variant="p" className="max-w-2xl">
               {t('description')}
             </Typography>
           </div>

@@ -97,7 +97,7 @@ export function BracketsOverlay({
                         >
                             {label2}
                         </Typography>
-                        <Typography variant="p" className="text-gray-500 mt-1 whitespace-nowrap">
+                        <Typography variant="p" className="text-gray-500 mt-1 whitespace-nowrap text-center">
                             {subtitle2}
                         </Typography>
                     </div>

@@ -16,31 +16,31 @@ export async function WhyPaySection() {
         {/* Left Side - Text Content */}
         <div className="space-y-6">
           {/* Title */}
-          <Typography variant="h3" className="text-white">
+          <Typography variant="h3">
             {t('title').split('$50')[0]}
             <span className="text-[#2A73EA]">$50</span>
             {t('title').split('$50')[1]}
           </Typography>
 
           {/* Paragraphs */}
-          <Typography variant="p" className="text-gray-300 leading-relaxed">
+          <Typography variant="p" className="leading-relaxed">
             {t('paragraph1')}
           </Typography>
 
-          <Typography variant="p" className="text-gray-300 leading-relaxed">
+          <Typography variant="p" className="leading-relaxed">
             {t('paragraph2')}
           </Typography>
 
-          <Typography variant="p" className="text-gray-300 leading-relaxed">
+          <Typography variant="p" className="leading-relaxed">
             {t('paragraph3')}
           </Typography>
 
-          <Typography variant="p" className="text-gray-300 leading-relaxed">
+          <Typography variant="p" className="leading-relaxed">
             {t('paragraph4')}
           </Typography>
 
           {/* Benefits Grid */}
-          <Typography variant="p" className="text-gray-300 leading-relaxed">
+          <Typography variant="p" className="leading-relaxed">
             {t('paragraph5')}
           </Typography>
 
@@ -55,11 +55,11 @@ export async function WhyPaySection() {
             ))}
           </div>
 
-          <Typography variant="p" className="text-gray-300 leading-relaxed">
+          <Typography variant="p" className="leading-relaxed">
             {t('paragraph6')}
           </Typography>
 
-          <Typography variant="p" className="text-gray-300 leading-relaxed">
+          <Typography variant="p" className="leading-relaxed">
             {t('paragraph7')}
           </Typography>
 

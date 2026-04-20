@@ -31,7 +31,7 @@ export default function RegistrationStepsSection() {
   const t = useTranslations('registration');
 
   return (
-    <div className="w-full py-10 bg-[#0F131C]">
+    <div className="w-full py-10 bg-[#181C25] relative z-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <Typography variant="p" className="text-white mb-16 text-center">
@@ -76,7 +76,7 @@ export default function RegistrationStepsSection() {
                     );
                   })()}
                 </Typography>
-                <Typography variant="p" className="text-xs! text-gray-400 text-start">
+                <Typography variant="p" className="!text-xs text-start">
                   {t(step.descKey)}
                 </Typography>
               </div>

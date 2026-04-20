@@ -9,7 +9,7 @@ export async function VentureCapitalProjectsSection() {
   return (
     <SectionWrapper className="py-20 bg-[#0b0f19] pt-28">
       <div className="flex flex-col items-center mb-16 text-center">
-        <Typography variant="h2" className="text-white">
+        <Typography variant="h2">
           {t('titleBefore')}
           <span className="text-blue-500">{t('titleHighlight')}</span>
           {t('titleAfter')}

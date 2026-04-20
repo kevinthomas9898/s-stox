@@ -60,13 +60,13 @@ export default async function Footer() {
             {/* App Buttons */}
             <div className="flex items-center gap-4 pt-4">
               <a href="#" className="flex items-center gap-2 bg-[#00D094] hover:bg-[#00c985] text-gray-900 px-4 py-2 rounded-md transition-colors">
-                <FaApple />
+                <FaApple className='text-black text-3xl' />
                 <div className="flex flex-col items-start leading-none">
                   <span className="text-[10px] uppercase font-medium">Download on the</span>
                   <span className="text-sm font-bold">App Store</span>
                 </div>
               </a>
-              <a href="#" className="flex items-center gap-2 bg-[#1a365d] hover:bg-[#1e40af] text-white px-4 py-2 rounded-md transition-colors border border-[#2d4a77]">
+              <a href="#" className="flex relative items-center gap-2 bg-[#1a365d] hover:bg-[#1e40af] text-white px-4 py-2 rounded-md transition-colors border border-[#2d4a77]">
                 <Image
                   src="/google-play-store-icon.svg"
                   alt="Google Play Store"
@@ -85,10 +85,10 @@ export default async function Footer() {
           <div className="lg:col-span-3">
             <Typography variant="h5" className="text-white font-semibold mb-6">Quick Links</Typography>
             <ul className="space-y-4">
-              <li><Link href="/our-strategy" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Our Strategy</Typography></Link></li>
-              <li><Link href="/venture-capital" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Venture Capital Investment</Typography></Link></li>
-              <li><Link href="/pricing" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Pricing</Typography></Link></li>
-              <li><Link href="/ambassadors" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Brand Ambassadors Program</Typography></Link></li>
+              <li><Link href="/our-strategy" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Our Strategy</Typography></Link></li>
+              <li><Link href="/venture-capital" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Venture Capital Investment</Typography></Link></li>
+              <li><Link href="/pricing" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Pricing</Typography></Link></li>
+              <li><Link href="/ambassadors" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Brand Ambassadors Program</Typography></Link></li>
             </ul>
           </div>
 
@@ -96,10 +96,10 @@ export default async function Footer() {
           <div className="lg:col-span-2">
             <Typography variant="h5" className="text-white font-semibold mb-6">Support</Typography>
             <ul className="space-y-4">
-              <li><Link href="/terms" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Terms of Services</Typography></Link></li>
-              <li><Link href="/privacy" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Privacy Policy</Typography></Link></li>
-              <li><Link href="/faqs" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">FAQs</Typography></Link></li>
-              <li><Link href="/media-library" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Media Library</Typography></Link></li>
+              <li><Link href="/terms" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Terms of Services</Typography></Link></li>
+              <li><Link href="/privacy" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Privacy Policy</Typography></Link></li>
+              <li><Link href="/faqs" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">FAQs</Typography></Link></li>
+              <li><Link href="/media-library" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Media Library</Typography></Link></li>
             </ul>
           </div>
 
@@ -107,10 +107,10 @@ export default async function Footer() {
           <div className="lg:col-span-2">
             <Typography variant="h5" className="text-white font-semibold mb-6">Company</Typography>
             <ul className="space-y-4">
-              <li><Link href="/about" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">About Us</Typography></Link></li>
-              <li><Link href="/reading" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Further Reading</Typography></Link></li>
-              <li><Link href="/knowledge" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">Knowledge Base</Typography></Link></li>
-              <li><Link href="/news" className="hover:text-primary transition-colors"><Typography variant="p" className="text-gray-400 text-sm">SmartStox in the News</Typography></Link></li>
+              <li><Link href="/about" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">About Us</Typography></Link></li>
+              <li><Link href="/reading" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Further Reading</Typography></Link></li>
+              <li><Link href="/knowledge" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Knowledge Base</Typography></Link></li>
+              <li><Link href="/news" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">SmartStox in the News</Typography></Link></li>
             </ul>
           </div>
 
@@ -118,7 +118,7 @@ export default async function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <Typography variant="p" className="text-gray-400 text-sm text-center md:text-left">
+          <Typography variant="p" className="!text-base text-center md:text-left">
             © {new Date().getFullYear()} All Rights Reserved By SmartStox
           </Typography>
 
@@ -132,7 +132,7 @@ export default async function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-white transition-colors"
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:text-white hover:border-white transition-colors"
                 >
                   <span className="sr-only">{social.name}</span>
                   <Icon className="w-4 h-4" />

@@ -23,7 +23,7 @@ export async function WhoThisIsForSection() {
     <>
       {/* Blue Banner */}
       <div className="bg-blue-600 py-3 px-4 mb-16">
-        <Typography variant="h5" className="text-white text-center font-semibold">
+        <Typography variant="h5" className="text-white text-center font-medium italic">
           {t('banner')}
         </Typography>
       </div>
@@ -31,12 +31,12 @@ export async function WhoThisIsForSection() {
 
         {/* Header */}
         <div className="text-center mb-12">
-          <Typography variant="h3" className="text-white">
+          <Typography variant="h3">
             {t('title').split('Who')[0]}
             <span className="text-blue-500">Who</span>
             {t('title').split('Who')[1]}
           </Typography>
-          <Typography variant="h5" className="text-gray-400 mt-2">
+          <Typography variant="h5" className="mt-2">
             {t('subtitle')}
           </Typography>
         </div>
@@ -53,7 +53,7 @@ export async function WhoThisIsForSection() {
                   className="object-cover"
                 />
               </div>
-              <Typography variant="p" className="text-gray-300 text-center text-sm">
+              <Typography variant="p" className="text-center">
                 {profile.label}
               </Typography>
             </div>
@@ -62,10 +62,10 @@ export async function WhoThisIsForSection() {
 
         {/* Bottom Text */}
         <div className="text-center">
-          <Typography variant="h5" className="text-gray-400 max-w-3xl mx-auto">
+          <Typography variant="h5" className="max-w-3xl mx-auto">
             {t('bottomText1')}
           </Typography>
-          <Typography variant="h5" className="text-gray-400 max-w-3xl mx-auto mt-2">
+          <Typography variant="h5" className="max-w-3xl mx-auto mt-2">
             {t('bottomText2')}
           </Typography>
         </div>

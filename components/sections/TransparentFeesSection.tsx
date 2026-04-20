@@ -12,7 +12,7 @@ export default async function TransparentFeesSection() {
 
           <div>
             {/* Title */}
-            <Typography variant="h3" className="text-white">
+            <Typography variant="h3">
               <span className="text-[#0066FF]">{t('title_part1')}</span>
               {' - '}
               {t('title_part2')}
