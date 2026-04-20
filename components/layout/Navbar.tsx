@@ -138,7 +138,7 @@ export default function Navbar() {
                   {t("login")}
                 </Link>
                 <Link
-                  href="/register"
+                  href="/signup"
                   className="text-sm font-medium px-6 py-2 rounded-full bg-[#2A73EA] text-white hover:bg-[#1a5fc7] transition-colors"
                 >
                   {t("signup")}
@@ -240,7 +240,7 @@ export default function Navbar() {
                       {t("login")}
                     </Link>
                     <Link
-                      href="/register"
+                      href="/signup"
                       className="w-full text-center text-lg font-medium px-6 py-3 rounded-xl bg-[#2A73EA] text-white hover:bg-[#1a5fc7] transition-colors"
                       onClick={() => setIsOpen(false)}
                     >

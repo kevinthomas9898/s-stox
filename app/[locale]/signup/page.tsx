@@ -47,7 +47,7 @@ export default function RegisterPage() {
     setServerError("");
 
     try {
-      const response = await api.post('/auth/register', {
+      const response = await api.post('/auth/signup', {
         name: data.name,
         email: data.email,
         password: data.password,
