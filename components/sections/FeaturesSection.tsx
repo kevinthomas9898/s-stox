@@ -205,14 +205,14 @@ export default function FeaturesSection() {
                   </span>{" "}
                   {t("set_and_forget.title_part3")}
                 </Typography>
-                <Typography variant="h5" className="text-gray-300">
+                <Typography variant="h5">
                   {t("set_and_forget.subtitle")}
                 </Typography>
               </div>
-              <Typography variant="p" className="text-gray-300">
+              <Typography variant="p">
                 {t("set_and_forget.description1")}
               </Typography>
-              <Typography variant="p" className="text-gray-300">
+              <Typography variant="p">
                 {t("set_and_forget.description2")}
               </Typography>
             </div>

@@ -107,7 +107,8 @@
     "q7": "How Can I Increase the Value of my Benefits?",
     "a7": "Your investment benefits may be increased subject to your disposable income and risk appetite. Additional funds can be added via your SmartStox Mobile APP to strategically enhance compounding potential.",
     "q8": "How Do I Request a Refund?",
-    "a8": "A refund request should be done in writing to the client care email address as listed in the Contact Us section of this website, or via the self-service functions under Login. You may also cancel your trial during the first 30 days after the expiration of your 3-month trial for a full refund of any amounts paid."
+    "a8": "A refund request should be done in writing to the client care email address as listed in the Contact Us section of this website, or via the self-service functions under Login. You may also cancel your trial during the first 30 days after the expiration of your 3-month trial for a full refund of any amounts paid.",
+    "show_more": "Show more"
   },
   "cta": {
     "eyebrow": "Experience SmartStox Risk-Free for",
@@ -205,10 +206,10 @@
     "image_alt": "SmartStox virtual card illustration",
     "card1_title": "Adding More Funds, Withdrawing Profits, Enjoying Your Returns Or Cashing Out",
     "card1_description1": "As your confidence grows and capital expands, additional funds can be added via your SmartStox Mobile APP to strategically enhance compounding potential.",
-    "card1_description2": "You could likewise use your SmartStox APP to withdraw cash from your Transactional Profit Account, as allocated by your broker. Withdraw profits to enhance lifestyle, create experiences, or support your goals.",
-    "card1_description3": "Full or partial withdrawals of Funds Under Management remain available at any time, aligned with broker liquidity cycles and structured access protocols.",
+    "card1_description2": "Full or partial withdrawals of Funds Under Management remain available at any time, aligned with broker liquidity cycles and structured access protocols.",
     "card2_title": "Your Global SmartStox Virtual Card",
-    "card2_description": "Wealth should empower living - not just accumulate. Use your own Global SmartStox Virtual Card to make online purchases or pay in-store with GooglePay or ApplePay."
+    "card2_description1": "Wealth should empower living - not just accumulate. Use your own Global SmartStox Virtual Card to make online purchases or pay in-store with GooglePay or ApplePay.",
+    "card2_description2": "Your SmartStox Card is funded by your Transactional Profit Account, which is automatically funded as your SmartStox trading & treasury solution performs for you."
   },
   "ourBrokers": {
     "title_part1": "Our",

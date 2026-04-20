@@ -107,7 +107,8 @@
     "q7": "Comment puis-je augmenter la valeur de mes avantages ?",
     "a7": "Vos avantages d'investissement peuvent être augmentés en fonction de votre revenu disponible et de votre tolérance au risque. Des fonds supplémentaires peuvent être ajoutés via votre application pour optimiser le potentiel de capitalisation.",
     "q8": "Comment puis-je demander un remboursement ?",
-    "a8": "Une demande de remboursement doit être faite par écrit à l'adresse e-mail du service client comme indiqué dans la section Contactez-nous de ce site web, ou via les fonctions libre-service sous Connexion. Vous pouvez également annuler votre essai pendant les 30 premiers jours après l'expiration de votre essai de 3 mois pour un remboursement complet."
+    "a8": "Une demande de remboursement doit être faite par écrit à l'adresse e-mail du service client comme indiqué dans la section Contactez-nous de ce site web, ou via les fonctions libre-service sous Connexion. Vous pouvez également annuler votre essai pendant les 30 premiers jours après l'expiration de votre essai de 3 mois pour un remboursement complet.",
+    "show_more": "Voir plus"
   },
   "cta": {
     "eyebrow": "Expérimentez SmartStox Sans Risque Pendant",
@@ -196,10 +197,10 @@
     "image_alt": "Illustration de carte virtuelle SmartStox",
     "card1_title": "Ajouter des fonds, retirer des profits, profiter de vos rendements ou encaisser",
     "card1_description1": "À mesure que votre confiance grandit et que votre capital se développe, des fonds supplémentaires peuvent être ajoutés via votre application mobile SmartStox afin d'optimiser stratégiquement le potentiel de capitalisation.",
-    "card1_description2": "Vous pouvez également utiliser votre application SmartStox pour retirer des liquidités depuis votre compte de profits transactionnels, selon l'allocation définie par votre courtier. Retirez vos gains pour améliorer votre qualité de vie, créer des expériences ou soutenir vos objectifs.",
-    "card1_description3": "Les retraits, partiels ou totaux, des fonds sous gestion restent disponibles à tout moment, conformément aux cycles de liquidité du courtier et aux protocoles d'accès structurés.",
+    "card1_description2": "Les retraits, partiels ou totaux, des fonds sous gestion restent disponibles à tout moment, conformément aux cycles de liquidité du courtier et aux protocoles d'accès structurés.",
     "card2_title": "Votre Carte Virtuelle SmartStox Globale",
-    "card2_description": "La richesse devrait permettre de vivre - pas seulement s'accumuler. Utilisez votre propre Carte Virtuelle SmartStox Globale pour effectuer des achats en ligne ou payer en magasin avec GooglePay ou ApplePay."
+    "card2_description1": "La richesse devrait permettre de vivre - pas seulement s'accumuler. Utilisez votre propre Carte Virtuelle SmartStox Globale pour effectuer des achats en ligne ou payer en magasin avec GooglePay ou ApplePay.",
+    "card2_description2": "Votre carte SmartStox est alimentée par votre compte de profits transactionnels, qui est automatiquement approvisionné à mesure que votre solution de trading et de trésorerie SmartStox génère des performances pour vous."
   },
   "ourBrokers": {
     "title_part1": "Nos",

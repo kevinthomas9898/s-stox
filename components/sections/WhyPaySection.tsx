@@ -48,7 +48,7 @@ export async function WhyPaySection() {
             {benefits.map((benefit, index) => (
               <div key={index} className="flex items-start space-x-2">
                 <span className="text-white mt-1">•</span>
-                <Typography variant="p" className="text-gray-300">
+                <Typography variant="p">
                   {benefit}
                 </Typography>
               </div>

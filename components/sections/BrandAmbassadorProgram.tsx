@@ -16,12 +16,12 @@ export async function BrandAmbassadorProgram() {
 
   return (
     <SectionWrapper
-      className="py-24 bg-[#0b0f19]"
+      className="py-24"
       containerClassName="mx-auto"
     >
       {/* Header */}
       <div className="text-center mb-12 md:mb-16">
-        <Typography variant="h2" className="text-white">
+        <Typography variant="h2">
           {t("title").split("BRAND AMBASSADOR")[0]}
           <span className="text-[#2A73EA]">BRAND AMBASSADOR</span>
           {t("title").split("BRAND AMBASSADOR")[1]}
@@ -36,11 +36,11 @@ export async function BrandAmbassadorProgram() {
         {/* Left Content */}
         <div className="space-y-16">
           <div>
-            <Typography variant="h3" className="text-white">
+            <Typography variant="h3">
               {t("heading")}
             </Typography>
 
-            <Typography variant="p" className="text-gray-400">
+            <Typography variant="p">
               {t("description")}
             </Typography>
           </div>
@@ -49,10 +49,10 @@ export async function BrandAmbassadorProgram() {
           <div className="space-y-4 pt-4">
             {benefits.map((benefit, index) => (
               <div key={index} className="flex items-start gap-3">
-                <div className="shrink-0 w-5 h-5 rounded-full bg-green-500 flex items-center justify-center mt-0.5">
-                  <Check className="w-3 h-3 text-white" strokeWidth={3} />
+                <div className="shrink-0 w-5 h-5 z-10 rounded-full bg-green-500 flex items-center justify-center mt-0.5">
+                  <Check className="w-4 h-4 text-white" strokeWidth={3} />
                 </div>
-                <Typography variant="p" className="text-gray-300">
+                <Typography variant="p">
                   {benefit}
                 </Typography>
               </div>

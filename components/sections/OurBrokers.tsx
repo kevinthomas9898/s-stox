@@ -16,12 +16,12 @@ export default async function OurBrokers() {
             <span className="text-[#0066FF]">{t('title_part2')}</span>
           </Typography>
 
-          <Typography variant="h5" className="text-gray-300 font-light italic max-w-xl">
+          <Typography variant="h5" className="max-w-xl">
             {t('subtitle')}
           </Typography>
 
           <div className="space-y-4 pt-4">
-            <Typography variant="p" className="text-gray-400">
+            <Typography variant="p">
               {t('description')}
             </Typography>
           </div>

@@ -36,10 +36,10 @@ export async function CommissionProgramSection() {
     >
       {/* Header */}
       <div className="text-center mb-12 md:mb-16">
-        <Typography variant="h3" className="text-white">
+        <Typography variant="h3">
           {t("title")}
         </Typography>
-        <Typography variant="p" className="text-gray-400 mt-2">
+        <Typography variant="p" className="mt-2">
           {t("subtitle")}
         </Typography>
       </div>
@@ -60,10 +60,10 @@ export async function CommissionProgramSection() {
                 className="object-contain"
               />
             </div>
-            <Typography variant="h5" className="text-white">
+            <Typography variant="h4" className="font-medium">
               {benefit.title}
             </Typography>
-            <Typography variant="h4" className="text-gray-400 mt-1">
+            <Typography variant="h4" className="mt-1 font-medium">
               {benefit.subtitle}
             </Typography>
           </div>

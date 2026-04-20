@@ -32,7 +32,7 @@ export function Typography({
 
   return (
     <Component
-      className={cn("text-[#FFFFFF] z-0", styles[variant], className)}
+      className={cn("text-white z-10 relative", styles[variant], className)}
       {...props}
     />
   );

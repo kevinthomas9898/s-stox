@@ -8,21 +8,24 @@ export default async function TransparentFeesSection() {
   return (
     <div className="w-full py-24 bg-[#0b0f19]">
       <div className="mx-4 lg:mx-16">
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-8">
-          {/* Title */}
-          <Typography variant="h3" className="text-white">
-            <span className="text-[#0066FF]">{t('title_part1')}</span>
-            {' - '}
-            {t('title_part2')}
-          </Typography>
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto gap-y-12">
 
-          {/* Subtitle */}
-          <Typography variant="p" className="text-gray-300">
-            {t('subtitle')}
-          </Typography>
+          <div>
+            {/* Title */}
+            <Typography variant="h3" className="text-white">
+              <span className="text-[#0066FF]">{t('title_part1')}</span>
+              {' - '}
+              {t('title_part2')}
+            </Typography>
+
+            {/* Subtitle */}
+            <Typography variant="p">
+              {t('subtitle')}
+            </Typography>
+          </div>
 
           {/* Image */}
-          <div className="relative w-full max-w-3xl aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl">
+          <div className="relative w-full max-w-3xl aspect-video rounded-xl overflow-hidden">
             <Image
               src="/transparent_Performance_Based_Fees.png"
               alt={t('image_alt')}
@@ -32,11 +35,11 @@ export default async function TransparentFeesSection() {
           </div>
 
           {/* Description Paragraphs */}
-          <div className="space-y-4 max-w-3xl">
-            <Typography variant="p" className="text-gray-400">
+          <div>
+            <Typography variant="p">
               {t('description1')}
             </Typography>
-            <Typography variant="p" className="text-gray-400">
+            <Typography variant="p">
               {t('description2')}
             </Typography>
           </div>

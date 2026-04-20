@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Accordion,
   AccordionContent,
@@ -5,15 +7,19 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Typography } from '@/components/ui/typography';
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
+import { useState } from 'react';
 
-export default async function FAQSection() {
-  const t = await getTranslations('faq');
+export default function FAQSection() {
+  const t = useTranslations('faq');
+  const [showAll, setShowAll] = useState(false);
 
   const faqs = [1, 2, 3, 4, 5, 6, 7, 8].map(i => ({
     q: t(`q${i}` as any),
     a: t(`a${i}` as any)
   }));
+
+  const visibleFaqs = showAll ? faqs : faqs.slice(0, 5);
 
   return (
     <div className="w-full py-24 bg-[#0b0f19]">
@@ -23,21 +29,30 @@ export default async function FAQSection() {
         </Typography>
 
         <Accordion className="w-full max-w-3xl space-y-4">
-          {faqs.map((faq, index) => (
+          {visibleFaqs.map((faq, index) => (
             <AccordionItem
               key={index}
               value={`item-${index}`}
-              className="border border-white/10 rounded-lg bg-[#0d1627] overflow-hidden"
+              className="border border-white/10 rounded-lg overflow-hidden"
             >
-              <AccordionTrigger className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none cursor-pointer hover:bg-white/5 transition-colors hover:no-underline [&>svg]:text-gray-500 [&>svg]:w-4 [&>svg]:h-4 [&>svg]:shrink-0">
-                <Typography variant="h5" className="text-gray-300 !text-xl !font-normal">{faq.q}</Typography>
+              <AccordionTrigger className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none cursor-pointer hover:bg-white/5 transition-colors hover:no-underline **:data-[slot=accordion-trigger-icon]:text-white **:data-[slot=accordion-trigger-icon]:size-6">
+                <Typography variant="h5" className="text-xl font-normal">{faq.q}</Typography>
               </AccordionTrigger>
               <AccordionContent className="px-6 pb-5 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
-                <Typography variant="p" className="!text-sm">{faq.a}</Typography>
+                <Typography variant="p" className="text-sm text-gray-400">{faq.a}</Typography>
               </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
+
+        {!showAll && faqs.length > 5 && (
+          <button
+            onClick={() => setShowAll(true)}
+            className="mt-6 text-[#00D094] hover:text-[#00D094]/80 underline underline-offset-4 text-sm font-medium transition-colors"
+          >
+            {t('show_more') || 'Show more'}
+          </button>
+        )}
       </div>
     </div>
   );
