@@ -12,6 +12,7 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import { getAllAmbassadorQuestion, createApplication } from "@/lib/services/ambassador";
 import type { AmbassadorQuestionOption, AmbassadorQuestionsData } from "@/types";
 import { toast } from "sonner";
+import { AxiosError } from "axios";
 
 const formSchema = z.object({
   marketingBase: z.string().min(1, "Please select an option"),
@@ -44,7 +45,7 @@ export function AmbassadorApplicationSection() {
   const { data: questions, isLoading: isLoadingQuestions } = useQuery<AmbassadorQuestionsData>({
     queryKey: ['ambassador-questions'],
     queryFn: () => getAllAmbassadorQuestion(),
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: Infinity
   });
 
   const { control, handleSubmit, formState: { isSubmitting } } = useForm<FormData>({
@@ -67,9 +68,14 @@ export function AmbassadorApplicationSection() {
     onSuccess: (response) => {
       toast.success(response.message);
     },
-    onError: (error: any) => {
-      const message = error?.response?.data?.message || error?.message || "Failed to submit application";
-      toast.error(message);
+    onError: (error) => {
+      if(error instanceof AxiosError) {
+        const errorResult: {message: string} = error.response?.data;
+        const message = errorResult.message || error?.message;
+        toast.error(message);
+      } else {
+        toast.error(error?.message ?? "Failed to submit application");
+      }
     },
   });
 
