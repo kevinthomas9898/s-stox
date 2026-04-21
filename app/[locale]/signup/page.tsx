@@ -55,7 +55,7 @@ export default function RegisterPage() {
 
       const result = response.data;
 
-      if (result.status !== "success") {
+      if (result.status !== true) {
         throw new Error(result.message || "Registration failed");
       }
 

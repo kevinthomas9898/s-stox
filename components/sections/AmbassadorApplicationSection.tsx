@@ -8,6 +8,10 @@ import { PrimaryBTN } from "@/components/ui/PrimaryBTN";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { getAllAmbassadorQuestion, createApplication } from "@/lib/services/ambassador";
+import type { AmbassadorQuestionOption, AmbassadorQuestionsData } from "@/types";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   marketingBase: z.string().min(1, "Please select an option"),
@@ -23,7 +27,26 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
+interface SelectOption {
+  label: string;
+  value: string;
+}
+
+function mapApiOptionsToSelect(options: AmbassadorQuestionOption[] | undefined): SelectOption[] {
+  if (!options) return [];
+  return options.map((opt) => ({
+    label: opt.text,
+    value: String(opt.value),
+  }));
+}
+
 export function AmbassadorApplicationSection() {
+  const { data: questions, isLoading: isLoadingQuestions } = useQuery<AmbassadorQuestionsData>({
+    queryKey: ['ambassador-questions'],
+    queryFn: () => getAllAmbassadorQuestion(),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+  });
+
   const { control, handleSubmit, formState: { isSubmitting } } = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,27 +62,28 @@ export function AmbassadorApplicationSection() {
     }
   });
 
-  // TODO: Replace with your actual Calendly event link
-  // Example: "https://calendly.com/yourcompany/30min-interview"
-  const CALENDLY_EVENT_URL = "https://calendly.com/kevin-avdevs/30min";
+  const submitMutation = useMutation({
+    mutationFn: createApplication,
+    onSuccess: (response) => {
+      toast.success(response.message);
+    },
+    onError: (error: any) => {
+      const message = error?.response?.data?.message || error?.message || "Failed to submit application";
+      toast.error(message);
+    },
+  });
 
   const onSubmit = async (data: FormData) => {
-    const message = `
-Marketing Base: ${data.marketingBase}
-Experience: ${data.yearsOfExperience}
-Availability: ${data.availabilityToStart}
-Employment: ${data.employmentStatus}
-Phone: +${data.countryCode} ${data.mobileNumber}
-  `.trim();
-
-    const params = new URLSearchParams({
-      name: `${data.firstName} ${data.surname}`,
+    await submitMutation.mutateAsync({
+      countryCode: data.countryCode,
+      firstName: data.firstName,
+      surname: data.surname,
       email: data.emailAddress,
-      a1: message, // single combined field
+      marketingBaseQ1: parseInt(data.marketingBase, 10),
+      yearsOfExperienceQ2: parseInt(data.yearsOfExperience, 10),
+      availabilityToStartQ3: parseInt(data.availabilityToStart, 10),
+      independentOrEmployedQ4: parseInt(data.employmentStatus, 10),
     });
-
-    const calendlyUrl = `${CALENDLY_EVENT_URL}?${params.toString()}`;
-    window.open(calendlyUrl, "_blank");
   };
 
   return (
@@ -89,11 +113,8 @@ Phone: +${data.countryCode} ${data.mobileNumber}
                   </>
                 }
                 criteria="Criteria : Minimum 25,000"
-                options={[
-                  { label: "0-25k", value: "0-25k" },
-                  { label: "25k-100k", value: "25k-100k" },
-                  { label: "100k+", value: "100k+" },
-                ]}
+                options={mapApiOptionsToSelect(questions?.Q1)}
+                disabled={isLoadingQuestions}
               />
 
               <SelectDropdown
@@ -102,11 +123,8 @@ Phone: +${data.countryCode} ${data.mobileNumber}
                 label="Years of Experience"
                 subLabel="(Your experience as a marketer of any other products or services.)"
                 criteria="Criteria : Minimum 3 years"
-                options={[
-                  { label: "0-3 years", value: "0-3" },
-                  { label: "3-5 years", value: "3-5" },
-                  { label: "5+ years", value: "5+" },
-                ]}
+                options={mapApiOptionsToSelect(questions?.Q2)}
+                disabled={isLoadingQuestions}
               />
 
               <SelectDropdown
@@ -115,11 +133,8 @@ Phone: +${data.countryCode} ${data.mobileNumber}
                 label="Availability to Start"
                 subLabel="(Your availability to start)"
                 criteria="Criteria : Immediate"
-                options={[
-                  { label: "Immediate", value: "immediate" },
-                  { label: "Within 1 week", value: "1_week" },
-                  { label: "Within 1 month", value: "1_month" },
-                ]}
+                options={mapApiOptionsToSelect(questions?.Q3)}
+                disabled={isLoadingQuestions}
               />
 
               <SelectDropdown
@@ -127,10 +142,8 @@ Phone: +${data.countryCode} ${data.mobileNumber}
                 control={control}
                 label="Independent or Employed"
                 subLabel="Please select your preferred terms of engagement"
-                options={[
-                  { label: "Independent", value: "independent" },
-                  { label: "Employed", value: "employed" }
-                ]}
+                options={mapApiOptionsToSelect(questions?.Q4)}
+                disabled={isLoadingQuestions}
               />
             </div>
 
@@ -155,8 +168,8 @@ Phone: +${data.countryCode} ${data.mobileNumber}
               </div>
             </div>
             <div className="col-span-1 md:col-span-2 mt-8 flex justify-center pb-2">
-              <PrimaryBTN type="submit" loading={isSubmitting} className="w-auto px-8 h-[44px]">
-                Schedule An Appointment Interview
+              <PrimaryBTN type="submit" loading={isSubmitting || submitMutation.isPending} className="w-auto px-8 h-[44px]">
+                {submitMutation.isPending ? "Submitting..." : "Submit Application"}
               </PrimaryBTN>
             </div>
           </form>

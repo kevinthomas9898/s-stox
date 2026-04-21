@@ -24,12 +24,23 @@ export async function refreshToken(): Promise<AuthResponse> {
   return data;
 }
 
+export interface LogoutParams {
+  refreshToken: string;
+}
+
+export interface LogoutResponse {
+  status: boolean;
+  data: null;
+  message: string;
+}
+
 /**
  * Logout the user.
- * Backend clears cookies.
+ * Sends refresh token to backend for invalidation.
  */
-export async function logoutUser(): Promise<void> {
-  await api.post('/auth/logout', {}); // Backend requires non-empty body
+export async function logoutUser(params: LogoutParams): Promise<LogoutResponse> {
+  const { data } = await api.post<LogoutResponse>('/auth/logout', params);
+  return data;
 }
 
 /**

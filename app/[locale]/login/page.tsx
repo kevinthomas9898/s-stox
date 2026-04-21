@@ -71,7 +71,7 @@ export default function LoginPage() {
         isAuthenticated: true,
       }));
 
-      toast.success("Login successful!");
+      toast.success(result.message);
       router.push("/");
     } catch (err) {
       const message = err instanceof Error ? err.message : "Login failed";

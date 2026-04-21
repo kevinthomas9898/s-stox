@@ -3,7 +3,7 @@
 import { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { logout as logoutAction, setCredentials, setLoading } from '@/store/slices/authSlice';
-import { getJwtToken, clearAuthCookies, decodeJwt, getUserEmail } from '@/lib/utils/cookies';
+import { getJwtToken, clearAuthCookies, decodeJwt, getUserEmail, getAuthCookies } from '@/lib/utils/cookies';
 import { logoutUser } from '@/lib/services/auth';
 import { toast } from 'sonner';
 import type { LoginCredentials } from '@/types';
@@ -49,18 +49,22 @@ export function useAuth() {
   );
 
   const logout = useCallback(async () => {
+    // Get refresh token before clearing cookies
+    const { refreshToken } = getAuthCookies();
+    // Call backend logout with refresh token first (before clearing cookies)
+    try {
+      if (refreshToken) {
+        const response = await logoutUser({ refreshToken });
+        toast.success(response.message);
+      }
+    } catch {
+      // If API call fails, still show generic success
+      toast.success('Logged out successfully');
+    }
     // Clear cookies
     clearAuthCookies();
     // Clear Redux state
     dispatch(logoutAction());
-    // Show toast
-    toast.success('Logged out successfully');
-    // Call backend logout
-    try {
-      await logoutUser();
-    } catch {
-      // Ignore backend logout errors
-    }
   }, [dispatch]);
 
   return {
