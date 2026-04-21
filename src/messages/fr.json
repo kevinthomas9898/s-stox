@@ -67,7 +67,7 @@
     "set_and_forget": {
       "title_part1": "Le Mythe du",
       "title_part2": "Set-And-Forget",
-      "title_part3": "",
+      "title_part3": "Mythe",
       "subtitle": "Le trading \"Set-and-Forget\" (Configurer et oublier) est un mythe. Les marchés n'attendent pas.",
       "description1": "Une machine laissée dans un coin finira par prendre du retard à mesure que les marchés évoluent, que la liquidité change et que les conditions se modifient. L'automatisation durable nécessite une adaptation constante — c'est là qu'un courtier réglementé devient essentiel.",
       "description2": "La qualité d'exécution, l'accès à la liquidité, l'intégrité des prix et la protection du capital dépendent tous du courtier. La technologie pilote la stratégie, mais le Courtier s'assure que les transactions sont exécutées correctement, que les fonds sont protégés et que le système fonctionne dans le monde réel, pas seulement en théorie."
@@ -211,7 +211,7 @@
   },
   "transparentFees": {
     "title_part1": "Frais Transparents, Basés sur la Performance",
-    "title_part2": "",
+    "title_part2": "Basés sur la performance",
     "subtitle": "Incitations Alignées. Succès Partagé.",
     "image_alt": "Illustration des frais basés sur la performance",
     "description1": "Nos incitations sont alignées avec les vôtres. SmartStox est structuré autour de frais transparents et orientés vers la performance — conçus pour récompenser la croissance, pas simplement l'activité.",
@@ -248,10 +248,6 @@
   "wealthCreation": {
     "title": "Création de Richesse",
     "description": "Découvrez comment SmartStox vous aide à construire une richesse durable grâce à des stratégies d'investissement intelligentes pilotées par l'IA."
-  },
-  "ventureCapital": {
-    "title": "Investissement en Capital de Risque",
-    "description": "Apprenez-en plus sur notre approche innovante de l'investissement en capital de risque qui rend les opportunités de grande valeur accessibles à tous."
   },
   "mediaLibrary": {
     "title": "Médiathèque",
