@@ -7,17 +7,20 @@ export default function TrialSection() {
 
   return (
     <div className="w-full py-16 bg-[#0b0f19] relative overflow-hidden">
+      {/* Background glow */}
       <div className="absolute top-[0%] left-[0%] w-[50%] h-[50%] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none" />
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 justify-center">
+          
           {/* Logo */}
-          <div className="shrink-0 relative">
+          <div className="relative w-56 h-56 shrink-0">
             <Image
               src="/logo-icon-with-name.svg"
               alt="SmartStox"
-              width={228}
-              height={167}
+              fill
               className="object-contain"
+              priority
             />
           </div>
 
@@ -26,13 +29,16 @@ export default function TrialSection() {
             <Typography variant="h5">
               {t('subtitle')}
             </Typography>
+
             <Typography variant="h2" className="text-[#00D094] normal-case">
               {t('title')}
             </Typography>
+
             <Typography variant="p" className="max-w-2xl">
               {t('description')}
             </Typography>
           </div>
+
         </div>
       </div>
     </div>

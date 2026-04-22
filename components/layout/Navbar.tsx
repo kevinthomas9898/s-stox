@@ -61,14 +61,16 @@ export default function Navbar() {
       <SectionWrapper containerClassName="h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 relative z-50">
-          <Image
-            src="/logo-icon.png"
-            alt="AI Trading Analytics"
-            width={60}
-            height={60}
-            className="object-cover relative"
-            priority
-          />
+          <div className="relative w-[60px] h-[60px]">
+            <Image
+              src="/logo-icon.png"
+              alt="AI Trading Analytics"
+              fill
+              sizes="60px"
+              className="object-contain"
+              priority
+            />
+          </div>
           <span className="text-xl font-semibold text-white">
             {common("appName")}
           </span>
@@ -80,11 +82,10 @@ export default function Navbar() {
             <Link
               key={i}
               href={link.href}
-              className={`transition-colors ${
-                isActive(link.href)
+              className={`transition-colors ${isActive(link.href)
                   ? "text-[#00D094] font-semibold"
                   : "text-white hover:text-primary"
-              }`}
+                }`}
             >
               {link.label}
             </Link>
@@ -105,11 +106,10 @@ export default function Navbar() {
                 <DropdownMenuItem key={i} className="p-0">
                   <Link
                     href={item.href}
-                    className={`block w-full px-3 py-2 text-sm transition-colors ${
-                      isActive(item.href)
+                    className={`block w-full px-3 py-2 text-sm transition-colors ${isActive(item.href)
                         ? "text-[#00D094] font-semibold bg-white/10"
                         : "text-gray-300 hover:text-primary hover:bg-white/8"
-                    }`}
+                      }`}
                   >
                     {item.label}
                   </Link>
@@ -171,11 +171,10 @@ export default function Navbar() {
                   <Link
                     key={i}
                     href={link.href}
-                    className={`text-2xl font-semibold transition-colors ${
-                      isActive(link.href)
+                    className={`text-2xl font-semibold transition-colors ${isActive(link.href)
                         ? "text-[#00D094]"
                         : "text-white hover:text-primary"
-                    }`}
+                      }`}
                     onClick={() => setIsOpen(false)}
                   >
                     {link.label}
@@ -200,11 +199,10 @@ export default function Navbar() {
                         <Link
                           key={i}
                           href={item.href}
-                          className={`text-lg transition-colors ${
-                            isActive(item.href)
+                          className={`text-lg transition-colors ${isActive(item.href)
                               ? "text-[#00D094] font-semibold"
                               : "text-gray-300 hover:text-primary"
-                          }`}
+                            }`}
                           onClick={() => {
                             setIsOpen(false);
                             setShowMore(false);

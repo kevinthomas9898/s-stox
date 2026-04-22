@@ -197,7 +197,7 @@ const PhoneInputBase = React.forwardRef<HTMLInputElement, PhoneInputBaseProps>(
         type="tel"
         ref={ref}
         leftElement={
-          <div className="w-[115px]">
+          <div className="w-[135px]">
             <SelectDropdownBase
               options={finalOptions}
               value={countryCodeValue}

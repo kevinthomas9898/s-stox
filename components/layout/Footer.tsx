@@ -38,14 +38,16 @@ export default async function Footer() {
           {/* Brand & Description Column */}
           <div className="lg:col-span-5 space-y-6">
             <Link href="/" className="flex items-center gap-2">
-              <Image
-                src="/logo-icon.png"
-                alt="AI Trading Analytics"
-                width={50}
-                height={50}
-                className="object-cover relative"
-                priority
-              />
+              <div className="relative w-[50px] h-[50px]">
+                <Image
+                  src="/logo-icon.png"
+                  alt="AI Trading Analytics"
+                  fill
+                  sizes="50px"
+                  className="object-contain"
+                  priority
+                />
+              </div>
               <span className="text-2xl font-semibold text-white">
                 SmartStox
               </span>
