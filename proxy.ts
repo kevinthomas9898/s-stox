@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import createProxy from 'next-intl/middleware';
-import { locales, localePrefix, defaultLocale } from './src/i18n/config';
+import { locales, localePrefix, defaultLocale } from './i18n/config';
 
 const PROTECTED_ROUTES = ['/dashboard', '/profile'];
 const AUTH_ROUTES = ['/login', '/signup'];
