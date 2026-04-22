@@ -46,8 +46,10 @@ export interface ApiError {
 
 // ── Ambassador ──
 export interface AmbassadorQuestionOption {
-  value: number;
-  text: string;
+  value: string;
+  label: string;
+  pass: string;
+  quesNo: string;
 }
 
 export interface AmbassadorQuestionsData {
@@ -60,15 +62,17 @@ export interface GetAllAmbassadorQuestionParams {
 }
 
 // ── Create Application ──
+export interface AmbassadorQuesAnswer {
+  answerNumber: string;
+  questionNumber: string;
+}
+
 export interface CreateApplicationParams {
   countryCode: string;
   firstName: string;
   surname: string;
   email: string;
-  marketingBaseQ1: number;
-  yearsOfExperienceQ2: number;
-  availabilityToStartQ3: number;
-  independentOrEmployedQ4: number;
+  ambassadorQuesAnswerList: AmbassadorQuesAnswer[];
 }
 
 export interface CreateApplicationResponse {

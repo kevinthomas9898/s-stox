@@ -10,7 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { getAllAmbassadorQuestion, createApplication } from "@/lib/services/ambassador";
-import type { AmbassadorQuestionOption, AmbassadorQuestionsData } from "@/types";
+import type { AmbassadorQuestionsData } from "@/types";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
 
@@ -27,19 +27,6 @@ const formSchema = z.object({
 });
 
 type FormData = z.infer<typeof formSchema>;
-
-interface SelectOption {
-  label: string;
-  value: string;
-}
-
-function mapApiOptionsToSelect(options: AmbassadorQuestionOption[] | undefined): SelectOption[] {
-  if (!options) return [];
-  return options.map((opt) => ({
-    label: opt.text,
-    value: String(opt.value),
-  }));
-}
 
 export function AmbassadorApplicationSection() {
   const { data: questions, isLoading: isLoadingQuestions } = useQuery<AmbassadorQuestionsData>({
@@ -85,10 +72,12 @@ export function AmbassadorApplicationSection() {
       firstName: data.firstName,
       surname: data.surname,
       email: data.emailAddress,
-      marketingBaseQ1: parseInt(data.marketingBase, 10),
-      yearsOfExperienceQ2: parseInt(data.yearsOfExperience, 10),
-      availabilityToStartQ3: parseInt(data.availabilityToStart, 10),
-      independentOrEmployedQ4: parseInt(data.employmentStatus, 10),
+      ambassadorQuesAnswerList: [
+        { questionNumber: "100", answerNumber: data.marketingBase },
+        { questionNumber: "200", answerNumber: data.yearsOfExperience },
+        { questionNumber: "300", answerNumber: data.availabilityToStart },
+        { questionNumber: "400", answerNumber: data.employmentStatus },
+      ],
     });
   };
 
@@ -119,7 +108,7 @@ export function AmbassadorApplicationSection() {
                   </>
                 }
                 criteria="Criteria : Minimum 25,000"
-                options={mapApiOptionsToSelect(questions?.Q1)}
+                options={questions?.["100"] ?? []}
                 disabled={isLoadingQuestions}
               />
 
@@ -129,7 +118,7 @@ export function AmbassadorApplicationSection() {
                 label="Years of Experience"
                 subLabel="(Your experience as a marketer of any other products or services.)"
                 criteria="Criteria : Minimum 3 years"
-                options={mapApiOptionsToSelect(questions?.Q2)}
+                options={questions?.["200"] ?? []}
                 disabled={isLoadingQuestions}
               />
 
@@ -139,7 +128,7 @@ export function AmbassadorApplicationSection() {
                 label="Availability to Start"
                 subLabel="(Your availability to start)"
                 criteria="Criteria : Immediate"
-                options={mapApiOptionsToSelect(questions?.Q3)}
+                options={questions?.["300"] ?? []}
                 disabled={isLoadingQuestions}
               />
 
@@ -148,7 +137,7 @@ export function AmbassadorApplicationSection() {
                 control={control}
                 label="Independent or Employed"
                 subLabel="Please select your preferred terms of engagement"
-                options={mapApiOptionsToSelect(questions?.Q4)}
+                options={questions?.["400"] ?? []}
                 disabled={isLoadingQuestions}
               />
             </div>

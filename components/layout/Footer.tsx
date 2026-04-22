@@ -98,8 +98,8 @@ export default async function Footer() {
           <div className="lg:col-span-2">
             <Typography variant="h5" className="text-white font-semibold mb-6">Support</Typography>
             <ul className="space-y-4">
-              <li><Link href="/terms" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Terms of Services</Typography></Link></li>
-              <li><Link href="/privacy" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Privacy Policy</Typography></Link></li>
+              <li><Link href="" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Terms of Services</Typography></Link></li>
+              <li><Link href="" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Privacy Policy</Typography></Link></li>
               <li><Link href="/faqs" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">FAQs</Typography></Link></li>
               <li><Link href="/media-library" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Media Library</Typography></Link></li>
             </ul>
@@ -109,10 +109,10 @@ export default async function Footer() {
           <div className="lg:col-span-2">
             <Typography variant="h5" className="text-white font-semibold mb-6">Company</Typography>
             <ul className="space-y-4">
-              <li><Link href="/about" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">About Us</Typography></Link></li>
-              <li><Link href="/reading" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Further Reading</Typography></Link></li>
-              <li><Link href="/knowledge" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Knowledge Base</Typography></Link></li>
-              <li><Link href="/news" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">SmartStox in the News</Typography></Link></li>
+              <li><Link href="" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">About Us</Typography></Link></li>
+              <li><Link href="/further-reading" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Further Reading</Typography></Link></li>
+              <li><Link href="" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Knowledge Base</Typography></Link></li>
+              <li><Link href="" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">SmartStox in the News</Typography></Link></li>
             </ul>
           </div>
 
