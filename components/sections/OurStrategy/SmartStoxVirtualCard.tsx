@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Typography } from '@/components/ui/typography';
 import { getTranslations } from "next-intl/server";
-import { SectionWrapper } from '../ui/SectionWrapper';
+import { SectionWrapper } from '../../ui/SectionWrapper';
 
 export default async function SmartStoxVirtualCard() {
     const t = await getTranslations('smartStoxVirtualCard');

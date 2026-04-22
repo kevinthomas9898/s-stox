@@ -1,5 +1,5 @@
-import { PricingTermsSection } from "@/components/sections/PricingTermsSection";
-import { PricingDetailsSection } from "@/components/sections/PricingDetailsSection";
+import { PricingTermsSection } from "@/components/sections/PricingPage/PricingTermsSection";
+import { PricingDetailsSection } from "@/components/sections/PricingPage/PricingDetailsSection";
 
 export default function PricingPage() {
   return (

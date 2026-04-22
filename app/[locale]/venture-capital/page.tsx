@@ -1,5 +1,5 @@
-import { VentureCapitalProjectsSection } from '@/components/sections/VentureCapitalProjectsSection';
-import { EcosystemGridSection } from '@/components/sections/EcosystemGridSection';
+import { VentureCapitalProjectsSection } from '@/components/sections/VentureCapital/VentureCapitalProjectsSection';
+import { EcosystemGridSection } from '@/components/sections/VentureCapital/EcosystemGridSection';
 
 export default function VentureCapitalClientPage() {
   return (

@@ -1,6 +1,6 @@
 import { setRequestLocale } from 'next-intl/server';
-import { MediaLibraryHeroSection } from '@/components/sections/MediaLibraryHeroSection';
-import { MediaLibraryColorsSection } from '@/components/sections/MediaLibraryColorsSection';
+import { MediaLibraryHeroSection } from '@/components/sections/MediaLibrary/MediaLibraryHeroSection';
+import { MediaLibraryColorsSection } from '@/components/sections/MediaLibrary/MediaLibraryColorsSection';
 
 export default async function MediaLibraryPage({
   params,

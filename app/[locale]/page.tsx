@@ -1,8 +1,11 @@
-'use client';
-
-import HeroSection from '@/components/sections/HeroSection';
-import FeaturesSection from '@/components/sections/FeaturesSection';
-import TestimonialsSection from '@/components/sections/TestimonialsSection';
+import HeroSection from '@/components/sections/HomePage/HeroSection';
+import TestimonialsSection from '@/components/sections/Common/TestimonialsSection';
+import { WhyChooseSmartStoxSection } from '@/components/sections/HomePage/WhyChooseSmartStoxSection';
+import AiLearningSection from '@/components/sections/HomePage/AiLearningSection';
+import ManualVsAutomatedTradingSection from '@/components/sections/HomePage/ManualVsAutomatedTradingSection';
+import TimeInMarketVsTimingSection from '@/components/sections/HomePage/TimeInMarketVsTimingSection';
+import SetAndForgetMythSection from '@/components/sections/HomePage/SetAndForgetMythSection';
+import ProvenPerformanceSection from '@/components/sections/HomePage/ProvenPerformanceSection';
 
 export default function HomePage() {
   return (
@@ -11,7 +14,12 @@ export default function HomePage() {
       <div className='gradient-overlay' />
 
       <HeroSection />
-      <FeaturesSection />
+      <WhyChooseSmartStoxSection />
+      <AiLearningSection />
+      <ManualVsAutomatedTradingSection />
+      <TimeInMarketVsTimingSection />
+      <SetAndForgetMythSection />
+      <ProvenPerformanceSection />
       <TestimonialsSection />
     </div>
   );

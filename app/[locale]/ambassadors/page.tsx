@@ -1,10 +1,10 @@
-import { BrandAmbassadorProgram } from "@/components/sections/BrandAmbassadorProgram";
-import { CommissionProgramSection } from "@/components/sections/CommissionProgramSection";
-import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
-import { WhoThisIsForSection } from "@/components/sections/WhoThisIsForSection";
-import { AmbassadorApplicationSection } from "@/components/sections/AmbassadorApplicationSection";
-import { AmbassadorEarningsSection } from "@/components/sections/AmbassadorEarningsSection";
-import { WhyPaySection } from "@/components/sections/WhyPaySection";
+import { BrandAmbassadorProgram } from "@/components/sections/AmbassadorsPage/BrandAmbassadorProgram";
+import { CommissionProgramSection } from "@/components/sections/AmbassadorsPage/CommissionProgramSection";
+import { HowItWorksSection } from "@/components/sections/AmbassadorsPage/HowItWorksSection";
+import { WhoThisIsForSection } from "@/components/sections/AmbassadorsPage/WhoThisIsForSection";
+import { AmbassadorApplicationSection } from "@/components/sections/AmbassadorsPage/AmbassadorApplicationSection";
+import { AmbassadorEarningsSection } from "@/components/sections/AmbassadorsPage/AmbassadorEarningsSection";
+import { WhyPaySection } from "@/components/sections/AmbassadorsPage/WhyPaySection";
 
 export default function AmbassadorsPage() {
   return (

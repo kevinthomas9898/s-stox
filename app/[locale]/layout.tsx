@@ -5,8 +5,8 @@ import { locales, type Locale } from '@/i18n/config';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { cache } from 'react';
-import TrialSection from '@/components/sections/TrialSection';
-import RegistrationStepsSection from '@/components/sections/RegistrationStepsSection';
+import TrialSection from '@/components/sections/Common/TrialSection';
+import RegistrationStepsSection from '@/components/sections/Common/RegistrationStepsSection';
 
 // Cache messages to prevent reloading on every HMR
 const getCachedMessages = cache(async (locale: string) => {
