@@ -45,7 +45,7 @@ const TextInputBase = React.forwardRef<HTMLInputElement, TextInputProps>(
               className={cn(
                 "flex h-12 w-full rounded-md border border-white/60 bg-transparent px-3 py-2 text-sm text-white placeholder:text-gray-500 disabled:cursor-not-allowed disabled:opacity-50 outline-none",
                 error &&
-                  "border-red-500 ring-1 ring-red-500 focus:ring-red-500",
+                "border-red-500 ring-1 ring-red-500 focus:ring-red-500",
                 (isPassword || rightIcon) && "pr-10",
                 className,
               )}
@@ -141,7 +141,7 @@ export function useCountryCodes() {
       try {
         const res = await fetch("https://restcountries.com/v3.1/all?fields=name,flag,idd,cca2,flags");
         const data = await res.json();
-        
+
         let formattedOptions = data
           .filter((country: any) => country.idd && country.idd.root)
           .map((country: any) => {
@@ -162,9 +162,9 @@ export function useCountryCodes() {
           })
           .sort((a: any, b: any) => a._sortName.localeCompare(b._sortName))
           .map(({ _sortName, ...rest }: any) => rest);
-          
+
         setOptions(formattedOptions);
-      } catch(e) {
+      } catch (e) {
         console.error("Failed to fetch country codes", e);
       }
     }
@@ -208,6 +208,21 @@ const PhoneInputBase = React.forwardRef<HTMLInputElement, PhoneInputBaseProps>(
         }
         className={className}
         {...props}
+        onChange={(e) => {
+          let value = e.target.value;
+
+          // allow only digits
+          value = value.replace(/\D/g, "");
+
+          // enforce maxLength manually
+          if (props.maxLength) {
+            value = value.slice(0, props.maxLength);
+          }
+
+          // update value
+          e.target.value = value;
+          props.onChange?.(e);
+        }}
       />
     );
   },

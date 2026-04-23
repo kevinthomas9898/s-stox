@@ -27,7 +27,7 @@ interface Testimonial {
 
 export default function TestimonialsSection() {
   const t = useTranslations('testimonials');
-  
+
   // ==========================================
   // ⚙️ TOGGLE SETTING: 
   // Set to 'true' once you have actual Trustpilot reviews.
@@ -181,7 +181,7 @@ export default function TestimonialsSection() {
         )}
 
       </div>
-      
+
       {/* Load Trustpilot Bootstrap Script statically for the widget */}
       <Script
         type="text/javascript"

@@ -1,6 +1,8 @@
 import { setRequestLocale } from 'next-intl/server';
 import { MediaLibraryHeroSection } from '@/components/sections/MediaLibrary/MediaLibraryHeroSection';
 import { MediaLibraryColorsSection } from '@/components/sections/MediaLibrary/MediaLibraryColorsSection';
+import { MediaLibraryLogosSection } from '@/components/sections/MediaLibrary/MediaLibraryLogosSection';
+import { MediaLibraryAdsSection } from '@/components/sections/MediaLibrary/MediaLibraryAdsSection';
 
 export default async function MediaLibraryPage({
   params,
@@ -15,7 +17,9 @@ export default async function MediaLibraryPage({
       <div className="gradient-overlay" />
       
       <MediaLibraryHeroSection />
+      <MediaLibraryLogosSection />
       <MediaLibraryColorsSection />
+      <MediaLibraryAdsSection />
     </div>
   );
 }
