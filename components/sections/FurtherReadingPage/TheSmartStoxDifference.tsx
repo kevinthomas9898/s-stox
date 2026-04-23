@@ -68,7 +68,7 @@ export function TheSmartStoxDifference({ items = defaultItems }: TheSmartStoxDif
                         This hybrid structure matters. Because automation generates consistency. Oversight generates resilience. Research generates adaptability. Together, they create durability. And durability is what allows compounding to work.
                     </Typography>
                 </div>
-                <Image src="/chart.png" alt="The SmartStox Difference" width={1000} height={1000} className="w-full h-auto col-span-2 px-20" />
+                <Image src="/computer_chart.png" alt="The SmartStox Difference" width={1000} height={1000} className="w-full h-auto col-span-2 px-20" />
             </div>
         </SectionWrapper>
     );

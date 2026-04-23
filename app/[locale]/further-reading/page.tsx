@@ -1,5 +1,6 @@
 import { FurtherReadingContentSection } from '@/components/sections/FurtherReadingPage/FurtherReadingContentSection';
 import { TheSmartStoxDifference } from '@/components/sections/FurtherReadingPage/TheSmartStoxDifference';
+import { CanAutomationMakeYouRich } from '@/components/sections/FurtherReadingPage/CanAutomationMakeYouRich';
 
 export default function FurtherReadingPage() {
   return (
@@ -7,6 +8,7 @@ export default function FurtherReadingPage() {
       <div className="gradient-overlay" />
       <FurtherReadingContentSection />
       <TheSmartStoxDifference />
+      <CanAutomationMakeYouRich />
     </main>
   );
 }
