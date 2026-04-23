@@ -160,6 +160,9 @@ export function AmbassadorApplicationSection() {
                   countryCodeName="countryCode"
                   label="Mobile Number"
                   placeholder="00000 00000"
+                  type="tel"
+                  inputMode="numeric"
+                  maxLength={15}
                 />
               </div>
             </div>
