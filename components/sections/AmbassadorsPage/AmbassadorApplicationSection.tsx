@@ -72,6 +72,7 @@ export function AmbassadorApplicationSection() {
       firstName: data.firstName,
       surname: data.surname,
       email: data.emailAddress,
+      number: data.mobileNumber,
       ambassadorQuesAnswerList: [
         { questionNumber: "100", answerNumber: data.marketingBase },
         { questionNumber: "200", answerNumber: data.yearsOfExperience },

@@ -72,6 +72,7 @@ export interface CreateApplicationParams {
   firstName: string;
   surname: string;
   email: string;
+  number: string;
   ambassadorQuesAnswerList: AmbassadorQuesAnswer[];
 }
 
