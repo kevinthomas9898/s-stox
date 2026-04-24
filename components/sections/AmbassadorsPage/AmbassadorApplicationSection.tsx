@@ -15,7 +15,7 @@ import { getAmbassadorAvailableSlots } from "@/lib/services/calendlyAPI";
 import type { AmbassadorQuestionsData, AvailableDayWithSpots } from "@/types";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
-import { CalendarPicker, DialogBox } from "@/components/common";
+import { CalendarPicker, DialogBox, Loader } from "@/components/common";
 import { parseISO } from "date-fns";
 
 const formSchema = z.object({
@@ -217,13 +217,16 @@ function MeetingScheduler({ value, onChange }: MeetingSchedulerProps) {
   const endDate = endDateTime.toISOString();
 
   // Fetch available slots from API (static 7-day range)
-  const { data: days = [], isLoading, error } = useQuery<AvailableDayWithSpots[]>({
+  const { data: days = [], isLoading, isFetching, error } = useQuery<AvailableDayWithSpots[]>({
     queryKey: ['ambassador-available-slots', startDate, endDate],
     queryFn: () => getAmbassadorAvailableSlots({ startDate, endDate }),
     enabled: isOpen,
     refetchOnMount: 'always', // Always refetch when component mounts (dialog opens)
     staleTime: 0, // Data is immediately stale to trigger refetch
   });
+
+  // Show loader on initial load OR during refetch
+  const showLoader = isLoading || (isFetching);
 
   const handleSelectSpot = (_date: string, spot: { start_time: string }) => {
     // spot.start_time is a UTC ISO string (e.g., "2026-04-27T07:00:00Z")
@@ -279,12 +282,12 @@ function MeetingScheduler({ value, onChange }: MeetingSchedulerProps) {
         isHeaderVisible={false}
         className="!p-0"
       >
-        {isLoading ? (
-          <div className="flex items-center justify-center h-64 w-[500px] bg-[#0f0f0f] rounded-xl">
-            <div className="text-white">Loading available slots...</div>
+        {showLoader ? (
+          <div className="flex items-center justify-center h-64 w-full bg-[#0f0f0f] rounded-xl">
+            <Loader text="Loading available slots..." className="text-white" size={28} />
           </div>
         ) : error ? (
-          <div className="flex items-center justify-center h-64 w-[500px] bg-[#0f0f0f] rounded-xl">
+          <div className="flex items-center justify-center h-64 w-full bg-[#0f0f0f] rounded-xl">
             <div className="text-red-400">Failed to load slots. Please try again.</div>
           </div>
         ) : (
