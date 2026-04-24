@@ -72,7 +72,8 @@ export interface CreateApplicationParams {
   firstName: string;
   surname: string;
   email: string;
-  number: string;
+  phoneNo: string;
+  appointmentDate?: string;
   ambassadorQuesAnswerList: AmbassadorQuesAnswer[];
 }
 
@@ -81,3 +82,9 @@ export interface CreateApplicationResponse {
   data: null;
   message: string;
 }
+
+// Re-export available slots types
+export type {
+  AvailableDayWithSpots,
+  AvailableSlot,
+} from './calendly';
