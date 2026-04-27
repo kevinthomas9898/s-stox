@@ -394,6 +394,318 @@
     ],
     "bottomText": "Continuous Qualifying Criteria: Independent Ambassadors: AUM of $ 25,000 - Employed Ambassadors: 20 New Consumer Sales Per Month"
   },
+  "termsOfService": {
+    "title": "TERMS OF SERVICE",
+    "subtitle": "SMARTSTOX SaaS TRIAL AND BROKERAGE TRANSITION AGREEMENT",
+    "parties": {
+      "title": "PARTIES",
+      "content": "This SmartStox SaaS Trial and Brokerage Transition Agreement (\"Agreement\") is entered into between: eServe Global Limited, doing business as SmartStox, a company duly incorporated under the laws of Hong Kong (SAR), with its registered address at Suite 2A, Glenealy Tower, No. 1 Glenealy, Central, Hong Kong (SAR), People's Republic of China (\"SmartStox\"), and the individual or entity accepting this Agreement (\"Client\", \"You\")."
+    },
+    "natureOfService": {
+      "title": "NATURE OF SERVICE",
+      "acknowledges": {
+        "title": "The Client acknowledges and agrees that:",
+        "items": [
+          "(a) SmartStox provides Software-as-a-Service (\"SaaS\") only;",
+          "(b) The SmartStox platform is a technology tool designed to automate trading processes;",
+          "(c) SmartStox does not provide financial advice, brokerage services, or investment management."
+        ]
+      },
+      "software": {
+        "title": "The SmartStox software:",
+        "items": [
+          "(a) Provides automation and trading tools only;",
+          "(b) Does not manage funds;",
+          "(c) Does not provide capital protection;",
+          "(d) Does not guarantee profits."
+        ]
+      }
+    },
+    "saasTrial": {
+      "title": "SOFTWARE-AS-A-SERVICE TRIAL",
+      "trialPeriod": "The Client shall participate in an initial trial period of up to three (3) months (\"Trial Period\").",
+      "during": {
+        "title": "During the Trial Period:",
+        "items": [
+          "(a) The Client shall pay a total software licensing fee in USD or USDT, in accordance with their chosen Pricing Plan and Fee Schedule, as published on www.SmartStoxGlobal.com;",
+          "(b) Such fee is payable solely for access to the SmartStox software;",
+          "(c) The software is a tool only and not an investment in itself;",
+          "(d) All trading activity is conducted in a simulated/demo environment."
+        ]
+      },
+      "acknowledges": {
+        "title": "The Client acknowledges that:",
+        "items": [
+          "(a) Subscription or license fees are independent of trading results.",
+          "(b) No live trading occurs during the Trial Period."
+        ]
+      }
+    },
+    "endOfTrial": {
+      "title": "END OF TRIAL – CLIENT ELECTION",
+      "election": {
+        "title": "Upon completion of the Trial Period, the Client may elect:",
+        "items": [
+          "(a) To receive a full refund of all software fees paid; or",
+          "(b) To extend the trial period, subject to approval by SmartStox; or",
+          "(c) To open a live trading account with a licensed broker partner, and receive a sign-on bonus, equal to the simulated demo account balance"
+        ]
+      },
+      "acknowledges": {
+        "title": "The Client acknowledges that:",
+        "items": [
+          "(a) The demo account balance is fictional and simulated;",
+          "(b) It does not represent real profits or capital;",
+          "(c) It is provided as a promotional incentive only"
+        ]
+      }
+    },
+    "transitionToLive": {
+      "title": "TRANSITION TO LIVE TRADING",
+      "elects": {
+        "title": "If the Client elects to proceed with live trading:",
+        "items": [
+          "(a) The Client shall enter into a separate agreement with a licensed broker, which is contracted to SmartStox;",
+          "(b) All trading activities shall thereafter be conducted via the broker."
+        ]
+      },
+      "smartStoxShall": {
+        "title": "SmartStox shall:",
+        "items": [
+          "(a) Continue to provide software services only;",
+          "(b) Not act as a broker, intermediary, or financial advisor."
+        ]
+      }
+    },
+    "tradeAutomation": {
+      "title": "TRADE AUTOMATION",
+      "platformEnables": {
+        "title": "The SmartStox platform enables:",
+        "items": [
+          "(a) Automated trade execution in accordance with broker account rules;",
+          "(b) The use of customisable trading strategies with configurable parameters."
+        ]
+      },
+      "acknowledges": {
+        "title": "The Client acknowledges that:",
+        "items": [
+          "(a) SmartStox operates on the Client's designated broker account",
+          "(b) SmartStox relies on broker infrastructure for execution."
+        ]
+      }
+    },
+    "controlOfFunds": {
+      "title": "CONTROL OF FUNDS",
+      "retainsControl": "The Client retains full control of all trading capital.",
+      "acknowledges": {
+        "title": "The Client acknowledges that",
+        "items": [
+          "(a) All funds are held exclusively by the broker;",
+          "(b) SmartStox does not receive, hold, or control funds;",
+          "(c) SmartStox only facilitates automated execution via software."
+        ]
+      }
+    },
+    "ongoingFees": {
+      "title": "ONGOING FEES (POST-TRIAL)",
+      "agrees": {
+        "title": "Following the Trial Period, the Client agrees that:",
+        "items": [
+          "(a) A performance-based fee shall apply;",
+          "(b) Such fee shall be calculated as a daily percentage of trading revenue, in respect of any trading day where profit is generated.",
+          "(c) Fees will be charged in accordance with rates published on www.SmartStoxGlobal.com."
+        ]
+      },
+      "furtherAgrees": {
+        "title": "The Client further agrees that:",
+        "items": [
+          "(a) Such fees shall be collected by the broker on behalf of SmartStox;",
+          "(b) The broker shall deduct such fees only from profits generated using the software."
+        ]
+      }
+    },
+    "brokerageRelationship": {
+      "title": "BROKERAGE RELATIONSHIP",
+      "providedExclusively": "Brokerage services are provided exclusively by licensed brokers.",
+      "acknowledges": {
+        "title": "The Client acknowledges that:",
+        "items": [
+          "(a) SmartStox only interacts with licensed brokers;",
+          "(b) SmartStox is not a financial intermediary."
+        ]
+      },
+      "furtherAcknowledges": {
+        "title": "The Client further acknowledges that:",
+        "items": [
+          "(a) Brokerage services may be facilitated through entities including The Moosehouse Group, which offers reception and transmission of orders services on leveraged financial instruments via licensed brokers and liquidity providers;",
+          "(b) All execution services are performed by licensed entities within their respective jurisdictions."
+        ]
+      }
+    },
+    "financialAdvice": {
+      "title": "FINANCIAL ADVICE DISCLAIMER",
+      "doesNotProvide": {
+        "title": "SmartStox does not provide:",
+        "items": [
+          "(a) Financial advice;",
+          "(b) Investment recommendations;",
+          "(c) Guarantee of profits."
+        ]
+      },
+      "noInformation": {
+        "title": "No information provided constitutes:",
+        "items": [
+          "(a) Investment advice; or",
+          "(b) A solicitation to buy or sell financial instruments."
+        ]
+      }
+    },
+    "riskDisclosure": {
+      "title": "RISK DISCLOSURE",
+      "acknowledges": {
+        "title": "The Client acknowledges that:",
+        "items": [
+          "(a) Trading involves significant risk;",
+          "(b) Losses may be substantial and may include total loss of capital;",
+          "(c) Trading may not be suitable for all investors."
+        ]
+      },
+      "confirms": {
+        "title": "The Client confirms that they have considered:",
+        "items": [
+          "(a) Their financial situation;",
+          "(b) Their understanding of trading risks."
+        ]
+      }
+    },
+    "performanceDisclaimers": {
+      "title": "PERFORMANCE DISCLAIMERS",
+      "pastPerformance": {
+        "title": "Past performance, simulations, and back tests:",
+        "items": [
+          "(a) Are for illustrative purposes only;",
+          "(b) Are not indicative of future results."
+        ]
+      },
+      "backTests": {
+        "title": "Back Tests:",
+        "items": [
+          "(a) Are based on historical data;",
+          "(b) Are simulated in nature;",
+          "(c) Do not guarantee future performance."
+        ]
+      },
+      "actualResults": {
+        "title": "Actual trading results:",
+        "items": [
+          "(a) May differ materially;",
+          "(b) May result in losses."
+        ]
+      }
+    },
+    "generalLimitations": {
+      "title": "GENERAL LIMITATIONS",
+      "acknowledges": {
+        "title": "The Client acknowledges that:",
+        "items": [
+          "(a) SmartStox provides software tools only;",
+          "(b) SmartStox does not manage funds;",
+          "(c) SmartStox does not provide capital protection."
+        ]
+      }
+    },
+    "brokerLicensing": {
+      "title": "BROKER LICENSING",
+      "allBrokers": {
+        "title": "All brokers utilised:",
+        "items": [
+          "(a) Are duly licensed within their respective jurisdictions;",
+          "(b) Are responsible for all regulated activities;",
+          "(c) SmartStox does not provide capital protection."
+        ]
+      },
+      "actsSolely": {
+        "title": "SmartStox acts solely as:",
+        "items": [
+          "(a) A technology provider;",
+          "(b) An introducing entity."
+        ]
+      }
+    },
+    "tradeLossCompensation": {
+      "title": "TRADE-LOSS COMPENSATION DISCLAIMER",
+      "mayProvide": {
+        "title": "In exceptional circumstances, SmartStox may, at its sole discretion, provide compensation for:",
+        "items": [
+          "(a) Operational errors; or",
+          "(b) System performance issues."
+        ]
+      },
+      "suchCompensation": {
+        "title": "Such compensation:",
+        "items": [
+          "(a) Is not guaranteed;",
+          "(b) Does not create any ongoing obligation;",
+          "(c) Does not imply liability."
+        ]
+      }
+    },
+    "paymentFees": {
+      "title": "PAYMENT OF SOFTWARE FEES & INITIATION",
+      "allFees": "All SmartStox fees payable, will be subject to charges as published on: www.smartstoxglobal.com from time to time",
+      "fiatPayments": {
+        "title": "FIAT payments are to be made as follows:",
+        "items": [
+          "Account Name: eServe Global Limited",
+          "Account Number: 478798114672",
+          "Swift Code: DHBKHKHH",
+          "Branch Code: 010",
+          "Bank Name: DBS Bank (Hong Kong) Limited",
+          "Bank Address: 11th Floor, The Center, 99 Queens Road Central, Central, Hong Kong"
+        ]
+      },
+      "usdtPayments": {
+        "title": "USDT Payments on TRC20 are to be made to the following wallet:",
+        "items": [
+          "TGxjU2zWJ6E6B4aP459T4bLL2WmG8E5MPuh"
+        ]
+      },
+      "demoAccounts": "Demo Accounts will be initiated within 3 (three) Trading Weeks, which run from Mondays through Sundays (US EST), following the trading week in which client payments has cleared into the selected SmartStox account."
+    },
+    "liability": {
+      "title": "LIABILITY",
+      "notLiable": {
+        "title": "SmartStox shall not be liable for:",
+        "items": [
+          "(a) Trading losses;",
+          "(b) Broker actions;",
+          "(c) Market conditions;",
+          "(d) Client decisions."
+        ]
+      }
+    },
+    "termination": {
+      "title": "TERMINATION",
+      "endOfTrial": "At the end of the Trial Period, The Client may terminate its SmartStox contract and request a full refund from SmartStox",
+      "afterConversion": "After the conversion of the Demo Account to a Live Account, The Client may termination it's contract with The Broker, subject to the terms of the broker agreement"
+    },
+    "governingLaw": {
+      "title": "GOVERNING LAW",
+      "content": "This Agreement shall be governed by the laws of Hong Kong (SAR), People's Republic of China."
+    },
+    "clientAcknowledgement": {
+      "title": "CLIENT ACKNOWLEDGEMENT",
+      "accepts": {
+        "title": "By making payment for Software Fees, The Client accepts these Terms of Service and the Client confirms that:",
+        "items": [
+          "(a) They understand this is a software service and not an investment product;",
+          "(b) They understand the trial structure and conversion mechanism;",
+          "(c) They accept all risks associated with trading;",
+          "(d) They are not relying on SmartStox for financial advice."
+        ]
+      }
+    }
+  },
   "whyPay": {
     "title": "Why Pay $50 to Work with Us?",
     "paragraph1": "When you represent SmartStox, you are not just promoting a product. You are sharing something that can change how people think about trading. For this reason, we invite every Ambassador to experience SmartStox personally before introducing it to others.",

@@ -390,6 +390,318 @@
     ],
     "bottomText": "Critères de Qualification Continus: Ambassadeurs Indépendants: AUM de $ 25,000 - Ambassadeurs Employés: 20 Nouvelles Ventes Consommateurs Par Mois"
   },
+  "termsOfService": {
+    "title": "CONDITIONS DE SERVICE",
+    "subtitle": "ACCORD D'ESSAI SMARTSTOX SaaS ET TRANSITION COURTAGE",
+    "parties": {
+      "title": "PARTIES",
+      "content": "Le présent Accord d'Essai SmartStox SaaS et Transition Courtage (\"Accord\") est conclu entre : eServe Global Limited, faisant affaire sous le nom de SmartStox, une société dûment constituée selon les lois de Hong Kong (SAR), dont le siège social est situé au Suite 2A, Glenealy Tower, No. 1 Glenealy, Central, Hong Kong (SAR), République Populaire de Chine (\"SmartStox\"), et l'individu ou l'entité acceptant le présent Accord (\"Client\", \"Vous\")."
+    },
+    "natureOfService": {
+      "title": "NATURE DU SERVICE",
+      "acknowledges": {
+        "title": "Le Client reconnaît et accepte que :",
+        "items": [
+          "(a) SmartStox fournit uniquement un Logiciel en tant que Service (\"SaaS\") ;",
+          "(b) La plateforme SmartStox est un outil technologique conçu pour automatiser les processus de trading ;",
+          "(c) SmartStox ne fournit pas de conseils financiers, de services de courtage ou de gestion d'investissements."
+        ]
+      },
+      "software": {
+        "title": "Le logiciel SmartStox :",
+        "items": [
+          "(a) Fournit uniquement des outils d'automatisation et de trading ;",
+          "(b) Ne gère pas les fonds ;",
+          "(c) Ne fournit pas de protection du capital ;",
+          "(d) Ne garantit pas de profits."
+        ]
+      }
+    },
+    "saasTrial": {
+      "title": "ESSAI LOGICIEL EN TANT QUE SERVICE",
+      "trialPeriod": "Le Client participera à une période d'essai initiale pouvant aller jusqu'à trois (3) mois (\"Période d'Essai\").",
+      "during": {
+        "title": "Pendant la Période d'Essai :",
+        "items": [
+          "(a) Le Client paiera des frais totaux de licence logicielle en USD ou USDT, conformément au Plan de Tarification et au Calendrier des Frais choisis, publiés sur www.SmartStoxGlobal.com ;",
+          "(b) Ces frais sont payables uniquement pour l'accès au logiciel SmartStox ;",
+          "(c) Le logiciel est uniquement un outil et non un investissement en soi ;",
+          "(d) Toute activité de trading est effectuée dans un environnement simulé/démo."
+        ]
+      },
+      "acknowledges": {
+        "title": "Le Client reconnaît que :",
+        "items": [
+          "(a) Les frais d'abonnement ou de licence sont indépendants des résultats de trading.",
+          "(b) Aucun trading réel n'a lieu pendant la Période d'Essai."
+        ]
+      }
+    },
+    "endOfTrial": {
+      "title": "FIN DE L'ESSAI – CHOIX DU CLIENT",
+      "election": {
+        "title": "À l'issue de la Période d'Essai, le Client peut choisir :",
+        "items": [
+          "(a) De recevoir un remboursement complet de tous les frais logiciels payés ; ou",
+          "(b) De prolonger la période d'essai, sous réserve de l'approbation de SmartStox ; ou",
+          "(c) D'ouvrir un compte de trading réel avec un partenaire courtier agréé, et recevoir un bonus d'inscription égal au solde du compte démo simulé"
+        ]
+      },
+      "acknowledges": {
+        "title": "Le Client reconnaît que :",
+        "items": [
+          "(a) Le solde du compte démo est fictif et simulé ;",
+          "(b) Il ne représente pas de profits réels ou de capital ;",
+          "(c) Il est fourni uniquement à titre d'incitation promotionnelle"
+        ]
+      }
+    },
+    "transitionToLive": {
+      "title": "TRANSITION AU TRADING RÉEL",
+      "elects": {
+        "title": "Si le Client choisit de procéder au trading réel :",
+        "items": [
+          "(a) Le Client conclura un accord distinct avec un courtier agréé, qui est contracté par SmartStox ;",
+          "(b) Toutes les activités de trading seront ensuite effectuées via le courtier."
+        ]
+      },
+      "smartStoxShall": {
+        "title": "SmartStox devra :",
+        "items": [
+          "(a) Continuer à fournir uniquement des services logiciels ;",
+          "(b) Ne pas agir en tant que courtier, intermédiaire ou conseiller financier."
+        ]
+      }
+    },
+    "tradeAutomation": {
+      "title": "AUTOMATISATION DU TRADING",
+      "platformEnables": {
+        "title": "La plateforme SmartStox permet :",
+        "items": [
+          "(a) L'exécution automatisée des transactions conformément aux règles du compte courtier ;",
+          "(b) L'utilisation de stratégies de trading personnalisables avec des paramètres configurables."
+        ]
+      },
+      "acknowledges": {
+        "title": "Le Client reconnaît que :",
+        "items": [
+          "(a) SmartStox opère sur le compte courtier désigné du Client",
+          "(b) SmartStox s'appuie sur l'infrastructure du courtier pour l'exécution."
+        ]
+      }
+    },
+    "controlOfFunds": {
+      "title": "CONTRÔLE DES FONDS",
+      "retainsControl": "Le Client conserve le contrôle total de tout le capital de trading.",
+      "acknowledges": {
+        "title": "Le Client reconnaît que",
+        "items": [
+          "(a) Tous les fonds sont détenus exclusivement par le courtier ;",
+          "(b) SmartStox ne reçoit, ne détient ni ne contrôle les fonds ;",
+          "(c) SmartStox facilite uniquement l'exécution automatisée via logiciel."
+        ]
+      }
+    },
+    "ongoingFees": {
+      "title": "FRAIS CONTINUS (POST-ESSAI)",
+      "agrees": {
+        "title": "Après la Période d'Essai, le Client accepte que :",
+        "items": [
+          "(a) Des frais basés sur la performance s'appliqueront ;",
+          "(b) Ces frais seront calculés comme un pourcentage quotidien des revenus de trading, pour tout jour de trading où un profit est généré.",
+          "(c) Les frais seront facturés conformément aux taux publiés sur www.SmartStoxGlobal.com."
+        ]
+      },
+      "furtherAgrees": {
+        "title": "Le Client accepte en outre que :",
+        "items": [
+          "(a) Ces frais seront collectés par le courtier au nom de SmartStox ;",
+          "(b) Le courtier ne déduira ces frais que des profits générés en utilisant le logiciel."
+        ]
+      }
+    },
+    "brokerageRelationship": {
+      "title": "RELATION DE COURTAGE",
+      "providedExclusively": "Les services de courtage sont fournis exclusivement par des courtiers agréés.",
+      "acknowledges": {
+        "title": "Le Client reconnaît que :",
+        "items": [
+          "(a) SmartStox n'interagit qu'avec des courtiers agréés ;",
+          "(b) SmartStox n'est pas un intermédiaire financier."
+        ]
+      },
+      "furtherAcknowledges": {
+        "title": "Le Client reconnaît en outre que :",
+        "items": [
+          "(a) Les services de courtage peuvent être facilités par des entités dont The Moosehouse Group, qui offre des services de réception et de transmission d'ordres sur instruments financiers à effet de levier via des courtiers agréés et des fournisseurs de liquidité ;",
+          "(b) Tous les services d'exécution sont effectués par des entités agréées dans leurs juridictions respectives."
+        ]
+      }
+    },
+    "financialAdvice": {
+      "title": "AVERTISSEMENT CONSEILS FINANCIERS",
+      "doesNotProvide": {
+        "title": "SmartStox ne fournit pas :",
+        "items": [
+          "(a) Conseils financiers ;",
+          "(b) Recommandations d'investissement ;",
+          "(c) Garantie de profits."
+        ]
+      },
+      "noInformation": {
+        "title": "Aucune information fournie ne constitue :",
+        "items": [
+          "(a) Un conseil d'investissement ; ou",
+          "(b) Une sollicitation d'achat ou de vente d'instruments financiers."
+        ]
+      }
+    },
+    "riskDisclosure": {
+      "title": "DIVULGATION DES RISQUES",
+      "acknowledges": {
+        "title": "Le Client reconnaît que :",
+        "items": [
+          "(a) Le trading implique des risques importants ;",
+          "(b) Les pertes peuvent être substantielles et peuvent inclure la perte totale du capital ;",
+          "(c) Le trading peut ne pas convenir à tous les investisseurs."
+        ]
+      },
+      "confirms": {
+        "title": "Le Client confirme avoir considéré :",
+        "items": [
+          "(a) Sa situation financière ;",
+          "(b) Sa compréhension des risques de trading."
+        ]
+      }
+    },
+    "performanceDisclaimers": {
+      "title": "AVERTISSEMENTS DE PERFORMANCE",
+      "pastPerformance": {
+        "title": "Les performances passées, simulations et back-tests :",
+        "items": [
+          "(a) Sont uniquement à des fins d'illustration ;",
+          "(b) Ne sont pas indicatives des résultats futurs."
+        ]
+      },
+      "backTests": {
+        "title": "Les back-tests :",
+        "items": [
+          "(a) Sont basés sur des données historiques ;",
+          "(b) Sont de nature simulée ;",
+          "(c) Ne garantissent pas la performance future."
+        ]
+      },
+      "actualResults": {
+        "title": "Les résultats de trading réels :",
+        "items": [
+          "(a) Peuvent différer matériellement ;",
+          "(b) Peuvent entraîner des pertes."
+        ]
+      }
+    },
+    "generalLimitations": {
+      "title": "LIMITATIONS GÉNÉRALES",
+      "acknowledges": {
+        "title": "Le Client reconnaît que :",
+        "items": [
+          "(a) SmartStox fournit uniquement des outils logiciels ;",
+          "(b) SmartStox ne gère pas les fonds ;",
+          "(c) SmartStox ne fournit pas de protection du capital."
+        ]
+      }
+    },
+    "brokerLicensing": {
+      "title": "AGRÉMENT DES COURTIERS",
+      "allBrokers": {
+        "title": "Tous les courtiers utilisés :",
+        "items": [
+          "(a) Sont dûment agréés dans leurs juridictions respectives ;",
+          "(b) Sont responsables de toutes les activités réglementées ;",
+          "(c) SmartStox ne fournit pas de protection du capital."
+        ]
+      },
+      "actsSolely": {
+        "title": "SmartStox agit uniquement en tant que :",
+        "items": [
+          "(a) Fournisseur de technologie ;",
+          "(b) Entité d'introduction."
+        ]
+      }
+    },
+    "tradeLossCompensation": {
+      "title": "AVERTISSEMENT INDEMNISATION DES PERTES DE TRADING",
+      "mayProvide": {
+        "title": "Dans des circonstances exceptionnelles, SmartStox peut, à sa seule discrétion, fournir une indemnisation pour :",
+        "items": [
+          "(a) Erreurs opérationnelles ; ou",
+          "(b) Problèmes de performance du système."
+        ]
+      },
+      "suchCompensation": {
+        "title": "Une telle indemnisation :",
+        "items": [
+          "(a) N'est pas garantie ;",
+          "(b) Ne crée aucune obligation continue ;",
+          "(c) N'implique aucune responsabilité."
+        ]
+      }
+    },
+    "paymentFees": {
+      "title": "PAIEMENT DES FRAIS LOGICIELS & INITIALISATION",
+      "allFees": "Tous les frais SmartStox payables seront soumis aux frais publiés sur : www.smartstoxglobal.com de temps à autre",
+      "fiatPayments": {
+        "title": "Les paiements FIAT doivent être effectués comme suit :",
+        "items": [
+          "Nom du compte : eServe Global Limited",
+          "Numéro de compte : 478798114672",
+          "Code Swift : DHBKHKHH",
+          "Code de succursale : 010",
+          "Nom de la banque : DBS Bank (Hong Kong) Limited",
+          "Adresse de la banque : 11th Floor, The Center, 99 Queens Road Central, Central, Hong Kong"
+        ]
+      },
+      "usdtPayments": {
+        "title": "Les paiements USDT sur TRC20 doivent être effectués au portefeuille suivant :",
+        "items": [
+          "TGxjU2zWJ6E6B4aP459T4bLL2WmG8E5MPuh"
+        ]
+      },
+      "demoAccounts": "Les comptes démo seront initiés dans les 3 (trois) Semaines de Trading, qui s'étendent du lundi au dimanche (HE US), suivant la semaine de trading pendant laquelle les paiements du client ont été compensés sur le compte SmartStox sélectionné."
+    },
+    "liability": {
+      "title": "RESPONSABILITÉ",
+      "notLiable": {
+        "title": "SmartStox ne sera pas responsable de :",
+        "items": [
+          "(a) Pertes de trading ;",
+          "(b) Actions du courtier ;",
+          "(c) Conditions du marché ;",
+          "(d) Décisions du Client."
+        ]
+      }
+    },
+    "termination": {
+      "title": "RÉSILIATION",
+      "endOfTrial": "À la fin de la Période d'Essai, le Client peut résilier son contrat SmartStox et demander un remboursement complet de SmartStox",
+      "afterConversion": "Après la conversion du compte démo en compte réel, le Client peut résilier son contrat avec Le Courtier, sous réserve des termes de l'accord du courtier"
+    },
+    "governingLaw": {
+      "title": "LOI APPLICABLE",
+      "content": "Le présent accord sera régi par les lois de Hong Kong (SAR), République Populaire de Chine."
+    },
+    "clientAcknowledgement": {
+      "title": "RECONNAISSANCE DU CLIENT",
+      "accepts": {
+        "title": "En effectuant le paiement des frais logiciels, le Client accepte les présentes conditions de service et le Client confirme que :",
+        "items": [
+          "(a) Ils comprennent qu'il s'agit d'un service logiciel et non d'un produit d'investissement ;",
+          "(b) Ils comprennent la structure de l'essai et le mécanisme de conversion ;",
+          "(c) Ils acceptent tous les risques associés au trading ;",
+          "(d) Ils ne s'appuient pas sur SmartStox pour des conseils financiers."
+        ]
+      }
+    }
+  },
   "whyPay": {
     "title": "Pourquoi Payer 50 $ pour Travailler avec Nous ?",
     "paragraph1": "Lorsque vous représentez SmartStox, vous ne faites pas seulement la promotion d'un produit. Vous partagez quelque chose qui peut changer la façon dont les gens pensent au trading. Pour cette raison, nous invitons chaque Ambassadeur à expérimenter SmartStox personnellement avant de le présenter aux autres.",

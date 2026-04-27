@@ -56,14 +56,14 @@ export function TheSmartStoxDifference({ items = defaultItems }: TheSmartStoxDif
                     <Typography variant="p" className="text-white/80">
                         This is where SmartStox positions itself differently from most “AI trading platforms.” SmartStox is not built on the assumption that automation alone is sufficient. It is built on a layered architecture:
                     </Typography>
-                    <Typography variant="p" className="text-white/80">
-                        <ol className="list-decimal list-inside">
-                            <li><span className="text-white font-bold">AI-driven execution</span> ensures disciplined, rule-based trade implementation without emotional interference.</li>
-                            <li><span className="text-white font-bold">Broker oversight</span> continuously monitors account exposure, margin health, and performance stability.</li>
-                            <li><span className="text-white font-bold">Ongoing research and refinement</span> adapts the strategy to changing market conditions rather than allowing model decay.</li>
-                            <li><span className="text-white font-bold">Structured treasury management</span> balances capital allocation and reinforces risk containment.</li>
-                        </ol>
-                    </Typography>
+                    
+                    <ol className="list-decimal list-inside text-white/80">
+                        <li><span className="text-white font-bold">AI-driven execution</span> ensures disciplined, rule-based trade implementation without emotional interference.</li>
+                        <li><span className="text-white font-bold">Broker oversight</span> continuously monitors account exposure, margin health, and performance stability.</li>
+                        <li><span className="text-white font-bold">Ongoing research and refinement</span> adapts the strategy to changing market conditions rather than allowing model decay.</li>
+                        <li><span className="text-white font-bold">Structured treasury management</span> balances capital allocation and reinforces risk containment.</li>
+                    </ol>
+
                     <Typography variant="p" className="text-white/80">
                         This hybrid structure matters. Because automation generates consistency. Oversight generates resilience. Research generates adaptability. Together, they create durability. And durability is what allows compounding to work.
                     </Typography>

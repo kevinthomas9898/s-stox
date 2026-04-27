@@ -98,7 +98,7 @@ export default async function Footer() {
           <div className="lg:col-span-2">
             <Typography variant="h5" className="text-white font-semibold mb-6">Support</Typography>
             <ul className="space-y-4">
-              <li><Link href="" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Terms of Services</Typography></Link></li>
+              <li><Link href="/t&c" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Terms of Services</Typography></Link></li>
               <li><Link href="" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Privacy Policy</Typography></Link></li>
               <li><Link href="/faqs" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">FAQs</Typography></Link></li>
               <li><Link href="/media-library" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">Media Library</Typography></Link></li>
