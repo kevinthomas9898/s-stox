@@ -30,8 +30,18 @@ export async function HowItWorksSection() {
           {/* Left Side - Timeline */}
           <div className="flex-1 min-w-0">
             <div className="relative pl-16" id="how-it-works-steps">
-              {/* Vertical connecting line */}
-              <div className="absolute left-[27px] top-4 bottom-4 w-px bg-gray-600" />
+
+              {/* Mobile: Independent Ambassador Header with Bracket */}
+              <div className="lg:hidden mb-8 -ml-16">
+                <div className="relative">
+                  {/* Text on top */}
+                  <Typography variant="h5" className="text-green-500 font-semibold text-center mb-2">
+                    {t('brackets.0.title')}
+                  </Typography>
+                  {/* Bracket lines - square corners */}
+                  <div className="relative h-8 border-t-2 border-l-2 border-r-2 border-green-500 mx-4" />
+                </div>
+              </div>
 
               {/* Steps */}
               {steps.map((step, index) => (
@@ -44,6 +54,11 @@ export async function HowItWorksSection() {
                   <div className="absolute -left-16 top-0 w-[54px] h-[54px] rounded-full border border-gray-500 flex items-center justify-center bg-[#181C25] z-10">
                     <span className="text-white text-xl font-semibold">{index + 1}</span>
                   </div>
+                  
+                  {/* Connecting line to next step - only for steps 1, 2, and 4 */}
+                  {(index === 0 || index === 1 || index === 3) && (
+                    <div className="absolute -left-[calc(64px-27px)] top-[54px] w-px h-[calc(100%+40px)] bg-gray-600" />
+                  )}
 
                   {/* Content */}
                   <Typography variant="h5" className="text-gray-300 font-extralight">
@@ -66,13 +81,32 @@ export async function HowItWorksSection() {
                       </Typography>
                     </div>
                   )}
+
+                  {/* Mobile: Salary Earners Header after step 3 with Bracket */}
+                  {index === 2 && (
+                    <div className="lg:hidden mt-8 -ml-16">
+                      <div className="relative">
+                        {/* Text on top */}
+                        <Typography variant="h5" className="text-green-500 font-semibold text-center mb-2">
+                          {t('brackets.1.title')}
+                        </Typography>
+                        {/* Bracket lines - square corners */}
+                        <div className="relative border-t-2 border-l-2 border-r-2 border-green-500 mx-4 h-6 flex items-center justify-center">
+                          {/* Subtitle inside bracket */}
+                          <Typography variant="p" className="text-gray-500 text-sm bg-[#181C25] inline-block px-2 relative z-10">
+                            {t('brackets.1.subtitle')}
+                          </Typography>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right Side - Brackets (client component, no props) */}
-          <div className="w-[160px] lg:w-[200px] relative shrink-0">
+          {/* Right Side - Brackets (client component, no props) - Hidden on mobile */}
+          <div className="hidden lg:block w-[160px] xl:w-[200px] relative shrink-0">
             <BracketsOverlay
               label1={t('brackets.0.title')}
               label2={t('brackets.1.title')}

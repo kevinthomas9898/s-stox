@@ -111,7 +111,7 @@ export function AmbassadorApplicationSection() {
                 label="Marketing Base"
                 subLabel={
                   <>
-                    (Your Existing Client Base for any other products or Service, or Social Media<br />
+                    (Your Existing Client Base for any other products or Service, or Social Media)<br />
                     Followers (YouTube, Facebook, TikTok)
                   </>
                 }
