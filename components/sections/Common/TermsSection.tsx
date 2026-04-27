@@ -28,7 +28,7 @@ export function TermsDocument({ title, subtitle, sections }: TermsDocumentProps)
           {title}
         </Typography>
         {subtitle && (
-          <Typography variant="h4" className="text-white/80">
+          <Typography variant="h4" className="text-white/70">
             {subtitle}
           </Typography>
         )}
@@ -45,7 +45,7 @@ export function TermsDocument({ title, subtitle, sections }: TermsDocumentProps)
 
             {/* Section Content */}
             {section.content && (
-              <div className="space-y-2 ml-0 text-sm text-white/80">
+              <div className="space-y-2 ml-0 text-sm text-white/70">
                 {section.content.map((paragraph, pIndex) => (
                   <p key={pIndex} className="leading-relaxed">
                     {paragraph}
@@ -65,7 +65,7 @@ export function TermsDocument({ title, subtitle, sections }: TermsDocumentProps)
                       </p>
                     )}
                     {sub.content && (
-                      <div className="space-y-1 text-sm text-white/80">
+                      <div className="space-y-1 text-sm text-white/70">
                         {sub.content.map((paragraph, pIndex) => (
                           <p key={pIndex} className="leading-relaxed">
                             {paragraph}
@@ -79,6 +79,13 @@ export function TermsDocument({ title, subtitle, sections }: TermsDocumentProps)
             )}
           </section>
         ))}
+      </div>
+
+      {/* Footer */}
+      <div className="mt-16 pt-8 border-t border-white">
+        <Typography variant="p" className="text-sm">
+          Effective From 1 April 2026
+        </Typography>
       </div>
     </div>
   );
