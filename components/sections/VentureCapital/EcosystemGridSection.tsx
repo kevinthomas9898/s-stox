@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import { Typography } from '@/components/ui/typography';
-import { SectionWrapper } from '@/components/ui/SectionWrapper';
+import { Typography } from '@/components/common/typography';
+import { SectionWrapper } from '@/components/common/SectionWrapper';
 
 const ecosystemImages = [
   "/BrightByte.png",

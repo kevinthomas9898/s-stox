@@ -15,7 +15,7 @@ import {
   AvatarFallback,
 } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { Typography } from '@/components/ui/typography';
+import { Typography } from '@/components/common/typography';
 
 interface Testimonial {
   id: number;

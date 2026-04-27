@@ -3,8 +3,8 @@ import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { ComponentType } from 'react';
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaApple } from 'react-icons/fa6';
-import { Typography } from '../ui/typography';
-import { SectionWrapper } from '@/components/ui/SectionWrapper';
+import { Typography } from '@/components/common/typography';
+import { SectionWrapper } from '@/components/common/SectionWrapper';
 
 interface SocialLink {
   name: string;

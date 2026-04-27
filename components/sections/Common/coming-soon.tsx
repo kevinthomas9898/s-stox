@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Typography } from "@/components/ui/typography";
+import { Typography } from "@/components/common/typography";
 
 interface ComingSoonProps {
   name: string;

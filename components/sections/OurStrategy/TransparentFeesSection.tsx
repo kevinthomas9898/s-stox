@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import Image from 'next/image';
-import { Typography } from '@/components/ui/typography';
+import { Typography } from '@/components/common/typography';
 
 export default async function TransparentFeesSection() {
   const t = await getTranslations('transparentFees');

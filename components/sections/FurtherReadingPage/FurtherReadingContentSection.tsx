@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { Typography } from "@/components/ui/typography";
-import { PrimaryBTN } from "@/components/ui/PrimaryBTN";
-import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { Typography } from "@/components/common/typography";
+import { PrimaryBTN } from "@/components/common/PrimaryBTN";
+import { SectionWrapper } from "@/components/common/SectionWrapper";
 
 export function FurtherReadingContentSection() {
   return (

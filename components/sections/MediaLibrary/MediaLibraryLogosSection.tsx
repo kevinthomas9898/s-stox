@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FiDownload } from "react-icons/fi";
-import { Typography } from "@/components/ui/typography";
-import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { Typography } from "@/components/common/typography";
+import { SectionWrapper } from "@/components/common/SectionWrapper";
 
 interface LogoCardProps {
   src: string;

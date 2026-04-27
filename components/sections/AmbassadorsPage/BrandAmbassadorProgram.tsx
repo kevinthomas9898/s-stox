@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { Check } from "lucide-react";
-import { Typography } from "@/components/ui/typography";
-import { PrimaryBTN } from "@/components/ui/PrimaryBTN";
-import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { Typography } from "@/components/common/typography";
+import { PrimaryBTN } from "@/components/common/PrimaryBTN";
+import { SectionWrapper } from "@/components/common/SectionWrapper";
 import { getTranslations } from "next-intl/server";
 
 export async function BrandAmbassadorProgram() {

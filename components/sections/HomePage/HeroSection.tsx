@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import { FaArrowRight } from 'react-icons/fa6';
 import { AiOutlinePlayCircle } from "react-icons/ai";
-import { Typography } from '@/components/ui/typography';
-import { SectionWrapper } from '@/components/ui/SectionWrapper';
+import { Typography } from '@/components/common/typography';
+import { SectionWrapper } from '@/components/common/SectionWrapper';
 import { useTranslations } from 'next-intl';
 
 export default function HeroSection() {

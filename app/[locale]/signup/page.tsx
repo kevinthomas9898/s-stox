@@ -7,8 +7,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { TextInput } from "@/components/ui/TextInput";
-import { PrimaryBTN } from "@/components/ui/PrimaryBTN";
+import { TextInput } from "@/components/common/TextInput";
+import { PrimaryBTN } from "@/components/common/PrimaryBTN";
 import { toast } from "sonner";
 import api from "@/lib/api/axiosInstance";
 

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Typography } from '@/components/ui/typography';
+import { Typography } from '@/components/common/typography';
 import { getTranslations } from "next-intl/server";
 
 export default async function WealthFrameworkSection() {

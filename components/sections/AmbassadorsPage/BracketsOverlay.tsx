@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { Typography } from '@/components/ui/typography';
+import { Typography } from '@/components/common/typography';
 
 export function BracketsOverlay({
     label1,

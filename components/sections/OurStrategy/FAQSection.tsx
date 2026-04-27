@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { Typography } from '@/components/ui/typography';
+import { Typography } from '@/components/common/typography';
 import { useTranslations } from "next-intl";
 import { useState } from 'react';
 

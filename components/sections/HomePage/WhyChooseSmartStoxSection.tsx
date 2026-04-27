@@ -1,8 +1,8 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Typography } from "@/components/ui/typography";
-import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { Typography } from "@/components/common/typography";
+import { SectionWrapper } from "@/components/common/SectionWrapper";
 
 export function WhyChooseSmartStoxSection() {
   const t = useTranslations("features");

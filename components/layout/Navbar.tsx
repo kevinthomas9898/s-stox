@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/sheet";
 import { IoIosArrowDown } from "react-icons/io";
 import { useAuth } from "@/hooks/useAuth";
-import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { SectionWrapper } from "@/components/common/SectionWrapper";
 
 export default function Navbar() {
   const t = useTranslations("nav");

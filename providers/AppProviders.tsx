@@ -2,7 +2,7 @@
 
 import ReduxProvider from './ReduxProvider';
 import QueryProvider from './QueryProvider';
-import ScrollToTopButton from '@/components/ui/ScrollToTopButton';
+import ScrollToTopButton from '@/components/common/ScrollToTopButton';
 import { Toaster } from 'sonner';
 
 /**

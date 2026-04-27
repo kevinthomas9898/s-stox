@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { SectionWrapper } from "@/components/ui/SectionWrapper";
-import { Typography } from "@/components/ui/typography";
-import { TextInput, PhoneInput } from "@/components/ui/TextInput";
-import { SelectDropdown } from "@/components/ui/SelectDropdown";
-import { PrimaryBTN } from "@/components/ui/PrimaryBTN";
+import { SectionWrapper } from "@/components/common/SectionWrapper";
+import { Typography } from "@/components/common/typography";
+import { TextInput, PhoneInput } from "@/components/common/TextInput";
+import { SelectDropdown } from "@/components/common/SelectDropdown";
+import { PrimaryBTN } from "@/components/common/PrimaryBTN";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";

@@ -9,8 +9,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { TextInput } from "@/components/ui/TextInput";
-import { PrimaryBTN } from "@/components/ui/PrimaryBTN";
+import { TextInput } from "@/components/common/TextInput";
+import { PrimaryBTN } from "@/components/common/PrimaryBTN";
 import { setCredentials } from "@/store/slices/authSlice";
 import { setAuthCookies, decodeJwt } from "@/lib/utils/cookies";
 import { login } from "@/lib/services/auth";

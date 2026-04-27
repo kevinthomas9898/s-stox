@@ -1,5 +1,5 @@
-import { SectionWrapper } from "@/components/ui/SectionWrapper";
-import { Typography } from "@/components/ui/typography";
+import { SectionWrapper } from "@/components/common/SectionWrapper";
+import { Typography } from "@/components/common/typography";
 import {
   Table,
   TableBody,

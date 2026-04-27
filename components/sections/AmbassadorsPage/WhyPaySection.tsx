@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
-import { Typography } from '@/components/ui/typography';
-import { SectionWrapper } from '@/components/ui/SectionWrapper';
-import { PrimaryBTN } from '@/components/ui/PrimaryBTN';
+import { Typography } from '@/components/common/typography';
+import { SectionWrapper } from '@/components/common/SectionWrapper';
+import { PrimaryBTN } from '@/components/common/PrimaryBTN';
 
 export async function WhyPaySection() {
   const t = await getTranslations('whyPay');

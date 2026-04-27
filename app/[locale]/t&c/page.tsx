@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { TermsDocument } from '@/components/sections/Common/TermsSection';
-import { SectionWrapper } from '@/components/ui/SectionWrapper';
+import { SectionWrapper } from '@/components/common/SectionWrapper';
 
 export default function TermsAndConditionsPage() {
   const t = useTranslations('termsOfService');

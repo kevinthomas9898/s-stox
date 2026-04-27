@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { Typography } from '@/components/ui/typography';
+import { Typography } from '@/components/common/typography';
 
 const steps = [
   {
