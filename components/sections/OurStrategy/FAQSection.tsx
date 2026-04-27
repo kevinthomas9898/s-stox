@@ -15,8 +15,8 @@ export default function FAQSection() {
   const [showAll, setShowAll] = useState(false);
 
   const faqs = [1, 2, 3, 4, 5, 6, 7, 8].map(i => ({
-    q: t(`q${i}` as any),
-    a: t(`a${i}` as any)
+    q: t(`q${i}` as `q${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8}`),
+    a: t(`a${i}` as `a${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8}`)
   }));
 
   const visibleFaqs = showAll ? faqs : faqs.slice(0, 5);

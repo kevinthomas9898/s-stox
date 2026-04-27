@@ -50,6 +50,6 @@ export async function logoutUser(params: LogoutParams): Promise<LogoutResponse> 
 export async function secure(): Promise<User> {
   const { data } = await api.get<ApiResponse<User>>('/auth/secure');
   // Handle both { data: { ... } } and { Data: { ... } } if backend varies
-  const responseData = (data as any).data || (data as any).Data || data;
+  const responseData = (data as { data?: User }).data || (data as { Data?: User }).Data || (data as unknown as User);
   return responseData;
 }

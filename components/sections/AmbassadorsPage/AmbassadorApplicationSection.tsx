@@ -6,7 +6,7 @@ import { Typography } from "@/components/ui/typography";
 import { TextInput, PhoneInput } from "@/components/ui/TextInput";
 import { SelectDropdown } from "@/components/ui/SelectDropdown";
 import { PrimaryBTN } from "@/components/ui/PrimaryBTN";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useQuery, useMutation } from "@tanstack/react-query";
@@ -28,7 +28,7 @@ const formSchema = z.object({
   emailAddress: z.string().email("Invalid email address"),
   mobileNumber: z.string().min(1, "Mobile number is required"),
   countryCode: z.string().min(1, "Required"),
-  appointmentDate: z.string().optional(),
+  appointmentDate: z.string().min(1, "Please select a meeting time"),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -40,7 +40,7 @@ export function AmbassadorApplicationSection() {
     staleTime: Infinity
   });
 
-  const { control, handleSubmit, formState: { isSubmitting }, setValue, watch } = useForm<FormData>({
+  const { control, handleSubmit, formState: { isSubmitting } } = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       marketingBase: "",
@@ -55,8 +55,6 @@ export function AmbassadorApplicationSection() {
       appointmentDate: "",
     }
   });
-
-  const appointmentDate = watch("appointmentDate");
 
   const submitMutation = useMutation({
     mutationFn: createApplication,
@@ -174,9 +172,16 @@ export function AmbassadorApplicationSection() {
                   maxLength={15}
                 />
               </div>
-              <MeetingScheduler
-                value={appointmentDate}
-                onChange={(date: string) => setValue("appointmentDate", date)}
+              <Controller
+                name="appointmentDate"
+                control={control}
+                render={({ field, fieldState }) => (
+                  <MeetingScheduler
+                    value={field.value}
+                    onChange={field.onChange}
+                    error={fieldState.error?.message}
+                  />
+                )}
               />
             </div>
             <div className="col-span-1 md:col-span-2 mt-8 flex justify-center pb-2">
@@ -194,10 +199,11 @@ export function AmbassadorApplicationSection() {
 interface MeetingSchedulerProps {
   value?: string;
   onChange?: (dateTime: string) => void;
+  error?: string;
 }
 
 // Meeting Scheduler Component with DialogBox
-function MeetingScheduler({ value, onChange }: MeetingSchedulerProps) {
+function MeetingScheduler({ value, onChange, error }: MeetingSchedulerProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   // Calculate 7-day range: tomorrow to 7 days later at 23:59:59
@@ -217,7 +223,7 @@ function MeetingScheduler({ value, onChange }: MeetingSchedulerProps) {
   const endDate = endDateTime.toISOString();
 
   // Fetch available slots from API (static 7-day range)
-  const { data: days = [], isLoading, isFetching, error } = useQuery<AvailableDayWithSpots[]>({
+  const { data: days = [], isLoading, isFetching, error: apiError } = useQuery<AvailableDayWithSpots[]>({
     queryKey: ['ambassador-available-slots', startDate, endDate],
     queryFn: () => getAmbassadorAvailableSlots({ startDate, endDate }),
     enabled: isOpen,
@@ -249,29 +255,56 @@ function MeetingScheduler({ value, onChange }: MeetingSchedulerProps) {
 
   return (
     <div className="col-span-1 md:col-span-2">
+      <label className="block text-sm font-medium text-white mb-2">
+        Meeting Time <span className="text-red-500">*</span>
+      </label>
       {selectedSlot ? (
-        <div className="flex items-center justify-between bg-[#2A73EA]/10 border border-[#2A73EA] rounded-lg p-4">
-          <div>
-            <p className="text-sm text-gray-400">Selected Meeting</p>
+        <div
+          className={`flex items-center justify-between bg-[#2A73EA]/10 border rounded-lg p-4 ${
+            error ? "border-red-500" : "border-white/60"
+          }`}
+        >
+          <div className="flex flex-row gap-2 items-center">
+            <p className="text-sm text-gray-400">Selected Meeting: </p>
             <p className="text-white font-medium">{selectedSlot.date} at {selectedSlot.time}</p>
           </div>
           <button
             type="button"
             onClick={() => setIsOpen(true)}
-            className="text-[#2A73EA] hover:text-white text-sm font-medium"
+            className="text-[#2A73EA] hover:text-white cursor-pointer text-sm font-medium"
           >
             Change
           </button>
         </div>
       ) : (
-        <button
-          type="button"
+        <div
           onClick={() => setIsOpen(true)}
-          className="w-full py-3 px-4 border-2 border-[#2A73EA] text-[#2A73EA] rounded-lg hover:bg-[#2A73EA] hover:text-white transition-colors font-medium"
+          className={`w-full py-3 px-4 border rounded-lg transition-colors cursor-pointer flex items-center justify-between ${
+            error
+              ? "border-red-500 bg-transparent"
+              : "border-white/60 bg-transparent hover:bg-[#2A73EA]/10"
+          }`}
         >
-          Select Meeting Time
-        </button>
+          <span className="text-gray-400 text-sm">
+            Select Meeting Time
+          </span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className={`w-5 h-5 ${error ? "text-red-400" : "text-white/60"}`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+            />
+          </svg>
+        </div>
       )}
+      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
 
       <DialogBox
         isModalOpen={isOpen}
@@ -286,7 +319,7 @@ function MeetingScheduler({ value, onChange }: MeetingSchedulerProps) {
           <div className="flex items-center justify-center h-64 w-full bg-[#0f0f0f] rounded-xl">
             <Loader text="Loading available slots..." className="text-white" size={28} />
           </div>
-        ) : error ? (
+        ) : apiError ? (
           <div className="flex items-center justify-center h-64 w-full bg-[#0f0f0f] rounded-xl">
             <div className="text-red-400">Failed to load slots. Please try again.</div>
           </div>

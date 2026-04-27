@@ -142,11 +142,11 @@ export function useCountryCodes() {
         const res = await fetch("https://restcountries.com/v3.1/all?fields=name,flag,idd,cca2,flags");
         const data = await res.json();
 
-        let formattedOptions = data
-          .filter((country: any) => country.idd && country.idd.root)
-          .map((country: any) => {
-            const root = country.idd.root || "";
-            const suffix = country.idd.suffixes && country.idd.suffixes.length > 0 ? country.idd.suffixes[0] : "";
+        const formattedOptions = data
+          .filter((country: { idd?: { root?: string; suffixes?: string[] } }) => country.idd && country.idd.root)
+          .map((country: { flag?: string; idd?: { root?: string; suffixes?: string[] }; name?: { common?: string }; flags?: { png?: string; svg?: string }; cca2?: string }) => {
+            const root = country.idd?.root || "";
+            const suffix = country.idd?.suffixes && country.idd.suffixes.length > 0 ? country.idd.suffixes[0] : "";
             const dialCode = `${root}${suffix}`;
             const flag = country.flag || "";
             const name = country.name?.common || "";
@@ -160,8 +160,8 @@ export function useCountryCodes() {
               flagUrl,
             };
           })
-          .sort((a: any, b: any) => a._sortName.localeCompare(b._sortName))
-          .map(({ _sortName, ...rest }: any) => rest);
+          .sort((a: { _sortName: string }, b: { _sortName: string }) => a._sortName.localeCompare(b._sortName))
+          .map(({ _sortName, ...rest }: { _sortName: string; [key: string]: unknown }) => rest);
 
         setOptions(formattedOptions);
       } catch (e) {

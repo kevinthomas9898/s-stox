@@ -59,7 +59,7 @@ export function FurtherReadingContentSection() {
         </Typography>
 
         <Typography variant="p" className="text-white/80">
-          It doesn't usually fail overnight. It underperforms gradually. Small inefficiencies compound. Risk exposure drifts. By the time investors react, damage is already embedded. Automation without governance is fragile. Wealth cannot be built on fragility.
+          It doesn&apos;t usually fail overnight. It underperforms gradually. Small inefficiencies compound. Risk exposure drifts. By the time investors react, damage is already embedded. Automation without governance is fragile. Wealth cannot be built on fragility.
         </Typography>
       </div>
     </SectionWrapper>
