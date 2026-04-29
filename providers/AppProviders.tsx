@@ -1,5 +1,3 @@
-'use client';
-
 import ReduxProvider from './ReduxProvider';
 import QueryProvider from './QueryProvider';
 import ScrollToTopButton from '@/components/common/ScrollToTopButton';

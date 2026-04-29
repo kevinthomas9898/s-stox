@@ -1,3 +1,6 @@
+import '@mantine/core/styles.css';
+import '@mantine/dates/styles.css';
+import { MantineProvider } from '@mantine/core';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -40,13 +43,15 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <div lang={locale} className="flex flex-col min-h-screen">
-        <Navbar />
-        <main className="grow">{children}</main>
-        <TrialSection />
-        <RegistrationStepsSection />
-        <Footer />
-      </div>
+      <MantineProvider defaultColorScheme="dark">
+        <div lang={locale} className="flex flex-col min-h-screen">
+          <Navbar />
+          <main className="grow">{children}</main>
+          <TrialSection />
+          <RegistrationStepsSection />
+          <Footer />
+        </div>
+      </MantineProvider>
     </NextIntlClientProvider>
   );
 }
