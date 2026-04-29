@@ -40,7 +40,7 @@ export function AmbassadorApplicationSection() {
     staleTime: Infinity
   });
 
-  const { control, handleSubmit, formState: { isSubmitting } } = useForm<FormData>({
+  const { control, handleSubmit, formState: { isSubmitting }, reset } = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       marketingBase: "",
@@ -60,6 +60,7 @@ export function AmbassadorApplicationSection() {
     mutationFn: createApplication,
     onSuccess: (response) => {
       toast.success(response.message);
+      reset();
     },
     onError: (error) => {
       if (error instanceof AxiosError) {

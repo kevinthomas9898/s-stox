@@ -32,7 +32,7 @@ export function Knowledgebase() {
     ];
 
     return (
-        <SectionWrapper className="pt-36 pb-20 mx-auto">
+        <SectionWrapper className="pt-36 pb-20 mx-auto" id="knowledgebase-all-images">
             <FadeIn direction="up" duration={0.5}>
                 <Typography variant="h2" className="text-center mb-16">
                     Knowledgebase

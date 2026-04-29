@@ -143,25 +143,27 @@
     "cta_primary": "Commencez Mon Essai Sans Risque"
   },
   "footer": {
-    "description": "Bienvenue sur notre site de trading ! Nous offrons les meilleurs produits et services aux prix les plus abordables. Achetez maintenant et trouvez de bonnes affaires !",
+    "description": "SmartStox est votre plateforme mondiale de nouvelle génération où le trading piloté par l'IA et la gestion intelligente du capital permettent à chacun de développer et préserver son patrimoine—efficacement, transparentement et à grande échelle.",
     "quickLinks": {
       "title": "Liens rapides",
-      "wealth": "Stratégie de création de richesse",
-      "fractional": "Investissement en capital fractionné",
+      "ourStrategy": "Notre Stratégie",
+      "ventureCapital": "Investissement en Capital de Risque",
       "pricing": "Tarifs",
-      "ambassadors": "Nos ambassadeurs de marque"
+      "ambassadors": "Programme d'Ambassadeurs"
     },
     "support": {
       "title": "Support",
-      "terms": "Termes et Conditions",
-      "privacy": "Politique de confidentialité",
+      "terms": "Conditions d'Utilisation",
+      "privacy": "Politique de Confidentialité",
       "faqs": "FAQ",
-      "supportCenter": "Centre de support"
+      "mediaLibrary": "Médiathèque"
     },
     "company": {
       "title": "Entreprise",
-      "about": "À propos de nous",
-      "updates": "Mises à jour"
+      "about": "À Propos de Nous",
+      "furtherReading": "En Savoir Plus",
+      "knowledgeBase": "Base de Connaissances",
+      "news": "SmartStox dans l'Actualité"
     },
     "copyright": "© {year} Tous Droits Réservés Par SmartStox",
     "appStore": "Télécharger dans l'",

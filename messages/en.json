@@ -143,25 +143,27 @@
     "cta_primary": "Start My Risk-Free Trial Now"
   },
   "footer": {
-    "description": "Welcome to our trading site! We offer the best, most affordable products and services around. Shop now and start finding great deals!",
+    "description": "SmartStox is your next-generation global wealth platform where AI-driven trading and intelligent capital management enable anyone to grow and preserve wealth—efficiently, transparently, and at scale.",
     "quickLinks": {
-      "title": "Quick links",
-      "wealth": "Wealth Creation Strategy",
-      "fractional": "Fractional Capital Investment",
+      "title": "Quick Links",
+      "ourStrategy": "Our Strategy",
+      "ventureCapital": "Venture Capital Investment",
       "pricing": "Pricing",
-      "ambassadors": "Our Brand Ambassadors"
+      "ambassadors": "Brand Ambassadors Program"
     },
     "support": {
       "title": "Support",
-      "terms": "Terms & Conditions",
+      "terms": "Terms of Services",
       "privacy": "Privacy Policy",
       "faqs": "FAQs",
-      "supportCenter": "Support Center"
+      "mediaLibrary": "Media Library"
     },
     "company": {
       "title": "Company",
       "about": "About Us",
-      "updates": "Updates"
+      "furtherReading": "Further Reading",
+      "knowledgeBase": "Knowledge Base",
+      "news": "SmartStox in the News"
     },
     "copyright": "© {year} All Rights Reserved By SmartStox",
     "appStore": "Download on the",
