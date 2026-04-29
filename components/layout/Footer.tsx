@@ -105,7 +105,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li><Link href="/t&c" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">{t('support.terms')}</Typography></Link></li>
               <li><Link href="" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">{t('support.privacy')}</Typography></Link></li>
-              <li><Link href="/faqs" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">{t('support.faqs')}</Typography></Link></li>
+              <li><Link href="/our-strategy#faq-section-block" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">{t('support.faqs')}</Typography></Link></li>
               <li><Link href="/media-library" className="hover:text-primary transition-colors"><Typography variant="p" className="!text-base">{t('support.mediaLibrary')}</Typography></Link></li>
             </ul>
           </StaggerItem>

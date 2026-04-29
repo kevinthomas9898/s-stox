@@ -22,7 +22,7 @@ export default function FAQSection() {
   const visibleFaqs = showAll ? faqs : faqs.slice(0, 5);
 
   return (
-    <div className="w-full py-24 bg-[#0b0f19]">
+    <div className="w-full py-24 bg-[#0b0f19]" id='faq-section-block'>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         <Typography variant="h3" className="text-white mb-12">
           {t('title_part1')} <span className="text-[#0066FF]">{t('title_part2')}</span>
