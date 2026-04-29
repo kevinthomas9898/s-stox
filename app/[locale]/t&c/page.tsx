@@ -1,5 +1,3 @@
-"use client";
-
 import { useTranslations } from 'next-intl';
 import { TermsDocument } from '@/components/sections/Common/TermsSection';
 import { SectionWrapper } from '@/components/common/SectionWrapper';

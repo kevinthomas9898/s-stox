@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Typography } from '@/components/common/typography';
+import { StaggerContainer, StaggerItem, FadeIn } from '@/components/animations';
 
 const steps = [
   {
@@ -34,17 +35,17 @@ export default function RegistrationStepsSection() {
     <div className="w-full py-10 bg-[#181C25] relative z-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
-        <Typography variant="p" className="text-white mb-16 text-center">
-          {t('title')}
-        </Typography>
+        <FadeIn direction="up" duration={0.5}>
+          <Typography variant="p" className="text-white mb-16 text-center">
+            {t('title')}
+          </Typography>
+        </FadeIn>
 
         {/* Steps Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-16 relative">
+        <StaggerContainer staggerDelay={0.15} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-16 relative">
           {steps.map((step, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center text-center px-6 py-4 relative"
-            >
+            <StaggerItem key={index}>
+              <div className="flex flex-col items-center text-center px-6 py-4 relative">
               {/* Vertical Line - from top of image to step title */}
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute right-0 top-4 h-[305px] w-px bg-white" />
@@ -80,21 +81,26 @@ export default function RegistrationStepsSection() {
                   {t(step.descKey)}
                 </Typography>
               </div>
-            </div>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* Bottom Tagline */}
-        <Typography variant="h5" className="text-white text-center tracking-wide mb-8">
-          {t('tagline')}
-        </Typography>
+        <FadeIn direction="up" delay={0.2}>
+          <Typography variant="h5" className="text-white text-center tracking-wide mb-8">
+            {t('tagline')}
+          </Typography>
+        </FadeIn>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-full font-semibold transition-all cursor-pointer text-sm whitespace-nowrap w-full sm:w-auto">
-            {t('cta_primary')}
-          </button>
-        </div>
+        <FadeIn direction="up" delay={0.3}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button className="bg-[#2563EB] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-full font-semibold transition-all cursor-pointer text-sm whitespace-nowrap w-full sm:w-auto">
+              {t('cta_primary')}
+            </button>
+          </div>
+        </FadeIn>
       </div>
     </div>
   );

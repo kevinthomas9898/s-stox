@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 
 export function SmoothScrollProvider({
@@ -8,6 +8,8 @@ export function SmoothScrollProvider({
 }: {
   children: React.ReactNode;
 }) {
+  const lenisRef = useRef<Lenis | null>(null);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -19,6 +21,8 @@ export function SmoothScrollProvider({
       touchMultiplier: 2,
     });
 
+    lenisRef.current = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -26,7 +30,23 @@ export function SmoothScrollProvider({
 
     requestAnimationFrame(raf);
 
+    // Handle window resize
+    const handleResize = () => {
+      lenis.resize();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Watch for content size changes (images, animations loading)
+    const resizeObserver = new ResizeObserver(() => {
+      lenis.resize();
+    });
+
+    resizeObserver.observe(document.body);
+
     return () => {
+      window.removeEventListener("resize", handleResize);
+      resizeObserver.disconnect();
       lenis.destroy();
     };
   }, []);

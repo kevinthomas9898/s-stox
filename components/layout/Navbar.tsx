@@ -22,6 +22,7 @@ import {
 import { IoIosArrowDown } from "react-icons/io";
 import { useAuth } from "@/hooks/useAuth";
 import { SectionWrapper } from "@/components/common/SectionWrapper";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const t = useTranslations("nav");
@@ -56,7 +57,12 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#0b0f19]/15 backdrop-blur-3xl border-b border-white/10">
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+      className="fixed top-0 w-full z-50 bg-[#0b0f19]/15 backdrop-blur-3xl border-b border-white/10"
+    >
       <SectionWrapper containerClassName="h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 relative z-50">
@@ -82,8 +88,8 @@ export default function Navbar() {
               key={i}
               href={link.href}
               className={`transition-colors ${isActive(link.href)
-                  ? "text-[#00D094] font-semibold"
-                  : "text-white hover:text-primary"
+                ? "text-[#00D094] font-semibold"
+                : "text-white hover:text-primary"
                 }`}
             >
               {link.label}
@@ -106,8 +112,8 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     className={`block w-full px-3 py-2 text-sm transition-colors ${isActive(item.href)
-                        ? "text-[#00D094] font-semibold bg-white/10"
-                        : "text-gray-300 hover:text-primary hover:bg-white/8"
+                      ? "text-[#00D094] font-semibold bg-white/10"
+                      : "text-gray-300 hover:text-primary hover:bg-white/8"
                       }`}
                   >
                     {item.label}
@@ -171,8 +177,8 @@ export default function Navbar() {
                     key={i}
                     href={link.href}
                     className={`text-2xl font-semibold transition-colors ${isActive(link.href)
-                        ? "text-[#00D094]"
-                        : "text-white hover:text-primary"
+                      ? "text-[#00D094]"
+                      : "text-white hover:text-primary"
                       }`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -199,8 +205,8 @@ export default function Navbar() {
                           key={i}
                           href={item.href}
                           className={`text-lg transition-colors ${isActive(item.href)
-                              ? "text-[#00D094] font-semibold"
-                              : "text-gray-300 hover:text-primary"
+                            ? "text-[#00D094] font-semibold"
+                            : "text-gray-300 hover:text-primary"
                             }`}
                           onClick={() => {
                             setIsOpen(false);
@@ -250,7 +256,7 @@ export default function Navbar() {
           </Sheet>
         </div>
       </SectionWrapper>
-    </header>
+    </motion.header>
   );
 }
 

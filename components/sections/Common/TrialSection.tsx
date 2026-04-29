@@ -1,6 +1,9 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Typography } from '@/components/common/typography';
+import { FadeIn } from '@/components/animations';
 
 export default function TrialSection() {
   const t = useTranslations('trial');
@@ -14,30 +17,34 @@ export default function TrialSection() {
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 justify-center">
           
           {/* Logo */}
-          <div className="relative w-56 h-56 shrink-0">
-            <Image
-              src="/logo-icon-with-name.svg"
-              alt="SmartStox"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
+          <FadeIn direction="left" duration={0.5}>
+            <div className="relative w-56 h-56 shrink-0">
+              <Image
+                src="/logo-icon-with-name.svg"
+                alt="SmartStox"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </FadeIn>
 
           {/* Content */}
-          <div className="text-center lg:text-left space-y-4">
-            <Typography variant="h5">
-              {t('subtitle')}
-            </Typography>
+          <FadeIn direction="right" delay={0.2}>
+            <div className="text-center lg:text-left space-y-4">
+              <Typography variant="h5">
+                {t('subtitle')}
+              </Typography>
 
-            <Typography variant="h2" className="text-[#00D094] normal-case">
-              {t('title')}
-            </Typography>
+              <Typography variant="h2" className="text-[#00D094] normal-case">
+                {t('title')}
+              </Typography>
 
-            <Typography variant="p" className="max-w-2xl">
-              {t('description')}
-            </Typography>
-          </div>
+              <Typography variant="p" className="max-w-2xl">
+                {t('description')}
+              </Typography>
+            </div>
+          </FadeIn>
 
         </div>
       </div>

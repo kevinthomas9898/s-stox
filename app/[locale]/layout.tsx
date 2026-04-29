@@ -6,10 +6,8 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales, type Locale } from '@/i18n/config';
 import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
 import { cache } from 'react';
-import TrialSection from '@/components/sections/Common/TrialSection';
-import RegistrationStepsSection from '@/components/sections/Common/RegistrationStepsSection';
+import AnimatedLayoutSections from '@/components/common/AnimatedLayoutSections';
 
 // Cache messages to prevent reloading on every HMR
 const getCachedMessages = cache(async (locale: string) => {
@@ -47,9 +45,7 @@ export default async function LocaleLayout({
         <div lang={locale} className="flex flex-col min-h-screen">
           <Navbar />
           <main className="grow">{children}</main>
-          <TrialSection />
-          <RegistrationStepsSection />
-          <Footer />
+          <AnimatedLayoutSections />
         </div>
       </MantineProvider>
     </NextIntlClientProvider>
