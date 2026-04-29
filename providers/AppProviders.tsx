@@ -1,6 +1,7 @@
 import ReduxProvider from './ReduxProvider';
 import QueryProvider from './QueryProvider';
 import ScrollToTopButton from '@/components/common/ScrollToTopButton';
+import { SmoothScrollProvider } from '@/components/animations';
 import { Toaster } from 'sonner';
 
 /**
@@ -16,9 +17,11 @@ export default function AppProviders({
   return (
     <ReduxProvider>
       <QueryProvider>
-        {children}
-        <ScrollToTopButton />
-        <Toaster position="top-right" richColors closeButton />
+        <SmoothScrollProvider>
+          {children}
+          <ScrollToTopButton />
+          <Toaster position="top-right" richColors closeButton />
+        </SmoothScrollProvider>
       </QueryProvider>
     </ReduxProvider>
   );

@@ -15,6 +15,7 @@ import { setCredentials } from "@/store/slices/authSlice";
 import { setAuthCookies, decodeJwt } from "@/lib/utils/cookies";
 import { login } from "@/lib/services/auth";
 import { toast } from "sonner";
+import { FadeIn } from "@/components/animations";
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -83,45 +84,47 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0b0f19] px-4">
-      <Card className="w-full max-w-md bg-[#0b0f19] border-white/10">
-        <CardHeader>
-          <CardTitle className="text-white text-center">Login</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <TextInput
-              name="email"
-              control={control}
-              label="Email"
-              type="email"
-              placeholder="Enter your email"
-            />
-            <TextInput
-              name="password"
-              control={control}
-              label="Password"
-              type="password"
-              placeholder="Enter your password"
-            />
-            {serverError && (
-              <p className="text-red-400 text-sm">{serverError}</p>
-            )}
-            <PrimaryBTN
-              type="submit"
-              loading={isLoading}
-            >
-              Login
-            </PrimaryBTN>
-          </form>
-          <p className="text-center text-gray-400 text-sm mt-4">
-            Don&apos;t have an account?{" "}
-            <Link href="/signup" className="text-[#00D094] hover:underline">
-              Register
-            </Link>
-          </p>
-        </CardContent>
-      </Card>
-    </div>
+    <FadeIn direction="up" duration={0.5}>
+      <div className="min-h-screen flex items-center justify-center bg-[#0b0f19] px-4">
+        <Card className="w-full max-w-md bg-[#0b0f19] border-white/10">
+          <CardHeader>
+            <CardTitle className="text-white text-center">Login</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <TextInput
+                name="email"
+                control={control}
+                label="Email"
+                type="email"
+                placeholder="Enter your email"
+              />
+              <TextInput
+                name="password"
+                control={control}
+                label="Password"
+                type="password"
+                placeholder="Enter your password"
+              />
+              {serverError && (
+                <p className="text-red-400 text-sm">{serverError}</p>
+              )}
+              <PrimaryBTN
+                type="submit"
+                loading={isLoading}
+              >
+                Login
+              </PrimaryBTN>
+            </form>
+            <p className="text-center text-gray-400 text-sm mt-4">
+              Don&apos;t have an account?{" "}
+              <Link href="/signup" className="text-[#00D094] hover:underline">
+                Register
+              </Link>
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+    </FadeIn>
   );
 }

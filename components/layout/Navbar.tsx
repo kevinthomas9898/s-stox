@@ -47,7 +47,6 @@ export default function Navbar() {
     { href: "/our-strategy", label: t("ourStrategy") },
     { href: "/pricing", label: t("pricing") },
     { href: "/ambassadors", label: t("ambassadors") },
-    { href: "/faqs", label: t("faqs") },
   ];
 
   const moreMenuItems = [

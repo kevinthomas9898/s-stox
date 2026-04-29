@@ -6,6 +6,7 @@ import ManualVsAutomatedTradingSection from '@/components/sections/HomePage/Manu
 import TimeInMarketVsTimingSection from '@/components/sections/HomePage/TimeInMarketVsTimingSection';
 import SetAndForgetMythSection from '@/components/sections/HomePage/SetAndForgetMythSection';
 import ProvenPerformanceSection from '@/components/sections/HomePage/ProvenPerformanceSection';
+import { FadeIn } from '@/components/animations';
 
 export default function HomePage() {
   return (
@@ -13,14 +14,37 @@ export default function HomePage() {
       {/* Background Gradient Orbs */}
       <div className='gradient-overlay' />
 
-      <HeroSection />
-      <WhyChooseSmartStoxSection />
-      <AiLearningSection />
-      <ManualVsAutomatedTradingSection />
-      <TimeInMarketVsTimingSection />
-      <SetAndForgetMythSection />
-      <ProvenPerformanceSection />
-      <TestimonialsSection />
+      <FadeIn direction="up" duration={0.6}>
+        <HeroSection />
+      </FadeIn>
+
+      <FadeIn direction="left" delay={0.2}>
+        <WhyChooseSmartStoxSection />
+      </FadeIn>
+
+      <FadeIn direction="right" delay={0.2}>
+        <AiLearningSection />
+      </FadeIn>
+
+      <FadeIn direction="left" delay={0.2}>
+        <ManualVsAutomatedTradingSection />
+      </FadeIn>
+
+      <FadeIn direction="right" delay={0.2}>
+        <TimeInMarketVsTimingSection />
+      </FadeIn>
+
+      <FadeIn direction="left" delay={0.2}>
+        <SetAndForgetMythSection />
+      </FadeIn>
+
+      <FadeIn direction="right" delay={0.2}>
+        <ProvenPerformanceSection />
+      </FadeIn>
+
+      <FadeIn direction="up" delay={0.2}>
+        <TestimonialsSection />
+      </FadeIn>
     </div>
   );
 }
