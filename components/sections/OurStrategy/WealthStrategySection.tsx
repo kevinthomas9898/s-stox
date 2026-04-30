@@ -16,7 +16,7 @@ export default async function WealthStrategySection() {
             <span className="text-[#0066FF]">{t('title_part2')}</span>
           </Typography>
 
-          <Typography variant="h5" className="text-white font-light italic max-w-xl">
+          <Typography variant="h5" className="font-light italic max-w-xl">
             {t('subtitle')}
           </Typography>
 

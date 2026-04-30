@@ -7,7 +7,7 @@ export default async function AiDrivenTrading() {
   const t = await getTranslations('aiDrivenTrading');
 
   return (
-    <SectionWrapper className="bg-[#0b0f19] py-16 md:py-24">
+    <SectionWrapper className="py-16 md:py-24">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full mx-auto">
         {/* Left Content */}
         <div className="space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">

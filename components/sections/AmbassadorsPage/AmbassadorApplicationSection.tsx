@@ -34,6 +34,7 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export function AmbassadorApplicationSection() {
+  
   const { data: questions, isLoading: isLoadingQuestions } = useQuery<AmbassadorQuestionsData>({
     queryKey: ['ambassador-questions'],
     queryFn: () => getAllAmbassadorQuestion(),
@@ -170,7 +171,7 @@ export function AmbassadorApplicationSection() {
                   placeholder="00000 00000"
                   type="tel"
                   inputMode="numeric"
-                  maxLength={15}
+                  maxLength={10}
                 />
               </div>
               <Controller

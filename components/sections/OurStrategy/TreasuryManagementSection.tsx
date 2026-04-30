@@ -28,7 +28,7 @@ export default async function TreasuryManagementSection() {
   ];
 
   return (
-    <SectionWrapper className="bg-[#0b0f19] py-16 md:py-24" containerClassName="mx-auto w-full">
+    <SectionWrapper className="py-16 md:py-24" containerClassName="mx-auto w-full">
       {/* Header */}
       <div className="text-center mb-10 max-w-3xl mx-auto">
         <Typography variant="h3" className="mb-3 md:mb-4">

@@ -23,7 +23,7 @@ export async function EcosystemGridSection() {
     paragraphs: t.raw(`items.${i}.paragraphs`) as string[]
   }));
   return (
-    <SectionWrapper className="py-20 bg-[#0b0f19]">
+    <SectionWrapper className="py-20">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20 lg:gap-x-20">
         {ecosystemItems.map((item, index) => (
           <div key={index} className="flex flex-col space-y-5">

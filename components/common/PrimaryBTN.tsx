@@ -2,7 +2,7 @@
 
 import { Button as ShadcnButton } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { Loader2 } from "lucide-react"
+import { TbLoader2 } from "react-icons/tb";
 
 interface PrimaryBTNProps {
   children: React.ReactNode
@@ -40,7 +40,7 @@ function PrimaryBTN({
     >
       {loading ? (
         <>
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          <TbLoader2 className="mr-2 h-4 w-4 animate-spin" />
           {children}
         </>
       ) : (

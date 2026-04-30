@@ -20,7 +20,7 @@ export async function HowItWorksSection() {
             {t('title').split('Works')[0]}
             <span className="text-[#2A73EA]">Works</span>
           </Typography>
-          <Typography variant="h5" className="text-gray-400 mt-2">
+          <Typography variant="h5" className="text-white/80 mt-2">
             {t('subtitle')}
           </Typography>
         </div>
@@ -51,7 +51,7 @@ export async function HowItWorksSection() {
                   data-bracket={index < 3 ? 'first' : 'second'}
                 >
                   {/* Number circle */}
-                  <div className="absolute -left-16 top-0 w-[54px] h-[54px] rounded-full border border-gray-500 flex items-center justify-center bg-[#181C25] z-10">
+                  <div className="absolute -left-16 top-0 w-[54px] h-[54px] rounded-full border border-white/70 flex items-center justify-center bg-[#181C25] z-10">
                     <span className="text-white text-xl font-semibold">{index + 1}</span>
                   </div>
                   
@@ -61,7 +61,7 @@ export async function HowItWorksSection() {
                   )}
 
                   {/* Content */}
-                  <Typography variant="h5" className="text-gray-300 font-extralight">
+                  <Typography variant="h5" className="text-white/70 font-extralight">
                     <span className="text-white font-semibold">{step.boldPart}</span>{' '}
                     {step.normalPart}
                   </Typography>
@@ -93,7 +93,7 @@ export async function HowItWorksSection() {
                         {/* Bracket lines - square corners */}
                         <div className="relative border-t-2 border-l-2 border-r-2 border-green-500 mx-4 h-6 flex items-center justify-center">
                           {/* Subtitle inside bracket */}
-                          <Typography variant="p" className="text-gray-500 text-sm bg-[#181C25] inline-block px-2 relative z-10">
+                          <Typography variant="p" className="text-white/70 text-sm bg-[#181C25] inline-block px-2 relative z-10">
                             {t('brackets.1.subtitle')}
                           </Typography>
                         </div>

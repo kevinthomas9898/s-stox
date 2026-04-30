@@ -7,7 +7,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { ChevronDown, Search } from "lucide-react"
+import { LuChevronDown, LuSearch } from "react-icons/lu";
+
 import { cn } from "@/lib/utils"
 import { Controller, type Control, type FieldValues, type Path } from "react-hook-form"
 
@@ -95,7 +96,7 @@ export function SelectDropdownBase({
                 </>
               ) : placeholder}
             </span>
-            <ChevronDown className="h-4 w-4 opacity-50 shrink-0" />
+            <LuChevronDown className="text-base opacity-50 shrink-0" />
           </DropdownMenuTrigger>
           <DropdownMenuContent
             className={cn("w-(--anchor-width) bg-[#1a1b1e] border-[#2C2E33] text-white p-0", contentClassName)}
@@ -104,7 +105,7 @@ export function SelectDropdownBase({
             {shouldShowSearch && (
               <div className="sticky top-0 bg-[#1a1b1e] border-b border-[#2C2E33] p-2 z-10">
                 <div className="relative">
-                  <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+                  <LuSearch className="absolute left-2 top-1/2 -translate-y-1/2 text-base text-gray-500" />
                   <input
                     type="text"
                     value={searchQuery}

@@ -26,7 +26,7 @@ export async function BrandAmbassadorProgram() {
           <span className="text-[#2A73EA]">BRAND AMBASSADOR</span>
           {t("title").split("BRAND AMBASSADOR")[1]}
         </Typography>
-        <Typography variant="p" className="text-gray-400 mt-4 italic">
+        <Typography variant="p" className="text-white/80 mt-4 italic">
           {t("subtitle")}
         </Typography>
       </div>
