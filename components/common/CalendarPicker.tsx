@@ -74,11 +74,17 @@ export function CalendarPicker({ days = [], onSelectSpot, className = '' }: Cale
             type="button"
             onClick={() => setMonth(subMonths(month, 1))}
             className="p-2 hover:bg-white/20 rounded-full transition-colors"
+            aria-label="Previous month"
           >
-            <FiChevronLeft className="w-5 h-5 !text-white" />
+            <FiChevronLeft className="w-5 h-5 !text-white" aria-hidden="true" />
           </button>
           <span className="text-lg font-semibold !text-white">{format(month, 'MMMM yyyy')}</span>
-          <button type="button" onClick={() => setMonth(addMonths(month, 1))} className="p-2 hover:bg-white/20 rounded-full transition-colors">
+          <button
+            type="button"
+            onClick={() => setMonth(addMonths(month, 1))}
+            className="p-2 hover:bg-white/20 rounded-full transition-colors"
+            aria-label="Next month"
+          >
             <FiChevronRight className="w-5 h-5 !text-white" />
           </button>
         </div>

@@ -26,6 +26,11 @@ export const metadata: Metadata = {
   },
 };
 
+// Preconnect to font domains
+export const viewport = {
+  themeColor: '#0b0f19',
+};
+
 /**
  * Root Layout.
  * This file is required, but we move `lang` and `dir` to `[locale]/layout.tsx`.
@@ -42,6 +47,13 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", roboto.variable, robotoMono.variable, "font-sans", geist.variable)}
       suppressHydrationWarning
     >
+      <head>
+        {/* Preconnect to Google Fonts for faster font loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preload hero image for faster LCP */}
+        <link rel="preload" as="image" href="/hero_image.jpg" type="image/jpeg" />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground overflow-x-hidden">
         <AppProviders>{children}</AppProviders>
       </body>

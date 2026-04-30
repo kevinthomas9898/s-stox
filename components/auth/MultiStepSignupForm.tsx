@@ -41,7 +41,7 @@ function useCountries() {
             };
           })
           .sort((a: { _sortName: string }, b: { _sortName: string }) => a._sortName.localeCompare(b._sortName))
-          .map(({ _sortName, ...rest }: { _sortName: string; [key: string]: unknown }) => rest);
+          .map(({ _sortName, ...rest }: { _sortName: string;[key: string]: unknown }) => rest);
 
         setOptions(formattedOptions);
       } catch (e) {
@@ -211,8 +211,10 @@ export function MultiStepSignupForm({ onSubmitSuccess, className }: MultiStepSig
   return (
     <FormProvider {...methods}>
       <div className={cn("w-full mx-auto", className)}>
-        {/* Stepper */}
-        <Stepper steps={steps} currentStep={currentStep} className="mb-8" />
+        {/* Stepper - Sticky */}
+        <div className="sticky top-20 z-30 bg-[#0b0f19]/95 backdrop-blur-sm py-4 -mx-4 px-4 sm:-mx-8 sm:px-8 mb-8">
+          <Stepper steps={steps} currentStep={currentStep} />
+        </div>
 
         {/* Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

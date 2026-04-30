@@ -165,16 +165,18 @@ export default function TestimonialsSection() {
                 onClick={handlePrev}
                 disabled={currentPage === 0}
                 className="w-10 h-10 rounded-full bg-white hover:bg-gray-100 border-0 shadow-lg disabled:opacity-50"
+                aria-label="Previous testimonials"
               >
-                <MdNavigateNext className="rotate-180 text-black text-xl" />
+                <MdNavigateNext className="rotate-180 text-black text-xl" aria-hidden="true" />
               </Button>
               <Button
                 size="icon"
                 onClick={handleNext}
                 disabled={currentPage >= totalPages - 1}
                 className="w-10 h-10 rounded-full bg-[#00D094] hover:bg-[#00c985] border-0 shadow-lg disabled:opacity-50"
+                aria-label="Next testimonials"
               >
-                <MdNavigateNext className="text-black text-xl" />
+                <MdNavigateNext className="text-black text-xl" aria-hidden="true" />
               </Button>
             </div>
           </>
@@ -185,7 +187,7 @@ export default function TestimonialsSection() {
       {/* Load Trustpilot Bootstrap Script statically for the widget */}
       <Script
         type="text/javascript"
-        src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
+        src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
         strategy="lazyOnload"
       />
     </div>

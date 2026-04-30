@@ -29,13 +29,13 @@ export default function HeroSection() {
             </Typography>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 md:gap-6 pt-2 w-full">
-              <button className="flex items-center justify-center gap-2 bg-[#00D094] hover:bg-[#00c985] text-gray-900 px-6 sm:px-8 py-3.5 rounded-md font-semibold transition-colors cursor-pointer w-full sm:w-auto">
+              <button aria-label={t('hero.cta_primary')} className="flex items-center justify-center gap-2 bg-[#00D094] hover:bg-[#00c985] text-gray-900 px-6 sm:px-8 py-3.5 rounded-md font-semibold transition-colors cursor-pointer w-full sm:w-auto">
                 {t('hero.cta_primary')}
-                <FaArrowRight className="w-4 h-4 font-bold" />
+                <FaArrowRight className="w-4 h-4 font-bold" aria-hidden="true" />
               </button>
 
-              <button className="flex items-center justify-center gap-2 text-[#2A73EA] bg-transparent border border-[#2A73EA] hover:border-gray-400 px-6 sm:px-8 py-3.5 rounded-md font-semibold transition-colors cursor-pointer w-full sm:w-auto">
-                <AiOutlinePlayCircle className="w-5 h-5 text-[#2A73EA]" />
+              <button aria-label={t('hero.cta_secondary')} className="flex items-center justify-center gap-2 text-[#5B8FFF] bg-transparent border border-[#5B8FFF] hover:border-[#8AB4FF] px-6 sm:px-8 py-3.5 rounded-md font-semibold transition-colors cursor-pointer w-full sm:w-auto">
+                <AiOutlinePlayCircle className="w-5 h-5 text-[#5B8FFF]" aria-hidden="true" />
                 {t('hero.cta_secondary')}
               </button>
             </div>
@@ -49,6 +49,7 @@ export default function HeroSection() {
               fill
               className="object-cover"
               priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
         </div>

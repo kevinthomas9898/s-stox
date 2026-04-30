@@ -69,7 +69,7 @@ export function Stepper({ steps, currentStep, className }: StepperProps) {
                 </span>
                 <span
                   className={cn(
-                    "block text-sm font-medium transition-colors whitespace-nowrap",
+                    "hidden sm:block text-xs sm:text-sm font-medium transition-colors mt-1",
                     isActive && "text-[#00D094]",
                     isCompleted && "text-[#00D094]",
                     isPending && "text-white/50"

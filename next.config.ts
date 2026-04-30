@@ -17,6 +17,8 @@ const nextConfig: NextConfig = {
       '@base-ui/react',
       'react-icons',
     ],
+    // Inline critical CSS to reduce render-blocking
+    optimizeCss: true,
   },
 };
 
