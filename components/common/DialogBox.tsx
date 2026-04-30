@@ -129,7 +129,7 @@ export function DialogBox({
         {isNotScrollable ? (
           <div className="overflow-visible">{children}</div>
         ) : (
-          <div className="overflow-y-auto max-h-[calc(90vh-120px)] scrollbar-hide">
+          <div data-lenis-prevent className="overflow-y-auto max-h-[calc(90vh-120px)] scrollbar-hide">
             {children}
           </div>
         )}

@@ -118,7 +118,7 @@ export function SelectDropdownBase({
                 </div>
               </div>
             )}
-            <div className="max-h-[280px] overflow-y-auto">
+            <div data-lenis-prevent className="max-h-[280px] overflow-y-auto">
               {filteredOptions.length === 0 ? (
                 <div className="px-3 py-2 text-sm text-gray-500">No results found</div>
               ) : (
