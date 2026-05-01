@@ -11,11 +11,11 @@ export default function HeroSection() {
   const t = useTranslations();
   return (
     <SectionWrapper className="relative z-10">
-      <div className="relative z-10 pt-20 md:pt-32 pb-16 md:pb-24">
+      <div className="relative z-10 pt-32 pb-16 md:pb-24">
         {/* Main Hero Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-8 items-center mb-16">
           {/* Left Content */}
-          <section className="space-y-8 max-w-2xl">
+          <section className="space-y-8 max-w-2xl lg:m-0 m-auto">
             <Typography variant="h1" className="text-white text-center lg:text-left">
               {t('hero.title_part1')}
               <br />

@@ -16,7 +16,7 @@ export async function BrandAmbassadorProgram() {
 
   return (
     <SectionWrapper
-      className="py-24"
+      className="py-24 pt-32"
       containerClassName="mx-auto"
     >
       {/* Header */}

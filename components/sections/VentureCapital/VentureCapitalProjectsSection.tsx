@@ -7,7 +7,7 @@ export async function VentureCapitalProjectsSection() {
   const t = await getTranslations('ventureCapital');
 
   return (
-    <SectionWrapper className="py-20 pt-28">
+    <SectionWrapper className="py-20 pt-32">
       <div className="flex flex-col items-center mb-16 text-center">
         <Typography variant="h2">
           {t('titleBefore')}

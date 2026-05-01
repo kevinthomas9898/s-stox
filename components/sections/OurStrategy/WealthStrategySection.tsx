@@ -7,7 +7,7 @@ export default async function WealthStrategySection() {
   const t = await getTranslations('wealthStrategy');
 
   return (
-    <SectionWrapper className="py-24 pt-36">
+    <SectionWrapper className="py-24 pt-32">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full mx-auto">
         {/* Left Content */}
         <div className="space-y-6 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -31,12 +31,12 @@ export default async function WealthStrategySection() {
         </div>
 
         {/* Right Image */}
-        <div className="relative w-full aspect-square max-w-md mx-auto lg:max-w-xl lg:ml-auto lg:mr-0">
+        <div className="relative w-full aspect-4/3  rounded-2xl overflow-hidden shadow-2xl border border-white/10 max-w-md mx-auto lg:max-w-xl lg:ml-auto lg:mr-0">
           <Image
             src="/hand-adding-coins-stack-covered-dirt-plants.png"
             alt={t('image_alt')}
             fill
-            className="object-contain rounded-lg"
+            className="object-cover rounded-lg"
           />
         </div>
       </div>

@@ -5,7 +5,7 @@ import { SectionWrapper } from "@/components/common/SectionWrapper";
 
 export function FurtherReadingContentSection() {
   return (
-    <SectionWrapper className="pt-36 pb-20 mx-auto">
+    <SectionWrapper className="pt-32 pb-20 mx-auto">
       <Typography variant="h2" className="text-center mb-16">
         Further <span className="text-[#2A73EA]">Reading</span>
       </Typography>

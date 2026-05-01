@@ -82,7 +82,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden xl:flex gap-10 text-lg font-medium items-center">
+        <nav className="hidden xl:flex gap-10 text-base font-medium items-center">
           {navLinks.map((link, i) => (
             <Link
               key={i}
@@ -138,13 +138,13 @@ export default function Navbar() {
               <>
                 <Link
                   href="/login"
-                  className="text-sm font-medium px-6 py-2 rounded-full bg-[#FFFFFF1A] text-white hover:bg-[#FFFFFF2A] transition-colors"
+                  className="text-base font-medium px-6 py-2 rounded-full bg-[#FFFFFF1A] text-white hover:bg-[#FFFFFF2A] transition-colors"
                 >
                   {t("login")}
                 </Link>
                 <Link
                   href="/signup"
-                  className="text-sm font-medium px-6 py-2 rounded-full bg-[#2A73EA] text-white hover:bg-[#1a5fc7] transition-colors"
+                  className="text-base font-medium px-6 py-2 rounded-full bg-[#2A73EA] text-white hover:bg-[#1a5fc7] transition-colors"
                 >
                   {t("signup")}
                 </Link>
