@@ -16,7 +16,7 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen bg-[#0b0f19] px-4 py-12">
-      <div className="max-w-7xl mx-auto mt-12">
+      <div className="mx-auto mt-12">
         <FadeIn direction="up" duration={0.5}>
           {/* Multi-Step Form */}
           <MultiStepSignupForm

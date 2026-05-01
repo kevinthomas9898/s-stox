@@ -217,7 +217,7 @@ export function MultiStepSignupForm({ onSubmitSuccess, className }: MultiStepSig
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 max-w-5xl m-auto">
           {/* Step Content */}
           <div className="min-h-[400px]">{stepComponents[currentStep - 1]}</div>
 

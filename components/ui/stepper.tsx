@@ -8,28 +8,49 @@ interface StepperProps {
 }
 
 export function Stepper({ steps, currentStep, className }: StepperProps) {
+  const n = steps.length;
+  const stepWidthPercent = 100 / n;
+  const offset = `calc(${stepWidthPercent / 2}% - 12px)`;
+
+  const k = Math.max(0, currentStep - 1);
+  const greenW =
+    k === 0
+      ? "0px"
+      : `calc(${k / (n - 1)} * (${((n - 1) / n) * 100}% + 24px))`;
+
   return (
     <div className={cn("w-full px-3", className)}>
       <div className="flex items-start relative">
-        {/* Connector line - full width with circles overlaying */}
+
+        {/* White solid track */}
         <div
-          className="absolute top-[11px] left-0 right-0 h-[2px] -z-10"
+          className="absolute h-[2px]"
           style={{
-            marginLeft: "calc(12px + 0.75rem)", // half circle + px-3
-            marginRight: "calc(12px + 0.75rem)",
-            backgroundImage: "repeating-linear-gradient(to right, rgba(255,255,255,0.2) 0px, rgba(255,255,255,0.2) 4px, transparent 4px, transparent 8px)",
+            top: "11px",
+            left: 0,
+            right: 0,
+            marginLeft: offset,
+            marginRight: offset,
+            background: "rgba(255,255,255,0.25)",
+            zIndex: 0,
           }}
         />
-        <div
-          className="absolute top-[11px] left-0 h-[2px] -z-10 transition-all duration-300"
-          style={{
-            marginLeft: "calc(12px + 0.75rem)",
-            width: currentStep <= 1
-              ? "0%"
-              : `calc((100% - 1.5rem) * ${Math.min(currentStep - 1, steps.length - 1) / (steps.length - 1)} + 20px)`,
-            backgroundImage: "repeating-linear-gradient(to right, #00D094 0px, #00D094 4px, transparent 4px, transparent 8px)",
-          }}
-        />
+
+        {/* Green dashed progress */}
+        {currentStep > 1 && (
+          <div
+            className="absolute h-[2px] transition-all duration-300"
+            style={{
+              top: "11px",
+              left: 0,
+              marginLeft: offset,
+              width: greenW,
+              zIndex: 1,
+              backgroundImage:
+                "repeating-linear-gradient(to right, #00D094 0px, #00D094 5px, transparent 5px, transparent 10px)",
+            }}
+          />
+        )}
 
         {steps.map((step, index) => {
           const stepNumber = index + 1;
@@ -39,30 +60,29 @@ export function Stepper({ steps, currentStep, className }: StepperProps) {
 
           return (
             <div key={step} className="flex flex-col items-center flex-1">
-              {/* Step circle */}
               <div
                 className={cn(
-                  "relative z-10 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-all border-2",
+                  "relative w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-all border-2",
                   isCompleted && "bg-black border-[#00D094] text-[#00D094]",
-                  isActive && "bg-transparent text-white border-2 border-white",
-                  isPending && "bg-transparent text-gray-500 border-2 border-gray-500"
+                  isActive && "bg-transparent text-white border-white",
+                  isPending && "bg-transparent text-white/30 border-white/30"
                 )}
+                style={{ zIndex: 2 }}
               >
                 {isCompleted ? (
-                  <Check className="w-4 h-4" />
+                  <Check className="w-3.5 h-3.5" />
                 ) : (
-                  <span className="w-4 h-4 rounded-full bg-current" />
+                  <span className="w-2 h-2 rounded-full bg-current" />
                 )}
               </div>
 
-              {/* Step labels */}
               <div className="mt-2 text-center">
                 <span
                   className={cn(
                     "block text-[10px] uppercase tracking-wider transition-colors",
-                    isActive && "text-[#00D094]",
+                    isActive && "text-white",
                     isCompleted && "text-[#00D094]",
-                    isPending && "text-white/50"
+                    isPending && "text-white/35"
                   )}
                 >
                   Step {stepNumber}
@@ -70,9 +90,9 @@ export function Stepper({ steps, currentStep, className }: StepperProps) {
                 <span
                   className={cn(
                     "hidden sm:block text-xs sm:text-sm font-medium transition-colors mt-1",
-                    isActive && "text-[#00D094]",
+                    isActive && "text-white",
                     isCompleted && "text-[#00D094]",
-                    isPending && "text-white/50"
+                    isPending && "text-white/35"
                   )}
                 >
                   {step}
