@@ -64,15 +64,15 @@ export function Stepper({ steps, currentStep, className }: StepperProps) {
                 className={cn(
                   "relative w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-all border-2",
                   isCompleted && "bg-black border-[#00D094] text-[#00D094]",
-                  isActive && "bg-transparent text-white border-white",
-                  isPending && "bg-transparent text-white/30 border-white/30"
+                  isActive && "bg-black text-white border-white",
+                  isPending && "bg-black text-gray-500 border-gray-500"
                 )}
                 style={{ zIndex: 2 }}
               >
                 {isCompleted ? (
                   <Check className="w-3.5 h-3.5" />
                 ) : (
-                  <span className="w-2 h-2 rounded-full bg-current" />
+                  <span className="w-4 h-4 rounded-full bg-current" />
                 )}
               </div>
 
@@ -82,7 +82,7 @@ export function Stepper({ steps, currentStep, className }: StepperProps) {
                     "block text-[10px] uppercase tracking-wider transition-colors",
                     isActive && "text-white",
                     isCompleted && "text-[#00D094]",
-                    isPending && "text-white/35"
+                    isPending && "text-gray-500"
                   )}
                 >
                   Step {stepNumber}
@@ -92,7 +92,7 @@ export function Stepper({ steps, currentStep, className }: StepperProps) {
                     "hidden sm:block text-xs sm:text-sm font-medium transition-colors mt-1",
                     isActive && "text-white",
                     isCompleted && "text-[#00D094]",
-                    isPending && "text-white/35"
+                    isPending && "text-gray-500"
                   )}
                 >
                   {step}

@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import Script from 'next/script';
 import { MdNavigateNext } from "react-icons/md";
 import { FaQuoteRight } from "react-icons/fa";
 import {
@@ -28,15 +27,7 @@ interface Testimonial {
 export default function TestimonialsSection() {
   const t = useTranslations('testimonials');
 
-  // ==========================================
-  // ⚙️ TOGGLE SETTING: 
-  // Set to 'true' once you have actual Trustpilot reviews.
-  // When 'false', it shows the manual/static testimonials.
-  // ==========================================
-  const SHOW_TRUSTPILOT = false;
-
   const [currentPage, setCurrentPage] = useState(0);
-  const trustBoxRef = useRef<HTMLDivElement>(null);
 
   // Data array for manual fallback testimonials
   const testimonials: Testimonial[] = [
@@ -80,16 +71,6 @@ export default function TestimonialsSection() {
   const handlePrev = () => setCurrentPage((p) => Math.max(0, p - 1));
   const handleNext = () => setCurrentPage((p) => Math.min(totalPages - 1, p + 1));
 
-  useEffect(() => {
-    if (SHOW_TRUSTPILOT && typeof window !== 'undefined' && (window as any).Trustpilot) {
-      try {
-        (window as any).Trustpilot.loadFromElement(trustBoxRef.current, true);
-      } catch (error) {
-        console.error('Error loading Trustpilot widget:', error);
-      }
-    }
-  }, [SHOW_TRUSTPILOT]);
-
   return (
     <div className="w-full py-24 bg-[#0F131C]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
@@ -103,32 +84,7 @@ export default function TestimonialsSection() {
           </Typography>
         </div>
 
-        {SHOW_TRUSTPILOT ? (
-          <div className="w-full max-w-5xl bg-white rounded-2xl shadow-xl p-4 md:p-8 min-h-[250px] flex justify-center items-center relative border-0">
-            {/* TrustBox widget - Review Carousel */}
-            <div
-              ref={trustBoxRef}
-              className="trustpilot-widget w-full"
-              data-locale="en-US"
-              data-template-id="53aa8912dec7e10d38f59f36"
-              data-businessunit-id={process.env.NEXT_PUBLIC_TRUSTPILOT_ID}
-              data-style-height="140px"
-              data-style-width="100%"
-              data-theme="light"
-              data-stars="4,5"
-              data-review-languages="en"
-            >
-              <a
-                href="https://www.trustpilot.com/review/www.smartstoxglobal.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Trustpilot
-              </a>
-            </div>
-          </div>
-        ) : (
-          <>
+        <>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
               {paginatedItems.map((item) => (
                 <Card
@@ -180,16 +136,7 @@ export default function TestimonialsSection() {
               </Button>
             </div>
           </>
-        )}
-
+        </div>
       </div>
-
-      {/* Load Trustpilot Bootstrap Script statically for the widget */}
-      <Script
-        type="text/javascript"
-        src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
-        strategy="lazyOnload"
-      />
-    </div>
   );
 }

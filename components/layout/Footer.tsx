@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ComponentType } from 'react';
-import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaApple } from 'react-icons/fa6';
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa6';
 import { Typography } from '@/components/common/typography';
 import { SectionWrapper } from '@/components/common/SectionWrapper';
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/animations';
@@ -64,25 +64,22 @@ export default function Footer() {
               </Typography>
 
               {/* App Buttons */}
-              <div className="flex items-center gap-4 pt-4">
-                <a href="#" className="flex items-center gap-2 bg-[#00D094] hover:bg-[#00c985] text-gray-900 px-4 py-2 rounded-md transition-colors">
-                  <FaApple className='text-black text-3xl' />
-                  <div className="flex flex-col items-start leading-none">
-                    <span className="text-[10px] uppercase font-medium">{t('appStore')}</span>
-                    <span className="text-sm font-bold">{t('appStoreStrong')}</span>
-                  </div>
-                </a>
-                <a href="#" className="flex relative items-center gap-2 bg-[#1a365d] hover:bg-[#1e40af] text-white px-4 py-2 rounded-md transition-colors border border-[#2d4a77]">
+              <div className="flex items-center gap-8 max-h-[50px] w-fit">
+                <a href="https://apps.apple.com/in/iphone/search?term=smartstoxglobal" target='_blank' className="block hover:opacity-90 transition-opacity">
                   <Image
-                    src="/google-play-store-icon.svg"
-                    alt="Google Play Store"
-                    width={24}
-                    height={24}
+                    src="/download-on-the-app-store.svg"
+                    alt="Download on the App Store"
+                    width={150}
+                    height={30}
                   />
-                  <div className="flex flex-col items-start leading-none">
-                    <span className="text-[10px] uppercase font-medium">{t('googlePlay')}</span>
-                    <span className="text-sm font-bold">{t('googlePlayStrong')}</span>
-                  </div>
+                </a>
+                <a href="https://play.google.com/store/search?q=smartstoxglobal&c=apps&hl=en_IN" target='_blank' className="block hover:opacity-90 transition-opacity">
+                  <Image
+                    src="/download-on-the-google-play-store.png"
+                    alt="Get it on Google Play"
+                    width={150}
+                    height={30}
+                  />
                 </a>
               </div>
             </div>
