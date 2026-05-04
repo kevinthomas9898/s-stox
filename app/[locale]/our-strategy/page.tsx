@@ -13,6 +13,7 @@ export default function OurStrategyPage() {
   return (
     <div className="min-h-screen bg-[#0b0f19] relative">
       <div className="gradient-overlay" />
+      
       <FadeIn direction="up" duration={0.6}>
         <WealthStrategySection />
       </FadeIn>
