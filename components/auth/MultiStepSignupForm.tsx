@@ -13,6 +13,8 @@ import { DatePicker } from "@/components/ui/date-picker";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { FiCheck } from "react-icons/fi";
+import { registerUser } from "@/lib/services/auth";
+import type { RegisterUserRequest, RegistrationUserData } from "@/types";
 
 // Hook to fetch countries with flags
 function useCountries() {
@@ -108,40 +110,137 @@ type SignupFormData = z.infer<typeof signupSchema>;
 interface MultiStepSignupFormProps {
   onSubmitSuccess?: () => void;
   className?: string;
+  preverifiedEmail?: string;
+  contractCode?: string;
+  initialStep?: number;
+  initialData?: import("@/types").RegistrationUserData;
 }
 
-export function MultiStepSignupForm({ onSubmitSuccess, className }: MultiStepSignupFormProps) {
-  const [currentStep, setCurrentStep] = useState(1);
+// Map API data to form format
+function mapInitialDataToForm(data: import("@/types").RegistrationUserData | undefined, preverifiedEmail?: string): Partial<SignupFormData> {
+  if (!data) {
+    return {
+      email: preverifiedEmail || "",
+    };
+  }
+
+  return {
+    consent: data.isEmailVerified || false,
+    title: data.title || "",
+    firstName: data.firstName || "",
+    middleNames: data.middleNames || "",
+    surname: data.surname || "",
+    countryCode: data.mobileCountryCode || "US", // Page 1: Mobile country code
+    mobileNumber: data.mobileNumber || "",
+    email: data.emailAddress || preverifiedEmail || "",
+    dateOfBirth: data.dateOfBirth || "",
+    addressLine1: data.streetAddress || "",
+    addressLine2: data.aptSuiteOrUnit || "",
+    city: data.city || "",
+    state: data.state || "",
+    postalCode: data.zipCode || "",
+    country: data.country || "", // Page 2: Address country
+    password: data.createPassword || "",
+    confirmPassword: data.createPassword || "",
+    securityQuestion1: data.userSecurityQues?.[0]?.questionNumber || "",
+    securityAnswer1: data.userSecurityQues?.[0]?.answerNumber || "",
+    securityQuestion2: data.userSecurityQues?.[1]?.questionNumber || "",
+    securityAnswer2: data.userSecurityQues?.[1]?.answerNumber || "",
+    kycDocument: data.kycDocument || "",
+    kycDocumentNumber: data.kycDocumentNumber || "",
+    referralCode: data.referralAmbassadorCode || "",
+    agreeToTerms: false,
+  };
+}
+
+// Transform form data to API format
+function transformFormToApiData(
+  data: SignupFormData,
+  contractCode: string,
+  currentStep: number,
+  initialData?: RegistrationUserData,
+): RegisterUserRequest {
+  return {
+    registerUserEndpoint: "W", // 'W' for web platform
+    registrationPage: String(currentStep),
+    contractCode,
+    title: data.title,
+    firstName: data.firstName,
+    middleNames: data.middleNames || "",
+    surname: data.surname,
+    mobileCountryCode: data.countryCode, // Page 1: Mobile country code
+    mobileNumber: data.mobileNumber,       // Page 1: Mobile number
+    emailAddress: data.email,
+    dateOfBirth: data.dateOfBirth,
+    country: data.country, // Page 2: Address country
+    streetAddress: data.addressLine1,
+    aptSuiteOrUnit: data.addressLine2 || "",
+    city: data.city,
+    state: data.state,
+    zipCode: data.postalCode,
+    createPassword: data.password,
+    userSecurityQues: [
+      {
+        securityQuestion: data.securityQuestion1,
+        securityQuestionAnswer: data.securityAnswer1,
+      },
+      {
+        securityQuestion: data.securityQuestion2,
+        securityQuestionAnswer: data.securityAnswer2,
+      },
+    ],
+    kycDocument: data.kycDocument,
+    kycDocumentNumber: data.kycDocumentNumber,
+    referralAmbassadorCode: data.referralCode || "",
+    otpHash: initialData?.otpHash || null,
+    otpExpiry: initialData?.otpExpiry || null,
+    otpCreatedDate: initialData?.otpCreatedDate || null,
+    isEmailVerified: true, // Email is verified before reaching this form
+  };
+}
+
+export function MultiStepSignupForm({
+  onSubmitSuccess,
+  className,
+  preverifiedEmail,
+  contractCode,
+  initialStep = 1,
+  initialData,
+}: MultiStepSignupFormProps) {
+  const [currentStep, setCurrentStep] = useState(Math.min(Math.max(initialStep, 1), 4));
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+
+  const initialFormValues = mapInitialDataToForm(initialData, preverifiedEmail);
 
   const methods = useForm<SignupFormData>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
-      consent: false,
-      title: "",
-      firstName: "",
-      middleNames: "",
-      surname: "",
-      countryCode: "US",
-      mobileNumber: "",
-      email: "",
-      dateOfBirth: "",
-      addressLine1: "",
-      addressLine2: "",
-      city: "",
-      state: "",
-      postalCode: "",
-      country: "",
-      password: "",
-      confirmPassword: "",
-      securityQuestion1: "",
-      securityAnswer1: "",
-      securityQuestion2: "",
-      securityAnswer2: "",
-      kycDocument: "",
-      kycDocumentNumber: "",
-      referralCode: "",
-      agreeToTerms: false,
+      consent: initialFormValues.consent ?? false,
+      title: initialFormValues.title ?? "",
+      firstName: initialFormValues.firstName ?? "",
+      middleNames: initialFormValues.middleNames ?? "",
+      surname: initialFormValues.surname ?? "",
+      countryCode: initialFormValues.countryCode ?? "US",
+      mobileNumber: initialFormValues.mobileNumber ?? "",
+      email: initialFormValues.email ?? "",
+      dateOfBirth: initialFormValues.dateOfBirth ?? "",
+      addressLine1: initialFormValues.addressLine1 ?? "",
+      addressLine2: initialFormValues.addressLine2 ?? "",
+      city: initialFormValues.city ?? "",
+      state: initialFormValues.state ?? "",
+      postalCode: initialFormValues.postalCode ?? "",
+      country: initialFormValues.country ?? "",
+      password: initialFormValues.password ?? "",
+      confirmPassword: initialFormValues.confirmPassword ?? "",
+      securityQuestion1: initialFormValues.securityQuestion1 ?? "",
+      securityAnswer1: initialFormValues.securityAnswer1 ?? "",
+      securityQuestion2: initialFormValues.securityQuestion2 ?? "",
+      securityAnswer2: initialFormValues.securityAnswer2 ?? "",
+      kycDocument: initialFormValues.kycDocument ?? "",
+      kycDocumentNumber: initialFormValues.kycDocumentNumber ?? "",
+      referralCode: initialFormValues.referralCode ?? "",
+      agreeToTerms: initialFormValues.agreeToTerms ?? false,
     },
     mode: "onChange",
   });
@@ -161,9 +260,34 @@ export function MultiStepSignupForm({ onSubmitSuccess, className }: MultiStepSig
     return trigger(fields as any);
   };
 
+  const saveProgress = async (formData: SignupFormData, stepToSave: number) => {
+    if (!contractCode) return;
+
+    setIsSaving(true);
+    try {
+      const apiData = transformFormToApiData(formData, contractCode, stepToSave, initialData);
+      const response = await registerUser(apiData);
+
+      if (response.status) {
+        // Progress saved successfully
+        console.log("Progress saved:", response.data);
+      } else {
+        toast.error(response.message || "Failed to save progress");
+      }
+    } catch (error) {
+      console.error("Error saving progress:", error);
+      toast.error("Failed to save progress. Please continue and try again.");
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
   const handleNext = async () => {
     const isValid = await validateStep(currentStep);
     if (isValid && currentStep < steps.length) {
+      // Save progress for current step before moving to next
+      const formData = methods.getValues();
+      await saveProgress(formData, currentStep);
       setCurrentStep((prev) => prev + 1);
     }
   };
@@ -175,26 +299,29 @@ export function MultiStepSignupForm({ onSubmitSuccess, className }: MultiStepSig
   };
 
   const onSubmit = async (data: SignupFormData) => {
+    if (!contractCode) {
+      toast.error("Contract code missing. Please restart registration.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      // Submit to backend API - implement this later
-      const response = await fetch("/api/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          step: currentStep,
-          data: data,
-        }),
-      });
+      // Submit final registration data
+      const apiData = transformFormToApiData(data, contractCode, 4, initialData);
+      const response = await registerUser(apiData);
 
-      if (!response.ok) {
-        throw new Error("Failed to submit");
+      if (response.status && response.data?.registrationComplete) {
+        toast.success("Account created successfully!");
+        onSubmitSuccess?.();
+      } else if (response.status) {
+        toast.success(response.message || "Registration saved!");
+        onSubmitSuccess?.();
+      } else {
+        toast.error(response.message || "Failed to create account");
       }
-
-      toast.success("Account created successfully!");
-      onSubmitSuccess?.();
     } catch (error) {
+      console.error("Error submitting registration:", error);
       toast.error("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -202,7 +329,7 @@ export function MultiStepSignupForm({ onSubmitSuccess, className }: MultiStepSig
   };
 
   const stepComponents = [
-    <PersonalDetailsStep key="1" control={control} />,
+    <PersonalDetailsStep key="1" control={control} preverifiedEmail={preverifiedEmail} />,
     <AddressStep key="2" control={control} />,
     <OtherInfoStep key="3" control={control} />,
     <TermsStep key="4" control={control} />,
@@ -237,10 +364,10 @@ export function MultiStepSignupForm({ onSubmitSuccess, className }: MultiStepSig
               <Button
                 type="button"
                 onClick={handleNext}
-                disabled={!consent || isSubmitting}
+                disabled={!consent || isSubmitting || isSaving}
                 className="bg-[#2A73EA] hover:bg-[#1a5fc7] text-white px-8 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Next
+                {isSaving ? "Saving..." : "Next"}
               </Button>
             ) : (
               <Button
@@ -258,7 +385,7 @@ export function MultiStepSignupForm({ onSubmitSuccess, className }: MultiStepSig
   );
 }
 
-function PersonalDetailsStep({ control }: { control: Control<SignupFormData> }) {
+function PersonalDetailsStep({ control, preverifiedEmail }: { control: Control<SignupFormData>; preverifiedEmail?: string }) {
   return (
     <div className="space-y-6">
       <div className="bg-[#1a1b1e] rounded-lg p-4 border border-white/10">
@@ -302,7 +429,22 @@ function PersonalDetailsStep({ control }: { control: Control<SignupFormData> }) 
           maxLength={15}
         />
 
-        <TextInput name="email" control={control} label="Email Address" placeholder="Enter email address" type="email" />
+        <TextInput 
+          name="email" 
+          control={control} 
+          label="Email Address" 
+          placeholder={preverifiedEmail ? preverifiedEmail : "Enter email address"} 
+          type="email" 
+          disabled={!!preverifiedEmail}
+        />
+        {preverifiedEmail && (
+          <p className="text-xs text-green-400 flex items-center gap-1">
+            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            Email verified
+          </p>
+        )}
 
         <DatePicker name="dateOfBirth" control={control} label="Date of Birth" placeholder="DD / MM / YYYY" />
         <p className="text-xs text-gray-500">You must be 18 years or older to use this platform</p>

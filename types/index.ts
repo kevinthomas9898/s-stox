@@ -83,6 +83,125 @@ export interface CreateApplicationResponse {
   message: string;
 }
 
+// ── Email Verification ──
+export interface VerifyUserRequest {
+  emailAddress: string;
+}
+
+export interface UserSecurityQuestion {
+  questionNumber: string;
+  answerNumber: string;
+}
+
+export interface RegistrationUserData {
+  registerUserEndpoint: string | null;
+  registrationPage: string;
+  contractCode: string;
+  title: string | null;
+  firstName: string;
+  middleNames: string;
+  surname: string;
+  mobileCountryCode: string | null; // Page 1: Mobile country code
+  mobileNumber: string | null;      // Page 1: Mobile number
+  emailAddress: string;
+  dateOfBirth: string | null;
+  country: string | null;
+  streetAddress: string;
+  aptSuiteOrUnit: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  createPassword: string | null;
+  userSecurityQues: UserSecurityQuestion[];
+  kycDocument: string | null;
+  kycDocumentNumber: string;
+  referralAmbassadorCode: string | null;
+  otpHash: string | null;
+  otpExpiry: string | null;
+  otpCreatedDate: string | null;
+  isEmailVerified: boolean;
+}
+
+export interface VerifyUserData {
+  user: RegistrationUserData;
+  message: string;
+  isExistingUser: boolean;
+  isEmailVerified?: boolean;
+}
+
+export interface VerifyUserResponse {
+  status: boolean;
+  data: VerifyUserData;
+  message: string;
+}
+
+export interface VerifyOtpRequest {
+  contractCode: string;
+  email: string;
+  otp: string;
+}
+
+export interface VerifyOtpData {
+  isValid: boolean;
+  message: string;
+  contractCode: string;
+  email: string;
+  registrationPage: string;
+}
+
+export interface VerifyOtpResponse {
+  status: boolean;
+  data: VerifyOtpData;
+  message: string;
+}
+
+// ── Register User ──
+export interface UserSecurityQuestionInput {
+  securityQuestion: string;
+  securityQuestionAnswer: string;
+}
+
+export interface RegisterUserRequest {
+  registerUserEndpoint: string | null;
+  registrationPage: string;
+  contractCode: string;
+  title: string;
+  firstName: string;
+  middleNames: string;
+  surname: string;
+  mobileCountryCode: string;
+  mobileNumber: string;
+  emailAddress: string;
+  dateOfBirth: string;
+  country: string;
+  streetAddress: string;
+  aptSuiteOrUnit: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  createPassword: string;
+  userSecurityQues: UserSecurityQuestionInput[];
+  kycDocument: string;
+  kycDocumentNumber: string;
+  referralAmbassadorCode: string;
+  otpHash: string | null;
+  otpExpiry: string | null;
+  otpCreatedDate: string | null;
+  isEmailVerified: boolean;
+}
+
+export interface RegisterUserData {
+  contractCode: string;
+  emailAddress: string;
+  registrationComplete: boolean;
+}
+
+export interface RegisterUserResponse {
+  status: boolean;
+  data: RegisterUserData;
+  message: string;
+}
+
 // Re-export available slots types
 export type {
   AvailableDayWithSpots,

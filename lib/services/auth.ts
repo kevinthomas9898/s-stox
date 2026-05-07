@@ -1,5 +1,15 @@
 import api from '@/lib/api/axiosInstance';
-import type { ApiResponse, AuthResponse, LoginCredentials, User } from '@/types';
+import type {
+  ApiResponse,
+  AuthResponse,
+  LoginCredentials,
+  User,
+  VerifyUserResponse,
+  VerifyOtpRequest,
+  VerifyOtpResponse,
+  RegisterUserRequest,
+  RegisterUserResponse,
+} from '@/types';
 
 /**
  * Login with email and password.
@@ -52,4 +62,31 @@ export async function secure(): Promise<User> {
   // Handle both { data: { ... } } and { Data: { ... } } if backend varies
   const responseData = (data as { data?: User }).data || (data as { Data?: User }).Data || (data as unknown as User);
   return responseData;
+}
+
+/**
+ * Verify user email and send OTP.
+ * Returns contract code for the verification flow.
+ */
+export async function verifyUser(emailAddress: string): Promise<VerifyUserResponse> {
+  const { data } = await api.post<VerifyUserResponse>('/auth/verifyUser', emailAddress);
+  return data;
+}
+
+/**
+ * Verify OTP code.
+ * Validates the OTP and returns verification status.
+ */
+export async function verifyOtp(params: VerifyOtpRequest): Promise<VerifyOtpResponse> {
+  const { data } = await api.post<VerifyOtpResponse>('/auth/verifyOtp', params);
+  return data;
+}
+
+/**
+ * Register user with complete registration data.
+ * Saves progress or completes registration based on the step.
+ */
+export async function registerUser(params: RegisterUserRequest): Promise<RegisterUserResponse> {
+  const { data } = await api.post<RegisterUserResponse>('/auth/registerUser', params);
+  return data;
 }

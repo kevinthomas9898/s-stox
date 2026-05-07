@@ -41,7 +41,7 @@ export default function Footer() {
           {/* Brand & Description Column */}
           <StaggerItem className="lg:col-span-5">
             <div className="space-y-6">
-              <Link href="/" className="flex items-center gap-2">
+              <Link href="/" className="flex items-center gap-2 w-fit">
                 <div className="relative w-[50px] h-[50px]">
                   <Image
                     src="/logo-icon.png"
