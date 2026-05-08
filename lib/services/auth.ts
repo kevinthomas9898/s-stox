@@ -9,6 +9,7 @@ import type {
   VerifyOtpResponse,
   RegisterUserRequest,
   RegisterUserResponse,
+  SecurityQuestionsResponse,
 } from '@/types';
 
 /**
@@ -87,6 +88,30 @@ export async function verifyOtp(params: VerifyOtpRequest): Promise<VerifyOtpResp
  * Saves progress or completes registration based on the step.
  */
 export async function registerUser(params: RegisterUserRequest): Promise<RegisterUserResponse> {
-  const { data } = await api.post<RegisterUserResponse>('/auth/registerUser', params);
+  try {
+    const { data } = await api.post<RegisterUserResponse>('/auth/registerUser', params);
+    return data;
+  } catch (error: any) {
+    console.error('Register API Error:', {
+      status: error.response?.status,
+      data: error.response?.data,
+      message: error.message,
+      requestPayload: params,
+    });
+    throw error;
+  }
+}
+
+/**
+ * Get security questions from backend.
+ * Returns questions grouped by quesNo (e.g., "100", "200").
+ */
+export async function getUserSecurityQuestions(
+  langCode = 'ENG',
+  languageDialectCode = '0002',
+): Promise<SecurityQuestionsResponse> {
+  const { data } = await api.get<SecurityQuestionsResponse>('/auth/getUserSecurityQuestions', {
+    params: { LangCode: langCode, LanguageDialectCode: languageDialectCode },
+  });
   return data;
 }

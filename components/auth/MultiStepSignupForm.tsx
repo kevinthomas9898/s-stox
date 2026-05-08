@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useForm, FormProvider, type Control } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -13,8 +13,8 @@ import { DatePicker } from "@/components/ui/date-picker";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { FiCheck } from "react-icons/fi";
-import { registerUser } from "@/lib/services/auth";
-import type { RegisterUserRequest, RegistrationUserData } from "@/types";
+import { registerUser, getUserSecurityQuestions } from "@/lib/services/auth";
+import type { RegisterUserRequest, RegistrationUserData, SecurityQuestionItem } from "@/types";
 
 // Hook to fetch countries with flags
 function useCountries() {
@@ -77,28 +77,28 @@ const stepFields = [
 const signupSchema = z.object({
   consent: z.boolean().refine((v) => v, { message: "Consent required" }),
   title: z.string().min(1, "Title is required"),
-  firstName: z.string().min(1, "First name is required"),
-  middleNames: z.string().optional(),
-  surname: z.string().min(1, "Surname is required"),
+  firstName: z.string().min(1, "First name is required").max(50, "First name too long"),
+  middleNames: z.string().max(50, "Middle names too long").optional(),
+  surname: z.string().min(1, "Surname is required").max(50, "Surname too long"),
   countryCode: z.string().min(1, "Country code is required"),
   mobileNumber: z.string().min(1, "Mobile number is required"),
   email: z.string().email("Please enter a valid email address"),
   dateOfBirth: z.string().min(1, "Date of birth is required"),
-  addressLine1: z.string().min(1, "Address line 1 is required"),
-  addressLine2: z.string().optional(),
-  city: z.string().min(1, "City is required"),
-  state: z.string().min(1, "State/Province is required"),
-  postalCode: z.string().min(1, "Postal code is required"),
+  addressLine1: z.string().min(1, "Address line 1 is required").max(100, "Address too long"),
+  addressLine2: z.string().max(50, "Address line 2 too long").optional(),
+  city: z.string().min(1, "City is required").max(50, "City name too long"),
+  state: z.string().min(1, "State/Province is required").max(50, "State name too long"),
+  postalCode: z.string().min(1, "Postal code is required").max(20, "Postal code too long"),
   country: z.string().min(1, "Country is required"),
   password: z.string().min(4, "Password must be at least 4 characters"),
   confirmPassword: z.string().min(1, "Please confirm your password"),
   securityQuestion1: z.string().min(1, "Security question is required"),
-  securityAnswer1: z.string().min(1, "Answer is required"),
+  securityAnswer1: z.string().min(1, "Answer is required").max(100, "Answer too long"),
   securityQuestion2: z.string().min(1, "Security question is required"),
-  securityAnswer2: z.string().min(1, "Answer is required"),
+  securityAnswer2: z.string().min(1, "Answer is required").max(100, "Answer too long"),
   kycDocument: z.string().min(1, "KYC document type is required"),
-  kycDocumentNumber: z.string().min(1, "Document number is required"),
-  referralCode: z.string().optional(),
+  kycDocumentNumber: z.string().min(5, "Document number must be at least 5 characters").max(50, "Document number too long"),
+  referralCode: z.string().max(20, "Referral code too long").optional(),
   agreeToTerms: z.boolean().refine((v) => v, { message: "You must agree to the terms" }),
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Passwords do not match",
@@ -113,11 +113,11 @@ interface MultiStepSignupFormProps {
   preverifiedEmail?: string;
   contractCode?: string;
   initialStep?: number;
-  initialData?: import("@/types").RegistrationUserData;
+  initialData?: RegistrationUserData;
 }
 
 // Map API data to form format
-function mapInitialDataToForm(data: import("@/types").RegistrationUserData | undefined, preverifiedEmail?: string): Partial<SignupFormData> {
+function mapInitialDataToForm(data: RegistrationUserData | undefined, preverifiedEmail?: string): Partial<SignupFormData> {
   if (!data) {
     return {
       email: preverifiedEmail || "",
@@ -140,12 +140,12 @@ function mapInitialDataToForm(data: import("@/types").RegistrationUserData | und
     state: data.state || "",
     postalCode: data.zipCode || "",
     country: data.country || "", // Page 2: Address country
-    password: data.createPassword || "",
-    confirmPassword: data.createPassword || "",
-    securityQuestion1: data.userSecurityQues?.[0]?.questionNumber || "",
-    securityAnswer1: data.userSecurityQues?.[0]?.answerNumber || "",
-    securityQuestion2: data.userSecurityQues?.[1]?.questionNumber || "",
-    securityAnswer2: data.userSecurityQues?.[1]?.answerNumber || "",
+    password: "",
+    confirmPassword: "",
+    securityQuestion1: data.userSecurityQues?.[0]?.securityQuestionValue || "",
+    securityAnswer1: data.userSecurityQues?.[0]?.securityQuestionAnswer || "",
+    securityQuestion2: data.userSecurityQues?.[1]?.securityQuestionValue || "",
+    securityAnswer2: data.userSecurityQues?.[1]?.securityQuestionAnswer || "",
     kycDocument: data.kycDocument || "",
     kycDocumentNumber: data.kycDocumentNumber || "",
     referralCode: data.referralAmbassadorCode || "",
@@ -153,12 +153,20 @@ function mapInitialDataToForm(data: import("@/types").RegistrationUserData | und
   };
 }
 
+// Cache type for security questions
+type SecurityQuestionsCache = {
+  group100: SecurityQuestionItem[];
+  group200: SecurityQuestionItem[];
+};
+
 // Transform form data to API format
 function transformFormToApiData(
   data: SignupFormData,
   contractCode: string,
   currentStep: number,
-  initialData?: RegistrationUserData,
+  initialData: RegistrationUserData | undefined,
+  cache: SecurityQuestionsCache,
+  isFinalSubmit: boolean,
 ): RegisterUserRequest {
   return {
     registerUserEndpoint: "W", // 'W' for web platform
@@ -178,23 +186,22 @@ function transformFormToApiData(
     city: data.city,
     state: data.state,
     zipCode: data.postalCode,
-    createPassword: data.password,
+    createPassword: currentStep >= 3 ? data.password : "", // Send password on steps 3+ (when password field is shown)
     userSecurityQues: [
       {
-        securityQuestion: data.securityQuestion1,
+        securityQuestion: getQuesNoFromValue(data.securityQuestion1, '100', cache), // Group 100
         securityQuestionAnswer: data.securityAnswer1,
+        securityQuestionValue: data.securityQuestion1, // The value (10, 20, 30)
       },
       {
-        securityQuestion: data.securityQuestion2,
+        securityQuestion: getQuesNoFromValue(data.securityQuestion2, '200', cache), // Group 200
         securityQuestionAnswer: data.securityAnswer2,
+        securityQuestionValue: data.securityQuestion2, // The value (10, 20, 30)
       },
     ],
     kycDocument: data.kycDocument,
     kycDocumentNumber: data.kycDocumentNumber,
     referralAmbassadorCode: data.referralCode || "",
-    otpHash: initialData?.otpHash || null,
-    otpExpiry: initialData?.otpExpiry || null,
-    otpCreatedDate: initialData?.otpCreatedDate || null,
     isEmailVerified: true, // Email is verified before reaching this form
   };
 }
@@ -207,7 +214,7 @@ export function MultiStepSignupForm({
   initialStep = 1,
   initialData,
 }: MultiStepSignupFormProps) {
-  const [currentStep, setCurrentStep] = useState(Math.min(Math.max(initialStep, 1), 4));
+  const [currentStep, setCurrentStep] = useState(Math.min(Math.max(initialStep, 1), steps.length));
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -257,15 +264,15 @@ export function MultiStepSignupForm({
 
   const validateStep = async (step: number) => {
     const fields = stepFields[step - 1] || [];
-    return trigger(fields as any);
+    return trigger(fields as (keyof SignupFormData)[]);
   };
 
-  const saveProgress = async (formData: SignupFormData, stepToSave: number) => {
+  const saveProgress = async (formData: SignupFormData, stepToSave: number, cache: SecurityQuestionsCache) => {
     if (!contractCode) return;
 
     setIsSaving(true);
     try {
-      const apiData = transformFormToApiData(formData, contractCode, stepToSave, initialData);
+      const apiData = transformFormToApiData(formData, contractCode, stepToSave, initialData, cache, false);
       const response = await registerUser(apiData);
 
       if (response.status) {
@@ -282,12 +289,18 @@ export function MultiStepSignupForm({
     }
   };
 
+  // Security questions cache ref for lookup
+  const securityCacheRef = useRef<SecurityQuestionsCache>({ group100: [], group200: [] });
+
+  // Form container ref for scrolling
+  const formContainerRef = useRef<HTMLDivElement>(null);
+
   const handleNext = async () => {
     const isValid = await validateStep(currentStep);
     if (isValid && currentStep < steps.length) {
       // Save progress for current step before moving to next
       const formData = methods.getValues();
-      await saveProgress(formData, currentStep);
+      await saveProgress(formData, currentStep, securityCacheRef.current);
       setCurrentStep((prev) => prev + 1);
     }
   };
@@ -297,6 +310,11 @@ export function MultiStepSignupForm({
       setCurrentStep((prev) => prev - 1);
     }
   };
+
+  // Scroll to top when step changes
+  useEffect(() => {
+    formContainerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [currentStep]);
 
   const onSubmit = async (data: SignupFormData) => {
     if (!contractCode) {
@@ -308,14 +326,12 @@ export function MultiStepSignupForm({
 
     try {
       // Submit final registration data
-      const apiData = transformFormToApiData(data, contractCode, 4, initialData);
+      const securityCache = { group100: [] as SecurityQuestionItem[], group200: [] as SecurityQuestionItem[] }; // Empty cache for final submit
+      const apiData = transformFormToApiData(data, contractCode, steps.length, initialData, securityCache, true);
       const response = await registerUser(apiData);
 
-      if (response.status && response.data?.registrationComplete) {
-        toast.success("Account created successfully!");
-        onSubmitSuccess?.();
-      } else if (response.status) {
-        toast.success(response.message || "Registration saved!");
+      if (response.status) {
+        toast.success(response.data?.registrationComplete ? "Account created successfully!" : (response.message || "Registration saved!"));
         onSubmitSuccess?.();
       } else {
         toast.error(response.message || "Failed to create account");
@@ -337,7 +353,7 @@ export function MultiStepSignupForm({
 
   return (
     <FormProvider {...methods}>
-      <div className={cn("w-full mx-auto", className)}>
+      <div ref={formContainerRef} className={cn("w-full mx-auto scroll-mt-32", className)}>
         {/* Stepper - Sticky */}
         <div className="sticky top-20 z-30 bg-[#0b0f19]/95 backdrop-blur-sm py-4 -mx-4 px-4 sm:-mx-8 sm:px-8 mb-8">
           <Stepper steps={steps} currentStep={currentStep} />
@@ -364,7 +380,7 @@ export function MultiStepSignupForm({
               <Button
                 type="button"
                 onClick={handleNext}
-                disabled={!consent || isSubmitting || isSaving}
+                disabled={(currentStep === 1 && !consent) || isSubmitting || isSaving}
                 className="bg-[#2A73EA] hover:bg-[#1a5fc7] text-white px-8 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSaving ? "Saving..." : "Next"}
@@ -378,6 +394,9 @@ export function MultiStepSignupForm({
                 {isSubmitting ? "Submitting..." : "Submit"}
               </Button>
             )}
+
+            {/* Hidden component to fetch security questions and update cache */}
+            <SecurityQuestionsLoader onCacheUpdate={(cache) => { securityCacheRef.current = cache; }} />
           </div>
         </form>
       </div>
@@ -429,12 +448,12 @@ function PersonalDetailsStep({ control, preverifiedEmail }: { control: Control<S
           maxLength={15}
         />
 
-        <TextInput 
-          name="email" 
-          control={control} 
-          label="Email Address" 
-          placeholder={preverifiedEmail ? preverifiedEmail : "Enter email address"} 
-          type="email" 
+        <TextInput
+          name="email"
+          control={control}
+          label="Email Address"
+          placeholder={preverifiedEmail ? preverifiedEmail : "Enter email address"}
+          type="email"
           disabled={!!preverifiedEmail}
         />
         {preverifiedEmail && (
@@ -507,24 +526,90 @@ function AddressStep({ control }: { control: Control<SignupFormData> }) {
   );
 }
 
+// Hook to fetch security questions from API
+function useSecurityQuestions() {
+  const [questions, setQuestions] = useState<{
+    group100: SelectOption[];
+    group200: SelectOption[];
+  }>({ group100: [], group200: [] });
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const cacheRef = useRef<SecurityQuestionsCache>({ group100: [], group200: [] });
+
+  useEffect(() => {
+    async function fetchQuestions() {
+      try {
+        const response = await getUserSecurityQuestions('ENG', '0002');
+        if (response.status && response.data) {
+          // Cache raw data for value lookup
+          cacheRef.current = {
+            group100: response.data['100'] || [],
+            group200: response.data['200'] || [],
+          };
+
+          // Map to dropdown options using value field
+          const mapToOptions = (items: SecurityQuestionItem[]): SelectOption[] =>
+            items.map((item) => ({
+              value: item.value, // Use value (10, 20, 30) as the option value
+              label: item.label,
+            }));
+
+          setQuestions({
+            group100: mapToOptions(response.data['100'] || []),
+            group200: mapToOptions(response.data['200'] || []),
+          });
+        }
+      } catch (error) {
+        console.error('Failed to fetch security questions:', error);
+        setError('Failed to load security questions');
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchQuestions();
+  }, []);
+
+  return { questions, isLoading, error, cache: cacheRef.current };
+}
+
+// Helper to get quesNo from value in specific group
+function getQuesNoFromValue(value: string, group: '100' | '200', cache: SecurityQuestionsCache): string {
+  const questions = group === '100' ? cache.group100 : cache.group200;
+  const question = questions.find((q) => q.value === value);
+  return question?.quesNo || (group === '100' ? '100' : '200');
+}
+
+// Component to load security questions and notify parent of cache updates
+function SecurityQuestionsLoader({ onCacheUpdate }: { onCacheUpdate: (cache: SecurityQuestionsCache) => void }) {
+  const { error, cache } = useSecurityQuestions();
+
+  useEffect(() => {
+    onCacheUpdate(cache);
+  }, [cache, onCacheUpdate]);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
+
+  return null;
+}
+
 // Step 3: Other Info
-function OtherInfoStep({ control }: { control: Control<SignupFormData> }) {
-  const securityQuestionOptions = [
-    { value: "movie", label: "What is your favorite movie?" },
-    { value: "pet", label: "What was the name of your first pet?" },
-    { value: "school", label: "What is the name of your elementary school?" },
-    { value: "mother", label: "What is your mother's maiden name?" },
-    { value: "city", label: "What city were you born in?" },
-    { value: "car", label: "What was your first car?" },
-    { value: "book", label: "What is your favorite book?" },
-    { value: "teacher", label: "Who was your favorite teacher?" },
-  ];
+function OtherInfoStep({ control, onCacheUpdate }: { control: Control<SignupFormData>; onCacheUpdate?: (cache: SecurityQuestionsCache) => void }) {
+  const { questions, isLoading, cache } = useSecurityQuestions();
+
+  useEffect(() => {
+    onCacheUpdate?.(cache);
+  }, [cache, onCacheUpdate]);
 
   const kycOptions = [
-    { value: "passport", label: "Passport" },
-    { value: "license", label: "Driving License" },
-    { value: "id-card", label: "National ID Card" },
-    { value: "residence", label: "Residence Permit" },
+    { value: "PASSPORT", label: "Passport" },
+    { value: "DRIVING_LICENSE", label: "Driving License" },
+    { value: "NATIONAL_ID", label: "National ID Card" },
+    { value: "VOTER_ID", label: "Voter ID" },
+    { value: "PAN_CARD", label: "PAN Card" },
   ];
 
   return (
@@ -553,7 +638,8 @@ function OtherInfoStep({ control }: { control: Control<SignupFormData> }) {
         control={control}
         label="Security Question 1"
         placeholder="Select security question"
-        options={securityQuestionOptions}
+        options={questions.group100}
+        disabled={isLoading}
       />
       <TextInput
         name="securityAnswer1"
@@ -568,7 +654,8 @@ function OtherInfoStep({ control }: { control: Control<SignupFormData> }) {
         control={control}
         label="Security Question 2"
         placeholder="Select security question"
-        options={securityQuestionOptions}
+        options={questions.group200}
+        disabled={isLoading}
       />
       <TextInput
         name="securityAnswer2"

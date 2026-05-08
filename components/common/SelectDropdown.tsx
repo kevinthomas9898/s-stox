@@ -122,9 +122,9 @@ export function SelectDropdownBase({
               {filteredOptions.length === 0 ? (
                 <div className="px-3 py-2 text-sm text-gray-500">No results found</div>
               ) : (
-                filteredOptions.map((option) => (
+                filteredOptions.map((option, index) => (
                   <DropdownMenuItem
-                    key={option.value}
+                    key={`${option.value}-${index}`}
                     onClick={() => {
                       onChange?.(option.value);
                       setSearchQuery("");

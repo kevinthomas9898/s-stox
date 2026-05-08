@@ -89,8 +89,9 @@ export interface VerifyUserRequest {
 }
 
 export interface UserSecurityQuestion {
-  questionNumber: string;
-  answerNumber: string;
+  securityQuestion: string;      // quesNo (100, 200)
+  securityQuestionAnswer: string; // user's answer
+  securityQuestionValue: string;  // value from API (10, 20, 30)
 }
 
 export interface RegistrationUserData {
@@ -116,9 +117,6 @@ export interface RegistrationUserData {
   kycDocument: string | null;
   kycDocumentNumber: string;
   referralAmbassadorCode: string | null;
-  otpHash: string | null;
-  otpExpiry: string | null;
-  otpCreatedDate: string | null;
   isEmailVerified: boolean;
 }
 
@@ -157,8 +155,9 @@ export interface VerifyOtpResponse {
 
 // ── Register User ──
 export interface UserSecurityQuestionInput {
-  securityQuestion: string;
-  securityQuestionAnswer: string;
+  securityQuestion: string;      // quesNo (e.g., "100", "200")
+  securityQuestionAnswer: string;  // user's answer
+  securityQuestionValue: string; // value from API (e.g., "10", "20", "30")
 }
 
 export interface RegisterUserRequest {
@@ -184,9 +183,6 @@ export interface RegisterUserRequest {
   kycDocument: string;
   kycDocumentNumber: string;
   referralAmbassadorCode: string;
-  otpHash: string | null;
-  otpExpiry: string | null;
-  otpCreatedDate: string | null;
   isEmailVerified: boolean;
 }
 
@@ -199,6 +195,23 @@ export interface RegisterUserData {
 export interface RegisterUserResponse {
   status: boolean;
   data: RegisterUserData;
+  message: string;
+}
+
+// ── Security Questions ──
+export interface SecurityQuestionItem {
+  quesNo: string;  // Question group number (e.g., "100", "200")
+  label: string;    // Display text
+  value: string;    // Actual value to send (e.g., "10", "20", "30")
+}
+
+export interface SecurityQuestionsData {
+  [key: string]: SecurityQuestionItem[];
+}
+
+export interface SecurityQuestionsResponse {
+  status: boolean;
+  data: SecurityQuestionsData;
   message: string;
 }
 
