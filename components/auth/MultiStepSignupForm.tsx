@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Stepper } from "@/components/ui/stepper";
 import { Button } from "@/components/ui/button";
+import { PrimaryBTN } from "@/components/common/PrimaryBTN";
 import { TextInput, PhoneInput } from "@/components/common/TextInput";
 import { SelectDropdown, type SelectOption } from "@/components/common/SelectDropdown";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -365,34 +366,36 @@ export function MultiStepSignupForm({
           <div className="min-h-[400px]">{stepComponents[currentStep - 1]}</div>
 
           {/* Navigation Buttons */}
-          <div className="flex justify-between pt-6 w-fit m-auto gap-3">
-            <Button
+          <div className="flex justify-center items-center pt-6 w-fit m-auto gap-3">
+            <PrimaryBTN
               type="button"
               variant="outline"
               onClick={handleBack}
               disabled={currentStep === 1 || isSubmitting}
-              className="bg-transparent border-white/60 text-white hover:bg-white/10 hover:text-white disabled:opacity-50"
+              className="bg-transparent w-fit px-8 border-white/60 text-white hover:bg-white/10 hover:text-white disabled:opacity-50"
             >
-              Back
-            </Button>
+              Previous
+            </PrimaryBTN>
 
             {currentStep < steps.length ? (
-              <Button
+              <PrimaryBTN
                 type="button"
                 onClick={handleNext}
                 disabled={(currentStep === 1 && !consent) || isSubmitting || isSaving}
-                className="bg-[#2A73EA] hover:bg-[#1a5fc7] text-white px-8 disabled:opacity-50 disabled:cursor-not-allowed"
+                loading={isSaving}
+                className="bg-[#2A73EA] w-fit hover:bg-[#1a5fc7] text-white px-8 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSaving ? "Saving..." : "Next"}
-              </Button>
+                Next
+              </PrimaryBTN>
             ) : (
-              <Button
+              <PrimaryBTN
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-[#2A73EA] hover:bg-[#1a5fc7] text-white px-8"
+                loading={isSubmitting}
+                className="bg-[#2A73EA] w-fit hover:bg-[#1a5fc7] text-white px-8"
               >
-                {isSubmitting ? "Submitting..." : "Submit"}
-              </Button>
+                Activate SmartStox
+              </PrimaryBTN>
             )}
 
             {/* Hidden component to fetch security questions and update cache */}
