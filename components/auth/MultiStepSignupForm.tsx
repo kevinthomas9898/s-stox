@@ -5,7 +5,9 @@ import { useForm, FormProvider, type Control, type FieldErrors } from "react-hoo
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Stepper } from "@/components/ui/stepper";
-import { Button } from "@/components/ui/button";
+import { useAppDispatch } from "@/store";
+import { updateStartingStep, updateRegistrationData } from "@/store/slices/registrationSlice";
+import { FaCheck } from "react-icons/fa";
 import { PrimaryBTN } from "@/components/common/PrimaryBTN";
 import { TextInput, PhoneInput } from "@/components/common/TextInput";
 import { SelectDropdown, type SelectOption } from "@/components/common/SelectDropdown";
@@ -282,12 +284,26 @@ export function MultiStepSignupForm({
   const {
     handleSubmit,
     trigger,
+    reset,
     formState: { errors },
     watch,
     control,
   } = methods;
 
+  // Reset form with persisted data when initialData changes (after Redux rehydrate)
+  useEffect(() => {
+    if (initialData) {
+      const values = mapInitialDataToForm(initialData, preverifiedEmail);
+      reset(values);
+    }
+  }, [initialData, preverifiedEmail, reset]);
+
   const consent = watch("consent");
+
+  // Update current step when initialStep changes (after Redux rehydrate)
+  useEffect(() => {
+    setCurrentStep(Math.min(Math.max(initialStep, 1), steps.length));
+  }, [initialStep]);
 
   const validateStep = async (step: number) => {
     const fields = stepFields[step - 1] || [];
@@ -305,6 +321,10 @@ export function MultiStepSignupForm({
       if (response.status) {
         // Progress saved successfully
         console.log("Progress saved:", response.data);
+        // Update registrationData in Redux if API returns updated user data
+        if (response.data) {
+          dispatch(updateRegistrationData(response.data as unknown as RegistrationUserData));
+        }
       } else {
         toast.error(response.message || "Failed to save progress");
       }
@@ -322,12 +342,19 @@ export function MultiStepSignupForm({
   // Form container ref for scrolling
   const formContainerRef = useRef<HTMLDivElement>(null);
 
+  const dispatch = useAppDispatch();
+
   const handleNext = async () => {
     const isValid = await validateStep(currentStep);
     if (isValid && currentStep < steps.length) {
       // Save progress for current step before moving to next
       const formData = methods.getValues();
       await saveProgress(formData, currentStep, securityCacheRef.current);
+      // Save step and form data to Redux Persist
+      dispatch(updateStartingStep(currentStep + 1));
+      // Convert form data to RegistrationUserData format and save
+      const apiData = transformFormToApiData(formData, contractCode || "", currentStep, initialData, securityCacheRef.current, false);
+      dispatch(updateRegistrationData(apiData as unknown as RegistrationUserData));
       setCurrentStep((prev) => prev + 1);
     }
   };
@@ -476,23 +503,23 @@ function PersonalDetailsStep({ control, preverifiedEmail }: { control: Control<S
           inputMode="numeric"
           maxLength={15}
         />
-
         <TextInput
           name="email"
           control={control}
-          label="Email Address"
+          label={
+            <span className="flex items-center gap-2">
+              Email Address
+              {preverifiedEmail && (
+                <span className="bg-green-500 rounded-full p-0.5">
+                  <FaCheck className="text-white w-2 h-2" />
+                </span>
+              )}
+            </span>
+          }
           placeholder={preverifiedEmail ? preverifiedEmail : "Enter email address"}
           type="email"
           disabled={!!preverifiedEmail}
         />
-        {preverifiedEmail && (
-          <p className="text-xs text-green-400 flex items-center gap-1">
-            <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            Email verified
-          </p>
-        )}
 
         <DatePicker name="dateOfBirth" control={control} label="Date of Birth" placeholder="DD / MM / YYYY" />
         <p className="text-xs text-gray-500">You must be 18 years or older to use this platform</p>

@@ -70,7 +70,7 @@ export async function secure(): Promise<User> {
  * Returns contract code for the verification flow.
  */
 export async function verifyUser(emailAddress: string): Promise<VerifyUserResponse> {
-  const { data } = await api.post<VerifyUserResponse>('/auth/verifyUser', emailAddress);
+  const { data } = await api.post<VerifyUserResponse>('/auth/verifyUser', { emailAddress });
   return data;
 }
 

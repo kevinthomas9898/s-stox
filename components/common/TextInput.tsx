@@ -16,7 +16,7 @@ import {
 
 export interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
-  label?: string;
+  label?: React.ReactNode;
   rightIcon?: React.ReactNode;
   leftElement?: React.ReactNode;
 }
@@ -84,7 +84,7 @@ TextInputBase.displayName = "TextInputBase";
 interface ControlledTextInputProps<T extends FieldValues> {
   name: Path<T>;
   control: Control<T>;
-  label?: string;
+  label?: React.ReactNode;
   type?: string;
   placeholder?: string;
   disabled?: boolean;
