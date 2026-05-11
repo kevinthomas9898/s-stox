@@ -725,7 +725,6 @@ function OtherInfoStep({ control, onCacheUpdate }: { control: Control<SignupForm
         name="kycDocument"
         control={control}
         label="KYC Document"
-        subLabel={<FiCheck className="w-4 h-4 text-[#00D094] inline ml-1" />}
         placeholder="Select document type"
         options={kycOptions}
       />
@@ -733,7 +732,6 @@ function OtherInfoStep({ control, onCacheUpdate }: { control: Control<SignupForm
         name="kycDocumentNumber"
         control={control}
         label="KYC Document Number"
-        rightIcon={<FiCheck className="w-4 h-4 text-[#00D094]" />}
         placeholder="AB12 459826"
       />
 
