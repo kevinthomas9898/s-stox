@@ -50,8 +50,15 @@ export default function EmailVerification({ onVerified }: EmailVerificationProps
       if (response.status && response.data) {
         const userData = response.data;
 
-        // If existing user with saved progress, continue registration from saved step
-        if (userData.isExistingUser) {
+        // If user already completed registration, show login message
+        if (userData.isExistingUser && userData.isRegistrationCompleted) {
+          toast.info(userData.message);
+          // Optionally redirect to login page here
+          return;
+        }
+
+        // If existing user with saved progress (incomplete), continue registration from saved step
+        if (userData.isExistingUser && userData.user) {
           const registrationPage = parseInt(userData.user.registrationPage, 10) || 1;
           toast.success(userData.message || "Continuing your registration.");
           onVerified(email, userData.user.contractCode, userData.user, registrationPage);
@@ -59,18 +66,22 @@ export default function EmailVerification({ onVerified }: EmailVerificationProps
         }
 
         // If email is already verified (but not existing user), skip OTP
-        if (userData.isEmailVerified) {
+        if (userData.isEmailVerified && userData.user) {
           toast.success("Email already verified! Proceeding to account creation.");
           onVerified(email, userData.user.contractCode, undefined, 1);
           return;
         }
 
         // New user - proceed to OTP verification
-        setContractCode(userData.user.contractCode);
-        setStep("verify");
-        setResendTimer(60); // 60 second cooldown
-        setResendCount((prev) => prev + 1);
-        toast.success(userData.message || "Verification code sent to your email");
+        if (userData.user) {
+          setContractCode(userData.user.contractCode);
+          setStep("verify");
+          setResendTimer(60); // 60 second cooldown
+          setResendCount((prev) => prev + 1);
+          toast.success(userData.message || "Verification code sent to your email");
+        } else {
+          toast.error("Unexpected response. Please try again.");
+        }
       } else {
         toast.error(response.message || "Failed to send verification code");
       }
@@ -126,7 +137,7 @@ export default function EmailVerification({ onVerified }: EmailVerificationProps
     try {
       const response = await verifyUser(email);
 
-      if (response.status && response.data) {
+      if (response.status && response.data && response.data.user) {
         setContractCode(response.data.user.contractCode);
         setResendTimer(60); // Reset timer
         setResendCount((prev) => prev + 1);

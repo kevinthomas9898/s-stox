@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useForm, FormProvider, type Control } from "react-hook-form";
+import { useForm, FormProvider, type Control, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Stepper } from "@/components/ui/stepper";
@@ -91,8 +91,8 @@ const signupSchema = z.object({
   state: z.string().min(1, "State/Province is required").max(50, "State name too long"),
   postalCode: z.string().min(1, "Postal code is required").max(20, "Postal code too long"),
   country: z.string().min(1, "Country is required"),
-  password: z.string().min(4, "Password must be at least 4 characters"),
-  confirmPassword: z.string().min(1, "Please confirm your password"),
+  password: z.string().optional(),
+  confirmPassword: z.string().optional(),
   securityQuestion1: z.string().min(1, "Security question is required"),
   securityAnswer1: z.string().min(1, "Answer is required").max(100, "Answer too long"),
   securityQuestion2: z.string().min(1, "Security question is required"),
@@ -100,9 +100,34 @@ const signupSchema = z.object({
   kycDocument: z.string().min(1, "KYC document type is required"),
   kycDocumentNumber: z.string().min(5, "Document number must be at least 5 characters").max(50, "Document number too long"),
   referralCode: z.string().max(20, "Referral code too long").optional(),
-  agreeToTerms: z.boolean().refine((v) => v, { message: "You must agree to the terms" }),
-}).refine((data) => data.password === data.confirmPassword, {
+  tsCsAccepted: z.boolean().refine((v) => v, { message: "You must agree to the terms" }),
+}).refine((data) => {
+  // Only validate password match if password is being set (on step 3+ when fields are visible)
+  if (data.password || data.confirmPassword) {
+    return data.password === data.confirmPassword;
+  }
+  return true;
+}, {
   message: "Passwords do not match",
+  path: ["confirmPassword"],
+}).refine((data) => {
+  // Only require password when fields are visible (step 3) - check by seeing if we're in final submit context
+  // This validation only runs if password is expected to be set
+  if (data.password && data.password.length < 4) {
+    return false;
+  }
+  return true;
+}, {
+  message: "Password must be at least 4 characters",
+  path: ["password"],
+}).refine((data) => {
+  // Check if confirm password is provided when password is set
+  if (data.password && !data.confirmPassword) {
+    return false;
+  }
+  return true;
+}, {
+  message: "Please confirm your password",
   path: ["confirmPassword"],
 });
 
@@ -150,7 +175,7 @@ function mapInitialDataToForm(data: RegistrationUserData | undefined, preverifie
     kycDocument: data.kycDocument || "",
     kycDocumentNumber: data.kycDocumentNumber || "",
     referralCode: data.referralAmbassadorCode || "",
-    agreeToTerms: false,
+    tsCsAccepted: false,
   };
 }
 
@@ -187,23 +212,24 @@ function transformFormToApiData(
     city: data.city,
     state: data.state,
     zipCode: data.postalCode,
-    createPassword: currentStep >= 3 ? data.password : "", // Send password on steps 3+ (when password field is shown)
+    createPassword: currentStep >= 3 ? (data.password || "") : "", // Send password on steps 3+ (when password field is shown)
     userSecurityQues: [
       {
-        securityQuestion: getQuesNoFromValue(data.securityQuestion1, '100', cache), // Group 100
+        securityQuestion: getQuesNoFromValue(data.securityQuestion1, '100', cache),
         securityQuestionAnswer: data.securityAnswer1,
-        securityQuestionValue: data.securityQuestion1, // The value (10, 20, 30)
+        securityQuestionValue: data.securityQuestion1,
       },
       {
-        securityQuestion: getQuesNoFromValue(data.securityQuestion2, '200', cache), // Group 200
+        securityQuestion: getQuesNoFromValue(data.securityQuestion2, '200', cache),
         securityQuestionAnswer: data.securityAnswer2,
-        securityQuestionValue: data.securityQuestion2, // The value (10, 20, 30)
+        securityQuestionValue: data.securityQuestion2,
       },
     ],
     kycDocument: data.kycDocument,
     kycDocumentNumber: data.kycDocumentNumber,
     referralAmbassadorCode: data.referralCode || "",
     isEmailVerified: true, // Email is verified before reaching this form
+    tsCsAccepted: data.tsCsAccepted,
   };
 }
 
@@ -248,7 +274,7 @@ export function MultiStepSignupForm({
       kycDocument: initialFormValues.kycDocument ?? "",
       kycDocumentNumber: initialFormValues.kycDocumentNumber ?? "",
       referralCode: initialFormValues.referralCode ?? "",
-      agreeToTerms: initialFormValues.agreeToTerms ?? false,
+      tsCsAccepted: initialFormValues.tsCsAccepted ?? false,
     },
     mode: "onChange",
   });
@@ -349,7 +375,7 @@ export function MultiStepSignupForm({
     <PersonalDetailsStep key="1" control={control} preverifiedEmail={preverifiedEmail} />,
     <AddressStep key="2" control={control} />,
     <OtherInfoStep key="3" control={control} />,
-    <TermsStep key="4" control={control} />,
+    <TermsStep key="4" control={control} errors={errors} />,
   ];
 
   return (
@@ -398,11 +424,11 @@ export function MultiStepSignupForm({
               </PrimaryBTN>
             )}
 
-            {/* Hidden component to fetch security questions and update cache */}
-            <SecurityQuestionsLoader onCacheUpdate={(cache) => { securityCacheRef.current = cache; }} />
           </div>
         </form>
       </div>
+      {/* Hidden component to fetch security questions and update cache */}
+      <SecurityQuestionsLoader onCacheUpdate={(cache) => { securityCacheRef.current = cache; }} />
     </FormProvider>
   );
 }
@@ -696,7 +722,7 @@ function OtherInfoStep({ control, onCacheUpdate }: { control: Control<SignupForm
 }
 
 // Step 4: Terms & Conditions
-function TermsStep({ control }: { control: Control<SignupFormData> }) {
+function TermsStep({ control, errors }: { control: Control<SignupFormData>; errors: FieldErrors<SignupFormData> }) {
   const termsList = [
     "Confirm my understanding that SmartStox is software provider, and not an investment product.",
     "Confirm that SmartStox does not provide financial advice.",
@@ -726,7 +752,7 @@ function TermsStep({ control }: { control: Control<SignupFormData> }) {
 
       {/* Agreement Checkbox */}
       <Checkbox
-        name="agreeToTerms"
+        name="tsCsAccepted"
         control={control}
         label="I hereby agree to all the above."
       />

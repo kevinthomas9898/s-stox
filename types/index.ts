@@ -48,7 +48,6 @@ export interface ApiError {
 export interface AmbassadorQuestionOption {
   value: string;
   label: string;
-  pass: string;
   quesNo: string;
 }
 
@@ -121,10 +120,11 @@ export interface RegistrationUserData {
 }
 
 export interface VerifyUserData {
-  user: RegistrationUserData;
+  user: RegistrationUserData | null;
   message: string;
   isExistingUser: boolean;
   isEmailVerified?: boolean;
+  isRegistrationCompleted?: boolean;
 }
 
 export interface VerifyUserResponse {
@@ -184,6 +184,7 @@ export interface RegisterUserRequest {
   kycDocumentNumber: string;
   referralAmbassadorCode: string;
   isEmailVerified: boolean;
+  tsCsAccepted: boolean;
 }
 
 export interface RegisterUserData {
