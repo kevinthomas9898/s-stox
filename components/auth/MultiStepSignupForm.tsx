@@ -310,8 +310,8 @@ export function MultiStepSignupForm({
     return trigger(fields as (keyof SignupFormData)[]);
   };
 
-  const saveProgress = async (formData: SignupFormData, stepToSave: number, cache: SecurityQuestionsCache) => {
-    if (!contractCode) return;
+  const saveProgress = async (formData: SignupFormData, stepToSave: number, cache: SecurityQuestionsCache): Promise<boolean> => {
+    if (!contractCode) return false;
 
     setIsSaving(true);
     try {
@@ -325,12 +325,15 @@ export function MultiStepSignupForm({
         if (response.data) {
           dispatch(updateRegistrationData(response.data as unknown as RegistrationUserData));
         }
+        return true;
       } else {
         toast.error(response.message || "Failed to save progress");
+        return false;
       }
     } catch (error) {
       console.error("Error saving progress:", error);
       toast.error("Failed to save progress. Please continue and try again.");
+      return false;
     } finally {
       setIsSaving(false);
     }
@@ -349,13 +352,17 @@ export function MultiStepSignupForm({
     if (isValid && currentStep < steps.length) {
       // Save progress for current step before moving to next
       const formData = methods.getValues();
-      await saveProgress(formData, currentStep, securityCacheRef.current);
-      // Save step and form data to Redux Persist
-      dispatch(updateStartingStep(currentStep + 1));
-      // Convert form data to RegistrationUserData format and save
-      const apiData = transformFormToApiData(formData, contractCode || "", currentStep, initialData, securityCacheRef.current, false);
-      dispatch(updateRegistrationData(apiData as unknown as RegistrationUserData));
-      setCurrentStep((prev) => prev + 1);
+      const saveSuccess = await saveProgress(formData, currentStep, securityCacheRef.current);
+      
+      // Only proceed to next step if save was successful
+      if (saveSuccess) {
+        // Save step and form data to Redux Persist
+        dispatch(updateStartingStep(currentStep + 1));
+        // Convert form data to RegistrationUserData format and save
+        const apiData = transformFormToApiData(formData, contractCode || "", currentStep, initialData, securityCacheRef.current, false);
+        dispatch(updateRegistrationData(apiData as unknown as RegistrationUserData));
+        setCurrentStep((prev) => prev + 1);
+      }
     }
   };
 
@@ -501,7 +508,8 @@ function PersonalDetailsStep({ control, preverifiedEmail }: { control: Control<S
           placeholder="00000 00000"
           type="tel"
           inputMode="numeric"
-          maxLength={15}
+          maxLength={10}
+          minLength={10}
         />
         <TextInput
           name="email"

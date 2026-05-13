@@ -177,7 +177,13 @@ export default function EmailVerification({ onVerified }: EmailVerificationProps
       </div>
 
       {step === "email" ? (
-        <div className="space-y-4">
+        <form
+          className="space-y-4"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSendCode();
+          }}
+        >
           <TextInputBase
             type="email"
             placeholder="Enter Email"
@@ -196,7 +202,7 @@ export default function EmailVerification({ onVerified }: EmailVerificationProps
               Check Email
             </PrimaryBTN>
           </div>
-        </div>
+        </form>
       ) : (
         <div className="space-y-4">
           {/* Email display (disabled) */}

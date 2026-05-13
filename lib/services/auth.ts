@@ -98,7 +98,8 @@ export async function registerUser(params: RegisterUserRequest): Promise<Registe
       message: error.message,
       requestPayload: params,
     });
-    throw error;
+    // Return the error response instead of throwing, so the caller can handle the message
+    return error.response?.data || { status: false, data: null, message: error.message || 'Registration failed' };
   }
 }
 
