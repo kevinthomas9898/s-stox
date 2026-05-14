@@ -29,7 +29,6 @@ export default function RegisterPage() {
   const handleSuccess = () => {
     // Clear registration state on success
     dispatch(clearRegistration());
-    toast.success("Registration successful! Please login.");
     router.push("/login");
   };
 
@@ -47,11 +46,6 @@ export default function RegisterPage() {
         registrationData: savedData,
         startingStep: savedStep || 1,
       }),
-    );
-    toast.success(
-      savedData
-        ? "Continuing your registration!"
-        : "Email verified! You can now create your account.",
     );
   };
 
