@@ -9,9 +9,10 @@ import { cn } from "@/lib/utils";
 export type CalendarProps = Omit<MantineDatePickerProps, "value" | "onChange"> & {
   value?: Date | null;
   onChange?: (date: Date | null) => void;
+  defaultDate?: Date;
 };
 
-function Calendar({ className, value, onChange, ...props }: CalendarProps) {
+function Calendar({ className, value, onChange, defaultDate, ...props }: CalendarProps) {
   const handleChange = (date: Date | null) => {
     onChange?.(date);
   };
@@ -22,6 +23,7 @@ function Calendar({ className, value, onChange, ...props }: CalendarProps) {
         type="default"
         value={value ?? null}
         onChange={handleChange as any}
+        defaultDate={defaultDate}
         firstDayOfWeek={0}
         weekendDays={[]}
         previousIcon={<ChevronLeft className="h-4 w-4" />}

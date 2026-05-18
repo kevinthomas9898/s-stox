@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { MultiStepSignupForm } from "@/components/auth/MultiStepSignupForm";
 import EmailVerification from "@/components/auth/EmailVerification";
-import { toast } from "sonner";
 import { FadeIn } from "@/components/animations";
 import { useAppSelector, useAppDispatch } from "@/store";
 import {
@@ -23,7 +22,7 @@ export default function RegisterPage() {
     contractCode,
     registrationData,
     startingStep,
-    isInProgress,
+    // isInProgress,
   } = useAppSelector((state) => state.registration);
 
   const handleSuccess = () => {

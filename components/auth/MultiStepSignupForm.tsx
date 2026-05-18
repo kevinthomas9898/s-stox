@@ -15,7 +15,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { DatePicker } from "@/components/ui/date-picker";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-import { FiCheck } from "react-icons/fi";
 import { registerUser, getUserSecurityQuestions } from "@/lib/services/auth";
 import type { RegisterUserRequest, RegistrationUserData, SecurityQuestionItem } from "@/types";
 
@@ -345,6 +344,9 @@ export function MultiStepSignupForm({
   // Form container ref for scrolling
   const formContainerRef = useRef<HTMLDivElement>(null);
 
+  // Track previous data for each step to avoid unnecessary API calls
+  const previousStepDataRef = useRef<Record<number, any>>({});
+
   const dispatch = useAppDispatch();
 
   const handleNext = async () => {
@@ -352,9 +354,31 @@ export function MultiStepSignupForm({
     if (isValid && currentStep < steps.length) {
       // Save progress for current step before moving to next
       const formData = methods.getValues();
-      const saveSuccess = await saveProgress(formData, currentStep, securityCacheRef.current);
       
-      // Only proceed to next step if save was successful
+      // Get the fields for the current step to compare
+      const fields = stepFields[currentStep - 1] || [];
+      const currentStepData: any = {};
+      fields.forEach((field: string) => {
+        currentStepData[field] = formData[field as keyof SignupFormData];
+      });
+      
+      // Compare with previous data for this step
+      const previousData = previousStepDataRef.current[currentStep];
+      const dataChanged = JSON.stringify(currentStepData) !== JSON.stringify(previousData);
+      
+      let saveSuccess = true;
+      
+      // Only call API if data has changed
+      if (dataChanged) {
+        saveSuccess = await saveProgress(formData, currentStep, securityCacheRef.current);
+        
+        // Update previous data ref after successful save
+        if (saveSuccess) {
+          previousStepDataRef.current[currentStep] = currentStepData;
+        }
+      }
+      
+      // Only proceed to next step if save was successful (or no API call needed)
       if (saveSuccess) {
         // Save step and form data to Redux Persist
         dispatch(updateStartingStep(currentStep + 1));

@@ -44,6 +44,9 @@ export function DatePickerBase({
   const defaultMaxDate = subYears(new Date(), 18);
   const effectiveMaxDate = maxDate || defaultMaxDate;
 
+  // Default displayed date: use selected date if exists, otherwise 18 years ago
+  const defaultDate = dateValue || subYears(new Date(), 18);
+
   // Display formatted date
   const displayValue = React.useMemo(() => {
     if (!date) return placeholder;
@@ -84,12 +87,13 @@ export function DatePickerBase({
             <CalendarIcon className="h-4 w-4 text-gray-500" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0 bg-[#1a1b1e] border-white/20" align="start">
+        <PopoverContent className="w-auto p-0 bg-[#1a1b1e] border-white/20" align="start" side="top">
           <Calendar
             value={dateValue}
             onChange={handleSelect}
             minDate={minDate}
             maxDate={effectiveMaxDate}
+            defaultDate={defaultDate}
           />
         </PopoverContent>
       </Popover>
