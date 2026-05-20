@@ -14,7 +14,6 @@ import { PrimaryBTN } from "@/components/common/PrimaryBTN";
 import { setCredentials } from "@/store/slices/authSlice";
 import { setAuthCookies, decodeJwt } from "@/lib/utils/cookies";
 import { login } from "@/lib/services/auth";
-import { toast } from "sonner";
 import { FadeIn } from "@/components/animations";
 
 const loginSchema = z.object({
@@ -72,12 +71,10 @@ export default function LoginPage() {
         isAuthenticated: true,
       }));
 
-      toast.success(result.message);
       router.push("/");
     } catch (err) {
       const message = err instanceof Error ? err.message : "Login failed";
       setServerError(message);
-      toast.error(message);
     } finally {
       setIsLoading(false);
     }

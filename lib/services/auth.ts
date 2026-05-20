@@ -22,6 +22,12 @@ export async function login(
   const response = await api.post<AuthResponse>(
     '/auth/login',
     credentials,
+    {
+      toastConfig: {
+        showSuccessToast: true,
+        showErrorToast: true,
+      },
+    }
   );
   return response.data;
 }
@@ -79,7 +85,12 @@ export async function verifyUser(emailAddress: string): Promise<VerifyUserRespon
  * Validates the OTP and returns verification status.
  */
 export async function verifyOtp(params: VerifyOtpRequest): Promise<VerifyOtpResponse> {
-  const { data } = await api.post<VerifyOtpResponse>('/auth/verifyOtp', params);
+  const { data } = await api.post<VerifyOtpResponse>('/auth/verifyOtp', params, {
+    toastConfig: {
+      showSuccessToast: true,
+      showErrorToast: true,
+    },
+  });
   return data;
 }
 
