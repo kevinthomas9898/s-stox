@@ -4,6 +4,7 @@ import { logout } from '@/store/slices/authSlice';
 import { getJwtToken, getAuthCookies, setAuthCookies, clearAuthCookies } from '@/lib/utils/cookies';
 import { createToastInterceptor } from '@/lib/utils/toastInterceptor';
 
+// const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.smartstoxglobal.com/api';
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 // ── Axios Instance ──
