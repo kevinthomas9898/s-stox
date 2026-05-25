@@ -7,6 +7,7 @@ import { createToastInterceptor } from '@/lib/utils/toastInterceptor';
 // const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.smartstoxglobal.com/api';
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
+
 // ── Axios Instance ──
 const api = axios.create({
   baseURL: API_BASE_URL,
