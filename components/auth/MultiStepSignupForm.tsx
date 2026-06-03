@@ -1,138 +1,35 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useForm, FormProvider, type Control, type FieldErrors } from "react-hook-form";
+import { useForm, FormProvider, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { Stepper } from "@/components/ui/stepper";
 import { useAppDispatch } from "@/store";
 import { updateStartingStep, updateRegistrationData } from "@/store/slices/registrationSlice";
-import { FaCheck } from "react-icons/fa";
 import { PrimaryBTN } from "@/components/common/PrimaryBTN";
-import { TextInput, PhoneInput } from "@/components/common/TextInput";
-import { SelectDropdown, type SelectOption } from "@/components/common/SelectDropdown";
-import { Checkbox } from "@/components/ui/checkbox";
-import { DatePicker } from "@/components/ui/date-picker";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-import { registerUser, getUserSecurityQuestions } from "@/lib/services/auth";
-import type { RegisterUserRequest, RegistrationUserData, SecurityQuestionItem } from "@/types";
+import { registerUser } from "@/lib/services/auth";
+import type { RegistrationUserData } from "@/types";
 
-// Hook to fetch countries with flags
-function useCountries() {
-  const [options, setOptions] = useState<SelectOption[]>([
-    { value: "US", label: "United States (US)", shortLabel: "🇺🇸 United States (US)", flagUrl: "https://flagcdn.com/w40/us.png" },
-  ]);
+// Schema, Types, and Step Configurations
+import {
+  signupSchema,
+  steps,
+  stepFields,
+  type SignupFormData,
+  type SecurityQuestionsCache,
+} from "./signup-steps/schema";
 
-  useEffect(() => {
-    async function fetchCountries() {
-      try {
-        const res = await fetch("https://restcountries.com/v3.1/all?fields=name,cca2,flags");
-        const data = await res.json();
+// Custom Hooks
+import { useMobileOtp } from "./signup-steps/hooks/useMobileOtp";
+import { getQuesNoFromValue } from "./signup-steps/hooks/useSecurityQuestions";
 
-        const formattedOptions = data
-          .map((country: { name?: { common?: string }; cca2?: string; flags?: { png?: string; svg?: string } }) => {
-            const name = country.name?.common || "";
-            const code = country.cca2 || "";
-            const flagUrl = country.flags?.png || country.flags?.svg || "";
-
-            return {
-              label: `${name} (${code})`,
-              shortLabel: `${name} (${code})`,
-              value: code,
-              flagUrl,
-              _sortName: name,
-            };
-          })
-          .sort((a: { _sortName: string }, b: { _sortName: string }) => a._sortName.localeCompare(b._sortName))
-          .map(({ _sortName, ...rest }: { _sortName: string;[key: string]: unknown }) => rest);
-
-        setOptions(formattedOptions);
-      } catch (e) {
-        console.error("Failed to fetch countries", e);
-      }
-    }
-    fetchCountries();
-  }, []);
-
-  return options;
-}
-
-const titleOptions = [
-  { value: "Mr", label: "Mr" },
-  { value: "Mrs", label: "Mrs" },
-  { value: "Ms", label: "Ms" },
-  { value: "Miss", label: "Miss" },
-  { value: "Dr", label: "Dr" },
-  { value: "Prof", label: "Prof" },
-];
-
-const steps = ["Personal Details", "Address", "Other Info", "Terms & Condition"];
-
-const stepFields = [
-  ["consent", "title", "firstName", "surname", "countryCode", "mobileNumber", "email", "dateOfBirth"],
-  ["addressLine1", "city", "state", "postalCode", "country"],
-  ["password", "confirmPassword", "securityQuestion1", "securityAnswer1", "securityQuestion2", "securityAnswer2", "kycDocument", "kycDocumentNumber", "referralCode"],
-  ["agreeToTerms"],
-];
-
-const signupSchema = z.object({
-  consent: z.boolean().refine((v) => v, { message: "Consent required" }),
-  title: z.string().min(1, "Title is required"),
-  firstName: z.string().min(1, "First name is required").max(50, "First name too long"),
-  middleNames: z.string().max(50, "Middle names too long").optional(),
-  surname: z.string().min(1, "Surname is required").max(50, "Surname too long"),
-  countryCode: z.string().min(1, "Country code is required"),
-  mobileNumber: z.string().min(1, "Mobile number is required"),
-  email: z.string().email("Please enter a valid email address"),
-  dateOfBirth: z.string().min(1, "Date of birth is required"),
-  addressLine1: z.string().min(1, "Address line 1 is required").max(100, "Address too long"),
-  addressLine2: z.string().max(50, "Address line 2 too long").optional(),
-  city: z.string().min(1, "City is required").max(50, "City name too long"),
-  state: z.string().min(1, "State/Province is required").max(50, "State name too long"),
-  postalCode: z.string().min(1, "Postal code is required").max(20, "Postal code too long"),
-  country: z.string().min(1, "Country is required"),
-  password: z.string().optional(),
-  confirmPassword: z.string().optional(),
-  securityQuestion1: z.string().min(1, "Security question is required"),
-  securityAnswer1: z.string().min(1, "Answer is required").max(100, "Answer too long"),
-  securityQuestion2: z.string().min(1, "Security question is required"),
-  securityAnswer2: z.string().min(1, "Answer is required").max(100, "Answer too long"),
-  kycDocument: z.string().min(1, "KYC document type is required"),
-  kycDocumentNumber: z.string().min(5, "Document number must be at least 5 characters").max(50, "Document number too long"),
-  referralCode: z.string().max(20, "Referral code too long").optional(),
-  tsCsAccepted: z.boolean().refine((v) => v, { message: "You must agree to the terms" }),
-}).refine((data) => {
-  // Only validate password match if password is being set (on step 3+ when fields are visible)
-  if (data.password || data.confirmPassword) {
-    return data.password === data.confirmPassword;
-  }
-  return true;
-}, {
-  message: "Passwords do not match",
-  path: ["confirmPassword"],
-}).refine((data) => {
-  // Only require password when fields are visible (step 3) - check by seeing if we're in final submit context
-  // This validation only runs if password is expected to be set
-  if (data.password && data.password.length < 4) {
-    return false;
-  }
-  return true;
-}, {
-  message: "Password must be at least 4 characters",
-  path: ["password"],
-}).refine((data) => {
-  // Check if confirm password is provided when password is set
-  if (data.password && !data.confirmPassword) {
-    return false;
-  }
-  return true;
-}, {
-  message: "Please confirm your password",
-  path: ["confirmPassword"],
-});
-
-type SignupFormData = z.infer<typeof signupSchema>;
+// Step Components
+import PersonalDetailsStep from "./signup-steps/PersonalDetailsStep";
+import AddressStep from "./signup-steps/AddressStep";
+import OtherInfoStep from "./signup-steps/OtherInfoStep";
+import TermsStep from "./signup-steps/TermsStep";
 
 interface MultiStepSignupFormProps {
   onSubmitSuccess?: () => void;
@@ -180,12 +77,6 @@ function mapInitialDataToForm(data: RegistrationUserData | undefined, preverifie
   };
 }
 
-// Cache type for security questions
-type SecurityQuestionsCache = {
-  group100: SecurityQuestionItem[];
-  group200: SecurityQuestionItem[];
-};
-
 // Transform form data to API format
 function transformFormToApiData(
   data: SignupFormData,
@@ -193,8 +84,7 @@ function transformFormToApiData(
   currentStep: number,
   initialData: RegistrationUserData | undefined,
   cache: SecurityQuestionsCache,
-  isFinalSubmit: boolean,
-): RegisterUserRequest {
+): any {
   return {
     registerUserEndpoint: "W", // 'W' for web platform
     registrationPage: String(currentStep),
@@ -287,7 +177,20 @@ export function MultiStepSignupForm({
     formState: { errors },
     watch,
     control,
+    setValue,
   } = methods;
+
+  // Custom Hook for SMS OTP Verification Flow
+  const {
+    isMobileOtpSent,
+    isMobileVerified,
+    isSendingOtp,
+    isVerifyingOtp,
+    otpCountdown,
+    handleSendOtp,
+    handleResendOtp,
+    handleVerifyOtp,
+  } = useMobileOtp({ watch, setValue, contractCode });
 
   // Reset form with persisted data when initialData changes (after Redux rehydrate)
   useEffect(() => {
@@ -314,13 +217,11 @@ export function MultiStepSignupForm({
 
     setIsSaving(true);
     try {
-      const apiData = transformFormToApiData(formData, contractCode, stepToSave, initialData, cache, false);
+      const apiData = transformFormToApiData(formData, contractCode, stepToSave, initialData, cache);
       const response = await registerUser(apiData);
 
       if (response.status) {
-        // Progress saved successfully
         console.log("Progress saved:", response.data);
-        // Update registrationData in Redux if API returns updated user data
         if (response.data) {
           dispatch(updateRegistrationData(response.data as unknown as RegistrationUserData));
         }
@@ -383,7 +284,7 @@ export function MultiStepSignupForm({
         // Save step and form data to Redux Persist
         dispatch(updateStartingStep(currentStep + 1));
         // Convert form data to RegistrationUserData format and save
-        const apiData = transformFormToApiData(formData, contractCode || "", currentStep, initialData, securityCacheRef.current, false);
+        const apiData = transformFormToApiData(formData, contractCode || "", currentStep, initialData, securityCacheRef.current);
         dispatch(updateRegistrationData(apiData as unknown as RegistrationUserData));
         setCurrentStep((prev) => prev + 1);
       }
@@ -411,8 +312,8 @@ export function MultiStepSignupForm({
 
     try {
       // Submit final registration data
-      const securityCache = { group100: [] as SecurityQuestionItem[], group200: [] as SecurityQuestionItem[] }; // Empty cache for final submit
-      const apiData = transformFormToApiData(data, contractCode, steps.length, initialData, securityCache, true);
+      const securityCache = { group100: [], group200: [] }; // Empty cache for final submit
+      const apiData = transformFormToApiData(data, contractCode, steps.length, initialData, securityCache);
       const response = await registerUser(apiData);
 
       if (response.status) {
@@ -430,9 +331,22 @@ export function MultiStepSignupForm({
   };
 
   const stepComponents = [
-    <PersonalDetailsStep key="1" control={control} preverifiedEmail={preverifiedEmail} />,
+    <PersonalDetailsStep
+      key="1"
+      control={control}
+      preverifiedEmail={preverifiedEmail}
+      isMobileOtpSent={isMobileOtpSent}
+      isMobileVerified={isMobileVerified}
+      isSendingOtp={isSendingOtp}
+      isVerifyingOtp={isVerifyingOtp}
+      otpCountdown={otpCountdown}
+      handleSendOtp={handleSendOtp}
+      handleResendOtp={handleResendOtp}
+      handleVerifyOtp={handleVerifyOtp}
+      watch={watch}
+    />,
     <AddressStep key="2" control={control} />,
-    <OtherInfoStep key="3" control={control} />,
+    <OtherInfoStep key="3" control={control} onCacheUpdate={(cache) => { securityCacheRef.current = cache; }} />,
     <TermsStep key="4" control={control} errors={errors} />,
   ];
 
@@ -485,340 +399,7 @@ export function MultiStepSignupForm({
           </div>
         </form>
       </div>
-      {/* Hidden component to fetch security questions and update cache */}
-      <SecurityQuestionsLoader onCacheUpdate={(cache) => { securityCacheRef.current = cache; }} />
     </FormProvider>
-  );
-}
-
-function PersonalDetailsStep({ control, preverifiedEmail }: { control: Control<SignupFormData>; preverifiedEmail?: string }) {
-  return (
-    <div className="space-y-6">
-      <div className="bg-[#1a1b1e] rounded-lg p-4 border border-white/10">
-        <p className="text-sm text-gray-400 mb-4">
-          SmartStox respects your privacy and requires your consent before collecting
-          any personal information.
-        </p>
-        <Checkbox
-          name="consent"
-          control={control}
-          label="I agree to providing SmartStox with my personal information."
-        />
-      </div>
-
-      <div className="space-y-4">
-        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 items-start">
-          <SelectDropdown
-            name="title"
-            control={control}
-            label="Title"
-            placeholder="Select"
-            options={titleOptions}
-            className="sm:col-span-1"
-          />
-          <div className="sm:col-span-3">
-            <TextInput name="firstName" control={control} label="First Name" placeholder="Enter first name" />
-          </div>
-        </div>
-
-        <TextInput name="middleNames" control={control} label="Middle Names" placeholder="Enter middle names (optional)" />
-        <TextInput name="surname" control={control} label="Surname" placeholder="Enter surname" />
-
-        <PhoneInput
-          name="mobileNumber"
-          control={control}
-          countryCodeName="countryCode"
-          label="Mobile Number"
-          placeholder="00000 00000"
-          type="tel"
-          inputMode="numeric"
-          maxLength={10}
-          minLength={10}
-        />
-        <TextInput
-          name="email"
-          control={control}
-          label={
-            <span className="flex items-center gap-2">
-              Email Address
-              {preverifiedEmail && (
-                <span className="bg-green-500 rounded-full p-0.5">
-                  <FaCheck className="text-white w-2 h-2" />
-                </span>
-              )}
-            </span>
-          }
-          placeholder={preverifiedEmail ? preverifiedEmail : "Enter email address"}
-          type="email"
-          disabled={!!preverifiedEmail}
-        />
-
-        <DatePicker name="dateOfBirth" control={control} label="Date of Birth" placeholder="DD / MM / YYYY" />
-        <p className="text-xs text-gray-500">You must be 18 years or older to use this platform</p>
-      </div>
-    </div>
-  );
-}
-
-// Step 2: Address
-function AddressStep({ control }: { control: Control<SignupFormData> }) {
-  const countries = useCountries();
-
-  return (
-    <div className="space-y-4">
-      {/* Country */}
-      <SelectDropdown
-        name="country"
-        control={control}
-        label="Country"
-        placeholder="Select country"
-        options={countries}
-        searchable
-      />
-
-      {/* Street Address */}
-      <TextInput
-        name="addressLine1"
-        control={control}
-        label="Street Address"
-        placeholder="Street address"
-      />
-
-      {/* Apt, Suite or Unit */}
-      <TextInput
-        name="addressLine2"
-        control={control}
-        label="Apt, Suite or Unit"
-        placeholder="Apt, Suite or Unit"
-      />
-
-      {/* City */}
-      <TextInput name="city" control={control} label="City" placeholder="City" />
-
-      {/* State and Zip Code */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <TextInput
-          name="state"
-          control={control}
-          label="State"
-          placeholder="State"
-        />
-        <TextInput
-          name="postalCode"
-          control={control}
-          label="Zip Code"
-          placeholder="Zip Code"
-        />
-      </div>
-    </div>
-  );
-}
-
-// Hook to fetch security questions from API
-function useSecurityQuestions() {
-  const [questions, setQuestions] = useState<{
-    group100: SelectOption[];
-    group200: SelectOption[];
-  }>({ group100: [], group200: [] });
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const cacheRef = useRef<SecurityQuestionsCache>({ group100: [], group200: [] });
-
-  useEffect(() => {
-    async function fetchQuestions() {
-      try {
-        const response = await getUserSecurityQuestions('ENG', '0002');
-        if (response.status && response.data) {
-          // Cache raw data for value lookup
-          cacheRef.current = {
-            group100: response.data['100'] || [],
-            group200: response.data['200'] || [],
-          };
-
-          // Map to dropdown options using value field
-          const mapToOptions = (items: SecurityQuestionItem[]): SelectOption[] =>
-            items.map((item) => ({
-              value: item.value, // Use value (10, 20, 30) as the option value
-              label: item.label,
-            }));
-
-          setQuestions({
-            group100: mapToOptions(response.data['100'] || []),
-            group200: mapToOptions(response.data['200'] || []),
-          });
-        }
-      } catch (error) {
-        console.error('Failed to fetch security questions:', error);
-        setError('Failed to load security questions');
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchQuestions();
-  }, []);
-
-  return { questions, isLoading, error, cache: cacheRef.current };
-}
-
-// Helper to get quesNo from value in specific group
-function getQuesNoFromValue(value: string, group: '100' | '200', cache: SecurityQuestionsCache): string {
-  const questions = group === '100' ? cache.group100 : cache.group200;
-  const question = questions.find((q) => q.value === value);
-  return question?.quesNo || (group === '100' ? '100' : '200');
-}
-
-// Component to load security questions and notify parent of cache updates
-function SecurityQuestionsLoader({ onCacheUpdate }: { onCacheUpdate: (cache: SecurityQuestionsCache) => void }) {
-  const { error, cache } = useSecurityQuestions();
-
-  useEffect(() => {
-    onCacheUpdate(cache);
-  }, [cache, onCacheUpdate]);
-
-  useEffect(() => {
-    if (error) {
-      toast.error(error);
-    }
-  }, [error]);
-
-  return null;
-}
-
-// Step 3: Other Info
-function OtherInfoStep({ control, onCacheUpdate }: { control: Control<SignupFormData>; onCacheUpdate?: (cache: SecurityQuestionsCache) => void }) {
-  const { questions, isLoading, cache } = useSecurityQuestions();
-
-  useEffect(() => {
-    onCacheUpdate?.(cache);
-  }, [cache, onCacheUpdate]);
-
-  const kycOptions = [
-    { value: "PASSPORT", label: "Passport" },
-    { value: "DRIVING_LICENSE", label: "Driving License" },
-    { value: "NATIONAL_ID", label: "National ID Card" },
-    { value: "VOTER_ID", label: "Voter ID" },
-    { value: "PAN_CARD", label: "PAN Card" },
-  ];
-
-  return (
-    <div className="space-y-4">
-      {/* Password Row */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <TextInput
-          name="password"
-          control={control}
-          label="Create Password"
-          placeholder="Create a strong password"
-          type="password"
-        />
-        <TextInput
-          name="confirmPassword"
-          control={control}
-          label="Confirm Password"
-          placeholder="Confirm your password"
-          type="password"
-        />
-      </div>
-
-      {/* Security Question 1 */}
-      <SelectDropdown
-        name="securityQuestion1"
-        control={control}
-        label="Security Question 1"
-        placeholder="Select security question"
-        options={questions.group100}
-        disabled={isLoading}
-      />
-      <TextInput
-        name="securityAnswer1"
-        control={control}
-        label="Answer"
-        placeholder="Write your answer..."
-      />
-
-      {/* Security Question 2 */}
-      <SelectDropdown
-        name="securityQuestion2"
-        control={control}
-        label="Security Question 2"
-        placeholder="Select security question"
-        options={questions.group200}
-        disabled={isLoading}
-      />
-      <TextInput
-        name="securityAnswer2"
-        control={control}
-        label="Answer"
-        placeholder="Write your answer..."
-      />
-
-      {/* KYC Document */}
-      <SelectDropdown
-        name="kycDocument"
-        control={control}
-        label="KYC Document"
-        placeholder="Select document type"
-        options={kycOptions}
-      />
-      <TextInput
-        name="kycDocumentNumber"
-        control={control}
-        label="KYC Document Number"
-        placeholder="AB12 459826"
-      />
-
-      {/* Referral Code */}
-      <TextInput
-        name="referralCode"
-        control={control}
-        label="Referral Ambassador Code"
-        placeholder="KHUPSH12345"
-      />
-    </div>
-  );
-}
-
-// Step 4: Terms & Conditions
-function TermsStep({ control, errors }: { control: Control<SignupFormData>; errors: FieldErrors<SignupFormData> }) {
-  const termsList = [
-    "Confirm my understanding that SmartStox is software provider, and not an investment product.",
-    "Confirm that SmartStox does not provide financial advice.",
-    "I hereby accept that my funds will remain with a licensed broker and that SmartStox does not control my funds.",
-    "Accept that Trading involves risk of loss, and risk of losing all my capital.",
-    "Acknowledge that past performance does not guarantee future results.",
-    "Accept the performance-based fees charged via my broker, as published on the SmartStox website from time to time.",
-    "I authorize my broker to execute trades and deduct the agreed fees.",
-    "Acknowledge my understanding of the terms of the 3-month Demo trial period and refund conditions.",
-    "Accept the SmartStox Terms of Service, as published on the SmartStox website from time to time.",
-  ];
-
-  return (
-    <div className="space-y-6">
-      {/* Terms List */}
-      <div className="bg-[#1a1b1e] rounded-lg p-4 border border-white/10">
-        <h4 className="text-white font-semibold mb-3 underline">I hereby:</h4>
-        <ul className="space-y-2 text-sm text-gray-400">
-          {termsList.map((term, index) => (
-            <li key={index} className="flex gap-2">
-              <span className="text-gray-500">•</span>
-              <span>{term}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Agreement Checkbox */}
-      <Checkbox
-        name="tsCsAccepted"
-        control={control}
-        label="I hereby agree to all the above."
-      />
-
-      {/* Legal Note */}
-      <p className="text-xs text-gray-400">
-        By clicking this button, I accept and agree that I am entering into a legally binding agreement.
-      </p>
-    </div>
   );
 }
 

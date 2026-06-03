@@ -7,6 +7,9 @@ import type {
   VerifyUserResponse,
   VerifyOtpRequest,
   VerifyOtpResponse,
+  VerifyMobileOtpRequest,
+  SendMobileOtpRequest,
+  ResendOtpRequest,
   RegisterUserRequest,
   RegisterUserResponse,
   SecurityQuestionsResponse,
@@ -91,6 +94,30 @@ export async function verifyOtp(params: VerifyOtpRequest): Promise<VerifyOtpResp
       showErrorToast: true,
     },
   });
+  return data;
+}
+
+/**
+ * Send Mobile OTP.
+ */
+export async function sendMobileOtp(params: SendMobileOtpRequest): Promise<ApiResponse<{ isMobileVerified?: boolean }>> {
+  const { data } = await api.post<ApiResponse<{ isMobileVerified?: boolean }>>('/auth/sendMobileotp', params);
+  return data;
+}
+
+/**
+ * Resend OTP.
+ */
+export async function resendOtp(params: ResendOtpRequest): Promise<ApiResponse<null>> {
+  const { data } = await api.post<ApiResponse<null>>('/auth/resend-otp', params);
+  return data;
+}
+
+/**
+ * Verify mobile OTP.
+ */
+export async function verifyMobileOtp(params: VerifyMobileOtpRequest): Promise<VerifyOtpResponse> {
+  const { data } = await api.post<VerifyOtpResponse>('/auth/verifyMobileOTP', params);
   return data;
 }
 

@@ -125,7 +125,7 @@ function TextInput<T extends FieldValues>({
 // Optionally, export a specific PhoneInput component to match the SS exactly.
 export interface PhoneInputBaseProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
-  label?: string;
+  label?: React.ReactNode;
   countryCodeOptions?: SelectOption[];
   countryCodeValue?: string;
   onCountryCodeChange?: (value: string) => void;
@@ -133,7 +133,7 @@ export interface PhoneInputBaseProps extends React.InputHTMLAttributes<HTMLInput
 
 export function useCountryCodes() {
   const [options, setOptions] = React.useState<SelectOption[]>([
-    { label: "🇺🇸 +1 (United States)", shortLabel: "🇺🇸 +1", value: "US", flagUrl: "https://flagcdn.com/w40/us.png" },
+    { label: "🇺🇸 +1 (United States)", shortLabel: "🇺🇸 +1", value: "+1", cca2: "US", flagUrl: "https://flagcdn.com/w40/us.png" },
   ]);
 
   React.useEffect(() => {
@@ -146,7 +146,7 @@ export function useCountryCodes() {
           .filter((country: { idd?: { root?: string; suffixes?: string[] } }) => country.idd && country.idd.root)
           .map((country: { flag?: string; idd?: { root?: string; suffixes?: string[] }; name?: { common?: string }; flags?: { png?: string; svg?: string }; cca2?: string }) => {
             const root = country.idd?.root || "";
-            const suffix = country.idd?.suffixes && country.idd.suffixes.length > 0 ? country.idd.suffixes[0] : "";
+            const suffix = country.idd?.suffixes && country.idd.suffixes.length === 1 ? country.idd.suffixes[0] : "";
             const dialCode = `${root}${suffix}`;
             const flag = country.flag || "";
             const name = country.name?.common || "";
@@ -155,13 +155,18 @@ export function useCountryCodes() {
             return {
               label: `${flag} ${dialCode} (${name})`,
               shortLabel: `${flag} ${dialCode}`,
-              value: country.cca2,
+              value: dialCode,
+              cca2: country.cca2,
               _sortName: name,
               flagUrl,
             };
           })
           .sort((a: { _sortName: string }, b: { _sortName: string }) => a._sortName.localeCompare(b._sortName))
-          .map(({ _sortName, ...rest }: { _sortName: string; [key: string]: unknown }) => rest);
+          .map((opt: { _sortName?: string; [key: string]: unknown }) => {
+            const rest = { ...opt };
+            delete rest._sortName;
+            return rest as unknown as SelectOption & { cca2?: string };
+          });
 
         setOptions(formattedOptions);
       } catch (e) {
@@ -189,6 +194,15 @@ const PhoneInputBase = React.forwardRef<HTMLInputElement, PhoneInputBaseProps>(
   ) => {
     const fetchedOptions = useCountryCodes();
     const finalOptions = countryCodeOptions && countryCodeOptions.length > 0 ? countryCodeOptions : fetchedOptions;
+
+    React.useEffect(() => {
+      if (countryCodeValue && countryCodeValue.length === 2 && fetchedOptions.length > 1) {
+        const matchingOption = fetchedOptions.find(opt => opt.cca2 === countryCodeValue.toUpperCase());
+        if (matchingOption) {
+          onCountryCodeChange?.(matchingOption.value);
+        }
+      }
+    }, [countryCodeValue, fetchedOptions, onCountryCodeChange]);
 
     return (
       <TextInputBase

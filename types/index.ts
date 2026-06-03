@@ -153,6 +153,24 @@ export interface VerifyOtpResponse {
   message: string;
 }
 
+export interface VerifyMobileOtpRequest {
+  contractCode: string;
+  email: string;
+  otp: string;
+}
+
+export interface SendMobileOtpRequest {
+  contractCode: string;
+  mobileNumber: string;
+  countryCode: string;
+  email: string;
+}
+
+export interface ResendOtpRequest {
+  contractCode: string;
+  emailAddress: string;
+}
+
 // ── Register User ──
 export interface UserSecurityQuestionInput {
   securityQuestion: string;      // quesNo (e.g., "100", "200")

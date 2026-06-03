@@ -17,6 +17,7 @@ export interface SelectOption {
   label: string | React.ReactNode;
   shortLabel?: string | React.ReactNode;
   flagUrl?: string;
+  cca2?: string;
 }
 
 export interface SelectDropdownProps {
@@ -54,6 +55,16 @@ export function SelectDropdownBase({
 }: SelectDropdownProps) {
   const [searchQuery, setSearchQuery] = React.useState("");
   const [open, setOpen] = React.useState(false);
+  const [displayLimit, setDisplayLimit] = React.useState(30);
+
+  const [prevQuery, setPrevQuery] = React.useState(searchQuery);
+  const [prevOpen, setPrevOpen] = React.useState(open);
+
+  if (searchQuery !== prevQuery || open !== prevOpen) {
+    setPrevQuery(searchQuery);
+    setPrevOpen(open);
+    setDisplayLimit(30);
+  }
   
   const selectedOption = options.find((opt) => opt.value === value);
   const shouldShowSearch = searchable !== false && options.length >= searchThreshold;
@@ -64,6 +75,15 @@ export function SelectDropdownBase({
         return labelText.toLowerCase().includes(searchQuery.toLowerCase());
       })
     : options;
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const target = e.currentTarget;
+    if (target.scrollHeight - target.scrollTop <= target.clientHeight + 50) {
+      setDisplayLimit((prev) => Math.min(prev + 35, filteredOptions.length));
+    }
+  };
+
+  const visibleOptions = filteredOptions.slice(0, displayLimit);
 
   return (
     <div className={cn("flex flex-col w-full", className)}>
@@ -118,11 +138,15 @@ export function SelectDropdownBase({
                 </div>
               </div>
             )}
-            <div data-lenis-prevent className="max-h-[280px] overflow-y-auto">
-              {filteredOptions.length === 0 ? (
+            <div
+              data-lenis-prevent
+              className="max-h-[280px] overflow-y-auto w-full"
+              onScroll={handleScroll}
+            >
+              {visibleOptions.length === 0 ? (
                 <div className="px-3 py-2 text-sm text-gray-500">No results found</div>
               ) : (
-                filteredOptions.map((option, index) => (
+                visibleOptions.map((option, index) => (
                   <DropdownMenuItem
                     key={`${option.value}-${index}`}
                     onClick={() => {
