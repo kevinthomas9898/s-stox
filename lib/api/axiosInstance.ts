@@ -5,7 +5,7 @@ import { getJwtToken, getAuthCookies, setAuthCookies, clearAuthCookies } from '@
 import { createToastInterceptor } from '@/lib/utils/toastInterceptor';
 
 // const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.smartstoxglobal.com/api';
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_BASE_URL = "https://api.smartstoxglobal.com/api";
 
 
 // ── Axios Instance ──
