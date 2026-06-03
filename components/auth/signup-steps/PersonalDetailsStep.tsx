@@ -1,6 +1,6 @@
 "use client";
 
-import type { Control, UseFormWatch } from "react-hook-form";
+import { useFormState, type Control, type UseFormWatch } from "react-hook-form";
 import type { SignupFormData } from "./schema";
 import { Checkbox } from "@/components/ui/checkbox";
 import { SelectDropdown } from "@/components/common/SelectDropdown";
@@ -38,6 +38,7 @@ export function PersonalDetailsStep({
   handleVerifyOtp,
   watch,
 }: PersonalDetailsStepProps) {
+  const { errors } = useFormState({ control });
   const otpValue = watch("mobileNumberOTP") || "";
 
   return (
@@ -178,8 +179,18 @@ export function PersonalDetailsStep({
           disabled={!!preverifiedEmail}
         />
 
-        <DatePicker name="dateOfBirth" control={control} label="Date of Birth" placeholder="DD / MM / YYYY" />
-        <p className="text-xs text-gray-500">You must be 18 years or older to use this platform</p>
+        <div className="flex flex-col space-y-1">
+          <DatePicker
+            name="dateOfBirth"
+            control={control}
+            label="Date of Birth"
+            placeholder="DD / MM / YYYY"
+            ageLimitMessage="You must be 18 years or older to use this platform"
+          />
+          {!errors.dateOfBirth && (
+            <p className="text-xs text-gray-500">You must be 18 years or older to use this platform</p>
+          )}
+        </div>
       </div>
     </div>
   );
