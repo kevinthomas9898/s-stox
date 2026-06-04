@@ -185,7 +185,7 @@ export function SelectDropdownBase({
                       setSearchQuery("");
                       setOpen(false);
                     }}
-                    className="cursor-pointer hover:bg-white/10 focus:bg-white/10 text-white flex items-center gap-2 outline-none py-2 px-3 text-sm transition-colors"
+                    className="cursor-pointer hover:bg-white/10 focus:bg-white/10 !text-white flex items-center gap-2 outline-none py-2 px-3 text-sm transition-colors"
                   >
                     {option.flagUrl && (
                       // eslint-disable-next-line @next/next/no-img-element
@@ -196,7 +196,7 @@ export function SelectDropdownBase({
                       />
                     )}
 
-                    <span className="truncate text-white">
+                    <span className="truncate !text-white">
                       {option.label}
                     </span>
                   </DropdownMenuItem>
