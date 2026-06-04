@@ -250,6 +250,40 @@ export function MultiStepSignupForm({
 
   const dispatch = useAppDispatch();
 
+  const scrollToFirstError = (stepErrors: FieldErrors<SignupFormData>) => {
+    // Get fields of the current step
+    const fields = stepFields[currentStep - 1] || [];
+    
+    // Find the first field in the current step that has an error
+    const firstErrorField = fields.find((field) => stepErrors[field as keyof SignupFormData]);
+    
+    if (firstErrorField) {
+      // Try to get the DOM element from the React Hook Form register ref first
+      const fieldRef = (methods.control as any)._fields[firstErrorField]?._f?.ref;
+      
+      if (fieldRef instanceof HTMLElement) {
+        fieldRef.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+        fieldRef.focus();
+      } else {
+        // Fallback to name attribute DOM query
+        const element = document.querySelector(`[name="${firstErrorField}"]`);
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+          
+          if (element instanceof HTMLElement) {
+            element.focus();
+          }
+        }
+      }
+    }
+  };
+
   const handleNext = async () => {
     const isValid = await validateStep(currentStep);
     if (isValid && currentStep < steps.length) {
@@ -288,6 +322,10 @@ export function MultiStepSignupForm({
         dispatch(updateRegistrationData(apiData as unknown as RegistrationUserData));
         setCurrentStep((prev) => prev + 1);
       }
+    } else if (!isValid) {
+      setTimeout(() => {
+        scrollToFirstError(methods.formState.errors);
+      }, 50);
     }
   };
 
@@ -359,7 +397,7 @@ export function MultiStepSignupForm({
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 max-w-5xl m-auto">
+        <form onSubmit={handleSubmit(onSubmit, (errors) => scrollToFirstError(errors))} className="space-y-6 max-w-5xl m-auto">
           {/* Step Content */}
           <div className="min-h-[400px]">{stepComponents[currentStep - 1]}</div>
 

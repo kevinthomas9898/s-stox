@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { format, subYears, parseISO } from "date-fns";
+import { format, subYears, parseISO, parse } from "date-fns";
 import { cn } from "@/lib/utils";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { Controller, type Control, type FieldValues, type Path } from "react-hook-form";
@@ -9,8 +9,10 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar } from "@/components/ui/calendar";
 
 export interface DatePickerProps {
+  name?: string;
   date?: Date | string;
   onSelect?: (date: string | undefined) => void;
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
   disabled?: boolean;
   placeholder?: string;
   className?: string;
@@ -54,39 +56,62 @@ const formatDateString = (value: string) => {
 
 const parseDate = (val: string): Date | null => {
   const clean = val.replace(/\D/g, "");
-  if (clean.length !== 8) return null;
+  if (clean.length !== 8 && clean.length !== 6) return null;
 
-  const day = parseInt(clean.slice(0, 2), 10);
-  const month = parseInt(clean.slice(2, 4), 10) - 1; // 0-indexed month
-  const year = parseInt(clean.slice(4, 8), 10);
-
-  const parsedDate = new Date(year, month, day);
-  if (
-    parsedDate.getFullYear() === year &&
-    parsedDate.getMonth() === month &&
-    parsedDate.getDate() === day
-  ) {
-    return parsedDate;
+  try {
+    if (clean.length === 8) {
+      const parsed = parse(val, "dd / MM / yyyy", new Date());
+      return isNaN(parsed.getTime()) ? null : parsed;
+    } else {
+      const parsed = parse(val, "dd / MM / yy", new Date());
+      if (!isNaN(parsed.getTime())) {
+        // Prevent future dates by subtracting 100 years if parsed year is in the future
+        if (parsed.getFullYear() > new Date().getFullYear()) {
+          parsed.setFullYear(parsed.getFullYear() - 100);
+        }
+        return parsed;
+      }
+      return null;
+    }
+  } catch (e) {
+    return null;
   }
-  return null;
 };
 
-export function DatePickerBase({
-  date,
-  onSelect,
-  disabled,
-  placeholder = "DD / MM / YYYY",
-  className,
-  error,
-  label,
-  maxDate,
-  minDate,
-  ageLimitMessage,
-}: DatePickerProps) {
-  const [open, setOpen] = React.useState(false);
-  const [isAgeInvalid, setIsAgeInvalid] = React.useState(false);
-  const [inputValue, setInputValue] = React.useState("");
-  const inputRef = React.useRef<HTMLInputElement>(null);
+export const DatePickerBase = React.forwardRef<HTMLInputElement, DatePickerProps>(
+  (
+    {
+      name,
+      date,
+      onSelect,
+      onBlur,
+      disabled,
+      placeholder = "DD / MM / YYYY",
+      className,
+      error,
+      label,
+      maxDate,
+      minDate,
+      ageLimitMessage,
+    },
+    ref
+  ) => {
+    const [open, setOpen] = React.useState(false);
+    const [isAgeInvalid, setIsAgeInvalid] = React.useState(false);
+    const [inputValue, setInputValue] = React.useState("");
+    const inputRef = React.useRef<HTMLInputElement>(null);
+
+    const setRefs = React.useCallback(
+      (node: HTMLInputElement | null) => {
+        (inputRef as any).current = node;
+        if (typeof ref === "function") {
+          ref(node);
+        } else if (ref) {
+          (ref as any).current = node;
+        }
+      },
+      [ref]
+    );
 
   // Convert date string to Date object
   const dateValue = React.useMemo(() => {
@@ -132,7 +157,7 @@ export function DatePickerBase({
     setInputValue(formatted);
 
     const clean = formatted.replace(/\D/g, "");
-    if (clean.length === 8) {
+    if (clean.length === 8 || clean.length === 6) {
       const parsed = parseDate(formatted);
       if (parsed) {
         if (minDate && parsed < minDate) {
@@ -185,7 +210,8 @@ export function DatePickerBase({
         <PopoverTrigger asChild>
           <div className="relative flex items-center w-full">
             <input
-              ref={inputRef}
+              ref={setRefs}
+              name={name}
               type="text"
               disabled={disabled}
               placeholder={placeholder}
@@ -195,6 +221,16 @@ export function DatePickerBase({
               onClick={(e) => {
                 e.stopPropagation();
                 setOpen(true);
+              }}
+              onBlur={(e) => {
+                const clean = inputValue.replace(/\D/g, "");
+                if (clean.length === 6) {
+                  const parsed = parseDate(inputValue);
+                  if (parsed) {
+                    setInputValue(format(parsed, "dd / MM / yyyy"));
+                  }
+                }
+                onBlur?.(e);
               }}
               className={cn(
                 "w-full justify-between text-left font-normal h-12 bg-transparent border border-white/60 rounded-md px-3 py-2 text-sm text-white placeholder:text-gray-500 hover:bg-white/5 hover:text-white transition-colors",
@@ -241,6 +277,8 @@ export function DatePickerBase({
     </div>
   );
 }
+);
+DatePickerBase.displayName = "DatePickerBase";
 
 interface ControlledDatePickerProps<T extends FieldValues> {
   name: Path<T>;
@@ -271,8 +309,11 @@ export function DatePicker<T extends FieldValues>({
       control={control}
       render={({ field, fieldState }) => (
         <DatePickerBase
+          name={field.name}
+          ref={field.ref}
           date={field.value}
           onSelect={(date) => field.onChange(date)}
+          onBlur={field.onBlur}
           label={label}
           placeholder={placeholder}
           className={className}
