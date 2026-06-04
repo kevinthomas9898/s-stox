@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { TextInputBase } from "@/components/common/TextInput";
 import { PrimaryBTN } from "@/components/common/PrimaryBTN";
 import { Typography } from "@/components/common/typography";
@@ -26,6 +27,7 @@ interface EmailVerificationProps {
 export default function EmailVerification({
   onVerified,
 }: EmailVerificationProps) {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
   const [step, setStep] = useState<"email" | "verify">("email");
@@ -66,6 +68,8 @@ export default function EmailVerification({
           userData.isExistingUser &&
           userData.isRegistrationCompleted
         ) {
+          toast.error(userData.message || response.message || "User already registered. Please login.");
+          router.push("/login");
           return;
         }
 

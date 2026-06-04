@@ -68,16 +68,16 @@ export default function RegisterPage() {
                 initialData={registrationData || undefined}
                 className="bg-[#0b0f19]/50 backdrop-blur-sm p-6 sm:p-8"
               />
-
-              {/* Login Link */}
-              <p className="text-center text-gray-400 text-sm my-8">
-                Already have an account?{" "}
-                <Link href="/login" className="text-[#00D094] hover:underline">
-                  Login
-                </Link>
-              </p>
             </div>
           )}
+
+          {/* Login Link */}
+          <p className="text-center text-gray-400 text-sm my-8">
+            Already have an account?{" "}
+            <Link href="/login" className="text-[#00D094] hover:underline">
+              Login
+            </Link>
+          </p>
         </FadeIn>
       </div>
     </div>
