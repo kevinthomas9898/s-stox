@@ -134,7 +134,7 @@ export function SelectDropdownBase({
 
           <DropdownMenuContent
             className={cn(
-              "w-[var(--radix-dropdown-menu-trigger-width)] bg-[#1a1b1e] border border-white/20 text-white p-0 overflow-hidden",
+              "min-w-(--anchor-width) w-auto bg-[#1a1b1e] border border-white/20 text-white p-0 overflow-hidden",
               contentClassName
             )}
             align="start"
