@@ -79,7 +79,11 @@ export async function secure(): Promise<User> {
  * Returns contract code for the verification flow.
  */
 export async function verifyUser(emailAddress: string): Promise<VerifyUserResponse> {
-  const { data } = await api.post<VerifyUserResponse>('/auth/verifyUser', { emailAddress });
+  const { data } = await api.post<VerifyUserResponse>('/auth/verifyUser', { emailAddress }, {
+    toastConfig: {
+      showErrorToast: false,
+    },
+  });
   return data;
 }
 
@@ -101,7 +105,11 @@ export async function verifyOtp(params: VerifyOtpRequest): Promise<VerifyOtpResp
  * Send Mobile OTP.
  */
 export async function sendMobileOtp(params: SendMobileOtpRequest): Promise<ApiResponse<{ isMobileVerified?: boolean }>> {
-  const { data } = await api.post<ApiResponse<{ isMobileVerified?: boolean }>>('/auth/sendMobileotp', params);
+  const { data } = await api.post<ApiResponse<{ isMobileVerified?: boolean }>>('/auth/sendMobileotp', params, {
+    toastConfig: {
+      showErrorToast: false,
+    },
+  });
   return data;
 }
 
@@ -109,7 +117,11 @@ export async function sendMobileOtp(params: SendMobileOtpRequest): Promise<ApiRe
  * Resend OTP.
  */
 export async function resendOtp(params: ResendOtpRequest): Promise<ApiResponse<null>> {
-  const { data } = await api.post<ApiResponse<null>>('/auth/resend-otp', params);
+  const { data } = await api.post<ApiResponse<null>>('/auth/resend-otp', params, {
+    toastConfig: {
+      showErrorToast: false,
+    },
+  });
   return data;
 }
 
@@ -117,7 +129,11 @@ export async function resendOtp(params: ResendOtpRequest): Promise<ApiResponse<n
  * Verify mobile OTP.
  */
 export async function verifyMobileOtp(params: VerifyMobileOtpRequest): Promise<VerifyOtpResponse> {
-  const { data } = await api.post<VerifyOtpResponse>('/auth/verifyMobileOTP', params);
+  const { data } = await api.post<VerifyOtpResponse>('/auth/verifyMobileOTP', params, {
+    toastConfig: {
+      showErrorToast: false,
+    },
+  });
   return data;
 }
 
@@ -127,7 +143,11 @@ export async function verifyMobileOtp(params: VerifyMobileOtpRequest): Promise<V
  */
 export async function registerUser(params: RegisterUserRequest): Promise<RegisterUserResponse> {
   try {
-    const { data } = await api.post<RegisterUserResponse>('/auth/registerUser', params);
+    const { data } = await api.post<RegisterUserResponse>('/auth/registerUser', params, {
+      toastConfig: {
+        showErrorToast: false,
+      },
+    });
     return data;
   } catch (error: any) {
     console.error('Register API Error:', {

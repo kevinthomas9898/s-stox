@@ -29,7 +29,12 @@ export async function createApplication(
 ): Promise<CreateApplicationResponse> {
   const { data } = await api.post<CreateApplicationResponse>(
     '/Ambassador/create-application',
-    params
+    params,
+    {
+      toastConfig: {
+        showErrorToast: false,
+      },
+    }
   );
   return data;
 }
