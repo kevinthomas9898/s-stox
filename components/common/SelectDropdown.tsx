@@ -141,16 +141,23 @@ export const SelectDropdownBase = React.forwardRef<HTMLButtonElement, SelectDrop
               </span>
               <div className="flex items-center gap-1 shrink-0">
                 {clearable && value && !disabled && (
-                  <button
-                    type="button"
+                  <span
+                    role="button"
+                    tabIndex={-1}
                     onClick={(e) => {
                       e.stopPropagation();
                       onChange?.("");
                     }}
-                    className="p-0.5 rounded-full hover:bg-white/10 text-white/50 hover:text-white transition-colors"
+                    onPointerDown={(e) => {
+                      e.stopPropagation();
+                    }}
+                    onMouseDown={(e) => {
+                      e.stopPropagation();
+                    }}
+                    className="p-0.5 rounded-full hover:bg-white/10 text-white/50 hover:text-white transition-colors cursor-pointer"
                   >
                     <LuX className="text-xs" />
-                  </button>
+                  </span>
                 )}
                 <LuChevronDown className="text-base opacity-50" />
               </div>
