@@ -31,22 +31,30 @@ const rootReducer = combineReducers({
   registration: persistReducer(registrationPersistConfig, registrationReducer),
 });
 
-export const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
-  devTools: process.env.NODE_ENV !== 'production',
-});
+let activeStore: any = null;
 
-export const persistor = persistStore(store);
+export const makeStore = () => {
+  const store = configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }),
+    devTools: process.env.NODE_ENV !== 'production',
+  });
+  const persistor = persistStore(store);
+  activeStore = store;
+  return { store, persistor };
+};
+
+export const getStore = () => activeStore;
 
 // Inferred types
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type AppStore = ReturnType<typeof makeStore>;
+export type RootState = ReturnType<AppStore['store']['getState']>;
+export type AppDispatch = AppStore['store']['dispatch'];
 
 // Typed hooks
 export const useAppDispatch: () => AppDispatch = useDispatch;

@@ -198,7 +198,7 @@ const PhoneInputBase = React.forwardRef<HTMLInputElement, PhoneInputBaseProps>(
     React.useEffect(() => {
       if (countryCodeValue && countryCodeValue.length === 2 && fetchedOptions.length > 1) {
         const matchingOption = fetchedOptions.find(opt => opt.cca2 === countryCodeValue.toUpperCase());
-        if (matchingOption) {
+        if (matchingOption && matchingOption.value !== countryCodeValue) {
           onCountryCodeChange?.(matchingOption.value);
         }
       }

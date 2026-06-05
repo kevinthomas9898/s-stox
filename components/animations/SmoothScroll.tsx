@@ -23,12 +23,13 @@ export function SmoothScrollProvider({
 
     lenisRef.current = lenis;
 
+    let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Handle window resize
     const handleResize = () => {
@@ -45,6 +46,7 @@ export function SmoothScrollProvider({
     resizeObserver.observe(document.body);
 
     return () => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener("resize", handleResize);
       resizeObserver.disconnect();
       lenis.destroy();

@@ -1,5 +1,5 @@
 import axios, { type InternalAxiosRequestConfig } from 'axios';
-import { store } from '@/store';
+import { getStore } from '@/store';
 import { logout } from '@/store/slices/authSlice';
 import { getJwtToken, getAuthCookies, setAuthCookies, clearAuthCookies } from '@/lib/utils/cookies';
 import { createToastInterceptor } from '@/lib/utils/toastInterceptor';
@@ -110,7 +110,10 @@ api.interceptors.response.use(
       } catch (refreshError) {
         processQueue(refreshError, null);
         clearAuthCookies();
-        store.dispatch(logout());
+        const store = getStore();
+        if (store) {
+          store.dispatch(logout());
+        }
         return Promise.reject(refreshError);
       } finally {
         isRefreshing = false;
