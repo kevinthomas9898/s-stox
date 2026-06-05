@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { useForm, FormProvider, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Stepper } from "@/components/ui/stepper";
 import { useAppDispatch } from "@/store";
-import { updateStartingStep, updateRegistrationData } from "@/store/slices/registrationSlice";
+import { updateStartingStep, updateRegistrationData, clearRegistration } from "@/store/slices/registrationSlice";
 import { PrimaryBTN } from "@/components/common/PrimaryBTN";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -132,6 +133,7 @@ export function MultiStepSignupForm({
   initialStep = 1,
   initialData,
 }: MultiStepSignupFormProps) {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(Math.min(Math.max(initialStep, 1), steps.length));
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
@@ -219,6 +221,13 @@ export function MultiStepSignupForm({
     try {
       const apiData = transformFormToApiData(formData, contractCode, stepToSave, initialData, cache);
       const response = await registerUser(apiData);
+
+      if (response.data?.isExistingUser && response.data?.isRegistrationCompleted) {
+        toast.info(response.message || "Registration already completed. Please login.");
+        dispatch(clearRegistration());
+        router.push("/login");
+        return false;
+      }
 
       if (response.status) {
         console.log("Progress saved:", response.data);
@@ -353,6 +362,13 @@ export function MultiStepSignupForm({
       const securityCache = { group100: [], group200: [] }; // Empty cache for final submit
       const apiData = transformFormToApiData(data, contractCode, steps.length, initialData, securityCache);
       const response = await registerUser(apiData);
+
+      if (response.data?.isExistingUser && response.data?.isRegistrationCompleted) {
+        toast.info(response.message || "Registration already completed. Please login.");
+        dispatch(clearRegistration());
+        router.push("/login");
+        return;
+      }
 
       if (response.status) {
         toast.success(response.data?.registrationComplete ? "Account created successfully!" : (response.message || "Registration saved!"));

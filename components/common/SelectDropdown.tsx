@@ -1,12 +1,7 @@
 "use client"
 
 import * as React from "react"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
 import { LuChevronDown, LuSearch, LuX } from "react-icons/lu";
 
 import { cn } from "@/lib/utils"

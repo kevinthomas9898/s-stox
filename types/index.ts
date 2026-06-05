@@ -206,9 +206,13 @@ export interface RegisterUserRequest {
 }
 
 export interface RegisterUserData {
-  contractCode: string;
-  emailAddress: string;
-  registrationComplete: boolean;
+  contractCode?: string;
+  emailAddress?: string;
+  registrationComplete?: boolean;
+  user?: User | null;
+  message?: string;
+  isExistingUser?: boolean;
+  isRegistrationCompleted?: boolean;
 }
 
 export interface RegisterUserResponse {
